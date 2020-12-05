@@ -1,4 +1,5 @@
 import 'package:cookie/bottom_bar.dart';
+import 'package:cookie/cookie_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -46,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage>
             onPressed: () {},
           ),
           title: Text(
-            'Еда',
+            'Вкусняшечка',
             style: TextStyle(
               fontFamily: 'Varela',
               fontSize: 20.0,
@@ -112,6 +113,18 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
               ),
             ],
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height - 50.0,
+            width: double.infinity,
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                CookiePage(),
+                CookiePage(),
+                CookiePage(),
+              ],
+            ),
           ),
         ],
       ),
