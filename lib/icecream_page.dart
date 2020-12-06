@@ -1,7 +1,7 @@
 import 'package:cookie/cookie_detail.dart';
 import 'package:flutter/material.dart';
 
-class CookiePage extends StatelessWidget {
+class IceCreamPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,14 +22,29 @@ class CookiePage extends StatelessWidget {
               mainAxisSpacing: 15.0,
               childAspectRatio: 0.8,
               children: <Widget>[
-                _buildCard('Мятная печенька', '120.00',
-                    'assets/images/cookiemint.jpg', false, false, context),
-                _buildCard('Кремовая печенька', '80.00',
-                    'assets/images/cookiecream.jpg', true, false, context),
-                _buildCard('Классическая печенька', '100.00',
-                    'assets/images/cookieclassic.jpg', false, true, context),
-                _buildCard('Шоколадная печенька', '140.00',
-                    'assets/images/cookiechoco.jpg', false, false, context),
+                _buildCard('Клубничное мороженое', '140.00',
+                    'assets/images/icecreampink.jpg', false, false, context),
+                _buildCard(
+                    'Фисташковое мороженое',
+                    '140.00',
+                    'assets/images/icecreampinksecond.png',
+                    false,
+                    false,
+                    context),
+                _buildCard(
+                    'Мятное мороженое',
+                    '140.00',
+                    'assets/images/icecreampeppermint.png',
+                    false,
+                    false,
+                    context),
+                _buildCard(
+                    'Вишнёвое мороженое',
+                    '140.00',
+                    'assets/images/icecreamcherrycordial.png',
+                    false,
+                    false,
+                    context),
               ],
             ),
           ),

@@ -1,6 +1,10 @@
 import 'package:cookie/bottom_bar.dart';
 import 'package:cookie/cookie_page.dart';
+import 'package:cookie/icecream_page.dart';
+import 'package:cookie/routs.dart';
+import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:cookie/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +15,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      theme: ThemeData(
+        fontFamily: 'Varela',
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: kTextColor),
+        ),
+      ),
+      // home: SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
@@ -96,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
               Tab(
                 child: Text(
-                  'Торт с печеньем',
+                  'Мороженое',
                   style: TextStyle(
                     fontFamily: 'Varela',
                     fontSize: 21.0,
@@ -105,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
               Tab(
                 child: Text(
-                  'Мороженое',
+                  'Другие вкусняшки',
                   style: TextStyle(
                     fontFamily: 'Varela',
                     fontSize: 21.0,
@@ -121,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage>
               controller: _tabController,
               children: [
                 CookiePage(),
-                CookiePage(),
+                IceCreamPage(),
                 CookiePage(),
               ],
             ),
