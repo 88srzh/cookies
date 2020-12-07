@@ -3,8 +3,8 @@ import 'package:cookie/cookie_page.dart';
 import 'package:cookie/icecream_page.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
+import 'package:cookie/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:cookie/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,12 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Varela',
-        textTheme: TextTheme(
-          bodyText1: TextStyle(color: kTextColor),
-        ),
-      ),
+      theme: theme(),
       // home: SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
@@ -30,7 +25,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override

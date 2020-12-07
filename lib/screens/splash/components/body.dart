@@ -1,5 +1,6 @@
 import 'package:cookie/components/default_button.dart';
 import 'package:cookie/constants.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
 
 import '../components/splash_content.dart';
@@ -66,7 +67,9 @@ class _BodyState extends State<Body> {
                     Spacer(flex: 3),
                     DefaultButton(
                       text: 'Продолжить',
-                      press: () {},
+                      press: () {
+                        Navigator.pushNamed(context, SignInScreen.routeName);
+                      },
                     ),
                     Spacer(),
                   ],
