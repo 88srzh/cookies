@@ -11,7 +11,7 @@ const kAnimationDuration = Duration(milliseconds: 200);
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String kEmailNullError = 'Пожалуйста, введите Вашу почту';
-const String kInvalidEmailError = 'Пожалуйста, введите валидную почту';
+const String kInvalidEmailError = 'Пожалуйста, введите действующую почту';
 const String kPassNullError = 'Пожалуйста, введите Ваш пароль';
 const String kShortPassError = 'Пароль слишком короткий';
 const String kMatchPassError = 'Пароли не совпадают';
