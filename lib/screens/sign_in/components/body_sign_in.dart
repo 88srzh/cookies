@@ -1,5 +1,5 @@
+import 'package:cookie/components/no_account_text.dart';
 import 'package:cookie/components/social_card.dart';
-import 'package:cookie/constants.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -60,24 +60,7 @@ class BodySignIn extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(20),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Нет аккаунта? ',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(16),
-                      ),
-                    ),
-                    Text(
-                      'Зарегистрироваться',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(16),
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                  ],
-                ),
+                NoAccountText(),
               ],
             ),
           ),
