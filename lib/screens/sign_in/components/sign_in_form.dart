@@ -1,6 +1,8 @@
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/default_button.dart';
 import 'package:cookie/components/form_error.dart';
+import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
+import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -44,10 +46,14 @@ class _SignFormState extends State<SignForm> {
               ),
               Text('Запомнить'),
               Spacer(),
-              Text(
-                'Забыли пароль?',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                    context, ForgotPasswordScreen.routeName),
+                child: Text(
+                  'Забыли пароль?',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
             ],
@@ -61,6 +67,7 @@ class _SignFormState extends State<SignForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
+                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               }
             },
           ),
@@ -78,10 +85,12 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.remove(kPassNullError);
           });
+          return "";
         } else if (value.length >= 8 && errors.contains(kShortPassError)) {
           setState(() {
             errors.remove(kShortPassError);
           });
+          return "";
         }
         return null;
       },
@@ -90,10 +99,12 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.add(kPassNullError);
           });
+          return "";
         } else if (value.length < 8 && !errors.contains(kShortPassError)) {
           setState(() {
             errors.add(kShortPassError);
           });
+          return "";
         }
         return null;
       },
