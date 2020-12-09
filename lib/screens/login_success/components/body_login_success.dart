@@ -27,9 +27,9 @@ class BodyLoginSuccess extends StatelessWidget {
         ),
         Spacer(),
         SizedBox(
-          width: SizeConfig.screenWidth * 0.6,
+          width: SizeConfig.screenWidth * 0.45,
           child: DefaultButton(
-            text: 'Вернуться назад',
+            text: 'Назад',
             press: () {},
           ),
         ),
