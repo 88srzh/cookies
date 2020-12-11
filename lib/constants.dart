@@ -23,3 +23,6 @@ const String kInvalidEmailError = 'Пожалуйста, введите дейс
 const String kPassNullError = 'Пожалуйста, введите Ваш пароль';
 const String kShortPassError = 'Пароль слишком короткий';
 const String kMatchPassError = 'Пароли не совпадают';
+const String kNameNullError = 'Пожалуйста, введите Ваше имя';
+const String kPhoneNumberNullError = 'Пожалуйста, введите введите Ваш телефон';
+const String kAddressNullError = 'Пожалуйста, введите Ваш адрес';
