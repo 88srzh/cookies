@@ -26,3 +26,19 @@ const String kMatchPassError = 'Пароли не совпадают';
 const String kNameNullError = 'Пожалуйста, введите Ваше имя';
 const String kPhoneNumberNullError = 'Пожалуйста, введите введите Ваш телефон';
 const String kAddressNullError = 'Пожалуйста, введите Ваш адрес';
+
+final otpInputDecoration = InputDecoration(
+  contentPadding: EdgeInsets.symmetric(
+    vertical: getProportionateScreenWidth(15),
+  ),
+  enabledBorder: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  border: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: BorderSide(color: kTextColor),
+  );
+}

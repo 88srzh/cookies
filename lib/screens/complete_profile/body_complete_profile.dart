@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../size_config.dart';
-import '../../size_config.dart';
-import '../../size_config.dart';
 
 class BodyCompleteProfile extends StatelessWidget {
   @override

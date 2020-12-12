@@ -1,5 +1,3 @@
-import 'package:cookie/components/custom_surfix_icon.dart';
-import 'package:cookie/components/default_button.dart';
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_up/components/sign_up_form.dart';
 import 'package:cookie/size_config.dart';
