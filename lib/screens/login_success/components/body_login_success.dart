@@ -1,4 +1,5 @@
 import 'package:cookie/components/default_button.dart';
+import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +30,8 @@ class BodyLoginSuccess extends StatelessWidget {
         SizedBox(
           width: SizeConfig.screenWidth * 0.45,
           child: DefaultButton(
-            text: 'Назад',
-            press: () {},
+            text: 'На главную',
+            press: () => Navigator.pushNamed(context, HomeScreen.routeName),
           ),
         ),
         Spacer(),
