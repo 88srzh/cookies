@@ -1,9 +1,9 @@
 import 'package:cookie/screens/home/components/categories.dart';
 import 'package:cookie/screens/home/components/discount_banner.dart';
 import 'package:cookie/screens/home/components/home_header.dart';
+import 'package:cookie/screens/home/components/special_offers.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class BodyHome extends StatelessWidget {
   @override
@@ -19,6 +19,7 @@ class BodyHome extends StatelessWidget {
             SizedBox(height: getProportionateScreenWidth(30)),
             Categories(),
             SizedBox(height: getProportionateScreenWidth(30)),
+            SpecialOffers(),
           ],
         ),
       ),
