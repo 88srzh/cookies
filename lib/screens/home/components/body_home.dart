@@ -1,7 +1,9 @@
+import 'package:cookie/screens/home/components/categories.dart';
 import 'package:cookie/screens/home/components/discount_banner.dart';
 import 'package:cookie/screens/home/components/home_header.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BodyHome extends StatelessWidget {
   @override
@@ -14,45 +16,10 @@ class BodyHome extends StatelessWidget {
             HomeHeader(),
             SizedBox(height: getProportionateScreenWidth(30)),
             DiscountBanner(),
-            BodyHomeScreen(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            Categories(),
+            SizedBox(height: getProportionateScreenWidth(30)),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class BodyHomeScreen extends StatefulWidget {
-  BodyHomeScreen({Key key}) : super(key: key);
-
-  @override
-  _BodyHomeScreenState createState() => _BodyHomeScreenState();
-}
-
-class _BodyHomeScreenState extends State<BodyHomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  text: 'Dog',
-                  child: Text(
-                    '123',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-                Tab(
-                  text: 'Cat',
-                ),
-                Tab(text: 'Frog'),
-              ],
-            ),
-          ),
         ),
       ),
     );

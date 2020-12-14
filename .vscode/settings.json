@@ -1,4 +1,6 @@
 {
     "editor.minimap.enabled": false,
-    "editor.fontFamily": "Consolas, 'Hack-Regular', monospace"
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.codeActionsOnSave": null,
+    "diffEditor.codeLens": true
 }
