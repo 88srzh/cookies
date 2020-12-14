@@ -1,23 +1,22 @@
-import 'package:cookie/components/custom_surfix_icon.dart';
-import 'package:cookie/components/default_button.dart';
-import 'package:cookie/components/form_error.dart';
-import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
-import 'package:cookie/screens/login_success/login_success_screen.dart';
+import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../components/custom_surfix_icon.dart';
+import '../../../components/default_button.dart';
+import '../../../components/form_error.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class SignForm extends StatefulWidget {
+class SignUpForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _SignUpFormState createState() => _SignUpFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
   String email;
   String password;
-  bool remember = false;
+  String confirmPassword;
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -43,52 +42,53 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           buildEmailFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
-          Row(
-            children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text('Запомнить'),
-              Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
-                child: Text(
-                  'Забыли пароль?',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildConfirmPasswordFormField(),
           FormError(errors: errors),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: 'Продолжить',
             press: () {
               if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                // Go to complete profile page
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
             },
           ),
         ],
+      ),
+    );
+  }
+
+  TextFormField buildConfirmPasswordFormField() {
+    return TextFormField(
+      obscureText: true,
+      onSaved: (newValue) => confirmPassword = newValue,
+      onChanged: (value) {
+        if (password == confirmPassword) {
+          removeError(error: kMatchPassError);
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          return "";
+        } else if (password != value) {
+          addError(error: kMatchPassError);
+          return "";
+        }
+        return null;
+      },
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        labelText: 'Подтвердите пароль',
+        hintText: 'Повторите пароль',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(
+          svgIcon: 'assets/icons/Lock.svg',
+        ),
       ),
     );
   }
@@ -103,6 +103,7 @@ class _SignFormState extends State<SignForm> {
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
         }
+        password = value;
         return null;
       },
       validator: (value) {
