@@ -1,10 +1,15 @@
+import 'package:cookie/components/sweets_card.dart';
+import 'package:cookie/constants.dart';
+import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/home/components/categories.dart';
 import 'package:cookie/screens/home/components/discount_banner.dart';
 import 'package:cookie/screens/home/components/home_header.dart';
+import 'package:cookie/screens/home/components/popular_sweets.dart';
 import 'package:cookie/screens/home/components/section_title.dart';
 import 'package:cookie/screens/home/components/special_offers.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BodyHome extends StatelessWidget {
   @override
@@ -22,7 +27,7 @@ class BodyHome extends StatelessWidget {
             SizedBox(height: getProportionateScreenWidth(30)),
             SpecialOffers(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            SectionTitle(text: 'Популярное', press: () {}),
+            PopularSweets(),
             SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),
