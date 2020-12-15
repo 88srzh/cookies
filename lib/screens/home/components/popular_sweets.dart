@@ -1,5 +1,6 @@
 import 'package:cookie/components/sweets_card.dart';
 import 'package:cookie/models/sweets.dart';
+import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/screens/home/components/section_title.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,13 @@ class PopularSweets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SectionTitle(
-          text: 'Популярное',
-          press: () {},
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: SectionTitle(
+            text: 'Популярное',
+            press: () {},
+          ),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
@@ -25,9 +30,20 @@ class PopularSweets extends StatelessWidget {
             children: [
               ...List.generate(
                 allSweets.length,
-                (index) => SweetsCard(
-                  sweets: allSweets[index],
-                ),
+                (index) {
+                  if (allSweets[index].isPopular)
+                    return SweetsCard(
+                      sweets: allSweets[index],
+                      press: () => Navigator.pushNamed(
+                        context,
+                        DetailsScreen.routeName,
+                        arguments: SweetsDetailsArguments(
+                          allSweets: allSweets[index],
+                        ),
+                      ),
+                    );
+                  return SizedBox.shrink();
+                },
               ),
               SizedBox(width: getProportionateScreenWidth(20)),
             ],
