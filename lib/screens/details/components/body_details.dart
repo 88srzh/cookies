@@ -1,6 +1,9 @@
-import 'package:cookie/constants.dart';
+import 'package:cookie/components/default_button.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/size_config.dart';
+import 'package:cookie/screens/details/components/color_dots.dart';
+import 'package:cookie/screens/details/components/product_description.dart';
+import 'package:cookie/screens/details/components/sweets_images.dart';
+import 'package:cookie/screens/details/components/top_rounded_container.dart';
 import 'package:flutter/material.dart';
 
 class BodyDetails extends StatelessWidget {
@@ -9,53 +12,36 @@ class BodyDetails extends StatelessWidget {
   const BodyDetails({Key key, @required this.allSweets}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SweetsImages(allSweets: allSweets);
-  }
-}
-
-class SweetsImages extends StatelessWidget {
-  const SweetsImages({
-    Key key,
-    @required this.allSweets,
-  }) : super(key: key);
-
-  final Sweets allSweets;
-
-  @override
-  Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: getProportionateScreenWidth(238),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.asset(allSweets.images[0]),
+        SweetsImages(allSweets: allSweets),
+        TopRoundedContainer(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ProductDescription(
+                allSweets: allSweets,
+                pressOnSeeMore: () {},
+              ),
+              TopRoundedContainer(
+                color: Color(0xFFF6F7F9),
+                child: Column(
+                  children: [
+                    ColorDots(allSweets: allSweets),
+                    TopRoundedContainer(
+                      color: Colors.white,
+                      child: DefaultButton(
+                        text: 'Добавить в корзину',
+                        press: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(
-              allSweets.images.length,
-              (index) => buildSmallPreview(index),
-            )
-          ],
-        ),
       ],
-    );
-  }
-
-  Container buildSmallPreview(int index) {
-    return Container(
-      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-      height: getProportionateScreenWidth(48),
-      width: getProportionateScreenWidth(48),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: kPrimaryColor),
-      ),
-      child: Image.asset(allSweets.images[index]),
     );
   }
 }
