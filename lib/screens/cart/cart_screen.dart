@@ -9,6 +9,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: BodyCart(),
+      bottomNavigationBar: Container(),
     );
   }
 
