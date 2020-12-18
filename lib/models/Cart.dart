@@ -11,5 +11,5 @@ class Cart {
 List<Cart> carts = [
   Cart(sweets: allSweets[0], numOfItems: 2),
   Cart(sweets: allSweets[1], numOfItems: 2),
-  Cart(sweets: allSweets[3], numOfItems: 1),
+  Cart(sweets: allSweets[2], numOfItems: 1),
 ];
