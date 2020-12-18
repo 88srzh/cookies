@@ -45,17 +45,18 @@ class CartItemCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                  text: '${cart.sweets.price}p',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: kPrimaryColor,
+                text: '${cart.sweets.price}p',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: kPrimaryColor,
+                ),
+                children: [
+                  TextSpan(
+                    text: ' x${cart.numOfItems}',
+                    style: TextStyle(color: kTextColor),
                   ),
-                  children: [
-                    TextSpan(
-                      text: ' x${cart.numOfItems}',
-                      style: TextStyle(color: kTextColor),
-                    ),
-                  ]),
+                ],
+              ),
             ),
           ],
         ),
