@@ -5,6 +5,7 @@ import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
+import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
@@ -21,4 +22,5 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
+  ProfileScreen.routeName: (context) => ProfileScreen(),
 };

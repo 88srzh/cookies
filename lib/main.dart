@@ -2,6 +2,7 @@ import 'package:cookie/bottom_bar.dart';
 import 'package:cookie/cookie_page.dart';
 import 'package:cookie/icecream_page.dart';
 import 'package:cookie/routs.dart';
+import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       initialRoute: SplashScreen.routeName,
+      // initialRoute: ProfileScreen.routeName,
       routes: routes,
       // home: MyHomePage(),
     );
