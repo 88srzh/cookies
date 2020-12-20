@@ -1,21 +1,20 @@
-import 'package:cookie/models/sweets.dart';
+import 'package:cookie/models/ice_cream.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
-// import '../size_config.dart';
 
-class SweetsCard extends StatelessWidget {
-  const SweetsCard({
+class IceCreamCard extends StatelessWidget {
+  const IceCreamCard({
     Key key,
     this.width = 140,
     this.aspectRation = 1.02,
-    @required this.sweets,
+    @required this.icecreams,
     @required this.press,
   }) : super(key: key);
 
   final double width, aspectRation;
-  final Sweets sweets;
+  final IceCream icecreams;
   final GestureTapCallback press;
 
   @override
@@ -36,12 +35,12 @@ class SweetsCard extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(sweets.images[0]),
+                  child: Image.asset(icecreams.images[0]),
                 ),
               ),
               const SizedBox(height: 5),
               Text(
-                sweets.title,
+                icecreams.title,
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -51,7 +50,7 @@ class SweetsCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${sweets.price} p',
+                    '${icecreams.price} p',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -66,13 +65,13 @@ class SweetsCard extends StatelessWidget {
                       width: 28,
                       height: 28,
                       decoration: BoxDecoration(
-                        color: sweets.isFavourite
+                        color: icecreams.isFavourite
                             ? kPrimaryColor.withOpacity(0.15)
                             : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
-                          color: sweets.isFavourite
+                          color: icecreams.isFavourite
                               ? Color(0xFFFF4848)
                               : Color(0xFFDBDEE4)),
                     ),

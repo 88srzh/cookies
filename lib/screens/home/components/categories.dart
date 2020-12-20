@@ -1,3 +1,5 @@
+import 'package:cookie/icecream/icecream_screen.dart';
+import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,9 +26,11 @@ class Categories extends StatelessWidget {
           ...List.generate(
             categories.length,
             (index) => CategoryCard(
-                icon: categories[index]['icon'],
-                text: categories[index]['text'],
-                press: () {}),
+              icon: categories[index]['icon'],
+              text: categories[index]['text'],
+              press: () =>
+                  Navigator.pushNamed(context, IceCreamScreen.routeName),
+            ),
           ),
         ],
       ),

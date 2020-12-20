@@ -71,7 +71,7 @@ List<Sweets> allSweets = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: 'Классическая печенька',
+    title: 'Овсяная печенька',
     price: 35.99,
     description: description,
     rating: 4.4,
