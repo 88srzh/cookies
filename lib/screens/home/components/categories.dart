@@ -1,5 +1,4 @@
-import 'package:cookie/icecream/icecream_screen.dart';
-import 'package:cookie/screens/categories/categories_screen.dart';
+import 'package:cookie/screens/icecream/icecream_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

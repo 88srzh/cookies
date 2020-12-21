@@ -1,10 +1,10 @@
-import 'package:cookie/icecream/icecream_screen.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
+import 'package:cookie/screens/icecream/icecream_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';

@@ -1,4 +1,4 @@
-import 'package:cookie/icecream/components/body_icecream.dart';
+import 'package:cookie/screens/icecream/components/body_icecream.dart';
 import 'package:flutter/material.dart';
 
 class IceCreamScreen extends StatelessWidget {

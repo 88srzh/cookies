@@ -26,9 +26,7 @@ List<Sweets> allSweets = [
     id: 1,
     images: [
       'assets/images/cookiemint.png',
-      'assets/images/cookiecream.png',
       'assets/images/cookiechoco.png',
-      'assets/images/cookieclassic.png',
     ],
     colors: [
       Color(0xFFF6625E),
@@ -47,6 +45,7 @@ List<Sweets> allSweets = [
     id: 2,
     images: [
       'assets/images/cookiecream.png',
+      'assets/images/cookieclassic.png',
     ],
     colors: [
       Color(0xFFF6625E),

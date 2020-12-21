@@ -1,4 +1,5 @@
 import 'package:cookie/models/ice_cream.dart';
+import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -46,37 +47,41 @@ class IceCreamCard extends StatelessWidget {
                 ),
                 maxLines: 2,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${icecreams.price} p',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(30),
-                    onTap: () {},
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      width: 28,
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: icecreams.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
-                        shape: BoxShape.circle,
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(5)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${icecreams.price} p',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: kPrimaryColor,
                       ),
-                      child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
-                          color: icecreams.isFavourite
-                              ? Color(0xFFFF4848)
-                              : Color(0xFFDBDEE4)),
                     ),
-                  ),
-                ],
+                    InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        width: 28,
+                        height: 28,
+                        decoration: BoxDecoration(
+                          color: icecreams.isFavourite
+                              ? kPrimaryColor.withOpacity(0.15)
+                              : kSecondaryColor.withOpacity(0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
+                            color: icecreams.isFavourite
+                                ? Color(0xFFFF4848)
+                                : Color(0xFFDBDEE4)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
