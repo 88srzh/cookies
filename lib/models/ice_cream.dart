@@ -6,7 +6,7 @@ class IceCream {
   final List<String> images;
   final List<Color> colors;
   final double rating, price;
-  final bool isFavourite, isPopular;
+  bool isFavourite, isPopular;
 
   IceCream({
     this.id,

@@ -1,5 +1,4 @@
 import 'package:cookie/routs.dart';
-import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
 import 'package:flutter/material.dart';

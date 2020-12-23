@@ -62,7 +62,7 @@ class SweetsCard extends StatelessWidget {
                         color: kPrimaryColor,
                       ),
                     ),
-                    Icon(Icons.star, color: Colors.red[500]),
+                    Icon(Icons.star, color: Colors.red[300]),
                     // Text('123'),
                     InkWell(
                       borderRadius: BorderRadius.circular(30),

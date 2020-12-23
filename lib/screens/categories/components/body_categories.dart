@@ -1,5 +1,4 @@
 import 'package:cookie/components/icecream_card.dart';
-import 'package:cookie/components/sweets_card.dart';
 import 'package:cookie/cookie_detail.dart';
 import 'package:cookie/models/ice_cream.dart';
 import 'package:cookie/models/sweets.dart';
