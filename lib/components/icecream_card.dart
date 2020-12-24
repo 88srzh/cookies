@@ -67,43 +67,8 @@ class _IceCreamCardState extends State<IceCreamCard> {
                         color: kPrimaryColor,
                       ),
                     ),
-                    Container(
-                      // padding: EdgeInsets.only(right: 5),
-                      height: 25,
-                      width: 10,
-                      child: IconButton(
-                        padding: EdgeInsets.all(0),
-                        icon: (widget.icecreams.isPopular
-                            ? Icon(Icons.star)
-                            : Icon(Icons.star_border)),
-                        color: Colors.red[300],
-                        onPressed: _togglePopular,
-                      ),
-                    ),
-                    SizedBox(
-                      child: Container(
-                        child: Text('$popularCount'),
-                      ),
-                    ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(30),
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        width: 28,
-                        height: 28,
-                        decoration: BoxDecoration(
-                          color: widget.icecreams.isFavourite
-                              ? kPrimaryColor.withOpacity(0.15)
-                              : kSecondaryColor.withOpacity(0.1),
-                          shape: BoxShape.circle,
-                        ),
-                        child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
-                            color: widget.icecreams.isFavourite
-                                ? Color(0xFFFF4848)
-                                : Color(0xFFDBDEE4)),
-                      ),
-                    ),
+                    buildPopularCount(),
+                    buildFavouriteTap(),
                   ],
                 ),
               ),
@@ -111,6 +76,57 @@ class _IceCreamCardState extends State<IceCreamCard> {
           ),
         ),
       ),
+    );
+  }
+
+  InkWell buildFavouriteTap() {
+    return InkWell(
+      splashColor: Colors.transparent,
+      borderRadius: BorderRadius.circular(30),
+      onTap: () {
+        _toggleFavourite();
+      },
+      child: Container(
+        padding: EdgeInsets.all(8),
+        width: 28,
+        height: 28,
+        decoration: BoxDecoration(
+          color: widget.icecreams.isFavourite
+              ? kPrimaryColor.withOpacity(0.15)
+              : kSecondaryColor.withOpacity(0.1),
+          shape: BoxShape.circle,
+        ),
+        child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
+            color: widget.icecreams.isFavourite
+                ? Color(0xFFFF4848)
+                : Color(0xFFDBDEE4)),
+      ),
+    );
+  }
+
+  Row buildPopularCount() {
+    return Row(
+      children: [
+        Container(
+          height: 25,
+          width: 20,
+          child: IconButton(
+            splashColor: Colors.transparent,
+            padding: EdgeInsets.only(right: 5),
+            icon: (widget.icecreams.isPopular
+                ? Icon(Icons.star)
+                : Icon(Icons.star_border)),
+            color: Colors.red[300],
+            onPressed: _togglePopular,
+          ),
+        ),
+        SizedBox(width: 6),
+        SizedBox(
+          child: Container(
+            child: Text('$popularCount'),
+          ),
+        ),
+      ],
     );
   }
 
@@ -122,6 +138,16 @@ class _IceCreamCardState extends State<IceCreamCard> {
       } else {
         popularCount += 1;
         widget.icecreams.isPopular = true;
+      }
+    });
+  }
+
+  void _toggleFavourite() {
+    setState(() {
+      if (widget.icecreams.isFavourite) {
+        widget.icecreams.isFavourite = false;
+      } else {
+        widget.icecreams.isFavourite = true;
       }
     });
   }

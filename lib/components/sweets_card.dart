@@ -65,8 +65,11 @@ class SweetsCard extends StatelessWidget {
                     Icon(Icons.star, color: Colors.red[300]),
                     // Text('123'),
                     InkWell(
+                      splashColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(30),
-                      onTap: () {},
+                      onTap: () {
+                        _tapFavourite();
+                      },
                       child: Container(
                         padding: EdgeInsets.all(8),
                         width: 28,
@@ -91,5 +94,13 @@ class SweetsCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _tapFavourite() {
+    if (sweets.isFavourite) {
+      sweets.isFavourite = false;
+    } else {
+      sweets.isFavourite = true;
+    }
   }
 }
