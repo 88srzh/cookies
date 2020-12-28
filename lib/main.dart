@@ -9,14 +9,6 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     MyApp(),
-    // MultiProvider(providers: [
-    //   ChangeNotifierProvider(
-    //     create: (context) => Cart(
-    //       sweets: allSweets[1],
-    //       numOfItems: 1,
-    //     ),
-    //   ),
-    // ], child: MyApp()),
   );
 }
 
@@ -24,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Cart>(
-      create: (context) => Cart(sweets: null, numOfItems: null),
+      create: (context) => Cart(sweets: allSweets[0], numOfItems: 1),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),
