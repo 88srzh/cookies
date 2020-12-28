@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../constants.dart';
 // import '../size_config.dart';
 
-class SweetsCard extends StatelessWidget {
+class SweetsCard extends StatefulWidget {
   const SweetsCard({
     Key key,
     this.width = 140,
@@ -20,29 +20,34 @@ class SweetsCard extends StatelessWidget {
   final GestureTapCallback press;
 
   @override
+  _SweetsCardState createState() => _SweetsCardState();
+}
+
+class _SweetsCardState extends State<SweetsCard> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 20),
       child: GestureDetector(
-        onTap: press,
+        onTap: widget.press,
         child: SizedBox(
           width: 150,
           child: Column(
             children: [
               AspectRatio(
-                aspectRatio: aspectRation,
+                aspectRatio: widget.aspectRation,
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(sweets.images[0]),
+                  child: Image.asset(widget.sweets.images[0]),
                 ),
               ),
               const SizedBox(height: 5),
               Text(
-                sweets.title,
+                widget.sweets.title,
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -55,7 +60,7 @@ class SweetsCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${sweets.price} p',
+                      '${widget.sweets.price} p',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -75,13 +80,13 @@ class SweetsCard extends StatelessWidget {
                         width: 28,
                         height: 28,
                         decoration: BoxDecoration(
-                          color: sweets.isFavourite
+                          color: widget.sweets.isFavourite
                               ? kPrimaryColor.withOpacity(0.15)
                               : kSecondaryColor.withOpacity(0.1),
                           shape: BoxShape.circle,
                         ),
                         child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
-                            color: sweets.isFavourite
+                            color: widget.sweets.isFavourite
                                 ? Color(0xFFFF4848)
                                 : Color(0xFFDBDEE4)),
                       ),
@@ -97,10 +102,12 @@ class SweetsCard extends StatelessWidget {
   }
 
   void _tapFavourite() {
-    if (sweets.isFavourite) {
-      sweets.isFavourite = false;
-    } else {
-      sweets.isFavourite = true;
-    }
+    setState(() {
+      if (widget.sweets.isFavourite) {
+        widget.sweets.isFavourite = false;
+      } else {
+        widget.sweets.isFavourite = true;
+      }
+    });
   }
 }

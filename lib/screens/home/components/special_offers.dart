@@ -22,13 +22,13 @@ class SpecialOffers extends StatelessWidget {
           child: Row(
             children: [
               SpecialOfferCard(
-                image: 'assets/images/ice-cream-banner-pink2.jpg',
+                image: 'assets/images/icecream-banner-orange.jpg',
                 category: 'Ice cream',
                 numOfTastes: 18,
                 press: () {},
               ),
               SpecialOfferCard(
-                image: 'assets/images/ice-cream-banner3.jpg',
+                image: 'assets/images/icecream-banner-pink.jpg',
                 category: 'Candy',
                 numOfTastes: 24,
                 press: () {},
