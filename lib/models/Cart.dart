@@ -21,15 +21,16 @@ List<Cart> carts = [
   Cart(sweets: allSweets[2], numOfItems: 1),
 ];
 
-// UnmodifiableListView<Cart> get carts_item => UnmodifiableListView(carts);
+UnmodifiableListView<Cart> get carts_item => UnmodifiableListView(carts);
 
-// int get totalPrice => carts.length * 42;
+int get totalPrice => carts.length * 42;
 
-// void add(Cart cart) {
-//   carts.add(cart);
-//   // notifyListeners();
-// }
+void add(Cart cart) {
+  carts.add(cart);
+  // notifyListeners();
+}
 
-// void removeAll() {
-//   carts.clear();
+void removeAll() {
+  carts.clear();
 // notifyListeners();
+}
