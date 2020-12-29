@@ -18,5 +18,12 @@
         "gitlens.codeLens.scopes": [
             "document"
         ]
-    }
+    },
+    "workbench.list.smoothScrolling": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.preferredDarkColorTheme": "Atom One Dark",
+    "workbench.preferredHighContrastColorTheme": "Atom One Dark",
+    "workbench.preferredLightColorTheme": "Atom One Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.enablePreview": false
 }
