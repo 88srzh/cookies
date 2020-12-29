@@ -5,6 +5,7 @@ import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
   static String routeName = '/cart';

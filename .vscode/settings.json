@@ -1,6 +1,5 @@
 {
     "editor.minimap.enabled": false,
-    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
     "editor.codeActionsOnSave": null,
     "diffEditor.codeLens": true,
     "editor.cursorStyle": "line-thin",
@@ -20,10 +19,11 @@
         ]
     },
     "workbench.list.smoothScrolling": true,
-    "workbench.colorTheme": "Atom One Dark",
+    "workbench.colorTheme": "Bluloco Dark",
     "workbench.preferredDarkColorTheme": "Atom One Dark",
     "workbench.preferredHighContrastColorTheme": "Atom One Dark",
     "workbench.preferredLightColorTheme": "Atom One Dark",
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "editor.fontFamily": "Fira Code regular"
 }

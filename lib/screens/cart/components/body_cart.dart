@@ -1,11 +1,14 @@
 import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/cart/components/cart_item_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 class BodyCart extends StatefulWidget {
+  final Sweets allSweets;
+
+  const BodyCart({Key key, this.allSweets}) : super(key: key);
   @override
   _BodyCartState createState() => _BodyCartState();
 }
