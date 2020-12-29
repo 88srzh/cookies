@@ -1,5 +1,6 @@
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
+import 'package:cookie/screens/details/components/sweets_images.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,14 +8,14 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CartItemCard extends StatelessWidget {
+  final Sweets allSweets;
+  final Cart cart;
+
   const CartItemCard({
     Key key,
     @required this.cart,
+    @required this.allSweets,
   }) : super(key: key);
-
-  final Cart cart;
-
-  // final cart = Cart(sweets: allSweets[0],numOfItems: 2);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,10 @@ class CartItemCard extends StatelessWidget {
                     color: Color(0xFFF5F6F9),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(cart.sweets.images[0]),
+                  // child: Image.asset(cart.sweets.images[0]),
+                  // child: Image.asset(allSweets.images[0]),
+                  // ! - пытаюсь из details Достать изображение в Cart
+                  child: SweetsImages(allSweets: allSweets),
                 ),
               ),
             ),
