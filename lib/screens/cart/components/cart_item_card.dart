@@ -14,7 +14,7 @@ class CartItemCard extends StatelessWidget {
   const CartItemCard({
     Key key,
     @required this.cart,
-    @required this.allSweets,
+    this.allSweets,
   }) : super(key: key);
 
   @override
@@ -33,10 +33,11 @@ class CartItemCard extends StatelessWidget {
                     color: Color(0xFFF5F6F9),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  // child: Image.asset(cart.sweets.images[0]),
+                  child: Image.asset(cart.sweets.images[0]),
+                  // child: Image.asset(cart.carts_item.toString()),
                   // child: Image.asset(allSweets.images[0]),
+                  // child: SweetsImages(allSweets: allSweets),
                   // ! - пытаюсь из details Достать изображение в Cart
-                  child: SweetsImages(allSweets: allSweets),
                 ),
               ),
             ),

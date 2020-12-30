@@ -47,7 +47,7 @@ class _BodyCartState extends State<BodyCart> {
             },
             child: CartItemCard(
               cart: carts[index],
-              allSweets: arguments.allSweets,
+              // allSweets: arguments.allSweets,
             ),
           ),
         ),
