@@ -24,14 +24,15 @@ class BodyCategories extends StatelessWidget {
                 childAspectRatio: 0.8,
                 children: [
                   ...List.generate(
-                    allSweets.length,
+                    CatalogModel().allSweets.length,
                     (index) => IceCreamCard(
                       icecreams: allIceCream[index],
                       press: () => Navigator.pushNamed(
                         context,
                         DetailsScreen.routeName,
                         arguments: SweetsDetailsArguments(
-                          allSweets: allSweets[index],
+                          // allSweets: allSweets[index],
+                          allSweets: CatalogModel().allSweets[index],
                         ),
                       ),
                     ),

@@ -15,8 +15,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Cart>(
-      create: (context) => Cart(sweets: allSweets[0], numOfItems: 1),
+    return MultiProvider(
+      providers: [
+        Provider(create: (context) => CatalogModel()),
+        ChangeNotifierProxyProvider<CatalogModel, Cart>(
+          create: (context) => Cart(),
+          update: (context, catalog, cart) {
+            cart.catalog = catalog;
+            return cart;
+          },
+        ),
+      ],
+      // create: (context) =>
+      // Cart(sweets: CatalogModel().allSweets[0], numOfItems: 1),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),

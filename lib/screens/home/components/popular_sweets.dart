@@ -29,16 +29,16 @@ class PopularSweets extends StatelessWidget {
           child: Row(
             children: [
               ...List.generate(
-                allSweets.length,
+                CatalogModel().allSweets.length,
                 (index) {
-                  if (allSweets[index].isPopular)
+                  if (CatalogModel().allSweets[index].isPopular)
                     return SweetsCard(
-                      sweets: allSweets[index],
+                      sweets: CatalogModel().allSweets[index],
                       press: () => Navigator.pushNamed(
                         context,
                         DetailsScreen.routeName,
                         arguments: SweetsDetailsArguments(
-                          allSweets: allSweets[index],
+                          allSweets: CatalogModel().allSweets[index],
                         ),
                       ),
                     );

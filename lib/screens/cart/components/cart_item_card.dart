@@ -8,13 +8,13 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CartItemCard extends StatelessWidget {
-  final Sweets allSweets;
-  final Cart cart;
+  // final Sweets allSweets;
+  // final Cart cart;
 
   const CartItemCard({
     Key key,
-    @required this.cart,
-    this.allSweets,
+    // this.cart,
+    // this.allSweets,
   }) : super(key: key);
 
   @override
@@ -57,7 +57,8 @@ class CartItemCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     // text: '${cart.sweets.price}p',
-                    text: '${cart.sweets.price}p',
+                    // text: '${allSweets[index].price}p',
+                    // text: '${cart.cartsItem[index].price}p',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: kPrimaryColor,

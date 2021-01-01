@@ -1,7 +1,5 @@
 import 'package:cookie/models/Cart.dart';
-import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/cart/components/cart_item_card.dart';
-import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,17 +13,19 @@ class BodyCart extends StatefulWidget {
 class _BodyCartState extends State<BodyCart> {
   @override
   Widget build(BuildContext context) {
-    final SweetsCardArguments arguments =
-        ModalRoute.of(context).settings.arguments;
+    var cart = context.watch<Cart>();
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
-        itemCount: carts.length,
+        scrollDirection: Axis.vertical,
+        // itemCount: cart.length,
+        itemCount: cart.cartsItem.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-            key: Key(carts[index].sweets.id.toString()),
+            // key: Key(carts[index].sweets.id.toString()),
+            key: Key(cart.cartsItem[index].id.toString()),
             direction: DismissDirection.endToStart,
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -42,22 +42,14 @@ class _BodyCartState extends State<BodyCart> {
             ),
             onDismissed: (direction) {
               setState(() {
-                carts.removeAt(index);
+                // carts.removeAt(index);
+                cart.remove(cart.cartsItem[index]);
               });
             },
-            child: CartItemCard(
-              cart: carts[index],
-              // allSweets: arguments.allSweets,
-            ),
+            child: CartItemCard(),
           ),
         ),
       ),
     );
   }
-}
-
-class SweetsCardArguments {
-  final Sweets allSweets;
-
-  SweetsCardArguments({@required this.allSweets});
 }

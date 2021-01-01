@@ -11,8 +11,10 @@ import 'package:provider/provider.dart';
 
 class BodyDetails extends StatelessWidget {
   final Sweets allSweets;
+  final Sweets sweet;
 
-  const BodyDetails({Key key, @required this.allSweets}) : super(key: key);
+  const BodyDetails({Key key, @required this.allSweets, this.sweet})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,15 +43,17 @@ class BodyDetails extends StatelessWidget {
                             top: getProportionateScreenWidth(15),
                             bottom: getProportionateScreenWidth(40),
                           ),
-                          child:
-                              Consumer<Cart>(builder: (context, cart, child) {
-                            return DefaultButton(
-                              text: 'Добавить в корзину',
-                              press: () {
-                                cart.add(cart);
-                              },
-                            );
-                          }),
+
+                          // Consumer<Cart>(builder: (context, cart, child) {
+                          child: DefaultButton(
+                            text: 'Добавить в корзину',
+                            press: () {
+                              var cart = context.read<Cart>();
+                              cart.add(sweet);
+                              // cart.carts_item[index].);
+                            },
+                          ),
+                          // },
                         ),
                       ),
                     ],

@@ -32,7 +32,7 @@ class BodyIceCream extends StatelessWidget {
                             context,
                             DetailsScreen.routeName,
                             arguments: SweetsDetailsArguments(
-                              allSweets: allSweets[index],
+                              allSweets: CatalogModel().allSweets[index],
                             ),
                           ),
                         ),
