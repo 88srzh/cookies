@@ -8,6 +8,7 @@ import 'package:cookie/screens/details/components/top_rounded_container.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BodyDetails extends StatelessWidget {
   final Sweets allSweets;
@@ -48,12 +49,12 @@ class BodyDetails extends StatelessWidget {
                           child: DefaultButton(
                             text: 'Добавить в корзину',
                             press: () {
+                              cartToast();
                               var cart = context.read<Cart>();
                               cart.add(sweet);
-                              // cart.carts_item[index].);
                             },
+                            // press: cartToast, // Товар добавлен
                           ),
-                          // },
                         ),
                       ),
                     ],
@@ -64,6 +65,18 @@ class BodyDetails extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void cartToast() {
+    Fluttertoast.showToast(
+      msg: 'Товар добавлен',
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.blueAccent,
+      textColor: Colors.white,
+      fontSize: 16.0,
     );
   }
 }
