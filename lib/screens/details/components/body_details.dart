@@ -1,5 +1,6 @@
 import 'package:cookie/components/default_button.dart';
 import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/errors/2_404_error.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:cookie/screens/details/components/product_description.dart';
@@ -44,8 +45,8 @@ class BodyDetails extends StatelessWidget {
                             top: getProportionateScreenWidth(15),
                             bottom: getProportionateScreenWidth(40),
                           ),
-
-                          // Consumer<Cart>(builder: (context, cart, child) {
+                          //   Consumer<Cart>(builder: (context, cart, child) {
+                          // return
                           child: DefaultButton(
                             text: 'Добавить в корзину',
                             press: () {
@@ -53,7 +54,6 @@ class BodyDetails extends StatelessWidget {
                               var cart = context.read<Cart>();
                               cart.add(sweet);
                             },
-                            // press: cartToast, // Товар добавлен
                           ),
                         ),
                       ),

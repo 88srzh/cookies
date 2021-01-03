@@ -1,34 +1,32 @@
-import 'dart:collection';
-
 import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends ChangeNotifier {
-  final Sweets sweets;
-  final CatalogModel catalog;
-  final int numOfItems;
-
-  Cart({this.catalog, this.sweets, this.numOfItems});
+  // final Sweets sweets;
+  CatalogModel _catalog;
+  // final int numOfItems;
 
   // UnmodifiableListView<Cart> get carts_item => UnmodifiableListView(carts);
 
   final List<int> _itemIds = [];
 
-  // CatalogModel get catalog => _catalog;
+  CatalogModel get catalog => _catalog;
 
   set catalog(CatalogModel newCatalog) {
     assert(newCatalog != null);
     assert(_itemIds.every((id) => newCatalog.getById(id) != null),
         'Каталог $newCatalog не содержит $_itemIds');
-    catalog = newCatalog;
+    _catalog = newCatalog;
+    notifyListeners();
   }
 
   List<Sweets> get cartsItem =>
       _itemIds.map((id) => catalog.getById(id)).toList();
 
-  // int get totalPrice => carts.length * 42;
+  // int get totalPrice =>
+  //     cartsItem.fold(0, (total, current) => total + current.price);
 
-  void add(Sweets sweet) {
+  void add(Sweets sweet) async {
     _itemIds.add(sweet.id);
     notifyListeners();
   }

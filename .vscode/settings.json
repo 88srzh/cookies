@@ -1,29 +1,3 @@
 {
-    "editor.minimap.enabled": false,
-    "editor.codeActionsOnSave": null,
-    "diffEditor.codeLens": true,
-    "editor.cursorStyle": "line-thin",
-    "editor.fontSize": 13,
-    "editor.letterSpacing": 1.2,
-    "editor.fontLigatures": true,
-    "[json]": {
-
-
-    
-        "editor.quickSuggestions": {
-            "strings": true
-        },
-        "editor.suggest.insertMode": "replace",
-        "gitlens.codeLens.scopes": [
-            "document"
-        ]
-    },
-    "workbench.list.smoothScrolling": true,
-    "workbench.colorTheme": "Bluloco Dark",
-    "workbench.preferredDarkColorTheme": "Atom One Dark",
-    "workbench.preferredHighContrastColorTheme": "Atom One Dark",
-    "workbench.preferredLightColorTheme": "Atom One Dark",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.enablePreview": false,
-    "editor.fontFamily": "Fira Code regular"
+    "editor.fontLigatures": null
 }

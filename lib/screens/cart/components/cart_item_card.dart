@@ -33,7 +33,7 @@ class CartItemCard extends StatelessWidget {
                     color: Color(0xFFF5F6F9),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(cart.sweets.images[0]),
+                  // child: Image.asset(cart.cartsItem[index].images[0]),
                   // child: Image.asset(cart.carts_item.toString()),
                   // child: Image.asset(allSweets.images[0]),
                   // child: SweetsImages(allSweets: allSweets),
@@ -46,7 +46,8 @@ class CartItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cart.sweets.title,
+                  '123',
+                  // cart.cartsItem[index].title,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -57,6 +58,7 @@ class CartItemCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     // text: '${cart.sweets.price}p',
+                    text: 'price',
                     // text: '${allSweets[index].price}p',
                     // text: '${cart.cartsItem[index].price}p',
                     style: TextStyle(
@@ -65,7 +67,8 @@ class CartItemCard extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: ' x${cart.numOfItems}',
+                        // text: ' x${cart.numOfItems}',
+                        text: 'numOfItems',
                         style: TextStyle(color: kTextColor),
                       ),
                     ],

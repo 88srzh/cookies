@@ -8,8 +8,8 @@ class Sweets extends ChangeNotifier {
   final double rating, price;
   bool isFavourite, isPopular;
 
-  Sweets({
-    this.id,
+  Sweets(
+    this.id, {
     this.images,
     this.colors,
     this.rating = 0.0,
@@ -19,6 +19,9 @@ class Sweets extends ChangeNotifier {
     this.price,
     this.description,
   });
+
+  @override
+  int get hashCode => id;
 
   // getById(int id) => Sweets(id: id);
 
@@ -30,7 +33,7 @@ class Sweets extends ChangeNotifier {
 class CatalogModel {
   List<Sweets> allSweets = [
     Sweets(
-      id: 1,
+      1,
       images: [
         'assets/images/cookiemint.png',
         'assets/images/cookiechoco.png',
@@ -49,7 +52,7 @@ class CatalogModel {
       isPopular: true,
     ),
     Sweets(
-      id: 2,
+      2,
       images: [
         'assets/images/cookiecream.png',
         'assets/images/cookieclassic.png',
@@ -67,7 +70,7 @@ class CatalogModel {
       isPopular: true,
     ),
     Sweets(
-      id: 3,
+      3,
       images: [
         'assets/images/cookieclassic.png',
       ],
@@ -85,7 +88,7 @@ class CatalogModel {
       isPopular: true,
     ),
     Sweets(
-      id: 4,
+      4,
       images: [
         'assets/images/cookiemint.png',
       ],
@@ -103,7 +106,7 @@ class CatalogModel {
     ),
   ];
 
-  Sweets getById(int id) => Sweets(id: id);
+  Sweets getById(int id) => Sweets(id);
 
   Sweets getByPosition(int position) {
     return getById(position);
