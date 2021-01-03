@@ -2,13 +2,15 @@ import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends ChangeNotifier {
-  // final Sweets sweets;
+  final Sweets sweet;
   CatalogModel _catalog;
   // final int numOfItems;
 
   // UnmodifiableListView<Cart> get carts_item => UnmodifiableListView(carts);
 
   final List<int> _itemIds = [];
+
+  Cart({this.sweet});
 
   CatalogModel get catalog => _catalog;
 

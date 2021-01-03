@@ -13,10 +13,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class BodyDetails extends StatelessWidget {
   final Sweets allSweets;
-  final Sweets sweet;
+  // final Sweets sweet;
+  // final Cart sweet;
 
-  const BodyDetails({Key key, @required this.allSweets, this.sweet})
-      : super(key: key);
+  const BodyDetails({Key key, @required this.allSweets}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -52,7 +52,7 @@ class BodyDetails extends StatelessWidget {
                             press: () {
                               cartToast();
                               var cart = context.read<Cart>();
-                              cart.add(sweet);
+                              cart.add(allSweets);
                             },
                           ),
                         ),
