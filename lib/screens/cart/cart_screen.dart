@@ -33,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
         Text(
-          'вкусняшки',
+          'items',
           // '${carts.length} вкусняшки',
           // '${cart.}'
           style: Theme.of(context).textTheme.caption,

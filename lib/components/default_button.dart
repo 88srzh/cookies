@@ -23,7 +23,6 @@ class DefaultButton extends StatelessWidget {
         ),
         color: kPrimaryColor,
         onPressed: press,
-        onLongPress: () {},
         child: Text(
           text,
           style: TextStyle(

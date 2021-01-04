@@ -1,12 +1,11 @@
 import 'package:cookie/models/sweets.dart';
+import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends ChangeNotifier {
-  // final Sweets sweet;
   CatalogModel _catalog;
   // final int numOfItems;
-
-  // UnmodifiableListView<Cart> get carts_item => UnmodifiableListView(carts);
+  ColorDots counters;
 
   final List<int> _itemIds = [];
 
@@ -23,12 +22,10 @@ class Cart extends ChangeNotifier {
   List<Sweets> get cartsItem =>
       _itemIds.map((id) => catalog.getById(id)).toList();
 
-  // String get totalTitle => sweet.title;
+  double get totalPrice =>
+      cartsItem.fold(0, (total, current) => total + current.price);
 
-  // int get totalPrice =>
-  //     cartsItem.fold(0, (total, current) => total + current.price);
-
-  void add(Sweets sweet) async {
+  void add(Sweets sweet) {
     _itemIds.add(sweet.id);
     notifyListeners();
   }
@@ -38,11 +35,23 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void removeAll() {
-  //   carts.clear();
-  //   notifyListeners();
-  // }
+  int counter = 0;
+
+  void incrementCounter() {
+    counter++;
+    notifyListeners();
+  }
+
+  void decrementCounter() {
+    counter--;
+    notifyListeners();
+  }
 }
+
+// void removeAll() {
+//   carts.clear();
+//   notifyListeners();
+// }
 
 // List<Cart> carts = [
 //   // Cart(sweets: allSweets[0], numOfItems: 2),

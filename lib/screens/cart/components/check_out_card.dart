@@ -1,15 +1,19 @@
 import 'package:cookie/components/default_button.dart';
+import 'package:cookie/models/Cart.dart';
+import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class CheckOurCard extends StatelessWidget {
-  const CheckOurCard({
-    Key key,
-  }) : super(key: key);
+class CheckOurCard extends StatefulWidget {
+  @override
+  _CheckOurCardState createState() => _CheckOurCardState();
+}
 
+class _CheckOurCardState extends State<CheckOurCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,7 +71,8 @@ class CheckOurCard extends StatelessWidget {
                     text: 'Итого:\n',
                     children: [
                       TextSpan(
-                        text: '337.15р',
+                        // text: '337.15р',
+                        text: '123',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.black,

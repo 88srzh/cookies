@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:cookie/constants.dart';
 import 'package:cookie/models/Cart.dart';
-import 'package:cookie/screens/cart/components/cart_item_card.dart';
+import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -58,6 +60,8 @@ class _BodyCartState extends State<BodyCart> {
                         color: Color(0xFFF5F6F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
+                      // child: Image.asset(
+                      //     cart.catalog.allSweets[index].images.toString()),
                       // child: Image.asset(cart.cartsItem[index].images[0]),
                       // child: Image.asset(cart.carts_item.toString()),
                       // child: Image.asset(allSweets.images[0]),
@@ -88,8 +92,7 @@ class _BodyCartState extends State<BodyCart> {
                         ),
                         children: [
                           TextSpan(
-                            // text: ' x${cart.numOfItems}',
-                            text: 'numOfItems',
+                            text: ' x${cart.counter}',
                             style: TextStyle(color: kTextColor),
                           ),
                         ],
