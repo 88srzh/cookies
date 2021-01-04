@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 class CartScreen extends StatefulWidget {
   static String routeName = '/cart';
   // Cart cart;
-
   @override
   _CartScreenState createState() => _CartScreenState();
 }

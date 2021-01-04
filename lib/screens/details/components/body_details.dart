@@ -13,8 +13,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class BodyDetails extends StatelessWidget {
   final Sweets allSweets;
-  // final Sweets sweet;
-  // final Cart sweet;
 
   const BodyDetails({Key key, @required this.allSweets}) : super(key: key);
   @override

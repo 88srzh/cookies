@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        Provider(create: (context) => Cart()),
         Provider(create: (context) => CatalogModel()),
         ChangeNotifierProxyProvider<CatalogModel, Cart>(
           create: (context) => Cart(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
             return cart;
           },
         ),
+        Provider(create: (context) => CatalogModel()),
       ],
       // create: (context) =>
       // Cart(sweets: CatalogModel().allSweets[0], numOfItems: 1),
