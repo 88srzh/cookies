@@ -97,7 +97,8 @@ class _BodyCartState extends State<BodyCart> {
                         ),
                         children: [
                           TextSpan(
-                            text: ' x${widget.numOfItems.counter}',
+                            // text: ' x${widget.numOfItems.counter}',
+                            text: '123',
                             style: TextStyle(color: kTextColor),
                           ),
                         ],

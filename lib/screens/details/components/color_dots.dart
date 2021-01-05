@@ -1,6 +1,7 @@
 import 'package:cookie/components/rounded_icon_btn.dart';
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
+import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -15,19 +16,20 @@ class ColorDots extends StatefulWidget {
   }) : super(key: key);
 
   final Sweets allSweets;
+  // Bodycart(toggleCounterCallback: incrementCounter,);
 
   @override
   _ColorDotsState createState() => _ColorDotsState();
 }
 
 class _ColorDotsState extends State<ColorDots> {
-  void _incrementCounter() {
+  void incrementCounter() {
     setState(() {
       widget.counter++;
     });
   }
 
-  void _decrementCounter() {
+  void decrementCounter() {
     setState(() {
       widget.counter--;
     });
@@ -52,12 +54,12 @@ class _ColorDotsState extends State<ColorDots> {
           Text('${widget.counter}'),
           RoundedIconBtn(
             iconData: Icons.remove,
-            press: _decrementCounter,
+            press: decrementCounter,
           ),
           SizedBox(width: getProportionateScreenWidth(15)),
           RoundedIconBtn(
             iconData: Icons.add,
-            press: _incrementCounter,
+            press: incrementCounter,
           ),
         ],
       ),
