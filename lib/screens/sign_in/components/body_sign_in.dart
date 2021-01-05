@@ -17,7 +17,6 @@ class BodySignIn extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text('1234'),
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.04,
                 ),

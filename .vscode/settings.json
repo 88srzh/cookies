@@ -1,7 +1,3 @@
 {
-    "editor.minimap.enabled": false,
-    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
-    "editor.codeActionsOnSave": null,
-    "diffEditor.codeLens": true,
-    "editor.cursorStyle": "line-thin"
+    "editor.fontLigatures": null
 }

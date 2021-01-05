@@ -15,13 +15,17 @@ class CustomAppBar extends PreferredSize {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+        padding: EdgeInsets.only(
+          left: getProportionateScreenWidth(10),
+          right: getProportionateScreenWidth(20),
+          top: getProportionateScreenWidth(10),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             RoundedIconBtn(
-              iconData: Icons.arrow_back_ios,
+              // iconData: Icons.arrow_back_ios,
+              iconData: Icons.arrow_back,
               press: () => Navigator.pop(context),
             ),
             Container(

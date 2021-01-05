@@ -1,38 +1,64 @@
 import 'package:cookie/components/rounded_icon_btn.dart';
+import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:provider/provider.dart';
 
-class ColorDots extends StatelessWidget {
-  const ColorDots({
+class ColorDots extends StatefulWidget {
+  int counter = 0;
+  ColorDots({
     Key key,
-    @required this.allSweets,
+    this.allSweets,
   }) : super(key: key);
 
   final Sweets allSweets;
 
   @override
+  _ColorDotsState createState() => _ColorDotsState();
+}
+
+class _ColorDotsState extends State<ColorDots> {
+  void _incrementCounter() {
+    setState(() {
+      widget.counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      widget.counter--;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // change fixed value
     int selectedColor = 3;
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
-        children: [
+        children: <Widget>[
           ...List.generate(
-            allSweets.colors.length,
+            widget.allSweets.colors.length,
             (index) => ColorDot(
-              color: allSweets.colors[index],
+              color: widget.allSweets.colors[index],
               isSelected: selectedColor == index,
             ),
           ),
           Spacer(),
-          RoundedIconBtn(iconData: Icons.remove, press: () {}),
+          Text('${widget.counter}'),
+          RoundedIconBtn(
+            iconData: Icons.remove,
+            press: _decrementCounter,
+          ),
           SizedBox(width: getProportionateScreenWidth(15)),
-          RoundedIconBtn(iconData: Icons.add, press: () {}),
+          RoundedIconBtn(
+            iconData: Icons.add,
+            press: _incrementCounter,
+          ),
         ],
       ),
     );
