@@ -1,6 +1,5 @@
 import 'package:cookie/components/default_button.dart';
 import 'package:cookie/models/Cart.dart';
-import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +15,7 @@ class CheckOurCard extends StatefulWidget {
 class _CheckOurCardState extends State<CheckOurCard> {
   @override
   Widget build(BuildContext context) {
+    var cart = context.watch<Cart>();
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: getProportionateScreenWidth(15),
@@ -71,7 +71,7 @@ class _CheckOurCardState extends State<CheckOurCard> {
                     text: 'Итого:\n',
                     children: [
                       TextSpan(
-                        // text: '337.15р',
+                        // text: '${cart.totalPrice}',
                         text: '123',
                         style: TextStyle(
                           fontSize: 16,

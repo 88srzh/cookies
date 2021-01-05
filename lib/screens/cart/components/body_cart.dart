@@ -9,6 +9,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class BodyCart extends StatefulWidget {
+  // BodyCart({@required void toggleCounterCallback()})
+  //     : numOfItems = toggleCounterCallback;
+  ColorDots numOfItems;
+
   @override
   _BodyCartState createState() => _BodyCartState();
 }
@@ -16,6 +20,7 @@ class BodyCart extends StatefulWidget {
 class _BodyCartState extends State<BodyCart> {
   @override
   Widget build(BuildContext context) {
+    // var numOfItems = context.watch<ColorDots>();
     var cart = context.watch<Cart>();
     return Padding(
       padding:
@@ -49,7 +54,7 @@ class _BodyCartState extends State<BodyCart> {
             },
             // ! - cart_item_card
             child: Row(
-              children: [
+              children: <Widget>[
                 SizedBox(
                   width: 88,
                   child: AspectRatio(
@@ -92,7 +97,7 @@ class _BodyCartState extends State<BodyCart> {
                         ),
                         children: [
                           TextSpan(
-                            text: ' x${cart.counter}',
+                            text: ' x${widget.numOfItems.counter}',
                             style: TextStyle(color: kTextColor),
                           ),
                         ],

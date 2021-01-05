@@ -1,11 +1,10 @@
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends ChangeNotifier {
   CatalogModel _catalog;
   // final int numOfItems;
-  ColorDots counters;
+  // ColorDots counters;
 
   final List<int> _itemIds = [];
 
@@ -35,17 +34,17 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
-  int counter = 0;
+  // int counter = 0;
 
-  void incrementCounter() {
-    counter++;
-    notifyListeners();
-  }
+  // void incrementCounter() {
+  //   counter++;
+  //   notifyListeners();
+  // }
 
-  void decrementCounter() {
-    counter--;
-    notifyListeners();
-  }
+  // void decrementCounter() {
+  //   counter--;
+  //   notifyListeners();
+  // }
 }
 
 // void removeAll() {

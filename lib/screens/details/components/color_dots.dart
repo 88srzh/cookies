@@ -8,7 +8,8 @@ import '../../../size_config.dart';
 import 'package:provider/provider.dart';
 
 class ColorDots extends StatefulWidget {
-  const ColorDots({
+  int counter = 0;
+  ColorDots({
     Key key,
     this.allSweets,
   }) : super(key: key);
@@ -20,16 +21,26 @@ class ColorDots extends StatefulWidget {
 }
 
 class _ColorDotsState extends State<ColorDots> {
+  void _incrementCounter() {
+    setState(() {
+      widget.counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      widget.counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     int selectedColor = 3;
-    var cart = context.watch<Cart>();
-    // var cart = context.select((value) => Cart());
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
-        children: [
+        children: <Widget>[
           ...List.generate(
             widget.allSweets.colors.length,
             (index) => ColorDot(
@@ -38,18 +49,16 @@ class _ColorDotsState extends State<ColorDots> {
             ),
           ),
           Spacer(),
-          Text('${cart.counter}'),
+          Text('${widget.counter}'),
           RoundedIconBtn(
-              iconData: Icons.remove,
-              press: () {
-                cart.decrementCounter();
-              }),
+            iconData: Icons.remove,
+            press: _decrementCounter,
+          ),
           SizedBox(width: getProportionateScreenWidth(15)),
           RoundedIconBtn(
-              iconData: Icons.add,
-              press: () {
-                cart.incrementCounter();
-              }),
+            iconData: Icons.add,
+            press: _incrementCounter,
+          ),
         ],
       ),
     );
