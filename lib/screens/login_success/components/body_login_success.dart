@@ -1,4 +1,5 @@
 import 'package:cookie/components/default_button.dart';
+import 'package:cookie/screens/dindon_main/dindon_main.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,9 @@ class BodyLoginSuccess extends StatelessWidget {
           width: SizeConfig.screenWidth * 0.45,
           child: DefaultButton(
             text: 'На главную',
-            press: () => Navigator.pushNamed(context, HomeScreen.routeName),
+            // press: () => Navigator.pushNamed(context, HomeScreen.routeName),
+            press: () =>
+                Navigator.pushNamed(context, DindonMainScreen.routeName),
           ),
         ),
         Spacer(),

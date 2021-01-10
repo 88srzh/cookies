@@ -6,12 +6,20 @@ class SizeConfig {
   static double screenHeight;
   static double defaultSize;
   static Orientation orientation;
+  // Для размера карточки
+  var size;
+  static double itemHeight;
+  static double itemWidth;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
     orientation = _mediaQueryData.orientation;
+    // Для размера карточки
+    size = MediaQuery.of(context).size;
+    itemHeight = (size.height - kToolbarHeight - 24) / 2.3;
+    itemWidth = size.width / 2;
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/details/components/color_dots.dart';
+import 'package:cookie/screens/dindon_main/dindon_main.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),
+        // initialRoute: DindonMainScreen.routeName,
         initialRoute: SplashScreen.routeName,
         routes: routes,
       ),

@@ -68,12 +68,11 @@ class _SweetsCardState extends State<SweetsCard> {
                       ),
                     ),
                     Icon(Icons.star, color: Colors.red[300]),
-                    // Text('123'),
                     InkWell(
                       splashColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(30),
                       onTap: () {
-                        _tapFavourite();
+                        // _tapFavourite();
                       },
                       child: Container(
                         padding: EdgeInsets.all(8),
@@ -101,13 +100,13 @@ class _SweetsCardState extends State<SweetsCard> {
     );
   }
 
-  void _tapFavourite() {
-    setState(() {
-      if (widget.sweets.isFavourite) {
-        widget.sweets.isFavourite = false;
-      } else {
-        widget.sweets.isFavourite = true;
-      }
-    });
-  }
+  // void _tapFavourite() {
+  //   setState(() {
+  //     if (widget.sweets.isFavourite) {
+  //       widget.sweets.isFavourite = false;
+  //     } else {
+  //       widget.sweets.isFavourite = true;
+  //     }
+  //   });
+  // }
 }
