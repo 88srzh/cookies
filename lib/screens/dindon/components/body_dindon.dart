@@ -1,3 +1,4 @@
+import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/dindon/components/bottom_add_to_cart.dart';
 import 'package:cookie/screens/dindon/components/description_card.dart';
 import 'package:cookie/screens/dindon/components/header_dindon.dart';
@@ -5,7 +6,16 @@ import 'package:cookie/screens/dindon/components/ingredient_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
-class BodyDindonScreen extends StatelessWidget {
+class BodyDindonScreen extends StatefulWidget {
+  final Sweets allSweets;
+
+  const BodyDindonScreen({Key key, this.allSweets}) : super(key: key);
+
+  @override
+  _BodyDindonScreenState createState() => _BodyDindonScreenState();
+}
+
+class _BodyDindonScreenState extends State<BodyDindonScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +28,7 @@ class BodyDindonScreen extends StatelessWidget {
             height: getProportionateScreenHeight(240),
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.asset('assets/images/donut_details.png'),
+              child: Image.asset(widget.allSweets.images[0]),
             ),
           ),
           Padding(

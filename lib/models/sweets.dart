@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Sweets extends ChangeNotifier {
-  final int id;
+  final int id, price;
   final String title, description;
   final List<String> images;
   final List<Color> colors;
-  final double rating, price;
+  final double rating;
   bool isFavourite, isPopular;
 
   Sweets(
@@ -35,8 +35,7 @@ class CatalogModel {
     Sweets(
       1,
       images: [
-        'assets/images/cookiemint.png',
-        'assets/images/cookiechoco.png',
+        'assets/images/donut_pink_resize.png',
       ],
       colors: [
         Color(0xFFF6625E),
@@ -44,8 +43,8 @@ class CatalogModel {
         Color(0xFFDECB9C),
         Colors.white,
       ],
-      title: 'Печенька мятная',
-      price: 64.99,
+      title: 'Красный вельвет',
+      price: 65,
       description: description,
       rating: 4.8,
       isFavourite: true,
@@ -54,8 +53,7 @@ class CatalogModel {
     Sweets(
       2,
       images: [
-        'assets/images/cookiecream.png',
-        'assets/images/cookieclassic.png',
+        'assets/images/donut_chocolate.png',
       ],
       colors: [
         Color(0xFFF6625E),
@@ -63,8 +61,8 @@ class CatalogModel {
         Color(0xFFDECB9C),
         Colors.white,
       ],
-      title: 'Кремовая печенька',
-      price: 54.99,
+      title: 'Шоколадный',
+      price: 75,
       description: description,
       rating: 4.1,
       isPopular: true,
@@ -72,7 +70,7 @@ class CatalogModel {
     Sweets(
       3,
       images: [
-        'assets/images/cookieclassic.png',
+        'assets/images/donut_coconut.png',
       ],
       colors: [
         Color(0xFFF6625E),
@@ -80,8 +78,8 @@ class CatalogModel {
         Color(0xFFDECB9C),
         Colors.white,
       ],
-      title: 'Овсяная печенька',
-      price: 35.99,
+      title: 'Ореховый',
+      price: 85,
       description: description,
       rating: 4.4,
       isFavourite: true,
@@ -90,7 +88,7 @@ class CatalogModel {
     Sweets(
       4,
       images: [
-        'assets/images/cookiemint.png',
+        'assets/images/doughnut_caramel.png',
       ],
       colors: [
         Color(0xFFF6625E),
@@ -98,8 +96,8 @@ class CatalogModel {
         Color(0xFFDECB9C),
         Colors.white,
       ],
-      title: 'Кремовая печенька',
-      price: 54.99,
+      title: 'Карамельный',
+      price: 95,
       description: description,
       rating: 4.1,
       isFavourite: true,

@@ -31,7 +31,6 @@ class DindonMainScreen extends StatelessWidget {
                 Tab(
                   text: 'Пончики',
                   icon: SvgPicture.asset('assets/icons/donut32.svg'),
-                  // child: Image.asset('assets/icon/doughnut-100.png'),
                 ),
                 Tab(
                   text: 'Бургеры',

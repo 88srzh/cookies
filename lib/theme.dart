@@ -61,6 +61,7 @@ TabBarTheme tabBarTheme() {
     // unselectedLabelColor: Colors.grey,
     labelColor: Colors.black,
     unselectedLabelColor: Colors.grey,
+    // unselectedLabelStyle: Colors.grey,
     // labelPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
     indicator: UnderlineTabIndicator(
       borderSide: BorderSide(color: (Colors.black), width: 2.0),
