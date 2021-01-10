@@ -3,6 +3,7 @@ import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/screens/dindon/dindon_screen.dart';
+import 'package:cookie/screens/dindon_main/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/icecream/icecream_screen.dart';
@@ -29,4 +30,5 @@ final Map<String, WidgetBuilder> routes = {
   CategoriesScreen.routeName: (context) => CategoriesScreen(),
   IceCreamScreen.routeName: (context) => IceCreamScreen(),
   DindonScreen.routeName: (context) => DindonScreen(),
+  DindonMainScreen.routeName: (context) => DindonMainScreen(),
 };

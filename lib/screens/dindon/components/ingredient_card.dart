@@ -19,10 +19,8 @@ class IngredientCard extends StatelessWidget {
         bottom: getProportionateScreenWidth(4),
       ),
       decoration: BoxDecoration(
-        // color: Color.fromRGBO(151, 145, 147, 0.15),
-        color: Color.fromRGBO(243, 244, 249, 0.6),
+        color: Color.fromRGBO(250, 237, 238, 0.6),
         borderRadius: BorderRadius.circular(35),
-        // border: Border.all(color: Colors.grey),
         boxShadow: [
           CustomBoxShadow(
             color: Colors.black26,

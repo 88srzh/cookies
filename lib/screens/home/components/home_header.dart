@@ -1,5 +1,6 @@
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/dindon_screen.dart';
+import 'package:cookie/screens/dindon_main/dindon_main.dart';
 import 'package:cookie/screens/home/components/icon_btn_with_counter.dart';
 import 'package:cookie/screens/home/components/search_field.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,8 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: 'assets/icons/Bell.svg',
             numOfItems: 3,
-            press: () => Navigator.pushNamed(context, DindonScreen.routeName),
+            press: () =>
+                Navigator.pushNamed(context, DindonMainScreen.routeName),
           ),
         ],
       ),
