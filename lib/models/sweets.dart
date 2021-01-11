@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 class Sweets extends ChangeNotifier {
   final int id, price;
-  final String title, description;
+  final String title,
+      description,
+      sugar,
+      fat,
+      energy,
+      salt,
+      energyGramm,
+      sugarGramm,
+      saltGramm,
+      fatGramm;
   final List<String> images;
   final List<Color> colors;
   final double rating;
@@ -18,6 +27,14 @@ class Sweets extends ChangeNotifier {
     this.title,
     this.price,
     this.description,
+    this.sugar,
+    this.salt,
+    this.fat,
+    this.energy,
+    this.sugarGramm,
+    this.saltGramm,
+    this.fatGramm,
+    this.energyGramm,
   });
 
   @override
@@ -49,6 +66,14 @@ class CatalogModel {
       rating: 4.8,
       isFavourite: true,
       isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
     ),
     Sweets(
       2,
@@ -66,6 +91,14 @@ class CatalogModel {
       description: description,
       rating: 4.1,
       isPopular: true,
+      sugar: '4',
+      salt: '0.3',
+      fat: '15',
+      energy: '45',
+      sugarGramm: '10 грамм',
+      saltGramm: '9 грамм',
+      fatGramm: '9 грамм',
+      energyGramm: '200 Ккал',
     ),
     Sweets(
       3,
@@ -84,6 +117,14 @@ class CatalogModel {
       rating: 4.4,
       isFavourite: true,
       isPopular: true,
+      sugar: '2',
+      salt: '0.2',
+      fat: '14',
+      energy: '40',
+      sugarGramm: '7 грамм',
+      saltGramm: '9 грамм',
+      fatGramm: '6 грамм',
+      energyGramm: '175 Ккал',
     ),
     Sweets(
       4,
@@ -101,6 +142,14 @@ class CatalogModel {
       description: description,
       rating: 4.1,
       isFavourite: true,
+      sugar: '4',
+      salt: '0.2',
+      fat: '15',
+      energy: '45',
+      sugarGramm: '11 грамм',
+      saltGramm: '6 грамм',
+      fatGramm: '11 грамм',
+      energyGramm: '180 Ккал',
     ),
   ];
 

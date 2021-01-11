@@ -1,22 +1,16 @@
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/details/details_screen.dart';
-import 'package:cookie/screens/dindon/dindon_screen.dart';
-import 'package:cookie/screens/dindon_main/components/donut_card.dart';
+import 'package:cookie/screens/dindon/components/dindon_screen.dart';
+import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
-class BodyDindonMainScreen extends StatefulWidget {
+class BodyDindonMainScreen extends StatelessWidget {
   final Sweets sweets;
-  final GestureTapCallback press;
+  // final GestureTapCallback press;
 
-  const BodyDindonMainScreen({Key key, this.sweets, this.press})
-      : super(key: key);
+  const BodyDindonMainScreen({Key key, this.sweets}) : super(key: key);
 
-  @override
-  _BodyDindonMainScreenState createState() => _BodyDindonMainScreenState();
-}
-
-class _BodyDindonMainScreenState extends State<BodyDindonMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,22 +27,24 @@ class _BodyDindonMainScreenState extends State<BodyDindonMainScreen> {
               crossAxisSpacing: 20.0,
               crossAxisCount: 2,
               childAspectRatio: (SizeConfig.itemWidth / SizeConfig.itemHeight),
-              children: List.generate(
-                // 4,
-                CatalogModel().allSweets.length,
-                (index) {
-                  return DonutCard(
-                    sweets: CatalogModel().allSweets[index],
-                    press: () => Navigator.pushNamed(
-                      context,
-                      DindonScreen.routeName,
-                      arguments: AllSweetsDetailsArguments(
-                        allSweets: CatalogModel().allSweets[index],
+              children: [
+                ...List.generate(
+                  // 4,
+                  CatalogModel().allSweets.length,
+                  (index) {
+                    return DonutCard(
+                      sweets: CatalogModel().allSweets[index],
+                      press: () => Navigator.pushNamed(
+                        context,
+                        DindonScreen.routeName,
+                        arguments: AllSweetsDetailsArguments(
+                          allSweets: CatalogModel().allSweets[index],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
           Row(
@@ -56,7 +52,10 @@ class _BodyDindonMainScreenState extends State<BodyDindonMainScreen> {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(
+                  vertical: getProportionateScreenWidth(20),
+                  // horizontal: getProportionateScreenWidth(30),
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(241, 240, 246, 1.0),
@@ -69,10 +68,13 @@ class _BodyDindonMainScreenState extends State<BodyDindonMainScreen> {
                       vertical: getProportionateScreenWidth(10),
                       horizontal: getProportionateScreenWidth(20),
                     ),
-                    child: Text(
-                      'Показать еще',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Text(
+                        'Показать еще',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
@@ -84,14 +86,4 @@ class _BodyDindonMainScreenState extends State<BodyDindonMainScreen> {
       ),
     );
   }
-
-  // void _tapFavourite() {
-  //   setState(() {
-  //     if (widget.sweets.isFavourite) {
-  //       widget.sweets.isFavourite = false;
-  //     } else {
-  //       widget.sweets.isFavourite = true;
-  //     }
-  //   });
-  // }
 }

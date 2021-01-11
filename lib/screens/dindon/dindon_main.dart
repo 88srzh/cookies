@@ -1,4 +1,4 @@
-import 'package:cookie/screens/dindon_main/components/body_dindon_main.dart';
+import 'package:cookie/screens/dindon/components/body_dindon_main.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

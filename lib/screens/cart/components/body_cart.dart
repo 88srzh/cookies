@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:cookie/constants.dart';
 import 'package:cookie/models/Cart.dart';
-import 'package:cookie/screens/details/components/color_dots.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +8,7 @@ import 'package:provider/provider.dart';
 class BodyCart extends StatefulWidget {
   // BodyCart({@required void toggleCounterCallback()})
   //     : numOfItems = toggleCounterCallback;
-  ColorDots numOfItems;
+  // ColorDots numOfItems;
 
   @override
   _BodyCartState createState() => _BodyCartState();

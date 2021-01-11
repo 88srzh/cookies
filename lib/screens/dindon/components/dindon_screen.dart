@@ -6,11 +6,11 @@ class DindonScreen extends StatelessWidget {
   static String routeName = '/dindondetails';
   @override
   Widget build(BuildContext context) {
-    final AllSweetsDetailsArguments arguments =
+    final AllSweetsDetailsArguments allarguments =
         ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-      body: BodyDindonScreen(allSweets: arguments.allSweets),
+      body: BodyDindonScreen(allSweets: allarguments.allSweets),
     );
   }
 }

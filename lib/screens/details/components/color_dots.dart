@@ -1,15 +1,12 @@
 import 'package:cookie/components/rounded_icon_btn.dart';
-import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
-import 'package:provider/provider.dart';
 
 class ColorDots extends StatefulWidget {
-  int counter = 0;
+  // int counter = 0;
   ColorDots({
     Key key,
     this.allSweets,
@@ -23,17 +20,17 @@ class ColorDots extends StatefulWidget {
 }
 
 class _ColorDotsState extends State<ColorDots> {
-  void incrementCounter() {
-    setState(() {
-      widget.counter++;
-    });
-  }
+  // void incrementCounter() {
+  //   setState(() {
+  //     widget.counter++;
+  //   });
+  // }
 
-  void decrementCounter() {
-    setState(() {
-      widget.counter--;
-    });
-  }
+  // void decrementCounter() {
+  //   setState(() {
+  //     widget.counter--;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +48,17 @@ class _ColorDotsState extends State<ColorDots> {
             ),
           ),
           Spacer(),
-          Text('${widget.counter}'),
+          // Text('${widget.counter}'),
           RoundedIconBtn(
             iconData: Icons.remove,
-            press: decrementCounter,
+            // press: decrementCounter,
+            press: () {},
           ),
           SizedBox(width: getProportionateScreenWidth(15)),
           RoundedIconBtn(
             iconData: Icons.add,
-            press: incrementCounter,
+            // press: incrementCounter,
+            press: () {},
           ),
         ],
       ),
