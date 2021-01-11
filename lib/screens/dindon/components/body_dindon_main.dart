@@ -1,5 +1,6 @@
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/details/details_screen.dart';
+import 'package:cookie/screens/dindon/components/all_donuts_list.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
@@ -23,14 +24,17 @@ class BodyDindonMainScreen extends StatelessWidget {
         children: [
           Expanded(
             child: GridView.count(
+              shrinkWrap: true,
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 20.0,
               crossAxisCount: 2,
               childAspectRatio: (SizeConfig.itemWidth / SizeConfig.itemHeight),
               children: [
                 ...List.generate(
+                  4,
                   // 4,
-                  CatalogModel().allSweets.length,
+                  // CatalogModel().allSweets.length,
+
                   (index) {
                     return DonutCard(
                       sweets: CatalogModel().allSweets[index],
@@ -69,7 +73,9 @@ class BodyDindonMainScreen extends StatelessWidget {
                       horizontal: getProportionateScreenWidth(20),
                     ),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AllDonutsList.routeName);
+                      },
                       child: Text(
                         'Показать еще',
                         style: TextStyle(

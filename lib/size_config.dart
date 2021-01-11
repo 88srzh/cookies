@@ -18,7 +18,7 @@ class SizeConfig {
     orientation = _mediaQueryData.orientation;
     // Для размера карточки
     size = MediaQuery.of(context).size;
-    itemHeight = (size.height - kToolbarHeight - 24) / 2.4;
+    itemHeight = (size.height - kToolbarHeight - 24) / 2.2;
     itemWidth = size.width / 2;
   }
 }
