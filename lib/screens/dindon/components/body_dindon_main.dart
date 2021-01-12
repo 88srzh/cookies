@@ -1,6 +1,5 @@
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/details/details_screen.dart';
-import 'package:cookie/screens/dindon/components/all_donuts_list.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
@@ -73,9 +72,7 @@ class BodyDindonMainScreen extends StatelessWidget {
                       horizontal: getProportionateScreenWidth(20),
                     ),
                     child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, AllDonutsList.routeName);
-                      },
+                      onTap: () {},
                       child: Text(
                         'Показать еще',
                         style: TextStyle(
