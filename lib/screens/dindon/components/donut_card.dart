@@ -103,7 +103,7 @@ class _DonutCardState extends State<DonutCard> {
                   InkWell(
                     splashColor: Colors.transparent,
                     onTap: () {
-                      _tapFavourite();
+                      tapFavourite();
                     },
                     // child: Icon(Icons.favorite_outline),
                     child: widget.sweets.isFavourite
@@ -126,7 +126,7 @@ class _DonutCardState extends State<DonutCard> {
     );
   }
 
-  void _tapFavourite() {
+  void tapFavourite() {
     setState(() {
       if (widget.sweets.isFavourite) {
         widget.sweets.isFavourite = false;

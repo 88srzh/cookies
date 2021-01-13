@@ -13,19 +13,50 @@ class DindonMainScreen extends StatelessWidget {
         child: Scaffold(
           drawer: Drawer(),
           appBar: AppBar(
-            leading: Builder(builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            }),
+            title: Text('Домашняя страница'),
+
+            // ! - third option
+            leading: Icon(
+              Icons.menu,
+            ),
+            actions: [
+              Icon(Icons.favorite),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Icon(Icons.search),
+              ),
+              Icon(Icons.more_vert),
+            ],
+            // backgroundColor: Colors.purple,
+
+            // ! - second option
+            // actions: [
+            //   PopupMenuButton<String>(
+            //     onSelected: handleClick,
+            //     itemBuilder: (BuildContext context) {
+            //       return {'Профиль', 'Настройки', 'Выйти'}.map((String choice) {
+            //         return PopupMenuItem<String>(
+            //           value: choice,
+            //           child: Text(choice),
+            //         );
+            //       }).toList();
+            //     },
+            //   ),
+            // ],
+            // ! - first option
+            // leading: Builder(
+            //   builder: (BuildContext context) {
+            //     return IconButton(
+            //       icon: const Icon(Icons.menu),
+            //       onPressed: () {
+            //         Scaffold.of(context).openDrawer();
+            //       },
+            //       tooltip:
+            //           MaterialLocalizations.of(context).openAppDrawerTooltip,
+            //     );
+            //   },
+            // ),
             bottom: TabBar(
-              // indicatorPadding: EdgeInsets.only(
-              //   top: getProportionateScreenWidth(10),
-              // ),
               unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(
@@ -59,5 +90,16 @@ class DindonMainScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void handleClick(String value) {
+    switch (value) {
+      case 'Профиль':
+        break;
+      case 'Настройки':
+        break;
+      case 'Выйти':
+        break;
+    }
   }
 }

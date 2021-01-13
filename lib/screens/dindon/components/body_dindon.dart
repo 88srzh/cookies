@@ -2,6 +2,7 @@ import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/dindon/components/bottom_add_to_cart.dart';
 import 'package:cookie/screens/dindon/components/description_card.dart';
+import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/screens/dindon/components/header_dindon.dart';
 import 'package:cookie/screens/dindon/components/ingredient_card.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
@@ -45,8 +46,11 @@ class _BodyDindonScreenState extends State<BodyDindonScreen> {
                 ),
                 // ! change
                 IconButton(
-                  icon: Icon(Icons.favorite),
+                  icon: Icon(Icons.favorite_outline),
                   onPressed: () {},
+                  color: widget.allSweets.isFavourite
+                      ? Color(0xFFFFE6E6)
+                      : Color(0xFFF5F6F9),
                 ),
               ],
             ),
