@@ -30,10 +30,7 @@ class BodyDindonMainScreen extends StatelessWidget {
               childAspectRatio: (SizeConfig.itemWidth / SizeConfig.itemHeight),
               children: [
                 ...List.generate(
-                  4,
-                  // 4,
-                  // CatalogModel().allSweets.length,
-
+                  CatalogModel().allSweets.length,
                   (index) {
                     return DonutCard(
                       sweets: CatalogModel().allSweets[index],

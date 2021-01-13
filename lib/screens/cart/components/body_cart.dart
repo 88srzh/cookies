@@ -6,10 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class BodyCart extends StatefulWidget {
-  // BodyCart({@required void toggleCounterCallback()})
-  //     : numOfItems = toggleCounterCallback;
-  // ColorDots numOfItems;
-
   @override
   _BodyCartState createState() => _BodyCartState();
 }

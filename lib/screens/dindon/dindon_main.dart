@@ -1,4 +1,4 @@
-import 'package:cookie/screens/dindon/components/body_dindon_main.dart';
+import 'package:cookie/screens/dindon/body_dindon_main.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +26,7 @@ class DindonMainScreen extends StatelessWidget {
               // indicatorPadding: EdgeInsets.only(
               //   top: getProportionateScreenWidth(10),
               // ),
-              // unselectedLabelColor: Colors.grey,
+              unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(
                   text: 'Пончики',

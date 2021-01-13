@@ -43,10 +43,11 @@ class _BodyDindonScreenState extends State<BodyDindonScreen> {
                     Navigator.pushNamed(context, DindonMainScreen.routeName);
                   },
                 ),
-                if (widget.allSweets.isFavourite)
-                  Icon(Icons.favorite_outline)
-                else
-                  Icon(Icons.favorite),
+                // ! change
+                IconButton(
+                  icon: Icon(Icons.favorite),
+                  onPressed: () {},
+                ),
               ],
             ),
           ),
