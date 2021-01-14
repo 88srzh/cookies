@@ -29,7 +29,7 @@ class _BodyDindonScreenState extends State<BodyDindonScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.3, 1.5],
+            // stops: [0.3, 1.5],
             colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
           ),
         ),

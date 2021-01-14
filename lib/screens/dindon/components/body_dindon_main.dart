@@ -58,7 +58,10 @@ class BodyDindonMainScreen extends StatelessWidget {
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 240, 246, 1.0),
+                    gradient: LinearGradient(colors: [
+                      Color.fromRGBO(241, 240, 246, 1.0),
+                      Colors.orange[100]
+                    ]),
                     borderRadius: BorderRadius.all(
                       Radius.circular(20),
                     ),

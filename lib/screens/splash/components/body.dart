@@ -1,6 +1,7 @@
 import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/size_config.dart';
 
 import '../components/splash_content.dart';
@@ -37,9 +38,9 @@ class _BodyState extends State<Body> {
             end: Alignment.bottomRight,
             // begin: Alignment.center,
             // end: Alignment.bottomCenter,
-            stops: [0.3, 1],
+            // stops: [0.3, 1],
             // colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[200]],
-            colors: [Colors.white12, Colors.orange[200]],
+            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
           ),
         ),
         child: SizedBox(
@@ -80,7 +81,8 @@ class _BodyState extends State<Body> {
                       DefaultButtonGrey(
                         text: 'Продолжить',
                         press: () {
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          Navigator.pushNamed(
+                              context, SignInScreenNew.routeName);
                         },
                       ),
                       Spacer(),

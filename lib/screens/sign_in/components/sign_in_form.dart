@@ -1,5 +1,6 @@
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/default_button.dart';
+import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
@@ -79,7 +80,7 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          DefaultButton(
+          DefaultButtonGrey(
             text: 'Продолжить',
             press: () {
               if (_formKey.currentState.validate()) {
@@ -119,6 +120,7 @@ class _SignFormState extends State<SignForm> {
       decoration: InputDecoration(
         labelText: 'Пароль',
         hintText: 'Введите пароль',
+        fillColor: Colors.white24,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
           svgIcon: 'assets/icons/Lock.svg',
@@ -152,6 +154,7 @@ class _SignFormState extends State<SignForm> {
       decoration: InputDecoration(
         labelText: 'Почта',
         hintText: 'Введите Вашу почту',
+        fillColor: Colors.white,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
           svgIcon: 'assets/icons/Mail.svg',
