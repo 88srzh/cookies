@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         // Provider(create: (context) => Cart()),
-        Provider(create: (context) => ColorDots()),
+        // Provider(create: (context) => ColorDots()),
         Provider(create: (context) => CatalogModel()),
         ChangeNotifierProxyProvider<CatalogModel, Cart>(
           create: (context) => Cart(),

@@ -24,7 +24,8 @@ class _BottomAddToCartState extends State<BottomAddToCart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getProportionateScreenWidth(105),
+      alignment: Alignment.bottomCenter,
+      height: getProportionateScreenWidth(100),
       margin: EdgeInsets.only(
         top: getProportionateScreenWidth(20),
       ),

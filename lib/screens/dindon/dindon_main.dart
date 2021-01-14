@@ -13,20 +13,20 @@ class DindonMainScreen extends StatelessWidget {
         child: Scaffold(
           drawer: Drawer(),
           appBar: AppBar(
-            title: Text('Домашняя страница'),
+            // title: Text('Домашняя страница'),
 
             // ! - third option
-            leading: Icon(
-              Icons.menu,
-            ),
-            actions: [
-              Icon(Icons.favorite),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.search),
-              ),
-              Icon(Icons.more_vert),
-            ],
+            // leading: Icon(
+            //   Icons.menu,
+            // ),
+            // actions: [
+            //   Icon(Icons.favorite),
+            //   Padding(
+            //     padding: EdgeInsets.symmetric(horizontal: 16),
+            //     child: Icon(Icons.search),
+            //   ),
+            //   Icon(Icons.more_vert),
+            // ],
             // backgroundColor: Colors.purple,
 
             // ! - second option
@@ -38,24 +38,32 @@ class DindonMainScreen extends StatelessWidget {
             //         return PopupMenuItem<String>(
             //           value: choice,
             //           child: Text(choice),
-            //         );
+            //         );s
             //       }).toList();
             //     },
             //   ),
             // ],
             // ! - first option
-            // leading: Builder(
-            //   builder: (BuildContext context) {
-            //     return IconButton(
-            //       icon: const Icon(Icons.menu),
-            //       onPressed: () {
-            //         Scaffold.of(context).openDrawer();
-            //       },
-            //       tooltip:
-            //           MaterialLocalizations.of(context).openAppDrawerTooltip,
-            //     );
-            //   },
-            // ),
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
+                );
+              },
+            ),
+            actions: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(20),
+                ),
+                child: Icon(Icons.favorite),
+              ),
+            ],
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
               tabs: [

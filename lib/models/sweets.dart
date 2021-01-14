@@ -62,7 +62,8 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
-      description: description,
+      description:
+          '  Классическое лакомство. Это изделия в форме\n кольца, изготовленные из сладкого теста и\n хорошо поджаренные на высококачественном\n растительном масле.',
       rating: 4.8,
       isFavourite: true,
       isPopular: true,
@@ -88,7 +89,8 @@ class CatalogModel {
       ],
       title: 'Шоколадный',
       price: 75,
-      description: description,
+      description:
+          '  Красивые ароматные пончики из особого теста\n с добавлением какао-порошка\n\n',
       rating: 4.1,
       isPopular: true,
       sugar: '4',
@@ -113,7 +115,8 @@ class CatalogModel {
       ],
       title: 'Ореховый',
       price: 85,
-      description: description,
+      description:
+          '  Нежный ореховый мусс, хрустящий фундук в\nкарамели, пралине пекан, шоколадное песочное\nтесто, мороженое «Бельгийский шоколад с фундуком»\n',
       rating: 4.4,
       isFavourite: true,
       isPopular: true,
@@ -139,7 +142,8 @@ class CatalogModel {
       ],
       title: 'Карамельный',
       price: 95,
-      description: description,
+      description:
+          '  Свежие пончики с карамельной начинкой,\nпокрытые сахарной глазурью. Нежный вкус\nкарамели поможет ощутить тепло каждого момента\n',
       rating: 4.1,
       isFavourite: true,
       sugar: '4',
@@ -164,7 +168,7 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
-      description: description,
+      // description: description,
       rating: 4.8,
       isFavourite: true,
       isPopular: true,
@@ -190,7 +194,7 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
-      description: description,
+      // description: description,
       rating: 4.8,
       isFavourite: true,
       isPopular: true,
@@ -212,5 +216,5 @@ class CatalogModel {
   }
 }
 
-const String description =
-    'Самые вкусные печеньки для Вашего удовольствия. Попробуйте и убедитесь в этом сами.';
+// const String description =
+//     'Самые вкусные печеньки для Вашего удовольствия. Попробуйте и убедитесь в этом сами.';

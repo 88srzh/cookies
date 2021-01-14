@@ -46,7 +46,7 @@ class IngredientCard extends StatelessWidget {
             style: TextStyle(),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Center(
             child: Container(

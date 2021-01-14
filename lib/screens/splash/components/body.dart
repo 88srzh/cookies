@@ -1,4 +1,4 @@
-import 'package:cookie/components/default_button.dart';
+import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
     },
     {
       'text': 'Попробуйте и убедитесь в этом сами!',
-      // 'image': 'assets/images/splash_3.png'
+      'image': 'assets/images/splash_3.png'
     },
   ];
   @override
@@ -35,8 +35,11 @@ class _BodyState extends State<Body> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
+            // begin: Alignment.center,
+            // end: Alignment.bottomCenter,
             stops: [0.3, 1],
-            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[200]],
+            // colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[200]],
+            colors: [Colors.white12, Colors.orange[200]],
           ),
         ),
         child: SizedBox(
@@ -74,7 +77,7 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Spacer(flex: 3),
-                      DefaultButton(
+                      DefaultButtonGrey(
                         text: 'Продолжить',
                         press: () {
                           Navigator.pushNamed(context, SignInScreen.routeName);
