@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
     },
     {
       'text': 'Попробуйте и убедитесь в этом сами!',
-      'image': 'assets/images/splash_3.png'
+      // 'image': 'assets/images/splash_3.png'
     },
   ];
   @override
