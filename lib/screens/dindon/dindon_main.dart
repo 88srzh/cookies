@@ -1,22 +1,8 @@
-import 'dart:io';
-
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
-
-class _Page {
-  const _Page({this.icon, this.text});
-  final SvgPicture icon;
-  final String text;
-  // final String assetName = 'assets/icons/donut32.svg';
-}
-
-// const List<_Page> _allPages = <_Page>[
-//   _Page(icon: SvgPicture.asset(assetName), text: 'Пончики'),
-// ];
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -27,7 +13,6 @@ class DindonMainScreen extends StatefulWidget {
 
 class _DindonMainScreenState extends State<DindonMainScreen>
     with TickerProviderStateMixin {
-  // PageController _pageController = PageController();
   TabController _tabController;
 
   // double currentPage = 0;
@@ -121,8 +106,8 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   right: getProportionateScreenWidth(10),
                 ),
                 child: SizedBox(
-                  width: getProportionateScreenWidth(50),
-                  height: getProportionateScreenHeight(50),
+                  width: getProportionateScreenWidth(60),
+                  height: getProportionateScreenHeight(60),
                   child: Stack(
                     fit: StackFit.expand,
                     overflow: Overflow.visible,
