@@ -95,7 +95,7 @@ class _BottomAddToCartState extends State<BottomAddToCart> {
                 onTap: () {
                   cartToast();
                   var cart = context.read<Cart>();
-                  cart.add(widget.allSweets);
+                  cart.add(widget.widget.allSweets);
                 },
               ),
             ),

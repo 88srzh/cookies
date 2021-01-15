@@ -1,3 +1,4 @@
+import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/size_config.dart';
@@ -54,7 +55,36 @@ class _DindonMainScreenState extends State<DindonMainScreen>
       initialIndex: 3,
       child: SafeArea(
         child: Scaffold(
-          drawer: Drawer(),
+          drawer: Drawer(
+            child: ListView(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.person_add),
+                  title: Text(
+                    'Профиль',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, ProfileScreen.routeName);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.add_shopping_cart),
+                  title: Text(
+                    'Корзина',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  },
+                ),
+              ],
+            ),
+          ),
           appBar: AppBar(
             // title: Text('Домашняя страница'),
 
@@ -121,7 +151,6 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                               AssetImage('assets/images/avatar_circle2.png'),
                         ),
                       ),
-                      // backgroundImage: AssetImage('assets/images/avatar_circle2.png'),
                     ],
                   ),
                 ),
