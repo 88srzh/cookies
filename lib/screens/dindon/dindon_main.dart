@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
+import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DindonMainScreen extends StatelessWidget {
   static String routeName = '/dindon_main';
@@ -58,10 +62,30 @@ class DindonMainScreen extends StatelessWidget {
             ),
             actions: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20),
+                padding: EdgeInsets.only(
+                  top: getProportionateScreenWidth(10),
+                  right: getProportionateScreenWidth(10),
                 ),
-                child: Icon(Icons.favorite),
+                child: SizedBox(
+                  width: getProportionateScreenWidth(50),
+                  height: getProportionateScreenHeight(50),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    overflow: Overflow.visible,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, ProfileScreen.routeName);
+                        },
+                        child: CircleAvatar(
+                          backgroundImage:
+                              AssetImage('assets/images/avatar_circle2.png'),
+                        ),
+                      ),
+                      // backgroundImage: AssetImage('assets/images/avatar_circle2.png'),
+                    ],
+                  ),
+                ),
               ),
             ],
             bottom: TabBar(
