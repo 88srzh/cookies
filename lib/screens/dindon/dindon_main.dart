@@ -7,12 +7,66 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-class DindonMainScreen extends StatelessWidget {
+class _Page {
+  const _Page({this.icon, this.text});
+  final SvgPicture icon;
+  final String text;
+  // final String assetName = 'assets/icons/donut32.svg';
+}
+
+// const List<_Page> _allPages = <_Page>[
+//   _Page(icon: SvgPicture.asset(assetName), text: 'Пончики'),
+// ];
+
+class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
+
+  @override
+  _DindonMainScreenState createState() => _DindonMainScreenState();
+}
+
+class _DindonMainScreenState extends State<DindonMainScreen>
+    with TickerProviderStateMixin {
+  // PageController _pageController = PageController();
+  TabController _tabController;
+
+  // double currentPage = 0;
+  // int currentTab = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(_handleTabSelecion);
+  }
+
+  void _handleTabSelecion() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // _pageController.addListener(() {
+    //   setState(() {
+    //     currentPage = _pageController.page;
+    //   });
+    // });
+
+    // _tabController.addListener(() {
+    //   setState(() {
+    //     currentTab = _tabController.index;
+    //   });
+    // });
+
     return DefaultTabController(
       length: 4,
+      initialIndex: 3,
       child: SafeArea(
         child: Scaffold(
           drawer: Drawer(),
@@ -89,29 +143,49 @@ class DindonMainScreen extends StatelessWidget {
               ),
             ],
             bottom: TabBar(
+              controller: _tabController,
+              labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(
                   text: 'Пончики',
-                  icon: SvgPicture.asset('assets/icons/donut32.svg'),
+                  icon: SvgPicture.asset(
+                    'assets/icons/donut32.svg',
+                    color:
+                        _tabController.index == 0 ? Colors.black : Colors.grey,
+                  ),
                 ),
                 Tab(
                   text: 'Бургеры',
-                  icon: SvgPicture.asset('assets/icons/burger_32.svg'),
+                  icon: SvgPicture.asset(
+                    'assets/icons/burger_32.svg',
+                    color:
+                        _tabController.index == 1 ? Colors.black : Colors.grey,
+                  ),
                 ),
                 Tab(
                   text: 'Блинчики',
-                  icon: SvgPicture.asset('assets/icons/puncake2_32.svg'),
+                  icon: SvgPicture.asset(
+                    'assets/icons/puncake2_32.svg',
+                    color:
+                        _tabController.index == 2 ? Colors.black : Colors.grey,
+                  ),
                 ),
                 Tab(
                   text: 'Пицца',
-                  icon: SvgPicture.asset('assets/icons/pizza_32.svg'),
+                  icon: SvgPicture.asset(
+                    'assets/icons/pizza_32.svg',
+                    color:
+                        _tabController.index == 3 ? Colors.black : Colors.grey,
+                  ),
                 ),
               ],
             ),
           ),
           backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
           body: TabBarView(
+            // controller: _pageController,
+            controller: _tabController,
             children: [
               BodyDindonMainScreen(),
               Icon(Icons.directions_car),
@@ -124,14 +198,14 @@ class DindonMainScreen extends StatelessWidget {
     );
   }
 
-  void handleClick(String value) {
-    switch (value) {
-      case 'Профиль':
-        break;
-      case 'Настройки':
-        break;
-      case 'Выйти':
-        break;
-    }
-  }
+  // void handleClick(String value) {
+  //   switch (value) {
+  //     case 'Профиль':
+  //       break;
+  //     case 'Настройки':
+  //       break;
+  //     case 'Выйти':
+  //       break;
+  //   }
+  // }
 }

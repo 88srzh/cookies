@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - packages/cookies/assets/icons/donut32.svg
 
   #   - images/a_dot_ham.jpeg
 
