@@ -1,5 +1,6 @@
 import 'package:cookie/constants.dart';
 import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -58,6 +59,10 @@ class _BodyCartState extends State<BodyCart> {
                         color: Color(0xFFF5F6F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
+                      child: Image.asset(cart.catalog.allSweets[index].images),
+                      // child: Image.asset(cart
+                      //     .catalog.allSweets[index].images[index]
+                      //     .toString()),
                       // child: Image.asset(
                       //     cart.catalog.allSweets[index].images.toString()),
                       // child: Image.asset(cart.cartsItem[index].images[0]),
@@ -73,7 +78,7 @@ class _BodyCartState extends State<BodyCart> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cart.catalog.allSweets[index].title,
+                      '${cart.cartsItem[index].title}',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -91,7 +96,7 @@ class _BodyCartState extends State<BodyCart> {
                         children: [
                           TextSpan(
                             // text: ' x${widget.numOfItems.counter}',
-                            text: '123',
+                            text: 'numOfItems',
                             style: TextStyle(color: kTextColor),
                           ),
                         ],

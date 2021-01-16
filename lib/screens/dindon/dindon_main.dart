@@ -1,6 +1,7 @@
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
+import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -68,6 +69,18 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   ),
                   onTap: () {
                     Navigator.pushNamed(context, ProfileScreen.routeName);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text(
+                    'Настройки',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, SettingsScreen.routeName);
                   },
                 ),
                 ListTile(

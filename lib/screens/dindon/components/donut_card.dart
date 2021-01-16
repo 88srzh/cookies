@@ -65,7 +65,7 @@ class _DonutCardState extends State<DonutCard> {
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.asset(
-                    widget.sweets.images[0],
+                    widget.sweets.images,
                   ),
                 ),
               ),

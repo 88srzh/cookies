@@ -69,7 +69,7 @@ class _BodyDindonScreenState extends State<BodyDindonScreen> {
               height: getProportionateScreenHeight(240),
               child: AspectRatio(
                 aspectRatio: 1,
-                child: Image.asset(widget.allSweets.images[0]),
+                child: Image.asset(widget.allSweets.images),
               ),
             ),
             Padding(

@@ -1,7 +1,8 @@
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
-import 'package:cookie/screens/details/components/color_dots.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/screens/settings/settings_screen.dart';
 // import 'package:cookie/screens/dindon_main/dindon_main.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         // initialRoute: DindonMainScreen.routeName,
         initialRoute: SplashScreen.routeName,
+        // initialRoute: SettingsScreen.routeName,
         routes: routes,
       ),
     );

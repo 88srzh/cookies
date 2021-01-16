@@ -12,7 +12,7 @@ class Sweets extends ChangeNotifier {
       sugarGramm,
       saltGramm,
       fatGramm;
-  final List<String> images;
+  final String images;
   final List<Color> colors;
   final double rating;
   bool isFavourite, isPopular;
@@ -51,9 +51,7 @@ class CatalogModel {
   List<Sweets> allSweets = [
     Sweets(
       1,
-      images: [
-        'assets/images/donut_pink_resize.png',
-      ],
+      images: 'assets/images/donut_pink_resize.png',
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
@@ -78,9 +76,7 @@ class CatalogModel {
     ),
     Sweets(
       2,
-      images: [
-        'assets/images/donut_chocolate.png',
-      ],
+      images: 'assets/images/donut_chocolate.png',
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
@@ -104,9 +100,7 @@ class CatalogModel {
     ),
     Sweets(
       3,
-      images: [
-        'assets/images/donut_coconut.png',
-      ],
+      images: 'assets/images/donut_coconut.png',
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
@@ -131,9 +125,7 @@ class CatalogModel {
     ),
     Sweets(
       4,
-      images: [
-        'assets/images/doughnut_caramel.png',
-      ],
+      images: 'assets/images/doughnut_caramel.png',
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
@@ -157,9 +149,8 @@ class CatalogModel {
     ),
     Sweets(
       5,
-      images: [
-        'assets/images/donut_pink_resize.png',
-      ],
+      images: 'assets/images/donut_pink_resize.png',
+
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
@@ -183,9 +174,8 @@ class CatalogModel {
     ),
     Sweets(
       6,
-      images: [
-        'assets/images/donut_pink_resize.png',
-      ],
+      images: 'assets/images/donut_pink_resize.png',
+
       colors: [
         Color(0xFFF6625E),
         Color(0xFF836DB8),
