@@ -7,7 +7,15 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Настройки',
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
+      ),
       body: BodySettingsScreen(),
     );
   }

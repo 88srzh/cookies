@@ -1,3 +1,4 @@
+import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
@@ -78,7 +79,7 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Spacer(flex: 3),
-                      DefaultButtonGrey(
+                      ContinueButton(
                         text: 'Продолжить',
                         press: () {
                           Navigator.pushNamed(
