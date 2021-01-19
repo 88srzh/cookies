@@ -1,4 +1,5 @@
 import 'package:cookie/screens/cart/cart_screen.dart';
+import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/screens/details/details_screen.dart';
@@ -28,6 +29,7 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
+  BodyCart.routeName: (context) => BodyCart(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   CategoriesScreen.routeName: (context) => CategoriesScreen(),
   IceCreamScreen.routeName: (context) => IceCreamScreen(),
