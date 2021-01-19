@@ -222,12 +222,9 @@ class _DindonMainScreenState extends State<DindonMainScreen>
         );
       }
       if (state is CartLoaded) {
-        return _info(state);
+        return info(state);
       }
-      return Center(child: CircularProgressIndicator(),);
-    }
-    )(
-                                                      child: TabBarView(
+      return Center(child:  TabBarView(
                 // controller: _pageController,
                 controller: _tabController,
                 children: [
@@ -237,13 +234,16 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   Icon(Icons.directions_bike),
                 ],
               ),
-                          ),
-            ),
+                          );
+                          },),
           ),
-        ),
-      ),
-    );
+        ),),);
   }
+   info(state) {
+          return Column(children: [
+            Text('Идентификатор: ${widget.}'),
+          ],);
+        }
 
   // void handleClick(String value) {
   //   switch (value) {
