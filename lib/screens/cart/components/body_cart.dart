@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class BodyCart extends StatefulWidget {
+  static String routeName = '/bodyCart';
   @override
   _BodyCartState createState() => _BodyCartState();
 }

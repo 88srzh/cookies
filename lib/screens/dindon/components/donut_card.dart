@@ -1,9 +1,8 @@
-import 'package:cookie/bloc/cart/bloc/cart_bloc.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/cart/components/body_cart.dart';
+import 'package:cookie/screens/details/details_screen.dart';
+import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DonutCard extends StatefulWidget {
   const DonutCard({
@@ -22,7 +21,6 @@ class DonutCard extends StatefulWidget {
 class _DonutCardState extends State<DonutCard> {
   @override
   Widget build(BuildContext context) {
-    final CartBloc cartBloc = BlocProvider.of<CartBloc>(context);
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(248, 242, 244, 0.5),
@@ -33,8 +31,7 @@ class _DonutCardState extends State<DonutCard> {
       child: GestureDetector(
         // onTap: widget.press,
         onTap: () {
-          cartBloc.add(LoadCart(widget.sweets.id));
-          Navigator.pushNamed(context, BodyCart.routeName);
+          Navigator.pushNamed(context, DindonScreen.routeName);
         },
         child: Column(
           children: [
