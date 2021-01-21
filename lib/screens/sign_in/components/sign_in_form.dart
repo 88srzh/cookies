@@ -81,7 +81,7 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          DefaultButton(
+          ContinueButton(
             text: 'Продолжить',
             press: () {
               if (_formKey.currentState.validate()) {
