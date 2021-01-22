@@ -1,6 +1,6 @@
-import 'package:cookie/components/default_button.dart';
+import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/constants.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/size_config.dart';
 
 import '../components/splash_content.dart';
@@ -30,53 +30,67 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: PageView.builder(
-                onPageChanged: (value) {
-                  setState(() {
-                    currentPage = value;
-                  });
-                },
-                itemCount: splashData.length,
-                itemBuilder: (context, index) => SplashContent(
-                  text: splashData[index]['text'],
-                  image: splashData[index]['image'],
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            // begin: Alignment.center,
+            // end: Alignment.bottomCenter,
+            // stops: [0.3, 1],
+            // colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[200]],
+            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
+          ),
+        ),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: PageView.builder(
+                  onPageChanged: (value) {
+                    setState(() {
+                      currentPage = value;
+                    });
+                  },
+                  itemCount: splashData.length,
+                  itemBuilder: (context, index) => SplashContent(
+                    text: splashData[index]['text'],
+                    image: splashData[index]['image'],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20)),
-                child: Column(
-                  children: <Widget>[
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        splashData.length,
-                        (index) => buildDot(index: index),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(20)),
+                  child: Column(
+                    children: <Widget>[
+                      Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          splashData.length,
+                          (index) => buildDot(index: index),
+                        ),
                       ),
-                    ),
-                    Spacer(flex: 3),
-                    DefaultButton(
-                      text: 'Продолжить',
-                      press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
-                      },
-                    ),
-                    Spacer(),
-                  ],
+                      Spacer(flex: 3),
+                      ContinueButton(
+                        text: 'Продолжить',
+                        press: () {
+                          Navigator.pushNamed(
+                              context, SignInScreenNew.routeName);
+                        },
+                      ),
+                      Spacer(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

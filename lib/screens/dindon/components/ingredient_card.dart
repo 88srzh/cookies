@@ -1,11 +1,12 @@
 import 'package:cookie/components/custom_box_shadow.dart';
+import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
 class IngredientCard extends StatelessWidget {
-  final String titleCard;
+  final String titleCard, ingredients, gramm;
 
-  IngredientCard({@required this.titleCard});
+  IngredientCard({@required this.titleCard, this.ingredients, this.gramm});
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +41,12 @@ class IngredientCard extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Text(
-            '0 грамм',
+            '$gramm',
             textAlign: TextAlign.center,
             style: TextStyle(),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Center(
             child: Container(
@@ -55,7 +56,7 @@ class IngredientCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(80),
               ),
               child: Text(
-                '2%',
+                '$ingredients%',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
