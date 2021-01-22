@@ -1,7 +1,5 @@
 import 'package:cookie/components/continue_button.dart';
-import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/constants.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/size_config.dart';
 

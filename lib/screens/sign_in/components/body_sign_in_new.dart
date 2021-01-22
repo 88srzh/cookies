@@ -45,7 +45,7 @@ class BodySignInNew extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    'We missed you!',
+                    'Мы скучали!',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 16,
@@ -55,7 +55,7 @@ class BodySignInNew extends StatelessWidget {
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.07),
                 SignForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight * 0.235),
               ],
             ),
           ),

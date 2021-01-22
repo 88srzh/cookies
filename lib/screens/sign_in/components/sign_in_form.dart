@@ -1,7 +1,6 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/default_button.dart';
-import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
@@ -81,7 +80,7 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          DefaultButton(
+          ContinueButton(
             text: 'Продолжить',
             press: () {
               if (_formKey.currentState.validate()) {
