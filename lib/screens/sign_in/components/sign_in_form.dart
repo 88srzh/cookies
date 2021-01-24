@@ -1,10 +1,12 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
-import 'package:cookie/components/default_button.dart';
 import 'package:cookie/components/form_error.dart';
+import 'package:cookie/screens/auth/authentication_service.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
+import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -15,11 +17,16 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  static TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String email;
   String password;
   bool remember = false;
   final List<String> errors = [];
+
+  // get emailController => emailController;
+  // get passwordController => passwordController;
 
   void addError({String error}) {
     if (!errors.contains(error)) {
@@ -83,10 +90,15 @@ class _SignFormState extends State<SignForm> {
           ContinueButton(
             text: 'Продолжить',
             press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
+              // if (_formKey.currentState.validate()) {
+              //   _formKey.currentState.save();
+              context.read<AuthenticationService>().signIn(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                  );
+              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              // }
+              // Navigator.pushNamed(context, SignUpScreen.routeName);
             },
           ),
         ],
@@ -96,6 +108,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller: passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -131,6 +144,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      controller: emailController,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
