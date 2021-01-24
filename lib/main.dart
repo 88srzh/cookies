@@ -2,9 +2,7 @@ import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentication_service.dart';
-import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
@@ -13,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -58,12 +56,14 @@ class MyApp extends StatelessWidget {
 }
 
 class AuthenticationWrapper extends StatelessWidget {
+  static String routeName = '/authWrapper';
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
       return LoginSuccessScreen();
+      
       //  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
 
     }

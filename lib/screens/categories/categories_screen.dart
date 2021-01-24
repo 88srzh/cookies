@@ -1,4 +1,4 @@
-import 'package:cookie/screens/categories/components/body_categories.dart';
+// import 'package:cookie/screens/categories/components/body_categories.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Категории'),
       ),
-      body: BodyCategories(),
+      // body: BodyCategories(),
     );
   }
 }

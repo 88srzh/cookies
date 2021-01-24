@@ -177,7 +177,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                 Tab(
                   text: 'Пончики',
                   icon: SvgPicture.asset(
-                    'assets/icons/donut32.svg',
+                    'assets/icons/donut32-min.svg',
                     color:
                         _tabController.index == 0 ? Colors.black : Colors.grey,
                   ),
@@ -185,7 +185,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                 Tab(
                   text: 'Бургеры',
                   icon: SvgPicture.asset(
-                    'assets/icons/burger_32.svg',
+                    'assets/icons/burger_32-min.svg',
                     color:
                         _tabController.index == 1 ? Colors.black : Colors.grey,
                   ),

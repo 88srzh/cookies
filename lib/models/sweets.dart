@@ -37,8 +37,8 @@ class Sweets extends ChangeNotifier {
     this.energyGramm,
   });
 
-  @override
-  int get hashCode => id;
+  // @override
+  // int get hashCode => id;
 
   // getById(int id) => Sweets(id: id);
 

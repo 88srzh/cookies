@@ -1,3 +1,4 @@
+import 'package:cookie/main.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
@@ -37,4 +38,5 @@ final Map<String, WidgetBuilder> routes = {
   SignInScreenNew.routeName: (context) => SignInScreenNew(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
   SignInPage.routeName: (context) => SignInPage(),
+  AuthenticationWrapper.routeName: (context) => AuthenticationWrapper(),
 };

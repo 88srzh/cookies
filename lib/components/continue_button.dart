@@ -1,4 +1,3 @@
-import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 

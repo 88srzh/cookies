@@ -1,8 +1,7 @@
-import 'package:cookie/models/Cart.dart';
+// import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/details/components/sweets_images.dart';
+// import 'package:cookie/screens/details/components/sweets_images.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';

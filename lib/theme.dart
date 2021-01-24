@@ -1,5 +1,5 @@
 import 'package:cookie/constants.dart';
-import 'package:cookie/size_config.dart';
+// import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {

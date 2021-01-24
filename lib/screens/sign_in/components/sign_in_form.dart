@@ -4,7 +4,7 @@ import 'package:cookie/components/form_error.dart';
 import 'package:cookie/screens/auth/authentication_service.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
-import 'package:cookie/screens/sign_up/sign_up_screen.dart';
+// import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -96,7 +96,7 @@ class _SignFormState extends State<SignForm> {
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   );
-              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               // }
               // Navigator.pushNamed(context, SignUpScreen.routeName);
             },
