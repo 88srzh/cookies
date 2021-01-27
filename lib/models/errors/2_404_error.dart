@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Error404Screen extends StatelessWidget {
+  static String routeName = '/404login';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,9 @@ class Error404Screen extends StatelessWidget {
               color: Color(0xFF6B92F2),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: Text(
                 "Go Home".toUpperCase(),
                 style: TextStyle(color: Colors.white),

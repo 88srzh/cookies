@@ -2,6 +2,7 @@ import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/constants.dart';
 // import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
+import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/size_config.dart';
 
 import '../components/splash_content.dart';

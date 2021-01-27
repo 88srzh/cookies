@@ -2,6 +2,7 @@ import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentication_service.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         // initialRoute: DindonMainScreen.routeName,
         initialRoute: SplashScreen.routeName,
-
-        // home: AuthenticationWrapper(),
+        // home: AuthentificationWrapper(),
+        // initialRoute: AuthentificationWrapper.routeName,
         // initialRoute: SettingsScreen.routeName,
         routes: routes,
       ),
@@ -55,19 +56,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthenticationWrapper extends StatelessWidget {
-  static String routeName = '/authWrapper';
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
+// class AuthentificationWrapper extends StatelessWidget {
+//   const AuthentificationWrapper({Key key}) : super(key: key);
+//   static String routeName = '/authWrapper';
 
-    if (firebaseUser != null) {
-      return LoginSuccessScreen();
-      
-      //  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+//   @override
+//   Widget build(BuildContext context) {
+//     final user = context.watch<User>();
 
-    }
-    return SignUpScreen();
-    // Navigator.pushNamed(context, DindonMainScreen.routeName);
-  }
-}
+//     if (user != null) {
+//       // return LoginSuccessScreen();
+//       return Text('Успешно');
+//       // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+//     }
+//     // return SignUpScreen();
+//     // return LoginSuccessScreen();
+//     return Text('Не успешно');
+//     // Navigator.pushNamed(context, SignUpScreen.routeName);
+//   }
+// }

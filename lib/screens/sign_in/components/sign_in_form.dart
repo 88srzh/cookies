@@ -1,11 +1,16 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
+import 'package:cookie/models/errors/2_404_error.dart';
+import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentication_service.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
@@ -17,16 +22,16 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
-  static TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  var _emailController = TextEditingController();
+  var _passwordController = TextEditingController();
+  var _usernameController = TextEditingController();
+  var _repasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  // final _auth = FirebaseAuth.instance;
   String email;
   String password;
   bool remember = false;
   final List<String> errors = [];
-
-  // get emailController => emailController;
-  // get passwordController => passwordController;
 
   void addError({String error}) {
     if (!errors.contains(error)) {
@@ -89,14 +94,39 @@ class _SignFormState extends State<SignForm> {
           ),
           ContinueButton(
             text: 'Продолжить',
-            press: () {
-              // if (_formKey.currentState.validate()) {
-              //   _formKey.currentState.save();
-              context.read<AuthenticationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
-              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+            press: () async {
+              // validateSubmitRegister();
+              try {
+                User user = (await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailController.text,
+                            password: _passwordController.text))
+                    .user;
+                // final user = await _auth.signInWithEmailAndPassword(
+                //     email: email, password: password);
+                // context.read<AuthenticationService>().signIn(
+                //       email: emailController.text.trim(),
+                //       password: passwordController.text.trim(),
+                //     );
+                if (user != null) {
+                  Navigator.pushNamed(context, DindonMainScreen.routeName);
+                  // showDialog(
+                  //     context: context,
+                  //     child: Column(
+                  //       children: [
+                  //         Material(
+                  //           child: Text('You enter'),
+                  //         )
+                  //       ],
+                  //     ));
+                  // Navigator.pushNamed(context, DindonMainScreen.routeName);
+                }
+              } catch (e) {
+                // print(Text('Вы не зарегистрированы'));
+                Navigator.pushNamed(context, Error2Screen.routeName);
+              }
+
+              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               // }
               // Navigator.pushNamed(context, SignUpScreen.routeName);
             },
@@ -108,7 +138,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      controller: passwordController,
+      controller: _passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -144,7 +174,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
-      controller: emailController,
+      controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
@@ -175,5 +205,15 @@ class _SignFormState extends State<SignForm> {
         ),
       ),
     );
+  }
+
+  void validateSubmitRegister() async {
+    final form = _formKey.currentState;
+    if (_formKey.currentState.validate()) {
+      form.save();
+      // AuthResult result = await FirebaseAuth.instance
+      //     .createUserWithEmailAndPassword(email: email, password: password);
+      // FirebaseUser user = result.user;
+    }
   }
 }
