@@ -1,33 +1,59 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-class AuthenticationService {
-  final FirebaseAuth _firebaseAuth;
+abstract class IAuthService {
+  // Future<UserModel> getCurrentUser();
+  Future<void> signOut();
+  Stream<User> onAuthStateChanged();
+  Future<UserCredential> signInWithEmailAndPassword({
+    @required String email,
+    @required String password,
+  });
 
-  AuthenticationService(this._firebaseAuth);
+  Future<UserCredential> createUserWithEmailAndPassword(
+      {@required String email, @required String password});
+  // void updatePassword({@required String password});
+  // Future<void> deleteUser({@required String userID});
+  // Future<void> resetPassword({@required String email});
+}
 
-  Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
+class AuthService extends IAuthService {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final CollectionReference _userDB =
+  //     FirebaseFirestore.instance.collection('Users');
 
-  Future<void> signOut() async {
-    await _firebaseAuth.signOut();
+  // @override
+  // Future<UserModel> getCurrentUser() async {
+  //   try {
+  //     final User firebaseUser = _auth.currentUser;
+  //     final DocumentSnapshot documentSnapshot = await _userDB.doc(firebaseUser.uid).get();
+  //     return UserModel.fromDoc(ds: documentSnapshot);
+  //   } catch (e) {
+  //     throw Exception('Could not fetch user at this time');
+  //   }
+  // }
+
+  @override
+  Stream<User> onAuthStateChanged() {
+    return _auth.authStateChanges();
   }
 
-  Future<String> signIn({String email, String password}) async {
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return 'Sign in';
-    } on FirebaseAuthException catch (e) {
-      return e.message;
-    }
+  @override
+  Future<void> signOut() {
+    return _auth.signOut();
   }
 
-  Future<String> signUp({String email, String password}) async {
-    try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return 'Sign Up';
-    } on FirebaseAuthException catch (e) {
-      return e.message;
-    }
+  @override
+  Future<UserCredential> createUserWithEmailAndPassword(
+      {@required String email, @required String password}) {
+    return _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  @override
+  Future<UserCredential> signInWithEmailAndPassword(
+      {@required String email, @required String password}) {
+    return _auth.signInWithEmailAndPassword(email: email, password: password);
   }
 }

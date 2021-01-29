@@ -17,6 +17,16 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
+  final Function(User) onSignInAnonymous;
+
+  SignForm({@required this.onSignInAnonymous});
+
+  loginAnonymous() async {
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInAnonymously();
+    onSignInAnonymous(userCredential.user);
+  }
+
   @override
   _SignFormState createState() => _SignFormState();
 }
@@ -24,10 +34,9 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
-  var _usernameController = TextEditingController();
-  var _repasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   // final _auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   String email;
   String password;
   bool remember = false;
@@ -94,42 +103,69 @@ class _SignFormState extends State<SignForm> {
           ),
           ContinueButton(
             text: 'Продолжить',
-            press: () async {
-              // validateSubmitRegister();
-              try {
-                User user = (await FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: _emailController.text,
-                            password: _passwordController.text))
-                    .user;
-                // final user = await _auth.signInWithEmailAndPassword(
-                //     email: email, password: password);
-                // context.read<AuthenticationService>().signIn(
-                //       email: emailController.text.trim(),
-                //       password: passwordController.text.trim(),
-                //     );
-                if (user != null) {
-                  Navigator.pushNamed(context, DindonMainScreen.routeName);
-                  // showDialog(
-                  //     context: context,
-                  //     child: Column(
-                  //       children: [
-                  //         Material(
-                  //           child: Text('You enter'),
-                  //         )
-                  //       ],
-                  //     ));
-                  // Navigator.pushNamed(context, DindonMainScreen.routeName);
-                }
-              } catch (e) {
-                // print(Text('Вы не зарегистрированы'));
-                Navigator.pushNamed(context, Error2Screen.routeName);
-              }
-
-              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              // }
-              // Navigator.pushNamed(context, SignUpScreen.routeName);
+            press: () {
+              // TODO: исправить!
+              // loginAnonymous();
             },
+            // press: () async {
+            // validateSubmitRegister();
+            // ! third try
+            // try {
+            //   UserCredential userCredential = await FirebaseAuth.instance
+            //       .signInWithEmailAndPassword(
+            //           email: _emailController.text.trim(),
+            //           password: _passwordController.text.trim());
+            // } on FirebaseAuthException catch (e) {
+            // if (e.code == 'user not found') {
+            //   print('no user found');
+            // } else if (e.code == 'wrong-password') {
+            //   print('wrong password');
+            // }
+            //   }
+            // }
+
+            // ! second try
+            //  try { User user = (await FirebaseAuth.instance
+            //           .signInWithEmailAndPassword(
+            //               email: _emailController.text,
+            //               password: _passwordController.text))
+            //       .user;} catch (e) {
+            //         Text('exception');
+            //       }
+            //       if (user != null) {
+
+            // }
+            // ! first try
+            // final user = await auth.signInWithEmailAndPassword(
+            //     email: email, password: password);
+            // context.read<AuthenticationService>().signIn(
+            //       email: _emailController.text.trim(),
+            //       password: _passwordController.text.trim(),
+            //     );
+            // auth.authStateChanges().listen((user) {
+            // if (user == null) {
+            //   print('Пользователь не зашел');
+            // } else {
+            //   print('Пользователь зашел');
+            // }
+            // });
+            // if (user != null) {
+            //   Navigator.pushNamed(context, DindonMainScreen.routeName);
+            //   showDialog(
+            //       context: context,
+            //       child: Column(
+            //         children: [
+            //           Material(
+            //             child: Text('You enter'),
+            //           )
+            //         ],
+            //       ));
+            //   Navigator.pushNamed(context, DindonMainScreen.routeName);
+            // } else {
+            //   print(Text('Вы не зарегистрированы'));
+            //   Navigator.pushNamed(context, Error2Screen.routeName);
+            // }
+            // },
           ),
         ],
       ),
@@ -159,7 +195,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      keyboardType: TextInputType.emailAddress,
+      // keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Пароль',
         hintText: 'Введите пароль',
@@ -175,7 +211,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       controller: _emailController,
-      keyboardType: TextInputType.emailAddress,
+      // keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {

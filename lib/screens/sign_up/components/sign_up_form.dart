@@ -66,61 +66,61 @@ class _SignUpFormState extends State<SignUpForm> {
             //   Navigator.pushNamed(context, CompleteProfileScreen.routeName);
             // }
             // },
-            press: () async {
-              // validateSubmitRegister();
-              try {
-                User user = (await FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: _emailController.text,
-                            password: _passwordController.text))
-                    .user;
-                // final user = await _auth.signInWithEmailAndPassword(
-                //     email: email, password: password);
-                // context.read<AuthenticationService>().signIn(
-                //       email: emailController.text.trim(),
-                //       password: passwordController.text.trim(),
-                //     );
-                if (user != null) {
-                  user
-                      .updateProfile(displayName: _usernameController.text)
-                      .then((value) => Text('Update successful'));
-                  Navigator.pushNamed(context, DindonMainScreen.routeName);
-                  // showDialog(
-                  //     context: context,
-                  //     child: Column(
-                  //       children: [
-                  //         Material(
-                  //           child: Text('You enter'),
-                  //         )
-                  //       ],
-                  //     ));
-                  // Navigator.pushNamed(context, DindonMainScreen.routeName);
-                  // } else if (user == null) {
-                  //   Fluttertoast.showToast(
-                  //       msg: "This is Center Short Toast",
-                  //       toastLength: Toast.LENGTH_SHORT,
-                  //       gravity: ToastGravity.CENTER,
-                  //       timeInSecForIosWeb: 1,
-                  //       backgroundColor: Colors.red,
-                  //       textColor: Colors.white,
-                  //       fontSize: 16.0);
-                  // }
-                }
-              } catch (e) {
-                // print(Text('Вы не зарегистрированы'));
-                // Navigator.pushNamed(context, Error2Screen.routeName);
-                print(e);
-                _usernameController.text = '';
-                _passwordController.text = '';
-                _repasswordController.text = '';
-                _emailController.text = '';
-                // TODO: alertdialog with error
-              }
+            // press: () async {
+            //   // validateSubmitRegister();
+            //   try {
+            //     User user = (await FirebaseAuth.instance
+            //             .createUserWithEmailAndPassword(
+            //                 email: _emailController.text,
+            //                 password: _passwordController.text))
+            //         .user;
+            //     // final user = await _auth.signInWithEmailAndPassword(
+            //     //     email: email, password: password);
+            //     // context.read<AuthenticationService>().signIn(
+            //     //       email: emailController.text.trim(),
+            //     //       password: passwordController.text.trim(),
+            //     //     );
+            //     if (user != null) {
+            //       user
+            //           .updateProfile(displayName: _usernameController.text)
+            //           .then((value) => Text('Update successful'));
+            //       Navigator.pushNamed(context, DindonMainScreen.routeName);
+            //       // showDialog(
+            //       //     context: context,
+            //       //     child: Column(
+            //       //       children: [
+            //       //         Material(
+            //       //           child: Text('You enter'),
+            //       //         )
+            //       //       ],
+            //       //     ));
+            //       // Navigator.pushNamed(context, DindonMainScreen.routeName);
+            //       // } else if (user == null) {
+            //       //   Fluttertoast.showToast(
+            //       //       msg: "This is Center Short Toast",
+            //       //       toastLength: Toast.LENGTH_SHORT,
+            //       //       gravity: ToastGravity.CENTER,
+            //       //       timeInSecForIosWeb: 1,
+            //       //       backgroundColor: Colors.red,
+            //       //       textColor: Colors.white,
+            //       //       fontSize: 16.0);
+            //       // }
+            //     }
+            //   } catch (e) {
+            //     // print(Text('Вы не зарегистрированы'));
+            //     // Navigator.pushNamed(context, Error2Screen.routeName);
+            //     print(e);
+            //     _usernameController.text = '';
+            //     _passwordController.text = '';
+            //     _repasswordController.text = '';
+            //     _emailController.text = '';
+            //     // TODO: alertdialog with error
+            //   }
 
-              // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              // }
-              // Navigator.pushNamed(context, SignUpScreen.routeName);
-            },
+            //   // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+            //   // }
+            //   // Navigator.pushNamed(context, SignUpScreen.routeName);
+            // },
           ),
         ],
       ),

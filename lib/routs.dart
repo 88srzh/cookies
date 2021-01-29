@@ -39,8 +39,8 @@ final Map<String, WidgetBuilder> routes = {
   DindonMainScreen.routeName: (context) => DindonMainScreen(),
   SignInScreenNew.routeName: (context) => SignInScreenNew(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
-  SignInPage.routeName: (context) => SignInPage(),
-  // AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
+  // SignInPage.routeName: (context) => SignInPage(),
+  AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   Error404Screen.routeName: (context) => Error404Screen(),
   Error2Screen.routeName: (context) => Error2Screen(),
 };

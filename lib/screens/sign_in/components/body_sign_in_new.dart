@@ -1,5 +1,6 @@
 import 'package:cookie/screens/sign_in/components/sign_in_form.dart';
 import 'package:cookie/size_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class BodySignInNew extends StatelessWidget {
@@ -54,7 +55,8 @@ class BodySignInNew extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.07),
-                SignForm(),
+                // TODO: fix
+                // SignForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.235),
               ],
             ),
