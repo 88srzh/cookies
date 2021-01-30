@@ -17,15 +17,15 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
-  final Function(User) onSignInAnonymous;
+  // final Function(User) onSignInAnonymous;
 
-  SignForm({@required this.onSignInAnonymous});
+  // SignForm({@required this.onSignInAnonymous});
 
-  loginAnonymous() async {
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInAnonymously();
-    onSignInAnonymous(userCredential.user);
-  }
+  // loginAnonymous() async {
+  //   UserCredential userCredential =
+  //       await FirebaseAuth.instance.signInAnonymously();
+  //   onSignInAnonymous(userCredential.user);
+  // }
 
   @override
   _SignFormState createState() => _SignFormState();
@@ -101,72 +101,7 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          ContinueButton(
-            text: 'Продолжить',
-            press: () {
-              // TODO: исправить!
-              // loginAnonymous();
-            },
-            // press: () async {
-            // validateSubmitRegister();
-            // ! third try
-            // try {
-            //   UserCredential userCredential = await FirebaseAuth.instance
-            //       .signInWithEmailAndPassword(
-            //           email: _emailController.text.trim(),
-            //           password: _passwordController.text.trim());
-            // } on FirebaseAuthException catch (e) {
-            // if (e.code == 'user not found') {
-            //   print('no user found');
-            // } else if (e.code == 'wrong-password') {
-            //   print('wrong password');
-            // }
-            //   }
-            // }
-
-            // ! second try
-            //  try { User user = (await FirebaseAuth.instance
-            //           .signInWithEmailAndPassword(
-            //               email: _emailController.text,
-            //               password: _passwordController.text))
-            //       .user;} catch (e) {
-            //         Text('exception');
-            //       }
-            //       if (user != null) {
-
-            // }
-            // ! first try
-            // final user = await auth.signInWithEmailAndPassword(
-            //     email: email, password: password);
-            // context.read<AuthenticationService>().signIn(
-            //       email: _emailController.text.trim(),
-            //       password: _passwordController.text.trim(),
-            //     );
-            // auth.authStateChanges().listen((user) {
-            // if (user == null) {
-            //   print('Пользователь не зашел');
-            // } else {
-            //   print('Пользователь зашел');
-            // }
-            // });
-            // if (user != null) {
-            //   Navigator.pushNamed(context, DindonMainScreen.routeName);
-            //   showDialog(
-            //       context: context,
-            //       child: Column(
-            //         children: [
-            //           Material(
-            //             child: Text('You enter'),
-            //           )
-            //         ],
-            //       ));
-            //   Navigator.pushNamed(context, DindonMainScreen.routeName);
-            // } else {
-            //   print(Text('Вы не зарегистрированы'));
-            //   Navigator.pushNamed(context, Error2Screen.routeName);
-            // }
-            // },
-          ),
+          ContinueButton(text: 'Продолжить', press: () {}),
         ],
       ),
     );

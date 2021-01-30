@@ -1,9 +1,19 @@
+import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/screens/sign_in/components/sign_in_form.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class BodySignInNew extends StatelessWidget {
+  final Function(User) onSignInAnonymous;
+  BodySignInNew({@required this.onSignInAnonymous});
+
+  loginAnonymous() async {
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInAnonymously();
+    onSignInAnonymous(userCredential.user);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,9 +65,14 @@ class BodySignInNew extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.07),
-                // TODO: fix
-                // SignForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.235),
+                SignForm(),
+                // SizedBox(height: SizeConfig.screenHeight * 0.235),
+                ContinueButton(
+                  text: 'Анонимно',
+                  press: () {
+                    loginAnonymous();
+                  },
+                ),
               ],
             ),
           ),

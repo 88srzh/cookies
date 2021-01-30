@@ -50,35 +50,35 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),
-        // initialRoute: SplashScreen.routeName,
-        home: DecisionsTree(),
+        initialRoute: SplashScreen.routeName,
+        // home: DecisionsTree(),
         routes: routes,
       ),
     );
   }
 }
 
-class DecisionsTree extends StatefulWidget {
-  static String routeName = '/decisionsTree';
-  @override
-  _DecisionsTreeState createState() => _DecisionsTreeState();
-}
+// class DecisionsTree extends StatefulWidget {
+//   static String routeName = '/decisionsTree';
+//   @override
+//   _DecisionsTreeState createState() => _DecisionsTreeState();
+// }
 
-class _DecisionsTreeState extends State<DecisionsTree> {
-  User user;
-  onRefresh(userCredential) {
-    setState(() {
-      user = userCredential;
-    });
-  }
+// class _DecisionsTreeState extends State<DecisionsTree> {
+//   User user;
+//   onRefresh(userCredential) {
+//     setState(() {
+//       user = userCredential;
+//     });
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    // User user;
-    if (user == null) {
-      return SignInPage(
-          onSignInAnonymous: (userCredential) => onRefresh(userCredential));
-    }
-    return LoginExample();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     // User user;
+//     if (user == null) {
+//       return SignInPage(
+//           onSignInAnonymous: (userCredential) => onRefresh(userCredential));
+//     }
+//     return SplashScreen();
+//   }
+// }
