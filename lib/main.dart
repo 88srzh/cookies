@@ -1,3 +1,4 @@
+import 'package:cookie/login_page.dart';
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/models/sweets.dart';
@@ -57,66 +58,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthentificationWrapper extends StatelessWidget {
-  static String routeName = '/authWrapper';
-
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      // return LoginSuccessScreen();
-      return Text('Успешно');
-      // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-    }
-    // ! nice try practically work
-    // Future.delayed(Duration.zero, () {
-    //   Navigator.pushNamed(context, SplashScreen.routeName);
-    // });
-    else {
-      // return Container();
-      return Error2Screen();
-      // return DindonMainScreen();
-    }
-    // ! second try
-    // SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-    //   Navigator.pushNamed(context, SplashScreen.routeName);
-  }
-}
-
-class AuthTypeSelector extends StatelessWidget {
-  void _pushPage(BuildContext context, Widget page) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => page),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Example Page'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            child: FlatButton(
-              onPressed: () => _pushPage(context, SignUpScreen()),
-              child: Text('Регистрация'),
-            ),
-          ),
-          Container(
-            child: FlatButton(
-                onPressed: () => _pushPage(context, SignInScreen()),
-                child: Text('Войти')),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class DecisionsTree extends StatefulWidget {
   static String routeName = '/decisionsTree';
   @override
@@ -133,11 +74,11 @@ class _DecisionsTreeState extends State<DecisionsTree> {
 
   @override
   Widget build(BuildContext context) {
-    User user;
+    // User user;
     if (user == null) {
       return SignInPage(
           onSignInAnonymous: (userCredential) => onRefresh(userCredential));
     }
-    return DindonMainScreen();
+    return LoginExample();
   }
 }
