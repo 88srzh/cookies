@@ -1,6 +1,7 @@
 import 'package:cookie/main.dart';
 import 'package:cookie/models/errors/2_404_error.dart';
 import 'package:cookie/models/errors/7_error_2.dart';
+import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
@@ -43,4 +44,5 @@ final Map<String, WidgetBuilder> routes = {
   // AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   Error404Screen.routeName: (context) => Error404Screen(),
   Error2Screen.routeName: (context) => Error2Screen(),
+  // AuthentificationService.routeName: (context) => AuthentificationService();
 };

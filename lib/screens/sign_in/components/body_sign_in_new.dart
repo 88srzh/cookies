@@ -8,7 +8,7 @@ class BodySignInNew extends StatelessWidget {
   final Function(User) onSignInAnonymous;
   BodySignInNew({@required this.onSignInAnonymous});
 
-  loginAnonymous() async {
+  Future<void> loginAnonymous() async {
     UserCredential userCredential =
         await FirebaseAuth.instance.signInAnonymously();
     onSignInAnonymous(userCredential.user);

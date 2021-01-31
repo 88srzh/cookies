@@ -3,7 +3,7 @@ import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/models/errors/2_404_error.dart';
 import 'package:cookie/models/errors/7_error_2.dart';
-import 'package:cookie/screens/auth/authentication_service.dart';
+import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
