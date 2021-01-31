@@ -66,13 +66,14 @@ class BodySignInNew extends StatelessWidget {
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.07),
                 SignForm(),
-                // SizedBox(height: SizeConfig.screenHeight * 0.235),
+                SizedBox(height: SizeConfig.screenHeight * 0.035),
                 ContinueButton(
                   text: 'Анонимно',
                   press: () {
                     loginAnonymous();
                   },
                 ),
+                SizedBox(height: SizeConfig.screenHeight * 0.15),
               ],
             ),
           ),

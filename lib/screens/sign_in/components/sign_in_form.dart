@@ -2,13 +2,10 @@ import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
-import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
-import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
@@ -90,7 +87,7 @@ class _SignFormState extends State<SignForm> {
             height: getProportionateScreenHeight(20),
           ),
           ContinueButton(
-              text: 'Продолжить',
+              text: 'Войти',
               press: () {
                 context.read<AuthentificationService>().signIn(
                       email: emailController.text.trim(),

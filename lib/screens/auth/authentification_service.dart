@@ -1,8 +1,6 @@
-import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthentificationService {
-  // static String routeName = '/authService';
   final FirebaseAuth _firebaseAuth;
 
   AuthentificationService(this._firebaseAuth);

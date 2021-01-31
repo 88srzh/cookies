@@ -1,8 +1,6 @@
-import 'package:cookie/main.dart';
 import 'package:cookie/models/errors/2_404_error.dart';
 import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
-import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
