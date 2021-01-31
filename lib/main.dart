@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         initialRoute: SplashScreen.routeName,
-        // home: DecisionsTree(),
         routes: routes,
       ),
     );
