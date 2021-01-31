@@ -32,8 +32,8 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
-  var _emailController = TextEditingController();
-  var _passwordController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   // final _auth = FirebaseAuth.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -101,7 +101,14 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          ContinueButton(text: 'Продолжить', press: () {}),
+          ContinueButton(
+              text: 'Продолжить',
+              press: () {
+                context.read<AuthentificationService>().signIn(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                    );
+              }),
         ],
       ),
     );
@@ -109,7 +116,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      controller: _passwordController,
+      controller: passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -145,7 +152,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
-      controller: _emailController,
+      controller: emailController,
       // keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {

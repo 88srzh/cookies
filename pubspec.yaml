@@ -35,7 +35,7 @@ dependencies:
   # flutter_bloc: ^6.1.1
   # bloc: ^6.1.1
   firebase_core: 0.7.0
-  firebase_auth: 0.20.0+1
+  firebase_auth:
   # cloud_firestore: ^0.16.0
 
 dev_dependencies:

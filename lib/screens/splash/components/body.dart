@@ -1,9 +1,15 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/constants.dart';
+import 'package:cookie/screens/auth/authentification_page.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
 // import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
+import 'package:cookie/screens/sign_up/components/sign_up_form.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
+import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:cookie/size_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 import '../components/splash_content.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +89,7 @@ class _BodyState extends State<Body> {
                         text: 'Продолжить',
                         press: () {
                           Navigator.pushNamed(
-                              context, SignInScreenNew.routeName);
+                              context, AuthentificationPage.routename);
                           // context,
                           // SignInPage.routeName);
                         },
