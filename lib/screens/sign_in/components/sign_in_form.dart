@@ -1,9 +1,15 @@
+import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
-import 'package:cookie/components/default_button.dart';
 import 'package:cookie/components/form_error.dart';
+import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -14,7 +20,11 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  // final _auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   String email;
   String password;
   bool remember = false;
@@ -79,15 +89,14 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          DefaultButton(
-            text: 'Продолжить',
-            press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
-            },
-          ),
+          ContinueButton(
+              text: 'Продолжить',
+              press: () {
+                context.read<AuthentificationService>().signIn(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                    );
+              }),
         ],
       ),
     );
@@ -95,6 +104,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller: passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -115,10 +125,11 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      keyboardType: TextInputType.emailAddress,
+      // keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Пароль',
         hintText: 'Введите пароль',
+        fillColor: Colors.white24,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
           svgIcon: 'assets/icons/Lock.svg',
@@ -129,7 +140,8 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
-      keyboardType: TextInputType.emailAddress,
+      controller: emailController,
+      // keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -152,11 +164,22 @@ class _SignFormState extends State<SignForm> {
       decoration: InputDecoration(
         labelText: 'Почта',
         hintText: 'Введите Вашу почту',
+        fillColor: Colors.white,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
           svgIcon: 'assets/icons/Mail.svg',
         ),
       ),
     );
+  }
+
+  void validateSubmitRegister() async {
+    final form = _formKey.currentState;
+    if (_formKey.currentState.validate()) {
+      form.save();
+      // AuthResult result = await FirebaseAuth.instance
+      //     .createUserWithEmailAndPassword(email: email, password: password);
+      // FirebaseUser user = result.user;
+    }
   }
 }

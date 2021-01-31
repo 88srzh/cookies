@@ -1,18 +1,26 @@
+import 'package:cookie/main.dart';
+import 'package:cookie/models/errors/2_404_error.dart';
+import 'package:cookie/models/errors/7_error_2.dart';
+import 'package:cookie/screens/auth/authentification_page.dart';
+import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/screens/details/details_screen.dart';
-import 'package:cookie/screens/dindon/dindon_screen.dart';
-import 'package:cookie/screens/dindon_main/dindon_main.dart';
+import 'package:cookie/screens/dindon/components/dindon_screen.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/icecream/icecream_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
+import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
+import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -31,4 +39,10 @@ final Map<String, WidgetBuilder> routes = {
   IceCreamScreen.routeName: (context) => IceCreamScreen(),
   DindonScreen.routeName: (context) => DindonScreen(),
   DindonMainScreen.routeName: (context) => DindonMainScreen(),
+  SignInScreenNew.routeName: (context) => SignInScreenNew(),
+  SettingsScreen.routeName: (context) => SettingsScreen(),
+  Error404Screen.routeName: (context) => Error404Screen(),
+  Error2Screen.routeName: (context) => Error2Screen(),
+  AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
+  AuthentificationPage.routename: (context) => AuthentificationPage(),
 };

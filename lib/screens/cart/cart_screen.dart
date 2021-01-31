@@ -1,8 +1,7 @@
-import 'package:cookie/models/Cart.dart';
 import 'package:cookie/screens/cart/components/body_cart.dart';
-import 'package:cookie/screens/cart/components/check_out_card.dart';
+import 'package:cookie/screens/cart/components/check_cart_new.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
   static String routeName = '/cart';
@@ -17,7 +16,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: BodyCart(),
-      bottomNavigationBar: CheckOurCard(),
+      bottomNavigationBar: CheckCart(),
     );
   }
 
@@ -28,9 +27,7 @@ class _CartScreenState extends State<CartScreen> {
       children: [
         Text(
           'Корзина',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: TextStyle(color: Colors.black),
         ),
         Text(
           'items',

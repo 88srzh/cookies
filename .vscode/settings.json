@@ -1,3 +1,11 @@
 {
-    "editor.fontLigatures": null
+    "editor.fontLigatures": true,
+
+"workbench.colorCustomizations": {
+    "Hipster": {
+    "statusBar.background" : "#1A1A1A",
+    "statusBar.noFolderBackground" : "#212121",
+    "statusBar.debuggingBackground": "#263238"
+    }    
+}
 }

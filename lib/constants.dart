@@ -1,10 +1,10 @@
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFFF17532);
+const kPrimaryColor = Color.fromRGBO(41, 38, 43, 0.9);
 const kSecondaryColor = Color(0xFFCC8053);
 const kTextColor = Color(0xFF575E67);
-const kBackgroundColor = Color(0xFFFCFAF8);
+const kBackgroundColor = Color.fromRGBO(248, 219, 221, 1);
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
@@ -24,7 +24,7 @@ const String kPassNullError = 'Пожалуйста, введите Ваш па�
 const String kShortPassError = 'Пароль слишком короткий';
 const String kMatchPassError = 'Пароли не совпадают';
 const String kNameNullError = 'Пожалуйста, введите Ваше имя';
-const String kPhoneNumberNullError = 'Пожалуйста, введите введите Ваш телефон';
+const String kPhoneNumberNullError = 'Пожалуйста, введите Ваш телефон';
 const String kAddressNullError = 'Пожалуйста, введите Ваш адрес';
 
 final otpInputDecoration = InputDecoration(
