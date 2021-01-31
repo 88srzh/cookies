@@ -1,6 +1,7 @@
 import 'package:cookie/main.dart';
 import 'package:cookie/models/errors/2_404_error.dart';
 import 'package:cookie/models/errors/7_error_2.dart';
+import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/categories/categories_screen.dart';
@@ -15,11 +16,11 @@ import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
-import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
+import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -40,9 +41,8 @@ final Map<String, WidgetBuilder> routes = {
   DindonMainScreen.routeName: (context) => DindonMainScreen(),
   SignInScreenNew.routeName: (context) => SignInScreenNew(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
-  // SignInPage.routeName: (context) => SignInPage(),
-  // AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   Error404Screen.routeName: (context) => Error404Screen(),
   Error2Screen.routeName: (context) => Error2Screen(),
-  // AuthentificationService.routeName: (context) => AuthentificationService();
+  AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
+  AuthentificationPage.routename: (context) => AuthentificationPage(),
 };

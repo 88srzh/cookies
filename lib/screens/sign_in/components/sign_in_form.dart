@@ -1,8 +1,6 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
-import 'package:cookie/models/errors/2_404_error.dart';
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
@@ -17,23 +15,13 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
-  // final Function(User) onSignInAnonymous;
-
-  // SignForm({@required this.onSignInAnonymous});
-
-  // loginAnonymous() async {
-  //   UserCredential userCredential =
-  //       await FirebaseAuth.instance.signInAnonymously();
-  //   onSignInAnonymous(userCredential.user);
-  // }
-
   @override
   _SignFormState createState() => _SignFormState();
 }
 
 class _SignFormState extends State<SignForm> {
-  var _emailController = TextEditingController();
-  var _passwordController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   // final _auth = FirebaseAuth.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -101,7 +89,14 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          ContinueButton(text: 'Продолжить', press: () {}),
+          ContinueButton(
+              text: 'Продолжить',
+              press: () {
+                context.read<AuthentificationService>().signIn(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                    );
+              }),
         ],
       ),
     );
@@ -109,7 +104,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      controller: _passwordController,
+      controller: passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -145,7 +140,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
-      controller: _emailController,
+      controller: emailController,
       // keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {

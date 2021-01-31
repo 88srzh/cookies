@@ -4,21 +4,12 @@ import 'package:cookie/screens/dindon/body_dindon_main.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
-  final Function(User) onSignOut;
-
-  const DindonMainScreen({this.onSignOut});
-
-  Future<void> logout() async {
-    await FirebaseAuth.instance.signOut();
-    onSignOut(null);
-  }
-
   @override
   _DindonMainScreenState createState() => _DindonMainScreenState();
 }
@@ -49,8 +40,6 @@ class _DindonMainScreenState extends State<DindonMainScreen>
 
   @override
   Widget build(BuildContext context) {
-    // AuthentificationService authService = AuthentificationService();
-    DindonMainScreen mainLogOut = DindonMainScreen();
     // _pageController.addListener(() {
     //   setState(() {
     //     currentPage = _pageController.page;
@@ -116,7 +105,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                     ),
                   ),
                   onTap: () {
-                    mainLogOut.logout();
+                    context.read<AuthentificationService>().signOut();
                     // Navigator.pushNamed(context, CartScreen.routeName);
                   },
                 ),
