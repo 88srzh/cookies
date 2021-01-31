@@ -16,7 +16,6 @@ import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
-import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';

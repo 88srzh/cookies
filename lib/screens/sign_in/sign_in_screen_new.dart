@@ -1,6 +1,5 @@
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/sign_in/components/body_sign_in_new.dart';
-import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +37,6 @@ class _SignInScreenNewState extends State<SignInScreenNew> {
         ),
       );
     }
-    return DindonMainScreen(
-        onSignOut: (userCredential) => onRefresh(userCredential));
+    return DindonMainScreen();
   }
 }

@@ -1,8 +1,6 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
-import 'package:cookie/models/errors/2_404_error.dart';
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
@@ -17,16 +15,6 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
-  // final Function(User) onSignInAnonymous;
-
-  // SignForm({@required this.onSignInAnonymous});
-
-  // loginAnonymous() async {
-  //   UserCredential userCredential =
-  //       await FirebaseAuth.instance.signInAnonymously();
-  //   onSignInAnonymous(userCredential.user);
-  // }
-
   @override
   _SignFormState createState() => _SignFormState();
 }
