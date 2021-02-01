@@ -9,7 +9,7 @@
     }    
 },
 "editor.fontFamily": "JetBrains Mono, monospace",
-"workbench.colorTheme": "Xcode 11 Default Dark",
+"workbench.colorTheme": "Atom One Dark",
 "workbench.preferredDarkColorTheme": "One Dark Pro",
 "workbench.preferredHighContrastColorTheme": "One Dark Pro"
 }

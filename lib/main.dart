@@ -3,6 +3,7 @@ import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 context.read<AuthentificationService>().authStateChanges),
         Provider(create: (context) => CatalogModel()),
+        // ChangeNotifierProvider(
+        //   create: (context) => GoogleSignInProvider(),
+        // ),
         ChangeNotifierProxyProvider<CatalogModel, Cart>(
           create: (context) => Cart(),
           update: (context, catalog, cart) {

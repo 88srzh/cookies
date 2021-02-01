@@ -87,13 +87,14 @@ class _SignFormState extends State<SignForm> {
             height: getProportionateScreenHeight(20),
           ),
           ContinueButton(
-              text: 'Войти',
-              press: () {
-                context.read<AuthentificationService>().signIn(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                    );
-              }),
+            text: 'Войти',
+            press: () {
+              context.read<AuthentificationService>().signIn(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                  );
+            },
+          ),
         ],
       ),
     );
