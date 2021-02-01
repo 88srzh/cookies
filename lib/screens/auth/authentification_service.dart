@@ -1,3 +1,4 @@
+import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthentificationService {
@@ -16,6 +17,7 @@ class AuthentificationService {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return 'Вошли';
+      // return FirestoreCRUDPage();
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
