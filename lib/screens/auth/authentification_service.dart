@@ -1,8 +1,7 @@
-import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthentificationService {
-  // static String routeName = '/authService';
   final FirebaseAuth _firebaseAuth;
 
   AuthentificationService(this._firebaseAuth);
@@ -18,6 +17,7 @@ class AuthentificationService {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return 'Вошли';
+      // return FirestoreCRUDPage();
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
@@ -30,6 +30,17 @@ class AuthentificationService {
       return 'Зарегистрировались';
     } on FirebaseAuthException catch (e) {
       return e.message;
+    }
+  }
+
+  Future signInAnonymously() async {
+    try {
+      UserCredential userCredential = await _firebaseAuth.signInAnonymously();
+      User user = userCredential.user;
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
     }
   }
 }

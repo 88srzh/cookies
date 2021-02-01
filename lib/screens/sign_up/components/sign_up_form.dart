@@ -1,10 +1,5 @@
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-import 'package:cookie/screens/dindon/dindon_main.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
 import '../../../components/custom_surfix_icon.dart';
 import '../../../components/default_button.dart';
 import '../../../components/form_error.dart';

@@ -7,5 +7,9 @@
     "statusBar.noFolderBackground" : "#212121",
     "statusBar.debuggingBackground": "#263238"
     }    
-}
+},
+"editor.fontFamily": "JetBrains Mono, monospace",
+"workbench.colorTheme": "Atom One Dark",
+"workbench.preferredDarkColorTheme": "One Dark Pro",
+"workbench.preferredHighContrastColorTheme": "One Dark Pro"
 }
