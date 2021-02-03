@@ -31,8 +31,8 @@ class _SignInScreenNewState extends State<SignInScreenNew> {
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: BodySignInNew(
-            onSignInAnonymous: (userCredential) => onRefresh(userCredential),
-          ),
+              // onSignInAnonymous: (userCredential) => onRefresh(userCredential),
+              ),
 
           // child: SignInScreenNew()
         ),
