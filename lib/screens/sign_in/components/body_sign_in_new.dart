@@ -75,12 +75,6 @@ class BodySignInNew extends StatelessWidget {
                     context.read<AuthentificationService>().signInAnonymously();
                   },
                 ),
-                // ContinueButton(
-                //   text: 'Анонимно',
-                //   press: () {
-                //     // loginAnonymous();
-                //   },
-                // ),
                 SizedBox(height: SizeConfig.screenHeight * 0.05),
               ],
             ),

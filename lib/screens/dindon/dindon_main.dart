@@ -106,7 +106,6 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   ),
                   onTap: () {
                     context.read<AuthentificationService>().signOut();
-                    // Navigator.pushNamed(context, CartScreen.routeName);
                   },
                 ),
               ],
