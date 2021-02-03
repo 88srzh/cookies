@@ -1,5 +1,6 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/sign_in/components/sign_in_form.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BodySignInNew extends StatelessWidget {
-  final Function(User) onSignInAnonymous;
-  BodySignInNew({@required this.onSignInAnonymous});
+  // final Function(User) onSignInAnonymous;
+  // BodySignInNew({@required this.onSignInAnonymous});
 
   // Future<void> loginAnonymous() async {
   //   UserCredential userCredential =
@@ -73,6 +74,15 @@ class BodySignInNew extends StatelessWidget {
                   text: 'Анонимно',
                   press: () {
                     context.read<AuthentificationService>().signInAnonymously();
+                  },
+                ),
+                ContinueButton(
+                  text: 'Google in',
+                  press: () {
+                    final googleProvider = Provider.of<GoogleSignInProvider>(
+                        context,
+                        listen: false);
+                    googleProvider.login();
                   },
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.05),

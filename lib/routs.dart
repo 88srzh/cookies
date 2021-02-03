@@ -20,6 +20,7 @@ import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:flutter/widgets.dart';
+import 'package:cookie/screens/auth/google_logout_page.dart';
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
@@ -43,4 +44,5 @@ final Map<String, WidgetBuilder> routes = {
   Error2Screen.routeName: (context) => Error2Screen(),
   AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
+  GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
 };
