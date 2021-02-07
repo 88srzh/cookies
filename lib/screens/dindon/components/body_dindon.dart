@@ -25,6 +25,7 @@ class _BodyDindonScreenState extends State<BodyDindonScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,

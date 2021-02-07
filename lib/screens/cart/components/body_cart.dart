@@ -70,16 +70,6 @@ class _BodyCartState extends State<BodyCart> {
                             ),
                             child: Image.asset(
                                 cart.catalog.allSweets[index].images),
-                            // cart.cartsItem[index].images.toString()),
-                            // child: Image.asset(cart
-                            //     .catalog.allSweets[index].images[index]
-                            //     .toString()),
-                            // child: Image.asset(
-                            //     cart.catalog.allSweets[index].images.toString()),
-                            // child: Image.asset(cart.cartsItem[index].images[0]),
-                            // child: Image.asset(cart.carts_item.toString()),
-                            // child: Image.asset(allSweets.images[0]),
-                            // child: SweetsImages(allSweets: allSweets),
                             // ! - пытаюсь из details Достать изображение в Cart
                           ),
                         ),
