@@ -10,7 +10,8 @@ class DindonScreen extends StatelessWidget {
         ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-      body: BodyDindonScreen(allSweets: allarguments.allSweets),
+      body: SingleChildScrollView(
+          child: BodyDindonScreen(allSweets: allarguments.allSweets)),
     );
   }
 }

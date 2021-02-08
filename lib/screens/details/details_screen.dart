@@ -12,7 +12,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF5F6F9),
       appBar: CustomAppBar(arguments.allSweets.rating),
-      body: BodyDetails(allSweets: arguments.allSweets),
+      body: SingleChildScrollView(child: BodyDetails(allSweets: arguments.allSweets)),
     );
   }
 }

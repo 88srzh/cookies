@@ -83,8 +83,6 @@ class _BodyState extends State<Body> {
                         press: () {
                           Navigator.pushNamed(
                               context, AuthentificationPage.routename);
-                          // context,
-                          // SignInPage.routeName);
                         },
                       ),
                       Spacer(),

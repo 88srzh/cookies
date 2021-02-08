@@ -32,4 +32,15 @@ class AuthentificationService {
       return e.message;
     }
   }
+
+  Future signInAnonymously() async {
+    try {
+      UserCredential userCredential = await _firebaseAuth.signInAnonymously();
+      User user = userCredential.user;
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }

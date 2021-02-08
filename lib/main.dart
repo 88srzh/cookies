@@ -1,8 +1,11 @@
-import 'package:cookie/database/firestore_crud_page.dart';
+// import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth/google_sign_in.dart';
+import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,6 +24,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Widget buildLoading() => Center(child: CircularProgressIndicator());
     return MultiProvider(
       providers: [
         Provider<AuthentificationService>(
@@ -29,6 +33,22 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 context.read<AuthentificationService>().authStateChanges),
         Provider(create: (context) => CatalogModel()),
+        ChangeNotifierProvider(
+          create: (context) => GoogleSignInProvider(),
+          child: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              final googleProvider = Provider.of<GoogleSignInProvider>(context);
+              if (googleProvider.isSigningIn) {
+                return buildLoading();
+              } else if (snapshot.hasData) {
+                return DindonMainScreen();
+              } else {
+                return SignInScreenNew();
+              }
+            },
+          ),
+        ),
         ChangeNotifierProxyProvider<CatalogModel, Cart>(
           create: (context) => Cart(),
           update: (context, catalog, cart) {
@@ -37,8 +57,6 @@ class MyApp extends StatelessWidget {
           },
         ),
       ],
-      // create: (context) =>
-      // Cart(sweets: CatalogModel().allSweets[0], numOfItems: 1),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),

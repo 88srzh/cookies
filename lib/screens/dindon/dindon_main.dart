@@ -7,6 +7,7 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:cookie/screens/auth/google_logout_page.dart';
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -106,7 +107,19 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   ),
                   onTap: () {
                     context.read<AuthentificationService>().signOut();
-                    // Navigator.pushNamed(context, CartScreen.routeName);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.add_shopping_cart),
+                  title: Text(
+                    'Выйти из Google',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    // ! -  Добавить страницу logout google
+                    Navigator.pushNamed(context, GoogleLogoutPage.routeName);
                   },
                 ),
               ],
