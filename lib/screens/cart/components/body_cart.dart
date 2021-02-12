@@ -51,7 +51,8 @@ class _BodyCartState extends State<BodyCart> {
                   onDismissed: (direction) {
                     setState(() {
                       // carts.removeAt(index);
-                      cart.remove(cart.cartsItem[index]);
+
+                      // cart.remove(cart.cartsItem[index]);
                     });
                   },
                   // ! - cart_item_card

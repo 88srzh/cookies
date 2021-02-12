@@ -9,7 +9,7 @@ class SignInScreen extends StatelessWidget {
       appBar: AppBar(
           // title: Text('Войти'),
           ),
-      body: BodySignIn(),
+      body: SingleChildScrollView(child: BodySignIn()),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/dindon/components/body_dindon.dart';
+import 'package:cookie/screens/dindon/components/body_dindon_main.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -95,7 +96,7 @@ class _BottomAddToCartState extends State<BottomAddToCart> {
                 onTap: () {
                   cartToast();
                   var cart = context.read<Cart>();
-                  cart.add(widget.widget.allSweets);
+                  cart.add();
                 },
               ),
             ),

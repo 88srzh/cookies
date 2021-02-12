@@ -1,3 +1,4 @@
+import 'package:cookie/models/ice_cream.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,8 @@ class Cart extends ChangeNotifier {
   CatalogModel _catalog;
   // final int numOfItems;
   // ColorDots counters;
+
+  // final List<Sweets> sweetsList = [];
 
   final List<int> _itemIds = [];
 
@@ -24,8 +27,8 @@ class Cart extends ChangeNotifier {
   double get totalPrice =>
       cartsItem.fold(0, (total, current) => total + current.price);
 
-  void add(Sweets sweet) {
-    _itemIds.add(sweet.id);
+  void add() {
+    _itemIds.add(1);
     notifyListeners();
   }
 

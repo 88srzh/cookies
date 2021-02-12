@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Sweets extends ChangeNotifier {
-  final int id, price;
+  int id, price;
+  int likes;
   final String title,
       description,
       sugar,
@@ -19,6 +20,7 @@ class Sweets extends ChangeNotifier {
 
   Sweets(
     this.id, {
+    this.likes,
     this.images,
     this.colors,
     this.rating = 0.0,
@@ -36,6 +38,15 @@ class Sweets extends ChangeNotifier {
     this.fatGramm,
     this.energyGramm,
   });
+
+  void likeSweets() {
+    this.isFavourite = !this.isFavourite;
+    if (this.isFavourite) {
+      this.likes += 1;
+    } else {
+      this.likes -= 1;
+    }
+  }
 
   // @override
   // int get hashCode => id;
@@ -60,6 +71,7 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
+      likes: 0,
       description:
           '  Классическое лакомство. Это изделия в форме\n кольца, изготовленные из сладкого теста и\n хорошо поджаренные на высококачественном\n растительном масле.',
       rating: 4.8,
@@ -85,6 +97,7 @@ class CatalogModel {
       ],
       title: 'Шоколадный',
       price: 75,
+      likes: 0,
       description:
           '  Красивые ароматные пончики из особого теста\n с добавлением какао-порошка\n\n',
       rating: 4.1,
@@ -109,6 +122,7 @@ class CatalogModel {
       ],
       title: 'Ореховый',
       price: 85,
+      likes: 0,
       description:
           '  Нежный ореховый мусс, хрустящий фундук в\nкарамели, пралине пекан, шоколадное песочное\nтесто, мороженое «Бельгийский шоколад\n с фундуком»',
       rating: 4.4,
@@ -134,6 +148,7 @@ class CatalogModel {
       ],
       title: 'Карамельный',
       price: 95,
+      likes: 0,
       description:
           '  Свежие пончики с карамельной начинкой,\nпокрытые сахарной глазурью. Нежный вкус\nкарамели поможет ощутить тепло каждого момента\n',
       rating: 4.1,
@@ -159,6 +174,7 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
+      likes: 0,
       // description: description,
       rating: 4.8,
       isFavourite: true,
@@ -184,6 +200,7 @@ class CatalogModel {
       ],
       title: 'Красный вельвет',
       price: 65,
+      likes: 0,
       // description: description,
       rating: 4.8,
       isFavourite: true,

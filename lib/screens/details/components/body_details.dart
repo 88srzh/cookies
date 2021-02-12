@@ -55,7 +55,7 @@ class _BodyDetailsState extends State<BodyDetails> {
                             press: () {
                               cartToast();
                               var cart = context.read<Cart>();
-                              cart.add(widget.allSweets);
+                              cart.add();
                             },
                           ),
                         ),
