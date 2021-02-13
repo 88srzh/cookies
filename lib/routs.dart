@@ -45,4 +45,5 @@ final Map<String, WidgetBuilder> routes = {
   AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
+  CategoriesScreen.routeName: (context) => CategoriesScreen(),
 };
