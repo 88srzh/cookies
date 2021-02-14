@@ -28,7 +28,7 @@ class Cart extends ChangeNotifier {
       cartsItem.fold(0, (total, current) => total + current.price);
 
   void add() {
-    _itemIds.add(1);
+    // _itemIds.add();
     notifyListeners();
   }
 
