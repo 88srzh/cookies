@@ -4,15 +4,18 @@ import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BodyDindonMainScreen extends StatelessWidget {
-  final Sweets sweets;
+  // final Sweets sweets;
   // final GestureTapCallback press;
 
-  const BodyDindonMainScreen({Key key, this.sweets}) : super(key: key);
+  const BodyDindonMainScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final sweetData = Provider.of<Sweets>(context);
+    final sweets = sweetData.allSweets;
     return Padding(
       padding: EdgeInsets.only(
         top: getProportionateScreenWidth(10),
@@ -30,15 +33,19 @@ class BodyDindonMainScreen extends StatelessWidget {
               childAspectRatio: (SizeConfig.itemWidth / SizeConfig.itemHeight),
               children: [
                 ...List.generate(
-                  CatalogModel().allSweets.length,
+                  // CatalogModel().allSweets.length,
+                  sweets.length,
+
                   (index) {
                     return DonutCard(
-                      sweets: CatalogModel().allSweets[index],
+                      // sweets: CatalogModel().allSweets[index],
+                      sweets: sweetData,
                       press: () => Navigator.pushNamed(
                         context,
                         DindonScreen.routeName,
                         arguments: AllSweetsDetailsArguments(
-                          allSweets: CatalogModel().allSweets[index],
+                          // allSweets: CatalogModel().allSweets[index],
+                          allSweets: sweetData,
                         ),
                       ),
                     );

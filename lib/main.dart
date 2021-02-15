@@ -1,5 +1,6 @@
 // import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/cart_new.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         StreamProvider(
             create: (context) =>
                 context.read<AuthentificationService>().authStateChanges),
-        Provider(create: (context) => CatalogModel()),
+        // Provider(create: (context) => CatalogModel()),
         ChangeNotifierProvider(
           create: (context) => GoogleSignInProvider(),
           child: StreamBuilder(
@@ -49,13 +50,16 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        ChangeNotifierProxyProvider<CatalogModel, Cart>(
-          create: (context) => Cart(),
-          update: (context, catalog, cart) {
-            cart.catalog = catalog;
-            return cart;
-          },
-        ),
+        ChangeNotifierProvider.value(value: Sweets()),
+        ChangeNotifierProvider.value(value: Sweet()),
+        ChangeNotifierProvider.value(value: Cart()),
+        // ChangeNotifierProxyProvider<CatalogModel, Cart>(
+        //   create: (context) => Cart(),
+        //   update: (context, catalog, cart) {
+        //     cart.catalog = catalog;
+        //     return cart;
+        //   },
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

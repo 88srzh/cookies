@@ -1,11 +1,16 @@
+import 'package:cookie/models/cart_new.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/dindon/components/body_dindon.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DindonScreen extends StatelessWidget {
   static String routeName = '/dindondetails';
   @override
   Widget build(BuildContext context) {
+    final productId = ModalRoute.of(context).settings.arguments as String;
+    final loadedPdt = Provider.of<Sweets>(context).findById(productId);
+    final cart = Provider.of<Cart>(context);
     final AllSweetsDetailsArguments allarguments =
         ModalRoute.of(context).settings.arguments;
     return Scaffold(

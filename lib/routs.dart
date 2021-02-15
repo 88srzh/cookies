@@ -3,11 +3,11 @@ import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-import 'package:cookie/screens/details/details_screen.dart';
+// import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
-import 'package:cookie/screens/home/home_screen.dart';
+// import 'package:cookie/screens/home/home_screen.dart';
 // import 'package:cookie/screens/icecream/icecream_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
@@ -29,8 +29,8 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (context) => SignUpScreen(),
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
-  HomeScreen.routeName: (context) => HomeScreen(),
-  DetailsScreen.routeName: (context) => DetailsScreen(),
+  // HomeScreen.routeName: (context) => HomeScreen(),
+  // DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   // IceCreamScreen.routeName: (context) => IceCreamScreen(),

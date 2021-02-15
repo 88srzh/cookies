@@ -1,5 +1,6 @@
 import 'package:cookie/constants.dart';
 import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/cart_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,7 +14,8 @@ class BodyCart extends StatefulWidget {
 class _BodyCartState extends State<BodyCart> {
   @override
   Widget build(BuildContext context) {
-    var cart = context.watch<Cart>();
+    // var cart = context.watch<Cart>();
+    final cart = Provider.of<Cart>(context);
     return Stack(
       children: [
         Container(
@@ -29,11 +31,13 @@ class _BodyCartState extends State<BodyCart> {
                 horizontal: getProportionateScreenWidth(20)),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: cart.cartsItem.length,
+              // itemCount: cart.cartsItem.length,
+              itemCount: cart.allSweets.length,
               itemBuilder: (context, index) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Dismissible(
-                  key: Key(cart.cartsItem[index].id.toString()),
+                  // key: Key(cart.cartsItem[index].id.toString()),
+                  key: Key(cart.allSweets[index].id.toString()),
                   direction: DismissDirection.endToStart,
                   background: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -69,8 +73,9 @@ class _BodyCartState extends State<BodyCart> {
                               color: Color(0xFFF5F6F9),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            child: Image.asset(
-                                cart.catalog.allSweets[index].images),
+                            // child: Image.asset(
+                            //     // cart.catalog.allSweets[index].images),
+                            //     ),
                             // ! - пытаюсь из details Достать изображение в Cart
                           ),
                         ),
@@ -80,7 +85,8 @@ class _BodyCartState extends State<BodyCart> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${cart.catalog.allSweets[index].title}',
+                            // '${cart.catalog.allSweets[index].title}',
+                            '${cart.allSweets[index].title}',
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.black,
@@ -90,7 +96,8 @@ class _BodyCartState extends State<BodyCart> {
                           const SizedBox(height: 10),
                           Text.rich(
                             TextSpan(
-                              text: '${cart.catalog.allSweets[index].price}p',
+                              // text: '${cart.catalog.allSweets[index].price}p',
+                              text: '${cart.allSweets[index].price}p',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: kPrimaryColor,

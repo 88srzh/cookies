@@ -1,6 +1,7 @@
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DonutCard extends StatefulWidget {
   const DonutCard({
@@ -19,6 +20,8 @@ class DonutCard extends StatefulWidget {
 class _DonutCardState extends State<DonutCard> {
   @override
   Widget build(BuildContext context) {
+    final sweetId = ModalRoute.of(context).settings.arguments as String;
+    final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(248, 242, 244, 0.5),
@@ -47,7 +50,8 @@ class _DonutCardState extends State<DonutCard> {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '${widget.sweets.price}₽',
+                      // '${widget.sweets.price}₽',
+                      '${loadedSweet.price}₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -65,7 +69,8 @@ class _DonutCardState extends State<DonutCard> {
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.asset(
-                    widget.sweets.images,
+                    // widget.sweets.images,
+                    loadedSweet.images,
                   ),
                 ),
               ),
@@ -74,7 +79,8 @@ class _DonutCardState extends State<DonutCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${widget.sweets.title}',
+                  // '${widget.sweets.title}',
+                  '${loadedSweet.title}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -106,12 +112,14 @@ class _DonutCardState extends State<DonutCard> {
                       tapFavourite();
                     },
                     // child: Icon(Icons.favorite_outline),
-                    child: widget.sweets.isFavourite
+                    // child: widget.sweets.isFavourite
+                    child: loadedSweet.isFavourite
                         ? Icon(Icons.favorite_outline)
                         : Icon(Icons.favorite),
                   ),
                   Text(
-                    '${widget.sweets.rating}',
+                    // '${widget.sweets.rating}',
+                    '${loadedSweet.rating}',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -126,13 +134,14 @@ class _DonutCardState extends State<DonutCard> {
     );
   }
 
+// ! - add tap to favourite
   void tapFavourite() {
-    setState(() {
-      if (widget.sweets.isFavourite) {
-        widget.sweets.isFavourite = false;
-      } else {
-        widget.sweets.isFavourite = true;
-      }
-    });
+    // setState(() {
+    //   if (widget.sweets.isFavourite) {
+    //     widget.sweets.isFavourite = false;
+    //   } else {
+    //     widget.sweets.isFavourite = true;
+    //   }
+    // });
   }
 }
