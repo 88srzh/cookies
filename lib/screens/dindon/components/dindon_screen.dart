@@ -8,8 +8,8 @@ class DindonScreen extends StatelessWidget {
   static String routeName = '/dindondetails';
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context).settings.arguments as String;
-    final loadedPdt = Provider.of<Sweets>(context).findById(productId);
+    final sweetId = ModalRoute.of(context).settings.arguments as String;
+    final loadedPdt = Provider.of<Sweets>(context).findById(sweetId);
     final cart = Provider.of<Cart>(context);
     final AllSweetsDetailsArguments allarguments =
         ModalRoute.of(context).settings.arguments;

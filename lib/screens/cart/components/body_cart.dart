@@ -1,5 +1,5 @@
 import 'package:cookie/constants.dart';
-import 'package:cookie/models/Cart.dart';
+// import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/cart_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';

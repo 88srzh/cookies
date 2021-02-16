@@ -38,17 +38,17 @@ class BodyDindonMainScreen extends StatelessWidget {
 
                   (index) {
                     return DonutCard(
-                      // sweets: CatalogModel().allSweets[index],
-                      sweets: sweetData,
-                      press: () => Navigator.pushNamed(
-                        context,
-                        DindonScreen.routeName,
-                        arguments: AllSweetsDetailsArguments(
-                          // allSweets: CatalogModel().allSweets[index],
-                          allSweets: sweetData,
-                        ),
-                      ),
-                    );
+                        // sweets: CatalogModel().allSweets[index],
+                        // sweets: sweetData,
+                        // press: () => Navigator.pushNamed(
+                        //   context,
+                        //   DindonScreen.routeName,
+                        //   arguments: AllSweetsDetailsArguments(
+                        //     // allSweets: CatalogModel().allSweets[index],
+                        //     allSweets: sweetData,
+                        //   ),
+                        // ),
+                        );
                   },
                 ),
               ],
