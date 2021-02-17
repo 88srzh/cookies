@@ -1,4 +1,4 @@
-import 'package:cookie/models/cart_new.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
 // import 'package:cookie/screens/dindon/components/body_dindon.dart';
 import 'package:cookie/screens/dindon/components/ingredient_card.dart';
@@ -237,6 +237,10 @@ class DindonScreen extends StatelessWidget {
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                             onTap: () {
+                              // Scaffold.of(context).showSnackBar(SnackBar(
+                              //   duration: Duration(seconds: 3),
+                              //   content: Text('Товар добавлен'),
+                              // ));
                               // cartToast();
                               // var cart = context.read<Cart>();
                               // cart.add();

@@ -1,4 +1,4 @@
-import 'package:cookie/models/cart_new.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
 // import 'package:cookie/screens/details/components/sweets_images.dart';
 import 'package:flutter/material.dart';

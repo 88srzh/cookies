@@ -1,14 +1,11 @@
-import 'package:cookie/constants.dart';
-// import 'package:cookie/models/Cart.dart';
-import 'package:cookie/models/cart_new.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/cart/components/cart_item_card.dart';
 
 class BodyCart extends StatelessWidget {
-  static const routeName = '/body_cart';
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);

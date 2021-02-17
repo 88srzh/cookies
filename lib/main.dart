@@ -1,6 +1,6 @@
 // import 'package:cookie/database/firestore_crud_page.dart';
 // import 'package:cookie/models/Cart.dart';
-import 'package:cookie/models/cart_new.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';

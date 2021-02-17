@@ -2,7 +2,7 @@ import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cookie/models/cart_new.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 
 class DonutCard extends StatelessWidget {
