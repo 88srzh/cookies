@@ -53,13 +53,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Sweets()),
         ChangeNotifierProvider.value(value: Sweet()),
         ChangeNotifierProvider.value(value: Cart()),
-        // ChangeNotifierProxyProvider<CatalogModel, Cart>(
-        //   create: (context) => Cart(),
-        //   update: (context, catalog, cart) {
-        //     cart.catalog = catalog;
-        //     return cart;
-        //   },
-        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

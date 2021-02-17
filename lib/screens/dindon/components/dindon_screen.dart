@@ -14,8 +14,6 @@ class DindonScreen extends StatelessWidget {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
     final cart = Provider.of<Cart>(context);
-    // final AllSweetsDetailsArguments allarguments =
-    //     ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
       body: SingleChildScrollView(
@@ -103,37 +101,27 @@ class DindonScreen extends StatelessWidget {
                     children: [
                       IngredientCard(
                         titleCard: 'Белки',
-                        // ingredients: widget.allSweets.sugar,
                         ingredients: loadedSweet.sugar,
-                        // gramm: widget.allSweets.sugarGramm,
                         gramm: loadedSweet.sugarGramm,
                       ),
                       IngredientCard(
                         titleCard: 'Жиры',
-                        // ingredients: widget.allSweets.salt,
                         ingredients: loadedSweet.salt,
-                        // gramm: widget.allSweets.saltGramm,
                       ),
                       IngredientCard(
                         titleCard: 'Углеводы',
-                        // ingredients: widget.allSweets.fat,
                         ingredients: loadedSweet.fat,
-                        // gramm: widget.allSweets.fatGramm,
                         gramm: loadedSweet.fatGramm,
                       ),
                       IngredientCard(
                         titleCard: 'Энергия',
-                        // ingredients: widget.allSweets.energy,
                         ingredients: loadedSweet.energy,
-                        // gramm: widget.allSweets.energyGramm,
                         gramm: loadedSweet.energyGramm,
                       ),
                     ],
                   ),
                 ),
                 // DescriptionCard(),
-                // DescriptionCard(widget: widget),
-
                 // ! descriptionCard
                 Column(
                   children: [

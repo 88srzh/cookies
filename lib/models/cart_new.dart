@@ -5,8 +5,9 @@ class CartItem {
   final String title;
   final int quantity;
   final int price;
+  final String images;
 
-  CartItem({this.id, this.title, this.quantity, this.price});
+  CartItem({this.id, this.title, this.quantity, this.price, this.images});
 }
 
 class Cart with ChangeNotifier {
@@ -43,7 +44,7 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeAllSweets(String id) {
+  void removeSweet(String id) {
     _allSweets.remove(id);
     notifyListeners();
   }
