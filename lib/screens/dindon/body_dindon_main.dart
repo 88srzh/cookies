@@ -35,20 +35,25 @@ class BodyDindonMainScreen extends StatelessWidget {
           children: [
             Expanded(
               // child: GridView.builder(
-
               //   physics: ScrollPhysics(),
               //   shrinkWrap: true,
               //   itemCount: sweets.length,
               //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               //       crossAxisCount: 2),
               //   itemBuilder: (context, index) => ChangeNotifierProvider.value(
-              //       value: sweets[index],
+              //     value: sweets[index],
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(8.0),
               //       child: DonutCard(
               //         title: sweets[index].title,
               //         rating: sweets[index].rating,
               //         price: sweets[index].price,
-              //       )),
+              //         images: sweets[index].images,
+              //       ),
+              //     ),
+              //   ),
               // ),
+              // ---------------------------------------------
               child: GridView.count(
                 shrinkWrap: true,
                 mainAxisSpacing: 15.0,
@@ -58,26 +63,15 @@ class BodyDindonMainScreen extends StatelessWidget {
                     (SizeConfig.itemWidth / SizeConfig.itemHeight),
                 children: [
                   ...List.generate(
-                    // CatalogModel().allSweets.length,
                     sweets.length,
-                    (index) {
-                      return DonutCard(
-                        title: sweets[index].title,
-                        images: sweets[index].images,
-                        rating: sweets[index].rating,
-                        price: sweets[index].price,
-                        // sweets: CatalogModel().allSweets[index],
-                        // sweets: sweetData,
-                        // press: () => Navigator.pushNamed(
-                        //   context,
-                        //   DindonScreen.routeName,
-                        //   arguments: AllSweetsDetailsArguments(
-                        //     // allSweets: CatalogModel().allSweets[index],
-                        //     allSweets: sweetData,
-                        //   ),
-                        // ),
-                      );
-                    },
+                    (index) => ChangeNotifierProvider.value(
+                        value: sweets[index],
+                        child: DonutCard(
+                          title: sweets[index].title,
+                          images: sweets[index].images,
+                          rating: sweets[index].rating,
+                          price: sweets[index].price,
+                        )),
                   ),
                 ],
               ),

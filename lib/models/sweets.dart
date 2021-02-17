@@ -232,10 +232,6 @@ class Sweets with ChangeNotifier {
   Sweet findById(String id) {
     return _allSweets.firstWhere((sweet) => sweet.id == id);
   }
-
-  // Sweets getByPosition(int position) {
-  //   return getById(position);
-  // }
 }
 
 // const String description =

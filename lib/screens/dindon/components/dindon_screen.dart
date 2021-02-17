@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DindonScreen extends StatelessWidget {
-  static String routeName = '/dindondetails';
+  static const routeName = '/dindondetails';
   @override
   Widget build(BuildContext context) {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
