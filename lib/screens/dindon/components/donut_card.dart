@@ -10,8 +10,10 @@ class DonutCard extends StatelessWidget {
   final String images;
   final double rating;
   final int price;
+  final Function press;
 
-  DonutCard({Key key, this.title, this.images, this.rating, this.price});
+  DonutCard(
+      {Key key, this.title, this.images, this.rating, this.price, this.press});
   // const DonutCard({
   //   Key key,
   //   this.sweets,
@@ -25,7 +27,7 @@ class DonutCard extends StatelessWidget {
     // final sweetId = ModalRoute.of(context).settings.arguments as String;
     // final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
     final sweet = Provider.of<Sweet>(context);
-    final cart = Provider.of<Cart>(context);
+    // final cart = Provider.of<Cart>(context);
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(248, 242, 244, 0.5),
@@ -35,8 +37,10 @@ class DonutCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, DindonScreen.routeName,
-              arguments: sweet.id);
+          // Navigator.pushNamed(context, DindonScreen.routeName,
+          //     arguments: sweet.id);
+          Navigator.of(context)
+              .pushNamed(DindonScreen.routeName, arguments: sweet.id);
         },
         child: Column(
           children: [
@@ -57,7 +61,6 @@ class DonutCard extends StatelessWidget {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      // '${widget.sweets.price}₽',
                       '$price₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
