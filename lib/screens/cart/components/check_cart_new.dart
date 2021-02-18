@@ -1,16 +1,14 @@
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cookie/models/orders.dart';
 
-class CheckCart extends StatefulWidget {
-  CheckCart({Key key}) : super(key: key);
-
-  @override
-  _CheckCartState createState() => _CheckCartState();
-}
-
-class _CheckCartState extends State<CheckCart> {
+class CheckCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // final cart = Provider.of<Cart>(context);
+    final cart = Provider.of<Cart>(context);
     return Container(
       alignment: Alignment.bottomCenter,
       height: getProportionateScreenWidth(100),
@@ -76,19 +74,39 @@ class _CheckCartState extends State<CheckCart> {
                 borderRadius: BorderRadius.circular(40),
               ),
               child: InkWell(
-                child: Text(
-                  'Проверить',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                child: CheckoutButton(
+                  cart: cart,
                 ),
-                onTap: () {
-                  // var cart = context.read<Cart>();
-                  // cart.add(widget.widget.allSweets);
-                },
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CheckoutButton extends StatefulWidget {
+  final Cart cart;
+
+  const CheckoutButton({Key key, this.cart}) : super(key: key);
+
+  @override
+  _CheckoutButtonState createState() => _CheckoutButtonState();
+}
+
+class _CheckoutButtonState extends State<CheckoutButton> {
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      child: Text('Проверить'),
+      onPressed: widget.cart.totalAmount <= 0
+          ? null
+          : () async {
+              await Provider.of<Orders>(context, listen: false).addOrder(
+                  widget.cart.allSweets.values.toList(),
+                  widget.cart.totalAmount);
+            },
     );
   }
 }

@@ -1,11 +1,12 @@
-import 'package:cookie/database/firestore_crud_page.dart';
-import 'package:cookie/models/Cart.dart';
+// import 'package:cookie/database/firestore_crud_page.dart';
+// import 'package:cookie/models/Cart.dart';
+import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         StreamProvider(
             create: (context) =>
                 context.read<AuthentificationService>().authStateChanges),
-        Provider(create: (context) => CatalogModel()),
+        // Provider(create: (context) => CatalogModel()),
         ChangeNotifierProvider(
           create: (context) => GoogleSignInProvider(),
           child: StreamBuilder(
@@ -50,13 +51,10 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        ChangeNotifierProxyProvider<CatalogModel, Cart>(
-          create: (context) => Cart(),
-          update: (context, catalog, cart) {
-            cart.catalog = catalog;
-            return cart;
-          },
-        ),
+        ChangeNotifierProvider.value(value: Sweets()),
+        ChangeNotifierProvider.value(value: Sweet()),
+        ChangeNotifierProvider.value(value: Cart()),
+        ChangeNotifierProvider.value(value: Orders()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

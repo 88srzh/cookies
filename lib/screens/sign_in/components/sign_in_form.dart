@@ -20,7 +20,6 @@ class _SignFormState extends State<SignForm> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  // final _auth = FirebaseAuth.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
   String email;
   String password;
@@ -175,9 +174,6 @@ class _SignFormState extends State<SignForm> {
     final form = _formKey.currentState;
     if (_formKey.currentState.validate()) {
       form.save();
-      // AuthResult result = await FirebaseAuth.instance
-      //     .createUserWithEmailAndPassword(email: email, password: password);
-      // FirebaseUser user = result.user;
     }
   }
 }

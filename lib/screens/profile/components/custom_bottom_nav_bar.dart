@@ -38,15 +38,15 @@ class CustomBottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/Shop Icon.svg',
-                color: MenuState.home == selectedMenu
-                    ? kPrimaryColor
-                    : inActiveIconColor,
-              ),
-              onPressed: () =>
-                  Navigator.pushNamed(context, HomeScreen.routeName),
-            ),
+                icon: SvgPicture.asset(
+                  'assets/icons/Shop Icon.svg',
+                  color: MenuState.home == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () {}
+                // Navigator.pushNamed(context, HomeScreen.routeName),
+                ),
             IconButton(
               icon: SvgPicture.asset(
                 'assets/icons/Heart Icon.svg',

@@ -1,4 +1,3 @@
-import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthentificationService {

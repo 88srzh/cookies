@@ -1,24 +1,30 @@
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cookie/models/cart.dart';
+import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 
-class DonutCard extends StatefulWidget {
-  const DonutCard({
-    Key key,
-    @required this.sweets,
-    @required this.press,
-  }) : super(key: key);
+class DonutCard extends StatelessWidget {
+  final String title;
+  final String images;
+  final double rating;
+  final int price;
+  final Function press;
 
-  final Sweets sweets;
-  final GestureTapCallback press;
+  DonutCard(
+      {Key key, this.title, this.images, this.rating, this.price, this.press});
+  // const DonutCard({
+  //   Key key,
+  //   this.sweets,
+  //   this.press,
+  // }) : super(key: key);
 
-  @override
-  _DonutCardState createState() => _DonutCardState();
-}
-
-class _DonutCardState extends State<DonutCard> {
+  // final Sweets sweets;
+  //
   @override
   Widget build(BuildContext context) {
+    final sweet = Provider.of<Sweet>(context);
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(248, 242, 244, 0.5),
@@ -27,7 +33,10 @@ class _DonutCardState extends State<DonutCard> {
         ),
       ),
       child: GestureDetector(
-        onTap: widget.press,
+        onTap: () {
+          Navigator.of(context)
+              .pushNamed(DindonScreen.routeName, arguments: sweet.id);
+        },
         child: Column(
           children: [
             Row(
@@ -47,7 +56,7 @@ class _DonutCardState extends State<DonutCard> {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '${widget.sweets.price}₽',
+                      '$price₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -64,9 +73,7 @@ class _DonutCardState extends State<DonutCard> {
                 width: getProportionateScreenWidth(100),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset(
-                    widget.sweets.images,
-                  ),
+                  child: Image.asset(images),
                 ),
               ),
             ),
@@ -74,7 +81,8 @@ class _DonutCardState extends State<DonutCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${widget.sweets.title}',
+                  // '${widget.sweets.title}',
+                  '$title',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -106,12 +114,14 @@ class _DonutCardState extends State<DonutCard> {
                       tapFavourite();
                     },
                     // child: Icon(Icons.favorite_outline),
-                    child: widget.sweets.isFavourite
+                    // child: widget.sweets.isFavourite
+                    child: sweet.isFavourite
                         ? Icon(Icons.favorite_outline)
                         : Icon(Icons.favorite),
                   ),
                   Text(
-                    '${widget.sweets.rating}',
+                    // '${widget.sweets.rating}',
+                    '$rating',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -126,13 +136,14 @@ class _DonutCardState extends State<DonutCard> {
     );
   }
 
+// ! - add tap to favourite
   void tapFavourite() {
-    setState(() {
-      if (widget.sweets.isFavourite) {
-        widget.sweets.isFavourite = false;
-      } else {
-        widget.sweets.isFavourite = true;
-      }
-    });
+    // setState(() {
+    //   if (widget.sweets.isFavourite) {
+    //     widget.sweets.isFavourite = false;
+    //   } else {
+    //     widget.sweets.isFavourite = true;
+    //   }
+    // });
   }
 }
