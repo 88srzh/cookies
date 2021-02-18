@@ -1,11 +1,11 @@
-import 'dart:collection';
+// import 'dart:collection';
 
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class Item extends ChangeNotifier {
-  final List<Item> _items = [];
+// class Item extends ChangeNotifier {
+//   final List<Item> _items = [];
 
-  UnmodifiableListView<Item> get items => UnmodifiableListView(_items);
+//   UnmodifiableListView<Item> get items => UnmodifiableListView(_items);
 
-  int get totalItemsPrice => _items.length * 40;
-}
+//   int get totalItemsPrice => _items.length * 40;
+// }
