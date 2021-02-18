@@ -50,16 +50,7 @@ class Sweet extends ChangeNotifier {
       this.likes -= 1;
     }
   }
-
-  // @override
-  // int get hashCode => id;
-
-  // getById(int id) => Sweets(id: id);
-
-  // getByPosition(int position) {
-  //   return getById(position);
 }
-// }
 
 class Sweets with ChangeNotifier {
   List<Sweet> _allSweets = [
