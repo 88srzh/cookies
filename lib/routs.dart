@@ -14,7 +14,7 @@ import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen_new.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/auth/authentification_wrapper.dart';
@@ -23,7 +23,7 @@ import 'package:cookie/screens/auth/google_logout_page.dart';
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
-  SignInScreen.routeName: (context) => SignInScreen(),
+  // SignInScreen.routeName: (context) => SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
