@@ -15,6 +15,7 @@ class Sweet extends ChangeNotifier {
   final String saltGramm;
   final String fatGramm;
   final String images;
+  final String categories;
   // final List<Color> colors;
   // final Color colors;
   final double rating;
@@ -40,6 +41,7 @@ class Sweet extends ChangeNotifier {
     this.saltGramm,
     this.fatGramm,
     this.energyGramm,
+    this.categories,
   });
 
   void likeSweets() {
@@ -55,6 +57,7 @@ class Sweet extends ChangeNotifier {
 class Sweets with ChangeNotifier {
   List<Sweet> _allSweets = [
     Sweet(
+      categories: 'donuts',
       id: '1',
       images: 'assets/images/donut_pink_resize.png',
       // colors: [
@@ -81,6 +84,7 @@ class Sweets with ChangeNotifier {
       energyGramm: '140 Ккал',
     ),
     Sweet(
+      categories: 'donuts',
       id: '2',
       images: 'assets/images/donut_chocolate.png',
       // colors: [
@@ -106,6 +110,7 @@ class Sweets with ChangeNotifier {
       energyGramm: '200 Ккал',
     ),
     Sweet(
+      categories: 'donuts',
       id: '3',
       images: 'assets/images/donut_coconut.png',
       // colors: [
@@ -132,6 +137,7 @@ class Sweets with ChangeNotifier {
       energyGramm: '175 Ккал',
     ),
     Sweet(
+      categories: 'donuts',
       id: '4',
       images: 'assets/images/doughnut_caramel.png',
       // colors: [
@@ -157,6 +163,7 @@ class Sweets with ChangeNotifier {
       energyGramm: '180 Ккал',
     ),
     Sweet(
+      categories: 'donuts',
       id: '5',
       images: 'assets/images/donut_pink_resize.png',
       // colors: [
@@ -182,6 +189,7 @@ class Sweets with ChangeNotifier {
       energyGramm: '140 Ккал',
     ),
     Sweet(
+      categories: 'donuts',
       id: '6',
       images: 'assets/images/donut_pink_resize.png',
       // colors: [
@@ -190,6 +198,46 @@ class Sweets with ChangeNotifier {
       //   Color(0xFFDECB9C),
       //   Colors.white,
       // ],
+      title: 'Красный вельвет',
+      price: 65,
+      likes: 0,
+      // description: description,
+      rating: 4.8,
+      isFavourite: true,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Sweet(
+      categories: 'burgers',
+      id: '7',
+      images: 'assets/images/chiken_burger.png',
+      title: 'Красный вельвет',
+      price: 65,
+      likes: 0,
+      // description: description,
+      rating: 4.8,
+      isFavourite: true,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Sweet(
+      categories: 'burgers',
+      id: '8',
+      images: 'assets/images/meat_burger.png',
       title: 'Красный вельвет',
       price: 65,
       likes: 0,
