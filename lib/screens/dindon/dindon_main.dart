@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -41,6 +42,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     // _pageController.addListener(() {
     //   setState(() {
     //     currentPage = _pageController.page;
@@ -98,7 +100,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.add_shopping_cart),
+                  leading: Icon(Icons.exit_to_app),
                   title: Text(
                     'Выйти',
                     style: TextStyle(
@@ -110,7 +112,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.add_shopping_cart),
+                  leading: Icon(Icons.exit_to_app),
                   title: Text(
                     'Выйти из Google',
                     style: TextStyle(
@@ -189,6 +191,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                         child: CircleAvatar(
                           backgroundImage:
                               AssetImage('assets/images/avatar_circle2.png'),
+                          // AssetImage(if (user.photoURL = null) ? 'assets/images/avatar_circle2.png' : null),
                         ),
                       ),
                     ],

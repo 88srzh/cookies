@@ -2,7 +2,6 @@ import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 
 class DonutCard extends StatelessWidget {
@@ -14,14 +13,6 @@ class DonutCard extends StatelessWidget {
 
   DonutCard(
       {Key key, this.title, this.images, this.rating, this.price, this.press});
-  // const DonutCard({
-  //   Key key,
-  //   this.sweets,
-  //   this.press,
-  // }) : super(key: key);
-
-  // final Sweets sweets;
-  //
   @override
   Widget build(BuildContext context) {
     final sweet = Provider.of<Sweet>(context);

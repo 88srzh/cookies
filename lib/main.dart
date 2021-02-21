@@ -1,5 +1,3 @@
-// import 'package:cookie/database/firestore_crud_page.dart';
-// import 'package:cookie/models/Cart.dart';
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/sweets.dart';
@@ -34,7 +32,6 @@ class MyApp extends StatelessWidget {
         StreamProvider(
             create: (context) =>
                 context.read<AuthentificationService>().authStateChanges),
-        // Provider(create: (context) => CatalogModel()),
         ChangeNotifierProvider(
           create: (context) => GoogleSignInProvider(),
           child: StreamBuilder(

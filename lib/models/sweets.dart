@@ -166,12 +166,6 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '5',
       images: 'assets/images/donut_pink_resize.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Красный вельвет',
       price: 65,
       likes: 0,
@@ -255,14 +249,6 @@ class Sweets with ChangeNotifier {
       energyGramm: '140 Ккал',
     ),
   ];
-
-  // List<Sweets> get allSweets => _allSweets;
-
-  // set allSweets(List<Sweets> allSweets) {
-  //   _allSweets = allSweets;
-  // }
-
-  // Sweets getById(int id) => Sweets(id);
 
   List<Sweet> get allSweets {
     return [..._allSweets];

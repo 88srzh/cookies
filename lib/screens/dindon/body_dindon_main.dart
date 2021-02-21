@@ -1,6 +1,5 @@
 import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -65,13 +64,14 @@ class BodyDindonMainScreen extends StatelessWidget {
                   ...List.generate(
                     sweets.length,
                     (index) => ChangeNotifierProvider.value(
-                        value: sweets[index],
-                        child: DonutCard(
-                          title: sweets[index].title,
-                          images: sweets[index].images,
-                          rating: sweets[index].rating,
-                          price: sweets[index].price,
-                        )),
+                      value: sweets[index],
+                      child: DonutCard(
+                        title: sweets[index].title,
+                        images: sweets[index].images,
+                        rating: sweets[index].rating,
+                        price: sweets[index].price,
+                      ),
+                    ),
                   ),
                 ],
               ),
