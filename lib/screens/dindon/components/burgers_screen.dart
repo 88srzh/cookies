@@ -5,11 +5,11 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BodyDindonMainScreen extends StatelessWidget {
+class BurgersScreen extends StatelessWidget {
   // final Sweets sweets;
   // final GestureTapCallback press;
 
-  const BodyDindonMainScreen({Key key}) : super(key: key);
+  const BurgersScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class BodyDindonMainScreen extends StatelessWidget {
                     (SizeConfig.itemWidth / SizeConfig.itemHeight),
                 children: [
                   ...List.generate(sweets.length, (index) {
-                    if (sweets[index].isDonuts)
+                    if (sweets[index].isBurgers)
                       return ChangeNotifierProvider.value(
                         value: sweets[index],
                         child: DonutCard(

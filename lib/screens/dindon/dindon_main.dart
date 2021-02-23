@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cookie/screens/dindon/components/burgers_screen.dart';
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -191,7 +192,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                         child: CircleAvatar(
                           backgroundImage:
                               AssetImage('assets/images/avatar_circle2.png'),
-                          // AssetImage(if (user.photoURL = null) ? 'assets/images/avatar_circle2.png' : null),
+                          // AssetImage(user.photoURL),
                         ),
                       ),
                     ],
@@ -245,7 +246,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
             controller: _tabController,
             children: [
               BodyDindonMainScreen(),
-              Icon(Icons.directions_car),
+              BurgersScreen(),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
             ],

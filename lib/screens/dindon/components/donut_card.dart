@@ -10,9 +10,16 @@ class DonutCard extends StatelessWidget {
   final double rating;
   final int price;
   final Function press;
+  final bool isDonuts;
 
   DonutCard(
-      {Key key, this.title, this.images, this.rating, this.price, this.press});
+      {Key key,
+      this.title,
+      this.images,
+      this.rating,
+      this.price,
+      this.press,
+      this.isDonuts});
   @override
   Widget build(BuildContext context) {
     final sweet = Provider.of<Sweet>(context);
@@ -72,7 +79,6 @@ class DonutCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  // '${widget.sweets.title}',
                   '$title',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -111,7 +117,6 @@ class DonutCard extends StatelessWidget {
                         : Icon(Icons.favorite),
                   ),
                   Text(
-                    // '${widget.sweets.rating}',
                     '$rating',
                     style: TextStyle(
                       fontSize: 16,

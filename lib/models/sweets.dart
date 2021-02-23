@@ -21,6 +21,8 @@ class Sweet extends ChangeNotifier {
   final double rating;
   bool isFavourite;
   bool isPopular;
+  bool isDonuts;
+  bool isBurgers;
 
   Sweet({
     this.id,
@@ -42,6 +44,8 @@ class Sweet extends ChangeNotifier {
     this.fatGramm,
     this.energyGramm,
     this.categories,
+    this.isDonuts = false,
+    this.isBurgers = false,
   });
 
   void likeSweets() {
@@ -82,6 +86,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
+      isBurgers: false,
     ),
     Sweet(
       categories: 'donuts',
@@ -108,6 +114,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '9 грамм',
       energyGramm: '200 Ккал',
+      isDonuts: true,
+      isBurgers: false,
     ),
     Sweet(
       categories: 'donuts',
@@ -135,6 +143,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '6 грамм',
       energyGramm: '175 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
       categories: 'donuts',
@@ -161,6 +171,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '6 грамм',
       fatGramm: '11 грамм',
       energyGramm: '180 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
       categories: 'donuts',
@@ -181,6 +193,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
       categories: 'donuts',
@@ -207,6 +221,7 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
     ),
     Sweet(
       categories: 'burgers',
@@ -227,6 +242,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: false,
+      isBurgers: true,
     ),
     Sweet(
       categories: 'burgers',
@@ -247,6 +264,8 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: false,
+      isBurgers: true,
     ),
   ];
 

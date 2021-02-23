@@ -23,7 +23,8 @@ class BodyProfile extends StatelessWidget {
           ListTile(
             onTap: () {},
             leading: Icon(FontAwesomeIcons.solidUser),
-            title: Text(user.displayName),
+            // title: Text(user.displayName),
+            title: Text('Мой профиль'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
@@ -34,7 +35,8 @@ class BodyProfile extends StatelessWidget {
           ListTile(
             onTap: () {},
             leading: Icon(Icons.mail),
-            title: Text(user.email),
+            // title: Text(user.email),
+            title: Text('Почтовый адрес'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
