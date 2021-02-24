@@ -10,16 +10,15 @@ class DonutCard extends StatelessWidget {
   final double rating;
   final int price;
   final Function press;
-  final bool isDonuts;
 
-  DonutCard(
-      {Key key,
-      this.title,
-      this.images,
-      this.rating,
-      this.price,
-      this.press,
-      this.isDonuts});
+  DonutCard({
+    Key key,
+    this.title,
+    this.images,
+    this.rating,
+    this.price,
+    this.press,
+  });
   @override
   Widget build(BuildContext context) {
     final sweet = Provider.of<Sweet>(context);
