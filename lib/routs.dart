@@ -3,17 +3,14 @@ import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-// import 'package:cookie/screens/details/details_screen.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
-// import 'package:cookie/screens/home/home_screen.dart';
-// import 'package:cookie/screens/icecream/icecream_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
-import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
@@ -23,7 +20,6 @@ import 'package:cookie/screens/auth/google_logout_page.dart';
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
-  // SignInScreen.routeName: (context) => SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
@@ -40,4 +36,5 @@ final Map<String, WidgetBuilder> routes = {
   AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
+  FavouritesPage.routeName: (context) => FavouritesPage(),
 };

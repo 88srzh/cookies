@@ -253,7 +253,7 @@ class Sweets with ChangeNotifier {
       title: 'Мясной',
       price: 65,
       likes: 0,
-      // description: description,
+      description: 'Мясной бургер.',
       rating: 4.8,
       isFavourite: true,
       isPopular: true,

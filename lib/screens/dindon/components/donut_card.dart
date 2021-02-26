@@ -21,7 +21,7 @@ class DonutCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final sweet = Provider.of<Sweet>(context);
+    var sweet = Provider.of<Sweet>(context);
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(248, 242, 244, 0.5),

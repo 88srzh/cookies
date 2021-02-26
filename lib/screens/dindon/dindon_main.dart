@@ -1,11 +1,13 @@
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
+import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -74,6 +76,18 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   ),
                   onTap: () {
                     Navigator.pushNamed(context, ProfileScreen.routeName);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(FontAwesomeIcons.solidHeart),
+                  title: Text(
+                    'Любимое',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, FavouritesPage.routeName);
                   },
                 ),
                 ListTile(
