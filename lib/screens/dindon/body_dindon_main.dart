@@ -6,11 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BodyDindonMainScreen extends StatelessWidget {
-  // final Sweets sweets;
-  // final GestureTapCallback press;
-
-  const BodyDindonMainScreen({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final sweetData = Provider.of<Sweets>(context);

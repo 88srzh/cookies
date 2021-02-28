@@ -6,11 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BurgersScreen extends StatelessWidget {
-  // final Sweets sweets;
-  // final GestureTapCallback press;
-
-  const BurgersScreen({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final sweetData = Provider.of<Sweets>(context);
@@ -62,7 +57,8 @@ class BurgersScreen extends StatelessWidget {
                     (SizeConfig.itemWidth / SizeConfig.itemHeight),
                 children: [
                   ...List.generate(sweets.length, (index) {
-                    if (sweets[index].isBurgers)
+                    if (sweets[index].isBurgers) {
+                      sweets.remove(sweets[index].isDonuts);
                       return ChangeNotifierProvider.value(
                         value: sweets[index],
                         child: DonutCard(
@@ -73,6 +69,7 @@ class BurgersScreen extends StatelessWidget {
                           // isDonuts: sweets[index].isBurgers,
                         ),
                       );
+                    }
                     return SizedBox.shrink();
                   }),
                 ],

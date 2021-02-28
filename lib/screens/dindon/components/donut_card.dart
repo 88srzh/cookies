@@ -107,7 +107,8 @@ class DonutCard extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.transparent,
                     onTap: () {
-                      tapFavourite();
+                      // tapFavourite();
+                      Navigator.pushNamed(context, DindonScreen.routeName);
                     },
                     // child: Icon(Icons.favorite_outline),
                     // child: widget.sweets.isFavourite

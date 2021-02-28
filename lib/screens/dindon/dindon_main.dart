@@ -87,7 +87,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushNamed(context, FavouritesPage.routeName);
+                    // Navigator.pushNamed(context, FavouritesPage.routeName);
                   },
                 ),
                 ListTile(
