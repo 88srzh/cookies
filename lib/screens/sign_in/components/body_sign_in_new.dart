@@ -66,19 +66,24 @@ class BodySignInNew extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                        icon: Icon(FontAwesomeIcons.userSecret),
-                        onPressed: () {
-                          context
-                              .read<AuthentificationService>()
-                              .signInAnonymously();
-                        }),
-                    IconButton(
-                      icon: Icon(FontAwesomeIcons.google),
+                      icon:
+                          Icon(FontAwesomeIcons.userSecret, color: Colors.grey),
                       onPressed: () {
-                        final googleProvider =
-                            Provider.of<GoogleSignInProvider>(context,
-                                listen: false);
-                        googleProvider.login();
+                        // context
+                        //     .read<AuthentificationService>()
+                        //     .signInAnonymously();
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.google,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        // final googleProvider =
+                        //     Provider.of<GoogleSignInProvider>(context,
+                        //         listen: false);
+                        // googleProvider.login();
                       },
                     ),
                   ],

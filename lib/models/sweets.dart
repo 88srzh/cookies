@@ -16,8 +16,6 @@ class Sweet extends ChangeNotifier {
   final String fatGramm;
   final String images;
   final String categories;
-  // final List<Color> colors;
-  // final Color colors;
   final double rating;
   bool isFavourite;
   bool isPopular;
@@ -28,7 +26,6 @@ class Sweet extends ChangeNotifier {
     this.id,
     this.likes,
     this.images,
-    // this.colors,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
@@ -76,7 +73,7 @@ class Sweets with ChangeNotifier {
       description:
           '  Классическое лакомство. Это изделия в форме\n кольца, изготовленные из сладкого теста и\n хорошо поджаренные на высококачественном\n растительном масле.',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -93,12 +90,6 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '2',
       images: 'assets/images/donut_chocolate.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Шоколадный',
       price: 75,
       likes: 0,
@@ -121,19 +112,13 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '3',
       images: 'assets/images/donut_coconut.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Ореховый',
       price: 85,
       likes: 0,
       description:
           '  Нежный ореховый мусс, хрустящий фундук в\nкарамели, пралине пекан, шоколадное песочное\nтесто, мороженое «Бельгийский шоколад\n с фундуком»',
       rating: 4.4,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.2',
@@ -150,19 +135,13 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '4',
       images: 'assets/images/doughnut_caramel.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Карамельный',
       price: 95,
       likes: 0,
       description:
           '  Свежие пончики с карамельной начинкой,\nпокрытые сахарной глазурью. Нежный вкус\nкарамели поможет ощутить тепло каждого момента\n',
       rating: 4.1,
-      isFavourite: true,
+      isFavourite: false,
       sugar: '4',
       salt: '0.2',
       fat: '15',
@@ -183,7 +162,7 @@ class Sweets with ChangeNotifier {
       likes: 0,
       description: '  Оригинальный пончик',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -211,7 +190,7 @@ class Sweets with ChangeNotifier {
       likes: 0,
       description: 'Тоже оригинальный',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -231,9 +210,9 @@ class Sweets with ChangeNotifier {
       price: 125,
       likes: 0,
       description:
-          '  Куриный бургер — отличная альтернатива\nобычному: благодаря птице, а не мясу в составе\nкотлеты блюдо получается более легким и нежным.11111111111111111111111111111111111111111111111',
+          '  Куриный бургер — отличная альтернатива\nобычному: благодаря птице, а не мясу в составе\nкотлеты блюдо получается более легким и нежным',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -255,7 +234,7 @@ class Sweets with ChangeNotifier {
       likes: 0,
       description: 'Мясной бургер.',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',

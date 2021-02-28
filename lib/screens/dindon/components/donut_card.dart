@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 
-class DonutCard extends StatelessWidget {
+class DonutCard extends StatefulWidget {
   final String title;
   final String images;
   final double rating;
   final int price;
   final Function press;
+  int likes = 0;
+  bool isFavourite = false;
 
   DonutCard({
     Key key,
@@ -18,7 +20,15 @@ class DonutCard extends StatelessWidget {
     this.rating,
     this.price,
     this.press,
+    this.likes,
+    this.isFavourite,
   });
+
+  @override
+  _DonutCardState createState() => _DonutCardState();
+}
+
+class _DonutCardState extends State<DonutCard> {
   @override
   Widget build(BuildContext context) {
     var sweet = Provider.of<Sweet>(context);
@@ -53,7 +63,7 @@ class DonutCard extends StatelessWidget {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '$price₽',
+                      '${widget.price}₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -70,7 +80,7 @@ class DonutCard extends StatelessWidget {
                 width: getProportionateScreenWidth(100),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset(images),
+                  child: Image.asset(widget.images),
                 ),
               ),
             ),
@@ -78,7 +88,7 @@ class DonutCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '$title',
+                  '${widget.title}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -108,16 +118,13 @@ class DonutCard extends StatelessWidget {
                     splashColor: Colors.transparent,
                     onTap: () {
                       // tapFavourite();
-                      Navigator.pushNamed(context, DindonScreen.routeName);
                     },
-                    // child: Icon(Icons.favorite_outline),
-                    // child: widget.sweets.isFavourite
                     child: sweet.isFavourite
-                        ? Icon(Icons.favorite_outline)
-                        : Icon(Icons.favorite),
+                        ? Icon(Icons.favorite)
+                        : Icon(Icons.favorite_outline),
                   ),
                   Text(
-                    '$rating',
+                    '${widget.rating}',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -132,14 +139,14 @@ class DonutCard extends StatelessWidget {
     );
   }
 
-// ! - add tap to favourite
-  void tapFavourite() {
-    // setState(() {
-    //   if (widget.sweets.isFavourite) {
-    //     widget.sweets.isFavourite = false;
-    //   } else {
-    //     widget.sweets.isFavourite = true;
-    //   }
-    // });
-  }
+  // void tapFavourite() {
+  //   setState(() {
+  //     if (widget.isFavourite = true) {
+  //       widget.isFavourite = false;
+  //     } else {
+  //       widget.isFavourite = true;
+  //       counter += counter;
+  //     }
+  // });
+  // }
 }
