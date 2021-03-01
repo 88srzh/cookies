@@ -31,7 +31,7 @@ class _SignInScreenNewState extends State<SignInScreenNew> {
     if (user == null) {
       return Scaffold(
         backgroundColor: Colors.transparent,
-        body: BodySignInNew(),
+        body: BodySignIn(),
       );
     }
     return DindonMainScreen();
