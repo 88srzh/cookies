@@ -33,7 +33,6 @@ class BodyCart extends StatelessWidget {
                 cart.allSweets.values.toList()[index].title,
                 cart.allSweets.values.toList()[index].images,
               ),
-              // ),
             ),
           ),
         ),

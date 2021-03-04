@@ -4,15 +4,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 
 class ProfileMenu extends StatelessWidget {
+  final String text;
+  final Icon icon;
+  final VoidCallback press;
+
   const ProfileMenu({
     Key key,
     @required this.text,
     @required this.icon,
     @required this.press,
   }) : super(key: key);
-
-  final String text, icon;
-  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +26,12 @@ class ProfileMenu extends StatelessWidget {
         onPressed: press,
         child: Row(
           children: [
-            SvgPicture.asset(
-              icon,
-              width: 22,
-              color: kPrimaryColor,
-            ),
+            Icon(icon.icon),
+            // SvgPicture.asset(
+            //   icon,
+            //   width: 22,
+            //   color: kPrimaryColor,
+            // ),
             SizedBox(width: 20),
             Expanded(
               child: Text(

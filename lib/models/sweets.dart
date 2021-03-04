@@ -15,17 +15,17 @@ class Sweet extends ChangeNotifier {
   final String saltGramm;
   final String fatGramm;
   final String images;
-  // final List<Color> colors;
-  // final Color colors;
+  final String categories;
   final double rating;
   bool isFavourite;
   bool isPopular;
+  bool isDonuts;
+  bool isBurgers;
 
   Sweet({
     this.id,
     this.likes,
     this.images,
-    // this.colors,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
@@ -40,6 +40,9 @@ class Sweet extends ChangeNotifier {
     this.saltGramm,
     this.fatGramm,
     this.energyGramm,
+    this.categories,
+    this.isDonuts = false,
+    this.isBurgers = false,
   });
 
   void likeSweets() {
@@ -55,6 +58,7 @@ class Sweet extends ChangeNotifier {
 class Sweets with ChangeNotifier {
   List<Sweet> _allSweets = [
     Sweet(
+      categories: 'donuts',
       id: '1',
       images: 'assets/images/donut_pink_resize.png',
       // colors: [
@@ -69,7 +73,7 @@ class Sweets with ChangeNotifier {
       description:
           '  Классическое лакомство. Это изделия в форме\n кольца, изготовленные из сладкого теста и\n хорошо поджаренные на высококачественном\n растительном масле.',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -79,16 +83,13 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
+      isBurgers: false,
     ),
     Sweet(
+      categories: 'donuts',
       id: '2',
       images: 'assets/images/donut_chocolate.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Шоколадный',
       price: 75,
       likes: 0,
@@ -104,23 +105,20 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '9 грамм',
       energyGramm: '200 Ккал',
+      isDonuts: true,
+      isBurgers: false,
     ),
     Sweet(
+      categories: 'donuts',
       id: '3',
       images: 'assets/images/donut_coconut.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Ореховый',
       price: 85,
       likes: 0,
       description:
           '  Нежный ореховый мусс, хрустящий фундук в\nкарамели, пралине пекан, шоколадное песочное\nтесто, мороженое «Бельгийский шоколад\n с фундуком»',
       rating: 4.4,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.2',
@@ -130,23 +128,20 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '6 грамм',
       energyGramm: '175 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
+      categories: 'donuts',
       id: '4',
       images: 'assets/images/doughnut_caramel.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Карамельный',
       price: 95,
       likes: 0,
       description:
           '  Свежие пончики с карамельной начинкой,\nпокрытые сахарной глазурью. Нежный вкус\nкарамели поможет ощутить тепло каждого момента\n',
       rating: 4.1,
-      isFavourite: true,
+      isFavourite: false,
       sugar: '4',
       salt: '0.2',
       fat: '15',
@@ -155,22 +150,19 @@ class Sweets with ChangeNotifier {
       saltGramm: '6 грамм',
       fatGramm: '11 грамм',
       energyGramm: '180 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
+      categories: 'donuts',
       id: '5',
       images: 'assets/images/donut_pink_resize.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Красный вельвет',
       price: 65,
       likes: 0,
-      // description: description,
+      description: '  Оригинальный пончик',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -180,8 +172,11 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
+      // isBurgers: false,
     ),
     Sweet(
+      categories: 'donuts',
       id: '6',
       images: 'assets/images/donut_pink_resize.png',
       // colors: [
@@ -193,9 +188,9 @@ class Sweets with ChangeNotifier {
       title: 'Красный вельвет',
       price: 65,
       likes: 0,
-      // description: description,
+      description: 'Тоже оригинальный',
       rating: 4.8,
-      isFavourite: true,
+      isFavourite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -205,16 +200,54 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
+      isDonuts: true,
+    ),
+    Sweet(
+      categories: 'burgers',
+      id: '7',
+      images: 'assets/images/chiken_burger.png',
+      title: 'Сочная курочка',
+      price: 125,
+      likes: 0,
+      description:
+          '  Куриный бургер — отличная альтернатива\nобычному: благодаря птице, а не мясу в составе\nкотлеты блюдо получается более легким и нежным',
+      rating: 4.8,
+      isFavourite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+      isDonuts: false,
+      isBurgers: true,
+    ),
+    Sweet(
+      categories: 'burgers',
+      id: '8',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      likes: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavourite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+      isDonuts: false,
+      isBurgers: true,
     ),
   ];
-
-  // List<Sweets> get allSweets => _allSweets;
-
-  // set allSweets(List<Sweets> allSweets) {
-  //   _allSweets = allSweets;
-  // }
-
-  // Sweets getById(int id) => Sweets(id);
 
   List<Sweet> get allSweets {
     return [..._allSweets];

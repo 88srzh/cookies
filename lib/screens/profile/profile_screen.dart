@@ -1,6 +1,6 @@
-import 'package:cookie/enums.dart';
+// import 'package:cookie/enums.dart';
 import 'package:cookie/screens/profile/components/body_profile.dart';
-import 'package:cookie/screens/profile/components/custom_bottom_nav_bar.dart';
+// import 'package:cookie/screens/profile/components/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,9 +12,9 @@ class ProfileScreen extends StatelessWidget {
         title: Text('Профиль'),
       ),
       body: BodyProfile(),
-      bottomNavigationBar: CustomBottomNavBar(
-        selectedMenu: MenuState.profile,
-      ),
+      // bottomNavigationBar: CustomBottomNavBar(
+      //   selectedMenu: MenuState.profile,
+      // ),
     );
   }
 }

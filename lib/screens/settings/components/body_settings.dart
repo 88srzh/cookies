@@ -1,6 +1,6 @@
 import 'package:cookie/screens/settings/components/general_card.dart';
 import 'package:cookie/screens/settings/components/heading_grey_card.dart';
-import 'package:cookie/screens/settings/components/account_card.dart';
+// import 'package:cookie/screens/settings/components/account_card.dart';
 import 'package:cookie/screens/settings/components/other_card.dart';
 import 'package:cookie/screens/settings/components/security_card.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ class BodySettingsScreen extends StatelessWidget {
         children: [
           GreyCard(heading: 'Общее'),
           GeneralCard(),
-          GreyCard(heading: 'Аккаунт'),
-          AccountCard(),
+          // GreyCard(heading: 'Аккаунт'),
+          // AccountCard(),
           GreyCard(heading: 'Безопасность'),
           SecurityCard(),
           GreyCard(heading: 'Другое'),

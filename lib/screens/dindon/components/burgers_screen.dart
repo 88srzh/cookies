@@ -5,7 +5,7 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BodyDindonMainScreen extends StatelessWidget {
+class BurgersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sweetData = Provider.of<Sweets>(context);
@@ -57,7 +57,8 @@ class BodyDindonMainScreen extends StatelessWidget {
                     (SizeConfig.itemWidth / SizeConfig.itemHeight),
                 children: [
                   ...List.generate(sweets.length, (index) {
-                    if (sweets[index].isDonuts)
+                    if (sweets[index].isBurgers) {
+                      sweets.remove(sweets[index].isDonuts);
                       return ChangeNotifierProvider.value(
                         value: sweets[index],
                         child: DonutCard(
@@ -65,10 +66,10 @@ class BodyDindonMainScreen extends StatelessWidget {
                           images: sweets[index].images,
                           rating: sweets[index].rating,
                           price: sweets[index].price,
-                          isFavourite: sweets[index].isFavourite,
                           // isDonuts: sweets[index].isBurgers,
                         ),
                       );
+                    }
                     return SizedBox.shrink();
                   }),
                 ],

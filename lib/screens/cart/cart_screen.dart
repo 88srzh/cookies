@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cookie/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/components/check_button.dart';
 import 'package:cookie/models/orders.dart';
 
 class CartScreen extends StatelessWidget {
@@ -14,6 +15,7 @@ class CartScreen extends StatelessWidget {
       appBar: buildAppBar(context),
       body: BodyCart(),
       // bottomNavigationBar: CheckCart(),
+
       bottomNavigationBar: Container(
         alignment: Alignment.bottomCenter,
         height: getProportionateScreenWidth(100),
@@ -27,9 +29,9 @@ class CartScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: Color.fromRGBO(250, 237, 238, 1.0),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
-          ),
+              // topLeft: Radius.circular(40),
+              // topRight: Radius.circular(40),
+              ),
         ),
         child: Padding(
           padding: EdgeInsets.only(
@@ -56,32 +58,38 @@ class CartScreen extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'Итого',
+                          text: 'Итого\n\n',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
                           ),
-                        )
+                        ),
+                        TextSpan(
+                          text: '${cart.totalAmount}₽',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
               Container(
-                padding: EdgeInsets.only(
-                  top: getProportionateScreenWidth(15),
-                  bottom: getProportionateScreenWidth(15),
-                  left: getProportionateScreenWidth(20),
-                  right: getProportionateScreenWidth(20),
-                ),
+                // padding: EdgeInsets.only(
+                //   top: getProportionateScreenWidth(15),
+                //   bottom: getProportionateScreenWidth(15),
+                //   left: getProportionateScreenWidth(20),
+                //   right: getProportionateScreenWidth(20),
+                // ),
                 decoration: BoxDecoration(
                   color: Colors.grey[50],
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: InkWell(
-                  child: CheckoutButton(
-                    cart: cart,
-                  ),
+                child: CheckoutButton(
+                  cart: cart,
                 ),
               ),
             ],
@@ -93,21 +101,22 @@ class CartScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-        // Стрелочку исправить?
-        title: Column(
-      children: [
-        Text(
-          'Корзина',
-          style: TextStyle(color: Colors.black),
-        ),
-        Text(
-          'items',
-          // '${carts.length} вкусняшки',
-          // '${cart.}'
-          style: Theme.of(context).textTheme.caption,
-        ),
-      ],
-    ));
+      // Стрелочку исправить?
+      title: Column(
+        children: [
+          Text(
+            'Корзина',
+            style: TextStyle(color: Colors.black),
+          ),
+          Text(
+            'items',
+            // '${carts.length} вкусняшки',
+            // '${cart.}'
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -123,16 +132,35 @@ class CheckoutButton extends StatefulWidget {
 class _CheckoutButtonState extends State<CheckoutButton> {
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      child: Text('Проверить'),
-      onPressed: widget.cart.totalAmount <= 0
-          ? null
-          : () async {
-              await Provider.of<Orders>(context, listen: false).addOrder(
-                widget.cart.allSweets.values.toList(),
-                widget.cart.totalAmount);
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey[50],
+        borderRadius: BorderRadius.circular(40),
+      ),
+      child: FlatButton(
+        padding: EdgeInsets.only(
+          top: getProportionateScreenWidth(15),
+          bottom: getProportionateScreenWidth(15),
+          left: getProportionateScreenWidth(20),
+          right: getProportionateScreenWidth(20),
+        ),
+        child: Text(
+          'Проверить',
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        onPressed: widget.cart.totalAmount <= 0
+            ? null
+            : () async {
+                await Provider.of<Orders>(context, listen: false).addOrder(
+                    widget.cart.allSweets.values.toList(),
+                    widget.cart.totalAmount);
                 widget.cart.clear();
-            },
+              },
+      ),
     );
   }
 }

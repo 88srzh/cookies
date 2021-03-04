@@ -1,6 +1,5 @@
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
-// import 'package:cookie/screens/dindon/components/body_dindon.dart';
 import 'package:cookie/screens/dindon/components/ingredient_card.dart';
 import 'package:cookie/screens/dindon/dindon_main.dart';
 import 'package:cookie/size_config.dart';
@@ -17,10 +16,9 @@ class DindonScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
       body: SingleChildScrollView(
-        // child: BodyDindonScreen(allSweets: allarguments.allSweets)),
-        // child: BodyDindonScreen(),
         child: SafeArea(
           child: Container(
+            // height: getProportionateScreenHeight(810),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -35,7 +33,7 @@ class DindonScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: getProportionateScreenWidth(0)),
-                // HeaderDindonScreen(),
+                /* HEADER*/
                 Padding(
                   padding: EdgeInsets.only(
                     left: getProportionateScreenWidth(0),
@@ -44,7 +42,6 @@ class DindonScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Icon(Icons.arrow_back),
                       IconButton(
                         padding: EdgeInsets.all(0),
                         icon: Icon(Icons.arrow_back),
@@ -55,7 +52,10 @@ class DindonScreen extends StatelessWidget {
                       ),
                       // ! change
                       IconButton(
-                        icon: Icon(Icons.favorite_outline),
+                        icon: Icon(
+                          Icons.favorite,
+                          size: 30,
+                        ),
                         onPressed: () {},
                         // color: widget.allSweets.isFavourite
                         // ? Color(0xFFFFE6E6)
@@ -145,24 +145,22 @@ class DindonScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: getProportionateScreenWidth(5),
-                            left: getProportionateScreenWidth(20),
-                            right: getProportionateScreenWidth(20),
-                          ),
-                          child: Text(
-                            // widget.allSweets.description,
-                            loadedSweet.description,
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: getProportionateScreenWidth(5),
+                              left: getProportionateScreenWidth(20),
+                              right: getProportionateScreenWidth(20),
+                            ),
+                            child: Text(
+                              loadedSweet.description,
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ],
                 ),
-
-                // BottomAddToCart(widget: widget),
-
                 // ! bottom_add_to_cart
                 Container(
                   alignment: Alignment.bottomCenter,
@@ -198,7 +196,6 @@ class DindonScreen extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    // text: '\n${widget.widget.allSweets.price}₽\n',
                                     text: '\n${loadedSweet.price}',
                                     style: TextStyle(
                                       color: Colors.black,
@@ -237,13 +234,6 @@ class DindonScreen extends StatelessWidget {
                                   fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                             onTap: () {
-                              // Scaffold.of(context).showSnackBar(SnackBar(
-                              //   duration: Duration(seconds: 3),
-                              //   content: Text('Товар добавлен'),
-                              // ));
-                              // cartToast();
-                              // var cart = context.read<Cart>();
-                              // cart.add();
                               cart.addItem(sweetId, loadedSweet.title,
                                   loadedSweet.price);
                             },

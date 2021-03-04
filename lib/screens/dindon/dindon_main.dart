@@ -1,13 +1,17 @@
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
+import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cookie/screens/dindon/components/burgers_screen.dart';
 
 class DindonMainScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -41,6 +45,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     // _pageController.addListener(() {
     //   setState(() {
     //     currentPage = _pageController.page;
@@ -74,6 +79,18 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   },
                 ),
                 ListTile(
+                  leading: Icon(FontAwesomeIcons.solidHeart),
+                  title: Text(
+                    'Любимое',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  onTap: () {
+                    // Navigator.pushNamed(context, FavouritesPage.routeName);
+                  },
+                ),
+                ListTile(
                   leading: Icon(Icons.settings),
                   title: Text(
                     'Настройки',
@@ -98,7 +115,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.add_shopping_cart),
+                  leading: Icon(Icons.exit_to_app),
                   title: Text(
                     'Выйти',
                     style: TextStyle(
@@ -110,7 +127,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.add_shopping_cart),
+                  leading: Icon(Icons.exit_to_app),
                   title: Text(
                     'Выйти из Google',
                     style: TextStyle(
@@ -189,6 +206,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                         child: CircleAvatar(
                           backgroundImage:
                               AssetImage('assets/images/avatar_circle2.png'),
+                          // AssetImage(user.photoURL),
                         ),
                       ),
                     ],
@@ -242,7 +260,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
             controller: _tabController,
             children: [
               BodyDindonMainScreen(),
-              Icon(Icons.directions_car),
+              BurgersScreen(),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
             ],
