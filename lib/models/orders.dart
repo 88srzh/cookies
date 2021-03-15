@@ -25,8 +25,7 @@ class Orders with ChangeNotifier {
     final timeStamp = DateTime.now();
     try {
       final response = await http.post(
-          Uri.https(
-              'https://food-83d92-default-rtdb.firebaseio.com', 'orders.json'),
+          Uri.https('food-83d92-default-rtdb.firebaseio.com', 'orders.json'),
           body: json.encode({
             'id': DateTime.now().toString(),
             'amount': total,
