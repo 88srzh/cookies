@@ -26,10 +26,10 @@ class Error2Screen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: FlatButton(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)),
+              child: TextButton(
+                // color: Colors.white,
+                // shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(50)),
                 onPressed: () {
                   Navigator.pop(context);
                 },

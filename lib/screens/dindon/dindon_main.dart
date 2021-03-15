@@ -1,7 +1,7 @@
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/dindon/body_dindon_main.dart';
-import 'package:cookie/screens/favourites/favourites_screen.dart';
+// import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
@@ -197,7 +197,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
                   height: getProportionateScreenHeight(60),
                   child: Stack(
                     fit: StackFit.expand,
-                    overflow: Overflow.visible,
+                    // overflow: Overflow.visible,
                     children: [
                       InkWell(
                         onTap: () {

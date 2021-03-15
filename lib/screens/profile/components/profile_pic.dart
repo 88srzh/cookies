@@ -68,7 +68,7 @@ class _ProfilePicState extends State<ProfilePic> {
       width: 115,
       child: Stack(
         fit: StackFit.expand,
-        overflow: Overflow.visible,
+        // overflow: Overflow.visible,
         children: [
           _image == null
               ? Image.asset('assets/images/no_image.jpg')
@@ -86,13 +86,13 @@ class _ProfilePicState extends State<ProfilePic> {
             child: SizedBox(
               height: 46,
               width: 46,
-              child: FlatButton(
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  side: BorderSide(color: Colors.white),
-                ),
-                color: Color(0xFFF5F6F9),
+              child: TextButton(
+                // padding: EdgeInsets.zero,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(50),
+                //   side: BorderSide(color: Colors.white),
+                // ),
+                // color: Color(0xFFF5F6F9),
                 onPressed: getImage,
                 // onLongPress: getGallery,
                 child: SvgPicture.asset('assets/icons/Camera Icon.svg'),
