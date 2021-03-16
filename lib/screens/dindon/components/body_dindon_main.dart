@@ -1,6 +1,6 @@
 import 'package:cookie/models/sweets.dart';
 // import 'package:cookie/screens/details/details_screen.dart';
-import 'package:cookie/screens/dindon/components/dindon_screen.dart';
+// import 'package:cookie/screens/dindon/components/dindon_screen.dart';
 import 'package:cookie/screens/dindon/components/donut_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';

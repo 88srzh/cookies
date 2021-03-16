@@ -16,10 +16,10 @@ class Error404Screen extends StatelessWidget {
             bottom: MediaQuery.of(context).size.height * 0.15,
             left: MediaQuery.of(context).size.width * 0.3,
             right: MediaQuery.of(context).size.width * 0.3,
-            child: FlatButton(
-              color: Color(0xFF6B92F2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
+            child: TextButton(
+              // color: Color(0xFF6B92F2),
+              // shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(50)),
               onPressed: () {
                 Navigator.pop(context);
               },

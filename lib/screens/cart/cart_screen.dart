@@ -1,9 +1,10 @@
+import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:cookie/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/models/cart.dart';
-import 'package:cookie/components/check_button.dart';
+// import 'package:cookie/components/check_button.dart';
 import 'package:cookie/models/orders.dart';
 
 class CartScreen extends StatelessWidget {
@@ -137,13 +138,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         color: Colors.grey[50],
         borderRadius: BorderRadius.circular(40),
       ),
-      child: FlatButton(
-        padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(15),
-          bottom: getProportionateScreenWidth(15),
-          left: getProportionateScreenWidth(20),
-          right: getProportionateScreenWidth(20),
-        ),
+      child: TextButton(
         child: Text(
           'Проверить',
           style: TextStyle(
@@ -153,7 +148,9 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           ),
         ),
         onPressed: widget.cart.totalAmount <= 0
-            ? null
+            ? () {
+                Navigator.pushNamed(context, Error2Screen.routeName);
+              }
             : () async {
                 await Provider.of<Orders>(context, listen: false).addOrder(
                     widget.cart.allSweets.values.toList(),

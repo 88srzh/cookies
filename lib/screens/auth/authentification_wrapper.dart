@@ -1,5 +1,5 @@
 import 'package:cookie/screens/dindon/dindon_main.dart';
-import 'package:cookie/screens/home/home_screen.dart';
+// import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
