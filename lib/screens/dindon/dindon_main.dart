@@ -259,7 +259,7 @@ class _DindonMainScreenState extends State<DindonMainScreen>
             // controller: _pageController,
             controller: _tabController,
             children: [
-              BodyDindonMainScreen(),
+              DonutsScreen(),
               BurgersScreen(),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
@@ -269,15 +269,4 @@ class _DindonMainScreenState extends State<DindonMainScreen>
       ),
     );
   }
-
-  // void handleClick(String value) {
-  //   switch (value) {
-  //     case 'Профиль':
-  //       break;
-  //     case 'Настройки':
-  //       break;
-  //     case 'Выйти':
-  //       break;
-  //   }
-  // }
 }
