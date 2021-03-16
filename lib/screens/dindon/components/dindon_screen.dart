@@ -13,6 +13,7 @@ class DindonScreen extends StatelessWidget {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
     final cart = Provider.of<Cart>(context);
+    final messenger = ScaffoldMessenger.of(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
       body: SingleChildScrollView(
@@ -236,6 +237,9 @@ class DindonScreen extends StatelessWidget {
                             onTap: () {
                               cart.addItem(sweetId, loadedSweet.title,
                                   loadedSweet.price);
+                              messenger.showSnackBar(SnackBar(
+                                content: Text('Товар добавлен в корзину'),
+                              ));
                             },
                           ),
                         ),
