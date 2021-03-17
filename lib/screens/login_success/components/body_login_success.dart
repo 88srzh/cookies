@@ -34,8 +34,7 @@ class BodyLoginSuccess extends StatelessWidget {
           ),
           ContinueButton(
             text: 'На главную',
-            press: () =>
-                Navigator.pushNamed(context, DindonMainScreen.routeName),
+            press: () => Navigator.pushNamed(context, HomeScreen.routeName),
           ),
           Spacer(),
         ],

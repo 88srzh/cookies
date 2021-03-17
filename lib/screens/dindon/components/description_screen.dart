@@ -6,7 +6,7 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DindonScreen extends StatelessWidget {
+class DescriptionScreen extends StatelessWidget {
   static const routeName = '/dindondetails';
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,7 @@ class DindonScreen extends StatelessWidget {
                         padding: EdgeInsets.all(0),
                         icon: Icon(Icons.arrow_back),
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, DindonMainScreen.routeName);
+                          Navigator.pushNamed(context, HomeScreen.routeName);
                         },
                       ),
                       // ! change

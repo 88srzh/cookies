@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
               if (googleProvider.isSigningIn) {
                 return buildLoading();
               } else if (snapshot.hasData) {
-                return DindonMainScreen();
+                return HomeScreen();
               } else {
                 return SignInScreenNew();
               }

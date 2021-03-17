@@ -34,6 +34,6 @@ class _SignInScreenNewState extends State<SignInScreenNew> {
         body: BodySignIn(),
       );
     }
-    return DindonMainScreen();
+    return HomeScreen();
   }
 }

@@ -5,7 +5,7 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BodyDindonMainScreen extends StatelessWidget {
+class DonutsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sweetData = Provider.of<Sweets>(context);

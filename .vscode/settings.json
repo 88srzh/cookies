@@ -9,7 +9,7 @@
     }    
 },
 "editor.fontFamily": "JetBrains Mono, monospace",
-"workbench.colorTheme": "Dartpad Theme",
+"workbench.colorTheme": "Monokai Pro (Filter Octagon)",
 "workbench.preferredDarkColorTheme": "One Dark Pro",
 "workbench.preferredHighContrastColorTheme": "One Dark Pro",
 "editor.fontSize": 14,
