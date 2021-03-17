@@ -1,5 +1,5 @@
 import 'package:cookie/components/continue_button.dart';
-import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/dindon/components/ingredient_card.dart';
-import 'package:cookie/screens/dindon/dindon_main.dart';
+import 'package:cookie/screens/home/components/ingredient_card.dart';
+import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

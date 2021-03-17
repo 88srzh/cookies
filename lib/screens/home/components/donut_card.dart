@@ -2,7 +2,7 @@ import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cookie/screens/dindon/components/description_screen.dart';
+import 'package:cookie/screens/home/components/description_screen.dart';
 
 class DonutCard extends StatefulWidget {
   final String title;

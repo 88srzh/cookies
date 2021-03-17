@@ -1,6 +1,6 @@
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
-import 'package:cookie/screens/dindon/donuts_screen.dart';
+import 'package:cookie/screens/home/donuts_screen.dart';
 // import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
@@ -11,7 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cookie/screens/dindon/burgers_screen.dart';
+import 'package:cookie/screens/home/burgers_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
