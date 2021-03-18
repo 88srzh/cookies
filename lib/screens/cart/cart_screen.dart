@@ -26,7 +26,6 @@ class CartScreen extends StatelessWidget {
               'Корзина',
               style: TextStyle(color: Colors.black),
             ),
-            // ! - add total quantity
             Text(
               '${cart.totalQuantity} шт.',
               style: Theme.of(context).textTheme.caption,
@@ -118,10 +117,6 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
-
-  // AppBar buildAppBar(BuildContext context) {
-  //   return
-  // }
 }
 
 class CheckoutButton extends StatefulWidget {
