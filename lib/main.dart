@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
                 return buildLoading();
               } else if (snapshot.hasData) {
                 return HomeScreen();
+                // return CookiePage();
               } else {
                 return SignInScreenNew();
               }
@@ -57,7 +58,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         initialRoute: SplashScreen.routeName,
-        // home: FirestoreCRUDPage(),
         routes: routes,
       ),
     );

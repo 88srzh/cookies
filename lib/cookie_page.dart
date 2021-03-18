@@ -2,6 +2,7 @@ import 'package:cookie/cookie_detail.dart';
 import 'package:flutter/material.dart';
 
 class CookiePage extends StatelessWidget {
+  static String routeName = '/cookiePage';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

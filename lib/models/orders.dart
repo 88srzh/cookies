@@ -20,8 +20,6 @@ class Orders with ChangeNotifier {
   }
 
   Future<void> addOrder(List<CartItem> cartSweets, double total) async {
-    // final url = 'https://food-83d92-default-rtdb.firebaseio.com/orders.json';
-    // var url = http.get(Uri.https('https://food-83d92-default-rtdb.firebaseio.com', 'orders.json'));
     final timeStamp = DateTime.now();
     try {
       final response = await http.post(

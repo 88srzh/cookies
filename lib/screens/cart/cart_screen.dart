@@ -9,11 +9,31 @@ import 'package:cookie/models/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = '/cart';
+  final Cart cart;
+
+  const CartScreen({this.cart});
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
     return Scaffold(
-      appBar: buildAppBar(context),
+      // appBar: buildAppBar(context),
+      appBar: AppBar(
+        // ! - fix arrow?
+        title: Column(
+          children: [
+            Text(
+              'Корзина',
+              style: TextStyle(color: Colors.black),
+            ),
+            // ! - add total quantity
+            Text(
+              '${cart.totalQuantity} шт.',
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
+        ),
+      ),
       body: BodyCart(),
       // bottomNavigationBar: CheckCart(),
 
@@ -51,7 +71,6 @@ class CartScreen extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          // text: '\n${widget.widget.allSweets.price}₽\n',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30,
@@ -100,25 +119,9 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      // Стрелочку исправить?
-      title: Column(
-        children: [
-          Text(
-            'Корзина',
-            style: TextStyle(color: Colors.black),
-          ),
-          Text(
-            'items',
-            // '${carts.length} вкусняшки',
-            // '${cart.}'
-            style: Theme.of(context).textTheme.caption,
-          ),
-        ],
-      ),
-    );
-  }
+  // AppBar buildAppBar(BuildContext context) {
+  //   return
+  // }
 }
 
 class CheckoutButton extends StatefulWidget {

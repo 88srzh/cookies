@@ -75,6 +75,14 @@ class Cart with ChangeNotifier {
     return total;
   }
 
+  int get totalQuantity {
+    var allQuantity = 0;
+    _allSweets.forEach((key, cartItem) {
+      allQuantity += cartItem.quantity;
+    });
+    return allQuantity;
+  }
+
   void clear() {
     _allSweets = {};
     notifyListeners();

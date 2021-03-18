@@ -1,7 +1,6 @@
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/cart/components/cart_item_card.dart';
 
