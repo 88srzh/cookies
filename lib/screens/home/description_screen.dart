@@ -228,7 +228,11 @@ class DescriptionScreen extends StatelessWidget {
                           ),
                           onTap: () {
                             cart.addItem(
-                                sweetId, loadedSweet.title, loadedSweet.price);
+                              sweetId,
+                              loadedSweet.title,
+                              loadedSweet.price,
+                              loadedSweet.images,
+                            );
                             messenger.showSnackBar(SnackBar(
                               content: Text('Товар добавлен в корзину'),
                             ));

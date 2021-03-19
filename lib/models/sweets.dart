@@ -45,17 +45,6 @@ class Sweet extends ChangeNotifier {
     this.isDonuts = false,
     this.isBurgers = false,
   });
-
-  // void likeSweets() {
-  //   // this.isFavorite = !this.isFavorite;
-  //   if (this.isFavorite) {
-  //     this.favoriteCount += 1;
-  //     isFavorite = false;
-  //   } else {
-  //     this.favoriteCount -= 1;
-  //     isFavorite = true;
-  //   }
-  // }
 }
 
 class Sweets with ChangeNotifier {

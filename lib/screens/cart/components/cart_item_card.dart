@@ -51,8 +51,7 @@ class CartSweet extends StatelessWidget {
                   color: Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                // ! - пытаюсь из details Достать изображение в Cart
-                // child: Image.asset(images),
+                child: Image.asset(images),
               ),
             ),
           ),

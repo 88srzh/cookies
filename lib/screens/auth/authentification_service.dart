@@ -16,7 +16,6 @@ class AuthentificationService {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return 'Вошли';
-      // return FirestoreCRUDPage();
     } on FirebaseAuthException catch (e) {
       return e.message;
     }

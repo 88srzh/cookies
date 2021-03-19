@@ -22,7 +22,7 @@ class Cart with ChangeNotifier {
     return _allSweets.length;
   }
 
-  void addItem(String sweetid, String title, int price) {
+  void addItem(String sweetid, String title, int price, String images) {
     if (_allSweets.containsKey(sweetid)) {
       _allSweets.update(
           sweetid,
@@ -31,6 +31,7 @@ class Cart with ChangeNotifier {
                 title: existingCartItem.title,
                 quantity: existingCartItem.quantity + 1,
                 price: existingCartItem.price,
+                images: existingCartItem.images,
               ));
     } else {
       _allSweets.putIfAbsent(
@@ -40,6 +41,7 @@ class Cart with ChangeNotifier {
                 id: DateTime.now().toString(),
                 quantity: 1,
                 price: price,
+                images: images,
               ));
     }
     notifyListeners();
@@ -62,6 +64,7 @@ class Cart with ChangeNotifier {
                 title: existingCartItem.title,
                 quantity: existingCartItem.quantity - 1,
                 price: existingCartItem.price,
+                images: existingCartItem.images,
               ));
     }
     notifyListeners();

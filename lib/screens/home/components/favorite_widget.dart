@@ -18,7 +18,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         SizedBox(
           width: 18,
           child: Container(
-            child: Text('${loadedSweet.totalFavoriteCount}'),
+            child: Text('${loadedSweet.favoriteCount}'),
           ),
         ),
         Container(
@@ -45,6 +45,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
       if (loadedSweet.isFavorite) {
         loadedSweet.favoriteCount -= 1;
         loadedSweet.isFavorite = false;
+        loadedSweet.totalFavoriteCount -= loadedSweet.favoriteCount;
       } else {
         loadedSweet.favoriteCount += 1;
         loadedSweet.isFavorite = true;
