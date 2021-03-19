@@ -8,13 +8,16 @@ class SizeConfig {
   static Orientation orientation;
   // Для размера карточки
   var size;
+  var screenPadding;
   static double itemHeight;
   static double itemWidth;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
+    // full screen width and height
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
+    screenPadding = _mediaQueryData.padding;
     orientation = _mediaQueryData.orientation;
     // Для размера карточки
     size = MediaQuery.of(context).size;

@@ -65,7 +65,7 @@ class DonutsScreen extends StatelessWidget {
                           images: sweets[index].images,
                           rating: sweets[index].rating,
                           price: sweets[index].price,
-                          isFavourite: sweets[index].isFavourite,
+                          isFavourite: sweets[index].isFavorite,
                           // isDonuts: sweets[index].isBurgers,
                         ),
                       );

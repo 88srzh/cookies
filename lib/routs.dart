@@ -3,7 +3,7 @@ import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-import 'package:cookie/screens/home/components/description_screen.dart';
+import 'package:cookie/screens/home/description_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 // import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';

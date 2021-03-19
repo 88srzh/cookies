@@ -1,3 +1,4 @@
+import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
@@ -123,6 +124,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                   onTap: () {
                     context.read<AuthentificationService>().signOut();
+                    Navigator.pushNamed(
+                        context, AuthentificationPage.routename);
                   },
                 ),
                 ListTile(

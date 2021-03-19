@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class Sweet extends ChangeNotifier {
   final String id;
   final int price;
-  int likes;
+  int favoriteCount;
+  int totalFavoriteCount = 0;
   final String title;
   final String description;
   final String sugar;
@@ -17,17 +18,17 @@ class Sweet extends ChangeNotifier {
   final String images;
   final String categories;
   final double rating;
-  bool isFavourite;
+  bool isFavorite;
   bool isPopular;
   bool isDonuts;
   bool isBurgers;
 
   Sweet({
     this.id,
-    this.likes,
+    this.favoriteCount,
     this.images,
     this.rating = 0.0,
-    this.isFavourite = false,
+    this.isFavorite = false,
     this.isPopular = false,
     this.title,
     this.price,
@@ -45,14 +46,16 @@ class Sweet extends ChangeNotifier {
     this.isBurgers = false,
   });
 
-  void likeSweets() {
-    this.isFavourite = !this.isFavourite;
-    if (this.isFavourite) {
-      this.likes += 1;
-    } else {
-      this.likes -= 1;
-    }
-  }
+  // void likeSweets() {
+  //   // this.isFavorite = !this.isFavorite;
+  //   if (this.isFavorite) {
+  //     this.favoriteCount += 1;
+  //     isFavorite = false;
+  //   } else {
+  //     this.favoriteCount -= 1;
+  //     isFavorite = true;
+  //   }
+  // }
 }
 
 class Sweets with ChangeNotifier {
@@ -61,19 +64,13 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '1',
       images: 'assets/images/donut_pink_resize.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Красный вельвет',
       price: 65,
-      likes: 0,
+      favoriteCount: 0,
       description:
           '  Классическое лакомство. Это изделия в форме\n кольца, изготовленные из сладкого теста и\n хорошо поджаренные на высококачественном\n растительном масле.',
       rating: 4.8,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -92,7 +89,7 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/donut_chocolate.png',
       title: 'Шоколадный',
       price: 75,
-      likes: 0,
+      favoriteCount: 0,
       description:
           '  Красивые ароматные пончики из особого теста\n с добавлением какао-порошка\n\n',
       rating: 4.1,
@@ -114,11 +111,11 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/donut_coconut.png',
       title: 'Ореховый',
       price: 85,
-      likes: 0,
+      favoriteCount: 0,
       description:
           '  Нежный ореховый мусс, хрустящий фундук в\nкарамели, пралине пекан, шоколадное песочное\nтесто, мороженое «Бельгийский шоколад\n с фундуком»',
       rating: 4.4,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.2',
@@ -137,11 +134,11 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/doughnut_caramel.png',
       title: 'Карамельный',
       price: 95,
-      likes: 0,
+      favoriteCount: 0,
       description:
           '  Свежие пончики с карамельной начинкой,\nпокрытые сахарной глазурью. Нежный вкус\nкарамели поможет ощутить тепло каждого момента\n',
       rating: 4.1,
-      isFavourite: false,
+      isFavorite: false,
       sugar: '4',
       salt: '0.2',
       fat: '15',
@@ -159,10 +156,10 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/donut_pink_resize.png',
       title: 'Красный вельвет',
       price: 65,
-      likes: 0,
+      favoriteCount: 0,
       description: '  Оригинальный пончик',
       rating: 4.8,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -179,18 +176,12 @@ class Sweets with ChangeNotifier {
       categories: 'donuts',
       id: '6',
       images: 'assets/images/donut_pink_resize.png',
-      // colors: [
-      //   Color(0xFFF6625E),
-      //   Color(0xFF836DB8),
-      //   Color(0xFFDECB9C),
-      //   Colors.white,
-      // ],
       title: 'Красный вельвет',
       price: 65,
-      likes: 0,
+      favoriteCount: 0,
       description: 'Тоже оригинальный',
       rating: 4.8,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -208,11 +199,11 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/chiken_burger.png',
       title: 'Сочная курочка',
       price: 125,
-      likes: 0,
+      favoriteCount: 0,
       description:
           '  Куриный бургер — отличная альтернатива\nобычному: благодаря птице, а не мясу в составе\nкотлеты блюдо получается более легким и нежным',
       rating: 4.8,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -231,10 +222,10 @@ class Sweets with ChangeNotifier {
       images: 'assets/images/meat_burger.png',
       title: 'Мясной',
       price: 65,
-      likes: 0,
+      favoriteCount: 0,
       description: 'Мясной бургер.',
       rating: 4.8,
-      isFavourite: false,
+      isFavorite: false,
       isPopular: true,
       sugar: '2',
       salt: '0.3',
@@ -255,6 +246,11 @@ class Sweets with ChangeNotifier {
 
   Sweet findById(String id) {
     return _allSweets.firstWhere((sweet) => sweet.id == id);
+  }
+
+  // ! - ?
+  Sweet findByCategories(bool isDonuts) {
+    return _allSweets.firstWhere((donut) => donut.isDonuts = isDonuts);
   }
 }
 

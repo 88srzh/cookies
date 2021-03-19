@@ -2,7 +2,7 @@ import 'package:cookie/models/sweets.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cookie/screens/home/components/description_screen.dart';
+import 'package:cookie/screens/home/description_screen.dart';
 
 class DonutCard extends StatefulWidget {
   final String title;
@@ -119,7 +119,7 @@ class _DonutCardState extends State<DonutCard> {
                     onTap: () {
                       // tapFavourite();
                     },
-                    child: sweet.isFavourite
+                    child: sweet.isFavorite
                         ? Icon(Icons.favorite)
                         : Icon(Icons.favorite_outline),
                   ),
