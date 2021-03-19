@@ -49,9 +49,7 @@ class DescriptionScreen extends StatelessWidget {
                       },
                     ),
                     Row(
-                      children: [
-                        FavoriteWidget(),
-                      ],
+                      children: [FavoriteWidget()],
                     ),
                     // ! change
                   ],

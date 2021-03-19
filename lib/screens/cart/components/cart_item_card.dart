@@ -48,7 +48,8 @@ class CartSweet extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(getProportionateScreenWidth(10)),
                 decoration: BoxDecoration(
-                  color: Color(0xFFF5F6F9),
+                  // color: Color(0xFFF5F6F9),
+                  color: Colors.white30,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Image.asset(images),
