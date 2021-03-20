@@ -16,6 +16,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     return Row(
       children: [
         SizedBox(
+          height: 18,
           width: 18,
           child: Container(
             child: Text('${loadedSweet.favoriteCount}'),
@@ -28,7 +29,6 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                 : Icon(Icons.favorite_outline)),
             color: Colors.black87,
             onPressed: () {
-              // loadedSweet.likeSweets();
               _toggleFavorite();
             },
           ),

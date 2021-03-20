@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 class IngredientCard extends StatelessWidget {
   final String titleCard, ingredients, gramm;
 
-  IngredientCard({@required this.titleCard, this.ingredients, this.gramm});
+  IngredientCard(
+      {@required this.titleCard,
+      @required this.ingredients,
+      @required this.gramm});
 
   @override
   Widget build(BuildContext context) {

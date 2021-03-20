@@ -1,8 +1,9 @@
 import 'package:cookie/models/sweets.dart';
+import 'package:cookie/screens/description/descriprion_screen_2.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cookie/screens/home/description_screen.dart';
+import 'package:cookie/screens/description/description_screen.dart';
 
 class DonutCard extends StatefulWidget {
   final String title;
@@ -42,7 +43,7 @@ class _DonutCardState extends State<DonutCard> {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context)
-              .pushNamed(DescriptionScreen.routeName, arguments: sweet.id);
+              .pushNamed(DescriptionScreen2.routeName, arguments: sweet.id);
         },
         child: Column(
           children: [

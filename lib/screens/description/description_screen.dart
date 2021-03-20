@@ -1,7 +1,7 @@
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:cookie/screens/home/components/favorite_widget.dart';
-import 'package:cookie/screens/home/components/ingredient_card.dart';
+import 'package:cookie/screens/description/components/ingredient_card.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'dart:ui';
 
 class DescriptionScreen extends StatelessWidget {
-  static const routeName = '/dindondetails';
+  static const routeName = '/description';
   @override
   Widget build(BuildContext context) {
     final sweetId = ModalRoute.of(context).settings.arguments as String;

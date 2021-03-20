@@ -1,11 +1,8 @@
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/cart/components/body_cart.dart';
 import 'package:cookie/screens/cart/components/bottom_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/models/cart.dart';
-// import 'package:cookie/components/check_button.dart';
-import 'package:cookie/models/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = '/cart';
@@ -34,7 +31,6 @@ class CartScreen extends StatelessWidget {
         ),
       ),
       body: BodyCart(),
-      // bottomNavigationBar: CheckCart(),
       bottomNavigationBar: BottomCart(bottomCart: cart),
     );
   }
