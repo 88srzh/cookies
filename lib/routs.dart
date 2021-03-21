@@ -1,10 +1,8 @@
-import 'package:cookie/models/errors/2_404_error.dart';
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-import 'package:cookie/screens/description/descriprion_screen_2.dart';
-import 'package:cookie/screens/description/description_screen.dart';
+import 'package:cookie/screens/description/descriprion_screen.dart';
+import 'package:cookie/screens/errors/something_went_wrong.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 // import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
@@ -32,11 +30,11 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
   SignInScreenNew.routeName: (context) => SignInScreenNew(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
-  Error404Screen.routeName: (context) => Error404Screen(),
-  Error2Screen.routeName: (context) => Error2Screen(),
+  // Error404Screen.routeName: (context) => Error404Screen(),
+  // Error2Screen.routeName: (context) => Error2Screen(),
   AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
   // FavouritesPage.routeName: (context) => FavouritesPage(),
-  DescriptionScreen2.routeName: (context) => DescriptionScreen2(),
+  SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
 };

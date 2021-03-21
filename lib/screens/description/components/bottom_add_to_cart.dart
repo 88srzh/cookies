@@ -12,18 +12,20 @@ class BottomDescription extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
     final messenger = ScaffoldMessenger.of(context);
     return Container(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       height: getProportionateScreenWidth(100),
+      width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(20),
       ),
-      width: double.infinity,
       decoration: BoxDecoration(
+        // borderRadius: BorderRadius.only(
+        //     topLeft: Radius.circular(50), topRight: Radius.circular(50)),
         color: Color.fromRGBO(250, 237, 238, 1.0),
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(15),
+          top: getProportionateScreenWidth(30),
           left: getProportionateScreenWidth(10),
           right: getProportionateScreenWidth(10),
           bottom: getProportionateScreenWidth(5),
@@ -31,14 +33,12 @@ class BottomDescription extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RichText(
-              text: TextSpan(
-                text: '\n${loadedSweet.price}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+            Text(
+              '${loadedSweet.price}₽',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
             ),
             Container(

@@ -1,6 +1,6 @@
 import 'package:cookie/models/cart.dart';
-import 'package:cookie/models/errors/7_error_2.dart';
 import 'package:cookie/models/orders.dart';
+import 'package:cookie/screens/errors/something_went_wrong.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,18 +21,19 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         color: Colors.grey[50],
         borderRadius: BorderRadius.circular(40),
       ),
-      child: TextButton(
+      child: InkWell(
         child: Text(
-          'Проверить',
+          'Купить',
           style: TextStyle(
             color: Colors.black87,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
-        onPressed: widget.cart.totalAmount <= 0
+        onTap: widget.cart.totalAmount <= 0
             ? () {
-                Navigator.pushNamed(context, Error2Screen.routeName);
+                Navigator.pushNamed(
+                    context, SomethingWentWrongScreen.routeName);
               }
             : () async {
                 await Provider.of<Orders>(context, listen: false).addOrder(
