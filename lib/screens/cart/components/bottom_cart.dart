@@ -14,7 +14,7 @@ class BottomCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      height: getProportionateScreenWidth(100),
+      height: getProportionateScreenWidth(80),
       // margin: EdgeInsets.only(
       //   top: getProportionateScreenWidth(20),
       // ),

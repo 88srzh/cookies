@@ -13,7 +13,7 @@ class BottomDescription extends StatelessWidget {
     final messenger = ScaffoldMessenger.of(context);
     return Container(
       alignment: Alignment.topCenter,
-      height: getProportionateScreenWidth(100),
+      height: getProportionateScreenWidth(80),
       width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(20),
@@ -25,7 +25,7 @@ class BottomDescription extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(30),
+          top: getProportionateScreenWidth(15),
           left: getProportionateScreenWidth(10),
           right: getProportionateScreenWidth(10),
           bottom: getProportionateScreenWidth(5),
