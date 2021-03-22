@@ -31,10 +31,8 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           ),
         ),
         onTap: widget.cart.totalAmount <= 0
-            ? () {
-                Navigator.pushNamed(
-                    context, SomethingWentWrongScreen.routeName);
-              }
+            ? () =>
+                Navigator.pushNamed(context, SomethingWentWrongScreen.routeName)
             : () async {
                 await Provider.of<Orders>(context, listen: false).addOrder(
                     widget.cart.allSweets.values.toList(),

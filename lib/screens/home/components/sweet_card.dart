@@ -4,31 +4,33 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DonutCard extends StatefulWidget {
-  final String title;
-  final String images;
-  final double rating;
-  final int price;
-  final Function press;
-  int likes = 0;
-  bool isFavourite = false;
+class SweetCard extends StatefulWidget {
+  // final String title;
+  // final String images;
+  // final String categories;
+  // final double rating;
+  // final int price;
+  // final Function press;
+  // int likes = 0;
+  // bool isFavourite;
 
-  DonutCard({
+  SweetCard({
     Key key,
-    this.title,
-    this.images,
-    this.rating,
-    this.price,
-    this.press,
-    this.likes,
-    this.isFavourite,
+    // this.title,
+    // this.images,
+    // this.categories,
+    // this.rating,
+    // this.price,
+    // this.press,
+    // this.likes,
+    // this.isFavourite,
   });
 
   @override
-  _DonutCardState createState() => _DonutCardState();
+  _SweetCardState createState() => _SweetCardState();
 }
 
-class _DonutCardState extends State<DonutCard> {
+class _SweetCardState extends State<SweetCard> {
   @override
   Widget build(BuildContext context) {
     var sweet = Provider.of<Sweet>(context);
@@ -63,7 +65,7 @@ class _DonutCardState extends State<DonutCard> {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '${widget.price}₽',
+                      '${sweet.price}₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -80,7 +82,7 @@ class _DonutCardState extends State<DonutCard> {
                 width: getProportionateScreenWidth(100),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset(widget.images),
+                  child: Image.asset(sweet.images),
                 ),
               ),
             ),
@@ -88,7 +90,7 @@ class _DonutCardState extends State<DonutCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${widget.title}',
+                  '${sweet.title}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -97,7 +99,7 @@ class _DonutCardState extends State<DonutCard> {
                   ),
                 ),
                 Text(
-                  'Данкины',
+                  '${sweet.categories}',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey,
@@ -124,7 +126,7 @@ class _DonutCardState extends State<DonutCard> {
                         : Icon(Icons.favorite_outline),
                   ),
                   Text(
-                    '${widget.rating}',
+                    '${sweet.rating}',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,

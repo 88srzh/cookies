@@ -34,7 +34,7 @@ class BottomCart extends StatelessWidget {
           top: getProportionateScreenWidth(15),
           left: getProportionateScreenWidth(10),
           right: getProportionateScreenWidth(10),
-          bottom: getProportionateScreenWidth(5),
+          bottom: getProportionateScreenWidth(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -34,6 +34,7 @@ class BodyDescription extends StatelessWidget {
               right: getProportionateScreenWidth(20),
               bottom: getProportionateScreenWidth(7),
             ),
+            /* ingredients */
             child: Row(
               children: [
                 Text(
@@ -46,7 +47,6 @@ class BodyDescription extends StatelessWidget {
               ],
             ),
           ),
-          /* ingredients */
           Padding(
             padding: EdgeInsets.all(
               getProportionateScreenWidth(15),

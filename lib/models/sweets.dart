@@ -50,7 +50,7 @@ class Sweet extends ChangeNotifier {
 class Sweets with ChangeNotifier {
   List<Sweet> _allSweets = [
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '1',
       images: 'assets/images/donut_pink_resize.png',
       title: 'Красный вельвет',
@@ -73,7 +73,7 @@ class Sweets with ChangeNotifier {
       isBurgers: false,
     ),
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '2',
       images: 'assets/images/donut_chocolate.png',
       title: 'Шоколадный',
@@ -95,7 +95,7 @@ class Sweets with ChangeNotifier {
       isBurgers: false,
     ),
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '3',
       images: 'assets/images/donut_coconut.png',
       title: 'Ореховый',
@@ -118,7 +118,7 @@ class Sweets with ChangeNotifier {
       // isBurgers: false,
     ),
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '4',
       images: 'assets/images/doughnut_caramel.png',
       title: 'Карамельный',
@@ -140,7 +140,7 @@ class Sweets with ChangeNotifier {
       // isBurgers: false,
     ),
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '5',
       images: 'assets/images/donut_pink_resize.png',
       title: 'Красный вельвет',
@@ -162,7 +162,7 @@ class Sweets with ChangeNotifier {
       // isBurgers: false,
     ),
     Sweet(
-      categories: 'donuts',
+      categories: 'Данкины',
       id: '6',
       images: 'assets/images/donut_pink_resize.png',
       title: 'Красный вельвет',
@@ -183,7 +183,7 @@ class Sweets with ChangeNotifier {
       isDonuts: true,
     ),
     Sweet(
-      categories: 'burgers',
+      categories: 'Бургеры',
       id: '7',
       images: 'assets/images/chiken_burger.png',
       title: 'Сочная курочка',
@@ -206,7 +206,7 @@ class Sweets with ChangeNotifier {
       isBurgers: true,
     ),
     Sweet(
-      categories: 'burgers',
+      categories: 'Бургеры',
       id: '8',
       images: 'assets/images/meat_burger.png',
       title: 'Мясной',

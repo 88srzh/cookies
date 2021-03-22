@@ -20,7 +20,9 @@ class BodyCart extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(20)),
+              horizontal: getProportionateScreenWidth(20),
+              vertical: getProportionateScreenWidth(20),
+            ),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: cart.allSweets.length,

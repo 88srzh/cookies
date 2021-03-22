@@ -1,6 +1,6 @@
 import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/home/components/donut_card.dart';
+import 'package:cookie/screens/home/components/sweet_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,14 +60,14 @@ class DonutsScreen extends StatelessWidget {
                     if (sweets[index].isDonuts)
                       return ChangeNotifierProvider.value(
                         value: sweets[index],
-                        child: DonutCard(
-                          title: sweets[index].title,
-                          images: sweets[index].images,
-                          rating: sweets[index].rating,
-                          price: sweets[index].price,
-                          isFavourite: sweets[index].isFavorite,
-                          // isDonuts: sweets[index].isBurgers,
-                        ),
+                        child: SweetCard(
+                            // title: sweets[index].title,
+                            // images: sweets[index].images,
+                            // rating: sweets[index].rating,
+                            // price: sweets[index].price,
+                            // isFavourite: sweets[index].isFavorite,
+                            // isDonuts: sweets[index].isBurgers,
+                            ),
                       );
                     return SizedBox.shrink();
                   }),
