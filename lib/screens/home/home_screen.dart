@@ -1,8 +1,8 @@
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
+import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
-// import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                   ),
                   onTap: () {
-                    // Navigator.pushNamed(context, FavouritesPage.routeName);
+                    Navigator.pushNamed(context, FavoriteScreen.routeName);
                   },
                 ),
                 ListTile(

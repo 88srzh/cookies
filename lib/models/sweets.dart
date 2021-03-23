@@ -4,7 +4,7 @@ class Sweet extends ChangeNotifier {
   final String id;
   final int price;
   int favoriteCount;
-  int totalFavoriteCount = 0;
+  int totalFavoriteCount;
   final String title;
   final String description;
   final String sugar;

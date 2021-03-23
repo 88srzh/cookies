@@ -1,3 +1,4 @@
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   Widget build(BuildContext context) {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
+    final cart = Provider.of<Cart>(context);
 
     return Row(
       children: [
@@ -41,11 +43,18 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet =
         Provider.of<Sweets>(context, listen: false).findById(sweetId);
+    final cart = Provider.of<Cart>(context);
     setState(() {
       if (loadedSweet.isFavorite) {
         loadedSweet.favoriteCount -= 1;
         loadedSweet.isFavorite = false;
         loadedSweet.totalFavoriteCount -= loadedSweet.favoriteCount;
+        cart.addFavoriteCount(
+          sweetId,
+          loadedSweet.title,
+          loadedSweet.totalFavoriteCount,
+          loadedSweet.images,
+        );
       } else {
         loadedSweet.favoriteCount += 1;
         loadedSweet.isFavorite = true;

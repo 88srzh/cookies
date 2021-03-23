@@ -3,8 +3,8 @@ import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
+import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
-// import 'package:cookie/screens/favourites/favourites_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
@@ -37,4 +37,5 @@ final Map<String, WidgetBuilder> routes = {
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
   // FavouritesPage.routeName: (context) => FavouritesPage(),
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
+  FavoriteScreen.routeName: (context) => FavoriteScreen(),
 };

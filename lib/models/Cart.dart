@@ -7,8 +7,17 @@ class CartItem {
   final int quantity;
   final int price;
   final String images;
+  final bool isFavorite;
+  final int totalFavoriteCount;
 
-  CartItem({this.id, this.title, this.quantity, this.price, this.images});
+  CartItem(
+      {this.id,
+      this.title,
+      this.quantity,
+      this.price,
+      this.images,
+      this.isFavorite,
+      this.totalFavoriteCount});
 }
 
 class Cart with ChangeNotifier {
@@ -44,6 +53,30 @@ class Cart with ChangeNotifier {
                 images: images,
               ));
     }
+    notifyListeners();
+  }
+
+  void addFavoriteCount(
+      String sweetid, String title, int totalFavoriteCount, String images) {
+    if (_allSweets.containsKey(sweetid)) {
+      _allSweets.update(
+          sweetid,
+          (existingFavoriteItem) => CartItem(
+                id: DateTime.now().toString(),
+                title: existingFavoriteItem.title,
+                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount + 1,
+                images: existingFavoriteItem.images,
+              ));
+    } else {
+      _allSweets.putIfAbsent(
+          sweetid,
+          () => CartItem(
+              title: title,
+              id: DateTime.now().toString(),
+              totalFavoriteCount: 1,
+              images: images));
+    }
+
     notifyListeners();
   }
 

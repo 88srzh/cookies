@@ -11,7 +11,7 @@ class DescriptionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     window.physicalSize;
     return Scaffold(
-        backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
+        // backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
         appBar: AppBarDescription(),
         body: BodyDescription(),
         bottomNavigationBar: BottomDescription());
