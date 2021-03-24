@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Sweet extends ChangeNotifier {
   final String id;
   final int price;
-  int favoriteCount;
-  int totalFavoriteCount;
+  int favoriteCount = 0;
+  int totalFavoriteCount = 0;
   final String title;
   final String description;
   final String sugar;

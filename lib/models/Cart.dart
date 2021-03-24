@@ -64,7 +64,7 @@ class Cart with ChangeNotifier {
           (existingFavoriteItem) => CartItem(
                 id: DateTime.now().toString(),
                 title: existingFavoriteItem.title,
-                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount + 1,
+                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount,
                 images: existingFavoriteItem.images,
               ));
     } else {

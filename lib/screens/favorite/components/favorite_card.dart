@@ -20,7 +20,9 @@ class FavoriteCard extends StatelessWidget {
       key: ValueKey(id),
       direction: DismissDirection.endToStart,
       background: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(30),
+            vertical: getProportionateScreenWidth(5)),
         decoration: BoxDecoration(
           color: Color(0xFFFFE6E6),
           borderRadius: BorderRadius.circular(15),
@@ -68,10 +70,15 @@ class FavoriteCard extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.favorite),
-                  Text(
-                    '$totalFavoriteCount',
-                    style: TextStyle(
-                      color: kTextColor,
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: SizedBox(
+                      child: Text(
+                        '$totalFavoriteCount',
+                        style: TextStyle(
+                          color: kTextColor,
+                        ),
+                      ),
                     ),
                   )
                 ],

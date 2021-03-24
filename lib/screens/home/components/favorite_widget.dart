@@ -21,7 +21,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
           height: 18,
           width: 18,
           child: Container(
-            child: Text('${loadedSweet.favoriteCount}'),
+            child: Text('${loadedSweet.totalFavoriteCount}'),
           ),
         ),
         Container(
@@ -43,22 +43,22 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet =
         Provider.of<Sweets>(context, listen: false).findById(sweetId);
-    final cart = Provider.of<Cart>(context);
+    final cart = Provider.of<Cart>(context, listen: false);
     setState(() {
       if (loadedSweet.isFavorite) {
         loadedSweet.favoriteCount -= 1;
         loadedSweet.isFavorite = false;
-        loadedSweet.totalFavoriteCount -= loadedSweet.favoriteCount;
+        loadedSweet.totalFavoriteCount -= 1;
+      } else {
+        loadedSweet.favoriteCount += 1;
+        loadedSweet.isFavorite = true;
+        loadedSweet.totalFavoriteCount += loadedSweet.favoriteCount;
         cart.addFavoriteCount(
           sweetId,
           loadedSweet.title,
           loadedSweet.totalFavoriteCount,
           loadedSweet.images,
         );
-      } else {
-        loadedSweet.favoriteCount += 1;
-        loadedSweet.isFavorite = true;
-        loadedSweet.totalFavoriteCount += loadedSweet.favoriteCount;
       }
     });
   }
