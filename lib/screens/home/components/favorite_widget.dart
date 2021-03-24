@@ -49,6 +49,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         loadedSweet.favoriteCount -= 1;
         loadedSweet.isFavorite = false;
         loadedSweet.totalFavoriteCount -= 1;
+        cart.removeSingleFavoriteCount(sweetId);
       } else {
         loadedSweet.favoriteCount += 1;
         loadedSweet.isFavorite = true;

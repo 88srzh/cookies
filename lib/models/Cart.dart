@@ -80,6 +80,23 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeSingleFavoriteCount(String id) {
+    if (!_allSweets.containsKey(id)) {
+      return;
+    }
+    if (_allSweets[id].totalFavoriteCount > 0) {
+      _allSweets.update(
+          id,
+          (existingFavoriteItem) => CartItem(
+                id: DateTime.now().toString(),
+                title: existingFavoriteItem.title,
+                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount - 1,
+                images: existingFavoriteItem.images,
+              ));
+    }
+    notifyListeners();
+  }
+
   void removeSweet(String id) {
     _allSweets.remove(id);
     notifyListeners();
