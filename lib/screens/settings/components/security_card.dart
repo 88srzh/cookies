@@ -9,10 +9,13 @@ class SecurityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(0))),
-      margin: EdgeInsets.all(0),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+      ),
       child: Column(
         children: [
           SwitchListTile(
