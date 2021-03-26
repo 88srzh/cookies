@@ -35,7 +35,6 @@ final Map<String, WidgetBuilder> routes = {
   AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
-  // FavouritesPage.routeName: (context) => FavouritesPage(),
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
   FavoriteScreen.routeName: (context) => FavoriteScreen(),
 };

@@ -1,4 +1,4 @@
-import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
+// import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_surfix_icon.dart';
 import '../../../components/default_button.dart';

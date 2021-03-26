@@ -7,12 +7,13 @@ class GreyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(0))),
-        color: Color.fromRGBO(243, 239, 249, 1),
-        // color: Colors.red[50],
-        margin: EdgeInsets.all(0),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+        ),
         child: ListTile(
           title: Text(heading),
         ),

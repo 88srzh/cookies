@@ -13,7 +13,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   Widget build(BuildContext context) {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
-    final cart = Provider.of<Cart>(context);
+    // final cart = Provider.of<Cart>(context);
 
     return Row(
       children: [
