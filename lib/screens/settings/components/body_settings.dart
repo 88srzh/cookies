@@ -10,12 +10,12 @@ class BodySettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //       begin: Alignment.topLeft,
-        //       end: Alignment.bottomRight,
-        //       colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-        // ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

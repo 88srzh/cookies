@@ -8,12 +8,6 @@ class GeneralCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-      ),
       child: ListTile(
         onTap: () {},
         leading: Icon(Icons.language),

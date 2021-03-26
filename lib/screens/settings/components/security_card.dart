@@ -14,11 +14,12 @@ class SecurityCard extends StatefulWidget {
 }
 
 class _SecurityCardState extends State<SecurityCard> {
+  bool _tapFingerprin = false;
+  bool _tapNotification = false;
+  bool _tapPassword = false;
+
   @override
   Widget build(BuildContext context) {
-    // final settings = Provider.of<SettingsItem>(context, listen: false);
-    bool _toggled = false;
-    bool value1 = false;
     return Container(
       // decoration: BoxDecoration(
       //   gradient: LinearGradient(
@@ -28,58 +29,54 @@ class _SecurityCardState extends State<SecurityCard> {
       // ),
       child: Column(
         children: [
-          // SwitchListTile(
-          //   value: true,
-          //   onChanged: (value) {},
-          //   // leading: Icon(Icons.fingerprint),
-          //   secondary: Icon(Icons.fingerprint),
-          //   title: Text('Отпечаток пальца'),
-          //   activeColor: Colors.red[300],
-          //   // trailing: Container(
-          //   //   child: Container(
-          //   //     child: Icon(
-          //   //       Icons.toggle_on,
-          //   //       size: 60,
-          //   //       color: Colors.red,
-          //   //     ),
-          //   //   ),
-          // ),
+          SwitchListTile(
+            value: _tapFingerprin,
+            onChanged: (tapFingerprint) {
+              setState(() => _tapFingerprin = tapFingerprint);
+            },
+            // leading: Icon(Icons.fingerprint),
+            secondary: Icon(Icons.fingerprint),
+            title: Text('Отпечаток пальца'),
+            activeColor: Colors.red[300],
+          ),
           CustomSettingsDivider(),
-          buildSwetchListTile(
-              title: 'Получать уведомления',
-              value: value1,
-              onChanged: (val) => setState(() => value1 = val)),
-          // SwitchListTile(
-          //   value: _toggled,
-          //   onChanged: (bool value) {
-          //     setState(() => _toggled = value);
-          //   },
-          //   title: Text('Получать уведомления'),
-          //   activeColor: Colors.red[300],
-          //   secondary: Icon(Icons.notifications_active),
-          // ),
+          // buildSwetchListTile(
+          //     title: 'Получать уведомления',
+          //     value: value1,
+          //     onChanged: (val) => setState(() => value1 = val)),
+          SwitchListTile(
+            value: _tapNotification,
+            onChanged: (tapNotification) {
+              setState(() => _tapNotification = tapNotification);
+            },
+            title: Text('Получать уведомления'),
+            activeColor: Colors.red[300],
+            secondary: Icon(Icons.notifications_active),
+          ),
           CustomSettingsDivider(),
-          // SwitchListTile(
-          //   onChanged: (value) {},
-          //   value: true,
-          //   // leading: Icon(Icons.http),
-          //   title: Text('Сменить пароль'),
-          //   secondary: Icon(Icons.https),
-          //   activeColor: Colors.red[300],
-          // ),
+          SwitchListTile(
+            value: _tapPassword,
+            onChanged: (tapPassword) {
+              setState(() => _tapPassword = tapPassword);
+            },
+            // leading: Icon(Icons.http),
+            title: Text('Сменить пароль'),
+            secondary: Icon(Icons.https),
+            activeColor: Colors.red[300],
+          ),
         ],
       ),
     );
   }
 
-  SwitchListTile buildSwetchListTile({
-    String title,
-    bool value,
-    void Function(bool) onChanged,
-  }) {
-    return SwitchListTile(
-        title: Text(title), value: value, onChanged: onChanged);
-  }
+  // SwitchListTile buildSwetchListTile({
+  //   String title,
+  //   bool value,
+  //   void Function(bool) onChanged,
+  // }) {
+  //   return SwitchListTile(
+  //       title: Text(title), value: value, onChanged: onChanged);
+  // }
 
   // void tapNotifications() {
   //   final settings = Provider.of<SettingsItem>(context, listen: false);
