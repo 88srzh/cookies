@@ -1,4 +1,5 @@
 import 'package:cookie/components/custom_settings_divider.dart';
+import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
 
 class OthersCard extends StatelessWidget {
@@ -8,7 +9,9 @@ class OthersCard extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, TermsOfUseScreen.routeName);
+            },
             leading: Icon(Icons.description),
             title: Text('Пользовательское соглашение'),
             trailing: Icon(

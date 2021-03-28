@@ -14,6 +14,7 @@ import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/auth/authentification_wrapper.dart';
+import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 
@@ -37,4 +38,5 @@ final Map<String, WidgetBuilder> routes = {
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
   FavoriteScreen.routeName: (context) => FavoriteScreen(),
+  TermsOfUseScreen.routeName: (context) => TermsOfUseScreen(),
 };

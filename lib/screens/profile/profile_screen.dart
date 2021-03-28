@@ -8,8 +8,12 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: customAppBar(title: 'Профиль'),
       appBar: AppBar(
-        title: Text('Профиль'),
+        title: Text(
+          'Профиль',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: BodyProfile(),
       // bottomNavigationBar: CustomBottomNavBar(

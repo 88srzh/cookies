@@ -7,7 +7,11 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-      appBar: AppBar(title: Text('Любимое')),
+      appBar: AppBar(
+          title: Text(
+        'Любимое',
+        style: TextStyle(color: Colors.black),
+      )),
       body: BodyFavorite(),
     );
   }
