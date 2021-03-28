@@ -7,7 +7,10 @@ class TermsOfUseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Пользовательское соглашение'),
+        title: Text(
+          'Пользовательское соглашение',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: BodyTermsOfUse(),
     );
