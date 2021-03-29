@@ -1,4 +1,5 @@
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/favorite.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,8 @@ class BodyFavorite extends StatefulWidget {
 class _BodyFavoriteState extends State<BodyFavorite> {
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context);
+    // final cart = Provider.of<Cart>(context);
+    final favorite = Provider.of<Favorite>(context);
     return Stack(
       children: [
         Container(
@@ -31,13 +33,19 @@ class _BodyFavoriteState extends State<BodyFavorite> {
                 vertical: getProportionateScreenWidth(20)),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: cart.allSweets.length,
-              itemBuilder: (context, index) => FavoriteCard(
-                  cart.allSweets.values.toList()[index].id,
-                  cart.allSweets.keys.toList()[index],
-                  cart.allSweets.values.toList()[index].totalFavoriteCount,
-                  cart.allSweets.values.toList()[index].title,
-                  cart.allSweets.values.toList()[index].images),
+              itemCount: favorite.allFavorites.length,
+              itemBuilder: (context, index) => Padding(
+                padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                child: FavoriteCard(
+                  favorite.allFavorites.values.toList()[index].id,
+                  favorite.allFavorites.keys.toList()[index],
+                  favorite.allFavorites.values
+                      .toList()[index]
+                      .totalFavoriteCount,
+                  favorite.allFavorites.values.toList()[index].title,
+                  favorite.allFavorites.values.toList()[index].images,
+                ),
+              ),
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/favorite.dart';
 import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/settings.dart';
 import 'package:cookie/models/sweets.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Cart()),
         ChangeNotifierProvider.value(value: Orders()),
         ChangeNotifierProvider.value(value: SettingsItem()),
+        ChangeNotifierProvider.value(value: Favorite()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

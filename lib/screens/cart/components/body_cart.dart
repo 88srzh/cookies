@@ -26,13 +26,16 @@ class BodyCart extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: cart.allSweets.length,
-              itemBuilder: (context, index) => CartSweet(
-                cart.allSweets.values.toList()[index].id,
-                cart.allSweets.keys.toList()[index],
-                cart.allSweets.values.toList()[index].price,
-                cart.allSweets.values.toList()[index].quantity,
-                cart.allSweets.values.toList()[index].title,
-                cart.allSweets.values.toList()[index].images,
+              itemBuilder: (context, index) => Padding(
+                padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                child: CartSweet(
+                  cart.allSweets.values.toList()[index].id,
+                  cart.allSweets.keys.toList()[index],
+                  cart.allSweets.values.toList()[index].price,
+                  cart.allSweets.values.toList()[index].quantity,
+                  cart.allSweets.values.toList()[index].title,
+                  cart.allSweets.values.toList()[index].images,
+                ),
               ),
             ),
           ),

@@ -56,46 +56,46 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void addFavoriteCount(
-      String sweetid, String title, int totalFavoriteCount, String images) {
-    if (_allSweets.containsKey(sweetid)) {
-      _allSweets.update(
-          sweetid,
-          (existingFavoriteItem) => CartItem(
-                id: DateTime.now().toString(),
-                title: existingFavoriteItem.title,
-                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount,
-                images: existingFavoriteItem.images,
-              ));
-    } else {
-      _allSweets.putIfAbsent(
-          sweetid,
-          () => CartItem(
-              title: title,
-              id: DateTime.now().toString(),
-              totalFavoriteCount: 1,
-              images: images));
-    }
+  // void addFavoriteCount(
+  //     String sweetid, String title, int totalFavoriteCount, String images) {
+  //   if (_allSweets.containsKey(sweetid)) {
+  //     _allSweets.update(
+  //         sweetid,
+  //         (existingFavoriteItem) => CartItem(
+  //               id: DateTime.now().toString(),
+  //               title: existingFavoriteItem.title,
+  //               totalFavoriteCount: existingFavoriteItem.totalFavoriteCount,
+  //               images: existingFavoriteItem.images,
+  //             ));
+  //   } else {
+  //     _allSweets.putIfAbsent(
+  //         sweetid,
+  //         () => CartItem(
+  //             title: title,
+  //             id: DateTime.now().toString(),
+  //             totalFavoriteCount: 1,
+  //             images: images));
+  //   }
 
-    notifyListeners();
-  }
+  //   notifyListeners();
+  // }
 
-  void removeSingleFavoriteCount(String id) {
-    if (!_allSweets.containsKey(id)) {
-      return;
-    }
-    if (_allSweets[id].totalFavoriteCount > 0) {
-      _allSweets.update(
-          id,
-          (existingFavoriteItem) => CartItem(
-                id: DateTime.now().toString(),
-                title: existingFavoriteItem.title,
-                totalFavoriteCount: existingFavoriteItem.totalFavoriteCount - 1,
-                images: existingFavoriteItem.images,
-              ));
-    }
-    notifyListeners();
-  }
+  // void removeSingleFavoriteCount(String id) {
+  //   if (!_allSweets.containsKey(id)) {
+  //     return;
+  //   }
+  //   if (_allSweets[id].totalFavoriteCount > 0) {
+  //     _allSweets.update(
+  //         id,
+  //         (existingFavoriteItem) => CartItem(
+  //               id: DateTime.now().toString(),
+  //               title: existingFavoriteItem.title,
+  //               totalFavoriteCount: existingFavoriteItem.totalFavoriteCount - 1,
+  //               images: existingFavoriteItem.images,
+  //             ));
+  //   }
+  //   notifyListeners();
+  // }
 
   void removeSweet(String id) {
     _allSweets.remove(id);

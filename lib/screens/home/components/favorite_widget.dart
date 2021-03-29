@@ -1,4 +1,5 @@
-import 'package:cookie/models/cart.dart';
+// import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/favorite.dart';
 import 'package:cookie/models/sweets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,23 +44,27 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     final sweetId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet =
         Provider.of<Sweets>(context, listen: false).findById(sweetId);
-    final cart = Provider.of<Cart>(context, listen: false);
+    // final cart = Provider.of<Cart>(context, listen: false);
+    final favorite = Provider.of<Favorite>(context, listen: false);
     setState(() {
       if (loadedSweet.isFavorite) {
         loadedSweet.favoriteCount -= 1;
         loadedSweet.isFavorite = false;
         loadedSweet.totalFavoriteCount -= 1;
-        cart.removeSingleFavoriteCount(sweetId);
+        // cart.removeSingleFavoriteCount(sweetId);
+        favorite.removeSingleFavoriteCount(sweetId);
       } else {
         loadedSweet.favoriteCount += 1;
         loadedSweet.isFavorite = true;
         loadedSweet.totalFavoriteCount += loadedSweet.favoriteCount;
-        cart.addFavoriteCount(
-          sweetId,
-          loadedSweet.title,
-          loadedSweet.totalFavoriteCount,
-          loadedSweet.images,
-        );
+        // cart.addFavoriteCount(
+        //   sweetId,
+        //   loadedSweet.title,
+        //   loadedSweet.totalFavoriteCount,
+        //   loadedSweet.images,
+        // );
+        favorite.addFavoriteCount(sweetId, loadedSweet.title,
+            loadedSweet.totalFavoriteCount, loadedSweet.images);
       }
     });
   }
