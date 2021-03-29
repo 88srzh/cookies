@@ -1,4 +1,5 @@
 import 'package:cookie/components/custom_settings_divider.dart';
+import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,9 @@ class OthersCard extends StatelessWidget {
           ),
           CustomSettingsDivider(),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, LicenseScreen.routeName);
+            },
             leading: Icon(Icons.collections_bookmark),
             title: Text('Лицензия'),
             trailing: Icon(

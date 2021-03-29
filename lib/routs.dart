@@ -1,3 +1,4 @@
+import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
@@ -39,4 +40,5 @@ final Map<String, WidgetBuilder> routes = {
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
   FavoriteScreen.routeName: (context) => FavoriteScreen(),
   TermsOfUseScreen.routeName: (context) => TermsOfUseScreen(),
+  LicenseScreen.routeName: (context) => LicenseScreen(),
 };
