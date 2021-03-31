@@ -1,3 +1,4 @@
+import 'package:cookie/components/custom_list_tile.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
@@ -67,80 +68,44 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           drawer: Drawer(
             child: ListView(
               children: [
-                ListTile(
-                  leading: Icon(Icons.person_add),
-                  title: Text(
-                    'Профиль',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, ProfileScreen.routeName);
-                  },
+                CustomListTile(
+                  icon: Icon(Icons.person_add),
+                  title: 'Профиль',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, ProfileScreen.routeName),
                 ),
-                ListTile(
-                  leading: Icon(FontAwesomeIcons.solidHeart),
-                  title: Text(
-                    'Любимое',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, FavoriteScreen.routeName);
-                  },
+                CustomListTile(
+                  icon: Icon(FontAwesomeIcons.solidHeart),
+                  title: 'Любимое',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, FavoriteScreen.routeName),
                 ),
-                ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text(
-                    'Настройки',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, SettingsScreen.routeName);
-                  },
+                CustomListTile(
+                  icon: Icon(Icons.settings),
+                  title: 'Настройки',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SettingsScreen.routeName),
                 ),
-                ListTile(
-                  leading: Icon(Icons.add_shopping_cart),
-                  title: Text(
-                    'Корзина',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, CartScreen.routeName);
-                  },
+                CustomListTile(
+                  icon: Icon(Icons.add_shopping_cart),
+                  title: 'Корзина',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, CartScreen.routeName),
                 ),
-                ListTile(
-                  leading: Icon(Icons.exit_to_app),
-                  title: Text(
-                    'Выйти',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    context.read<AuthentificationService>().signOut();
-                    Navigator.pushNamed(
-                        context, AuthentificationPage.routename);
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.exit_to_app),
-                  title: Text(
-                    'Выйти из Google',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  onTap: () {
-                    // ! -  Добавить страницу logout google
-                    Navigator.pushNamed(context, GoogleLogoutPage.routeName);
-                  },
+                CustomListTile(
+                    icon: Icon(Icons.exit_to_app),
+                    title: 'Выйти',
+                    onPressed: () {
+                      context.read<AuthentificationService>().signOut();
+                      Navigator.pushNamed(
+                          context, AuthentificationPage.routename);
+                    }),
+                // ! - Add screen logout google
+                CustomListTile(
+                  icon: Icon(Icons.exit_to_app),
+                  title: 'Выйти из Google',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, GoogleLogoutPage.routeName),
                 ),
               ],
             ),
