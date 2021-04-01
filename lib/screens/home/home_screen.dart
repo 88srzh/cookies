@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -164,8 +164,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   width: getProportionateScreenWidth(60),
                   height: getProportionateScreenHeight(60),
                   child: Stack(
+                    clipBehavior: Clip.none,
                     fit: StackFit.expand,
-                    // overflow: Overflow.visible,
                     children: [
                       InkWell(
                         onTap: () {
