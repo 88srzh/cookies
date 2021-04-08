@@ -184,7 +184,7 @@ class Sweets with ChangeNotifier {
     ),
     Sweet(
       categories: 'Бургеры',
-      id: '7',
+      id: '10',
       images: 'assets/images/chiken_burger.png',
       title: 'Сочная курочка',
       price: 125,
@@ -207,7 +207,7 @@ class Sweets with ChangeNotifier {
     ),
     Sweet(
       categories: 'Бургеры',
-      id: '8',
+      id: '11',
       images: 'assets/images/meat_burger.png',
       title: 'Мясной',
       price: 65,

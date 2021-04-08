@@ -57,7 +57,7 @@ class DonutsScreen extends StatelessWidget {
                     (SizeConfig.itemWidth / SizeConfig.itemHeight),
                 children: [
                   ...List.generate(sweets.length, (index) {
-                    if (sweets[index].isDonuts)
+                    if (sweets[index].id.length < 2)
                       return ChangeNotifierProvider.value(
                         value: sweets[index],
                         child: SweetCard(
