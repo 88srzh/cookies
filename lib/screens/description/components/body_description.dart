@@ -1,4 +1,4 @@
-import 'package:cookie/models/sweets.dart';
+import 'package:cookie/models/items.dart';
 import 'package:cookie/screens/description/components/ingredient_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,9 @@ import 'package:provider/provider.dart';
 class BodyDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final sweetId = ModalRoute.of(context).settings.arguments as String;
-    final loadedSweet = Provider.of<Sweets>(context).findById(sweetId);
+    final itemId = ModalRoute.of(context).settings.arguments as String;
+    final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
+    final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

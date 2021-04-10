@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Sweet extends ChangeNotifier {
+class Items extends ChangeNotifier {
   final String id;
   final int price;
+  final int uid;
   int favoriteCount = 0;
   int totalFavoriteCount = 0;
   final String title;
@@ -20,11 +21,10 @@ class Sweet extends ChangeNotifier {
   final double rating;
   bool isFavorite;
   bool isPopular;
-  bool isDonuts;
-  bool isBurgers;
 
-  Sweet({
+  Items({
     this.id,
+    this.uid,
     this.favoriteCount,
     this.images,
     this.rating = 0.0,
@@ -42,14 +42,13 @@ class Sweet extends ChangeNotifier {
     this.fatGramm,
     this.energyGramm,
     this.categories,
-    this.isDonuts = false,
-    this.isBurgers = false,
   });
 }
 
 class Sweets with ChangeNotifier {
-  List<Sweet> _allSweets = [
-    Sweet(
+  List<Items> _allSweets = [
+    Items(
+      uid: 1,
       categories: 'Данкины',
       id: '1',
       images: 'assets/images/donut_pink_resize.png',
@@ -69,10 +68,9 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
-      isDonuts: true,
-      isBurgers: false,
     ),
-    Sweet(
+    Items(
+      uid: 2,
       categories: 'Данкины',
       id: '2',
       images: 'assets/images/donut_chocolate.png',
@@ -91,10 +89,9 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '9 грамм',
       energyGramm: '200 Ккал',
-      isDonuts: true,
-      isBurgers: false,
     ),
-    Sweet(
+    Items(
+      uid: 3,
       categories: 'Данкины',
       id: '3',
       images: 'assets/images/donut_coconut.png',
@@ -114,10 +111,9 @@ class Sweets with ChangeNotifier {
       saltGramm: '9 грамм',
       fatGramm: '6 грамм',
       energyGramm: '175 Ккал',
-      isDonuts: true,
-      // isBurgers: false,
     ),
-    Sweet(
+    Items(
+      uid: 4,
       categories: 'Данкины',
       id: '4',
       images: 'assets/images/doughnut_caramel.png',
@@ -136,10 +132,9 @@ class Sweets with ChangeNotifier {
       saltGramm: '6 грамм',
       fatGramm: '11 грамм',
       energyGramm: '180 Ккал',
-      isDonuts: true,
-      // isBurgers: false,
     ),
-    Sweet(
+    Items(
+      uid: 5,
       categories: 'Данкины',
       id: '5',
       images: 'assets/images/donut_pink_resize.png',
@@ -158,10 +153,9 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
-      isDonuts: true,
-      // isBurgers: false,
     ),
-    Sweet(
+    Items(
+      uid: 6,
       categories: 'Данкины',
       id: '6',
       images: 'assets/images/donut_pink_resize.png',
@@ -180,9 +174,12 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
-      isDonuts: true,
     ),
-    Sweet(
+  ];
+
+  List<Items> _allBurgers = [
+    Items(
+      uid: 11,
       categories: 'Бургеры',
       id: '10',
       images: 'assets/images/chiken_burger.png',
@@ -202,12 +199,11 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
-      isDonuts: false,
-      isBurgers: true,
     ),
-    Sweet(
+    Items(
+      uid: 12,
       categories: 'Бургеры',
-      id: '11',
+      id: '12',
       images: 'assets/images/meat_burger.png',
       title: 'Мясной',
       price: 65,
@@ -224,22 +220,128 @@ class Sweets with ChangeNotifier {
       saltGramm: '8 грамм',
       fatGramm: '8 грамм',
       energyGramm: '140 Ккал',
-      isDonuts: false,
-      isBurgers: true,
+    ),
+    Items(
+      uid: 13,
+      categories: 'Бургеры',
+      id: '13',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      favoriteCount: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavorite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Items(
+      uid: 14,
+      categories: 'Бургеры',
+      id: '14',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      favoriteCount: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavorite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Items(
+      uid: 15,
+      categories: 'Бургеры',
+      id: '15',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      favoriteCount: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavorite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Items(
+      uid: 16,
+      categories: 'Бургеры',
+      id: '16',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      favoriteCount: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavorite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
+    ),
+    Items(
+      uid: 17,
+      categories: 'Бургеры',
+      id: '17',
+      images: 'assets/images/meat_burger.png',
+      title: 'Мясной',
+      price: 65,
+      favoriteCount: 0,
+      description: 'Мясной бургер.',
+      rating: 4.8,
+      isFavorite: false,
+      isPopular: true,
+      sugar: '2',
+      salt: '0.3',
+      fat: '12',
+      energy: '40',
+      sugarGramm: '8 грамм',
+      saltGramm: '8 грамм',
+      fatGramm: '8 грамм',
+      energyGramm: '140 Ккал',
     ),
   ];
 
-  List<Sweet> get allSweets {
+  List<Items> get allBurgers {
+    return [..._allBurgers];
+  }
+
+  Items findByIdBurgers(String id) {
+    return _allBurgers.firstWhere((burger) => burger.id == id);
+  }
+
+  List<Items> get allSweets {
     return [..._allSweets];
   }
 
-  Sweet findById(String id) {
+  Items findById(String id) {
     return _allSweets.firstWhere((sweet) => sweet.id == id);
-  }
-
-  // ! - ?
-  Sweet findByCategories(bool isDonuts) {
-    return _allSweets.firstWhere((donut) => donut.isDonuts = isDonuts);
   }
 }
 

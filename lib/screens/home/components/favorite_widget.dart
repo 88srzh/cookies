@@ -1,6 +1,6 @@
 // import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/favorite.dart';
-import 'package:cookie/models/sweets.dart';
+import 'package:cookie/models/items.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

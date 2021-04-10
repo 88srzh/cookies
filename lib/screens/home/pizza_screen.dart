@@ -1,5 +1,5 @@
-import 'package:cookie/models/sweets.dart';
-import 'package:cookie/screens/home/components/sweet_card.dart';
+import 'package:cookie/models/items.dart';
+import 'package:cookie/screens/home/components/item_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,7 @@ class PizzaScreen extends StatelessWidget {
                   value: sweets[index],
                   child: Padding(
                     padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                    child: SweetCard(),
+                    child: ItemCard(),
                   ),
                 ),
                 

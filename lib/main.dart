@@ -2,7 +2,7 @@ import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/favorite.dart';
 import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/settings.dart';
-import 'package:cookie/models/sweets.dart';
+import 'package:cookie/models/items.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/auth/google_sign_in.dart';
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider.value(value: Sweets()),
-        ChangeNotifierProvider.value(value: Sweet()),
+        ChangeNotifierProvider.value(value: Items()),
         ChangeNotifierProvider.value(value: Cart()),
         ChangeNotifierProvider.value(value: Orders()),
         ChangeNotifierProvider.value(value: SettingsItem()),

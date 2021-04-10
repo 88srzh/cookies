@@ -1,39 +1,22 @@
-import 'package:cookie/models/sweets.dart';
+import 'package:cookie/models/items.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SweetCard extends StatefulWidget {
-  // final String title;
-  // final String images;
-  // final String categories;
-  // final double rating;
-  // final int price;
-  // final Function press;
-  // int likes = 0;
-  // bool isFavourite;
-
-  SweetCard({
+class ItemCard extends StatefulWidget {
+  ItemCard({
     Key key,
-    // this.title,
-    // this.images,
-    // this.categories,
-    // this.rating,
-    // this.price,
-    // this.press,
-    // this.likes,
-    // this.isFavourite,
   });
 
   @override
-  _SweetCardState createState() => _SweetCardState();
+  _ItemCardState createState() => _ItemCardState();
 }
 
-class _SweetCardState extends State<SweetCard> {
+class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
-    var sweet = Provider.of<Sweet>(context);
+    var item = Provider.of<Items>(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -47,7 +30,7 @@ class _SweetCardState extends State<SweetCard> {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context)
-              .pushNamed(DescriptionScreen.routeName, arguments: sweet.id);
+              .pushNamed(DescriptionScreen.routeName, arguments: item.id);
         },
         child: Column(
           children: [
@@ -70,7 +53,7 @@ class _SweetCardState extends State<SweetCard> {
                           vertical: getProportionateScreenWidth(12),
                         ),
                         child: Text(
-                          '${sweet.price}₽',
+                          '${item.price}₽',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                           ),
@@ -81,16 +64,18 @@ class _SweetCardState extends State<SweetCard> {
                 ),
               ),
             ),
-            Container(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  bottom: getProportionateScreenWidth(10),
-                ),
-                child: SizedBox(
-                  width: getProportionateScreenWidth(100),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.asset(sweet.images),
+            Flexible(
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: getProportionateScreenWidth(10),
+                  ),
+                  child: SizedBox(
+                    width: getProportionateScreenWidth(100),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.asset(item.images),
+                    ),
                   ),
                 ),
               ),
@@ -100,20 +85,26 @@ class _SweetCardState extends State<SweetCard> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${sweet.title}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                    FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text(
+                        '${item.title}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                    Text(
-                      '${sweet.categories}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
+                    FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text(
+                        '${item.categories}',
+                        style: TextStyle(
+                          // fontSize: 12,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ],
@@ -138,12 +129,12 @@ class _SweetCardState extends State<SweetCard> {
                             onTap: () {
                               // tapFavourite();
                             },
-                            child: sweet.isFavorite
+                            child: item.isFavorite
                                 ? Icon(Icons.favorite)
                                 : Icon(Icons.favorite_outline),
                           ),
                           Text(
-                            '${sweet.rating}',
+                            '${item.rating}',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
