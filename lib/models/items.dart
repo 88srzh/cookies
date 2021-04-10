@@ -332,9 +332,9 @@ class Sweets with ChangeNotifier {
     return [..._allBurgers];
   }
 
-  Items findByIdBurgers(String id) {
-    return _allBurgers.firstWhere((burger) => burger.id == id);
-  }
+  // Items findByIdBurgers(String id) {
+  //   return _allBurgers.firstWhere((burger) => burger.id == id);
+  // }
 
   List<Items> get allSweets {
     return [..._allSweets];

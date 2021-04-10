@@ -9,7 +9,7 @@ class BodyDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     final itemId = ModalRoute.of(context).settings.arguments as String;
     final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
-    final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
+    // final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -18,7 +18,6 @@ class BodyDescription extends StatelessWidget {
             colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
       ),
       child: Column(
-        // fit: StackFit.expand,
         children: [
           SizedBox(
             width: getProportionateScreenWidth(250),
@@ -102,14 +101,21 @@ class BodyDescription extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: getProportionateScreenWidth(5),
-                        left: getProportionateScreenWidth(20),
-                        right: getProportionateScreenWidth(20),
-                      ),
-                      child: Text(
-                        loadedSweet.description,
+                    child: Flexible(
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: getProportionateScreenWidth(5),
+                            left: getProportionateScreenWidth(20),
+                            right: getProportionateScreenWidth(20),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              loadedSweet.description,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:cookie/models/items.dart';
+import 'package:cookie/models/items_info.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     var item = Provider.of<Items>(context);
+    var donut = Provider.of<ItemsInfo>(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -53,7 +55,7 @@ class _ItemCardState extends State<ItemCard> {
                           vertical: getProportionateScreenWidth(12),
                         ),
                         child: Text(
-                          '${item.price}₽',
+                          '${donut.price}₽',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                           ),
@@ -88,7 +90,7 @@ class _ItemCardState extends State<ItemCard> {
                     FittedBox(
                       fit: BoxFit.contain,
                       child: Text(
-                        '${item.title}',
+                        '${donut.title}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
@@ -100,7 +102,7 @@ class _ItemCardState extends State<ItemCard> {
                     FittedBox(
                       fit: BoxFit.contain,
                       child: Text(
-                        '${item.categories}',
+                        '${donut.categories}',
                         style: TextStyle(
                           // fontSize: 12,
                           color: Colors.grey,
@@ -134,7 +136,8 @@ class _ItemCardState extends State<ItemCard> {
                                 : Icon(Icons.favorite_outline),
                           ),
                           Text(
-                            '${item.rating}',
+                            // '${item.rating}'
+                            '123',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
