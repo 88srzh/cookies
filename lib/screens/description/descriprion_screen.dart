@@ -9,7 +9,7 @@ class DescriptionScreen extends StatelessWidget {
   static const routeName = '/description';
   @override
   Widget build(BuildContext context) {
-    window.physicalSize;
+    // window.physicalSize;
     return Scaffold(
         // backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
         appBar: AppBarDescription(),

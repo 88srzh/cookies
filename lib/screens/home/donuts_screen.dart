@@ -1,21 +1,21 @@
-import 'package:cookie/components/default_button_grey.dart';
-import 'package:cookie/models/items.dart';
-import 'package:cookie/models/items_info.dart';
+// import 'package:cookie/components/default_button_grey.dart';
+// import 'package:cookie/models/items.dart';
+// import 'package:cookie/models/items_info.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
-import 'package:cookie/screens/home/components/item_card.dart';
+// import 'package:cookie/screens/home/components/item_card.dart';
 import 'package:cookie/size_config.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DonutsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final sweetData = Provider.of<Sweets>(context);
-    final sweets = sweetData.allSweets;
-    final donutsData = Provider.of<ItemsInfo>(context);
-    final donuts = donutsData.itemsInfo;
+    // final sweetData = Provider.of<Sweets>(context);
+    // final sweets = sweetData.allSweets;
+    // final donutsData = Provider.of<ItemsInfo>(context);
+    // final donuts = donutsData.itemsInfo;
 
     return Container(
       decoration: BoxDecoration(
@@ -111,27 +111,6 @@ class DonutsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildListItem(BuildContext context, DocumentSnapshot docs) {
-    return ListTile(
-      title: Row(children: [
-        Expanded(
-          child: Text(
-            docs['title'],
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            color: Color(0xffddddff),
-          ),
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            docs['price'].toString(),
-          ),
-        ),
-      ]),
-    );
-  }
-
   Widget buildItemCard(BuildContext context, DocumentSnapshot docs) {
     return Container(
       // height: 100,
@@ -146,8 +125,9 @@ class DonutsScreen extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          // Navigator.of(context)
-          //     .pushNamed(DescriptionScreen.routeName, arguments: docs.id);
+          // Navigator.pushNamed(context, DescriptionScreen.routeName);
+          Navigator.of(context)
+              .pushNamed(DescriptionScreen.routeName, arguments: docs['id']);
         },
         child: Column(
           children: [
@@ -191,7 +171,9 @@ class DonutsScreen extends StatelessWidget {
                     width: getProportionateScreenWidth(100),
                     child: AspectRatio(
                       aspectRatio: 1,
-                      // child: Image.asset(item.images),
+                      // child: Image.asset(docs['images']),
+                      // child: Image.file(docs['images']),
+                      // child: Image.network(src)
                     ),
                   ),
                 ),

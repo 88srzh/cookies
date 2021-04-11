@@ -1,15 +1,39 @@
-import 'package:cookie/models/items.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cookie/models/items.dart';
 import 'package:cookie/screens/description/components/ingredient_card.dart';
 import 'package:cookie/size_config.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:http/http.dart';
+// import 'package:provider/provider.dart';
 
 class BodyDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemId = ModalRoute.of(context).settings.arguments as String;
-    final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
+    // final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
     // final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
+    // ---------------------------------------------------------------------
+    // return StreamBuilder(
+    //     stream: FirebaseFirestore.instance.collection('Items').snapshots(),
+    //     builder: (context, snapshot) {
+    //       if (!snapshot.hasData) return Text('Loading...');
+    //       return ListView.builder(
+    //           itemCount: snapshot.data.docs.length,
+    //           itemBuilder: (context, index) {
+    //             return buildDescriptionCard(context, snapshot.data.docs[index]);
+    //           });
+    // });
+    // QuerySnapshot ref =
+    // FirebaseFirestore.instance.collection('Items').snapshots();
+    // DocumentSnapshot nextSnap = await transaction.get(docs.reference);
+    // return buildDescriptionCard(context, nextSnap);
+    // CollectionReference ref = FirebaseFirestore.instance.collection('Items');
+    // final donutItem = ModalRoute.of(context).settings.arguments as String;
+    return Text('123');
+  }
+
+  Widget buildDescriptionCard(BuildContext context, DocumentSnapshot docs) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -24,7 +48,7 @@ class BodyDescription extends StatelessWidget {
             height: getProportionateScreenHeight(240),
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.asset(loadedSweet.images),
+              // child: Image.asset(loadedSweet.images),
             ),
           ),
           Padding(
@@ -54,26 +78,26 @@ class BodyDescription extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IngredientCard(
-                  titleCard: 'Белки',
-                  ingredients: loadedSweet.sugar,
-                  gramm: loadedSweet.sugarGramm,
-                ),
-                IngredientCard(
-                  titleCard: 'Жиры',
-                  ingredients: loadedSweet.salt,
-                  gramm: loadedSweet.saltGramm,
-                ),
-                IngredientCard(
-                  titleCard: 'Углеводы',
-                  ingredients: loadedSweet.fat,
-                  gramm: loadedSweet.fatGramm,
-                ),
-                IngredientCard(
-                  titleCard: 'Энергия',
-                  ingredients: loadedSweet.energy,
-                  gramm: loadedSweet.energyGramm,
-                ),
+                // IngredientCard(
+                //   titleCard: 'Белки',
+                //   // ingredients: docs['sugar'],
+                //   // gramm: loadedSweet.sugarGramm,
+                // ),
+                // IngredientCard(
+                //   titleCard: 'Жиры',
+                //   // ingredients: loadedSweet.salt,
+                //   // gramm: loadedSweet.saltGramm,
+                // ),
+                // IngredientCard(
+                //   titleCard: 'Углеводы',
+                //   // ingredients: loadedSweet.fat,
+                //   // gramm: loadedSweet.fatGramm,
+                // ),
+                // IngredientCard(
+                //   titleCard: 'Энергия',
+                //   // ingredients: loadedSweet.energy,
+                //   // gramm: loadedSweet.energyGramm,
+                // ),
               ],
             ),
           ),
@@ -100,21 +124,18 @@ class BodyDescription extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: Flexible(
-                      child: Container(
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: getProportionateScreenWidth(5),
-                            left: getProportionateScreenWidth(20),
-                            right: getProportionateScreenWidth(20),
-                          ),
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: Text(
-                              loadedSweet.description,
-                            ),
-                          ),
+                  Flexible(
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: getProportionateScreenWidth(5),
+                          left: getProportionateScreenWidth(20),
+                          right: getProportionateScreenWidth(20),
+                        ),
+                        child: Text(
+                          docs['description'],
+                          // loadedSweet.description,
+                          // '123',
                         ),
                       ),
                     ),
