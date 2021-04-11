@@ -250,11 +250,22 @@ class DonutsScreen extends StatelessWidget {
                           //     : Icon(Icons.favorite_outline),
                           child: Icon(Icons.favorite_outline),
                         ),
-                        Text(
-                          '${docs['rating'].toString()}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                        InkWell(
+                          onTap: () {
+                            FirebaseFirestore.instance
+                                .runTransaction((transaction) async {
+                              DocumentSnapshot freshSnap =
+                                  await transaction.get(docs.reference);
+                              await transaction.update(freshSnap.reference,
+                                  {'rating': freshSnap['rating'] + 1});
+                            });
+                          },
+                          child: Text(
+                            '${docs['rating'].toString()}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
