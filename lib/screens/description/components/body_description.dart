@@ -4,13 +4,16 @@ import 'package:cookie/screens/description/components/ingredient_card.dart';
 import 'package:cookie/size_config.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+
 // import 'package:http/http.dart';
 // import 'package:provider/provider.dart';
 
 class BodyDescription extends StatelessWidget {
+  final String id;
+  BodyDescription({this.id});
   @override
   Widget build(BuildContext context) {
-    final itemId = ModalRoute.of(context).settings.arguments as String;
+    // final itemId = ModalRoute.of(context).settings.arguments as String;
     // final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
     // final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
     // ---------------------------------------------------------------------
@@ -30,10 +33,34 @@ class BodyDescription extends StatelessWidget {
     // return buildDescriptionCard(context, nextSnap);
     // CollectionReference ref = FirebaseFirestore.instance.collection('Items');
     // final donutItem = ModalRoute.of(context).settings.arguments as String;
-    return Text('123');
+    // return StreamBuilder(
+    //     stream: FirebaseFirestore.instance.collection('Items').snapshots(),
+    //     builder: (context, snapshot) {
+    //       if (!snapshot.hasData) return Text('Loading...');
+    //       return buildDescriptionCard(context, snapshot.data.docs);
+    //     });
+
+    CollectionReference items = FirebaseFirestore.instance.collection('Items');
+
+    return FutureBuilder<DocumentSnapshot>(
+      future: items.doc(id).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data.data();
+          return Text('description: ${data['description']}');
+        }
+        return Text('loading...');
+      },
+    );
   }
 
-  Widget buildDescriptionCard(BuildContext context, DocumentSnapshot docs) {
+  Widget buildDescriptionCard(
+      BuildContext context, QueryDocumentSnapshot docs) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -133,7 +160,8 @@ class BodyDescription extends StatelessWidget {
                           right: getProportionateScreenWidth(20),
                         ),
                         child: Text(
-                          docs['description'],
+                          '123',
+                          // docs['description'],
                           // loadedSweet.description,
                           // '123',
                         ),

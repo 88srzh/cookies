@@ -126,8 +126,9 @@ class DonutsScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           // Navigator.pushNamed(context, DescriptionScreen.routeName);
-          Navigator.of(context)
-              .pushNamed(DescriptionScreen.routeName, arguments: docs['id']);
+          // Navigator.of(context)
+          //     .pushNamed(DescriptionScreen.routeName, arguments: docs['id']);
+          Navigator.pushNamed(context, DescriptionScreen.routeName);
         },
         child: Column(
           children: [
