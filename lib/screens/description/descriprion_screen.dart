@@ -13,20 +13,17 @@ class DescriptionScreen extends StatelessWidget {
   DescriptionScreen({this.id});
   @override
   Widget build(BuildContext context) {
-    CollectionReference items = FirebaseFirestore.instance.collection('Items');
-    Future<void> descriptionScreen() {
-      return items.doc(id).get().then((DocumentSnapshot docs) {
-        if (docs.exists) {
-          print('data: ${docs.data()}');
-        } else {
-          print('document does not exist on the database');
-        }
-      });
-    }
-
-    return Container(
-      child: descriptionScreen(),
-    );
+    // CollectionReference items = FirebaseFirestore.instance.collection('Items');
+    // Future<void> descriptionScreen() {
+    //   return items.doc(id).get().then((DocumentSnapshot docs) {
+    //     if (docs.exists) {
+    //       print('data: ${docs.data()}');
+    //     } else {
+    //       print('document does not exist on the database');
+    //     }
+    //   });
+    // }
+    
 
     // ! - выводит все описания
     // body: StreamBuilder(
