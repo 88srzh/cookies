@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:cookie/models/donut.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -24,6 +27,12 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 FirebaseDatabase.instance.reference().child('Donuts').onValue,
             builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
               if (snapshot.hasData) {
+                var map = snapshot.data.snapshot.value as Map<dynamic, dynamic>;
+                donuts.clear();
+                map.forEach((key, value) {
+                  var donut =
+                      new Donut.fromJson(json.decode(json.encode(value)));
+                });
                 return Center();
               } else {
                 return Center(
