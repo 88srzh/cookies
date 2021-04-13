@@ -1,49 +1,38 @@
-import 'package:cookie/models/items.dart';
-import 'package:cookie/screens/home/components/item_card.dart';
 import 'package:cookie/size_config.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class PizzaScreen extends StatelessWidget {
+class PizzaScreen extends StatefulWidget {
+  @override
+  _PizzaScreenState createState() => _PizzaScreenState();
+}
+
+class _PizzaScreenState extends State<PizzaScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  List<Donut> donuts = new List<Donut>.empty(growable: true);
   @override
   Widget build(BuildContext context) {
-    final sweetData = Provider.of<Sweets>(context);
-    final sweets = sweetData.allSweets;
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(10),
-          left: getProportionateScreenWidth(15),
-          right: getProportionateScreenWidth(15),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: GridView.builder(
-                physics: ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: sweets.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) => ChangeNotifierProvider.value(
-                  value: sweets[index],
-                  child: Padding(
-                    padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                    child: ItemCard(),
-                  ),
-                ),
-                
-              ),
-            ),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          SizedBox(height: getProportionateScreenWidth(20)),
+          Expanded(
+              child: StreamBuilder(
+            stream:
+                FirebaseDatabase.instance.reference().child('Donuts').onValue,
+            builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+              if (snapshot.hasData) {
+                return Center();
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          )),
+        ],
       ),
     );
   }
