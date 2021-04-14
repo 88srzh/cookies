@@ -1,7 +1,13 @@
 class Donut {
-  String key, title, rating, categories, price;
+  String key, title, rating, categories, price, image;
 
-  Donut({this.key, this.title, this.rating, this.categories, this.price});
+  Donut(
+      {this.key,
+      this.title,
+      this.rating,
+      this.categories,
+      this.price,
+      this.image});
 
   Donut.fromJson(Map<String, dynamic> json) {
     key = json['key'];
@@ -9,6 +15,7 @@ class Donut {
     rating = json['rating'];
     categories = json['categories'];
     price = json['price'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -18,5 +25,6 @@ class Donut {
     data['rating'] = this.rating;
     data['categories'] = this.categories;
     data['price'] = this.price;
+    data['image'] = this.image;
   }
 }

@@ -38,11 +38,12 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 });
                 return StaggeredGridView.countBuilder(
                     crossAxisCount: 2,
+                    itemCount: donuts.length,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         child: GestureDetector(
                           onTap: () {},
-                          child: Text('$donuts[index].title'),
+                          child: Text('${donuts[index].title}'),
                         ),
                       );
                     },
