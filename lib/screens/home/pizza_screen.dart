@@ -5,6 +5,7 @@ import 'package:cookie/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PizzaScreen extends StatefulWidget {
   @override
@@ -32,8 +33,21 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 map.forEach((key, value) {
                   var donut =
                       new Donut.fromJson(json.decode(json.encode(value)));
+                  donut.key = key;
+                  donuts.add(donut);
                 });
-                return Center();
+                return StaggeredGridView.countBuilder(
+                    crossAxisCount: 2,
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Text('$donuts[index].title'),
+                        ),
+                      );
+                    },
+                    staggeredTileBuilder: (int index) =>
+                        StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
               } else {
                 return Center(
                   child: CircularProgressIndicator(),
