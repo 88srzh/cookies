@@ -82,164 +82,13 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     // Navigator.pushNamed(context, DescriptionScreen.routeName);
-                                    // Navigator.of(context).pushNamed(
-                                    //     DescriptionScreen.routeName,
-                                    //     arguments: donuts[index].key);
+                                    Navigator.of(context).pushNamed(
+                                        DescriptionScreen.routeName,
+                                        arguments: donuts[index].key);
                                     // Navigator.pushNamed(
                                     //     context, DescriptionScreen.routeName);
                                   },
-                                  child: Column(
-                                    children: [
-                                      Flexible(
-                                        child: Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
-                                                      241, 240, 246, 2.0),
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(20),
-                                                    bottomLeft:
-                                                        Radius.circular(30),
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal:
-                                                        getProportionateScreenWidth(
-                                                            20),
-                                                    vertical:
-                                                        getProportionateScreenWidth(
-                                                            12),
-                                                  ),
-                                                  child: Text(
-                                                    '${donuts[index].price}₽',
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Container(
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                              bottom:
-                                                  getProportionateScreenWidth(
-                                                      10),
-                                            ),
-                                            child: SizedBox(
-                                              width:
-                                                  getProportionateScreenWidth(
-                                                      100),
-                                              child: AspectRatio(
-                                                aspectRatio: 1,
-                                                // child: Image.network(
-                                                //     donuts[index].image),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Container(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              FittedBox(
-                                                fit: BoxFit.contain,
-                                                child: Text(
-                                                  '${donuts[index].title}',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black,
-                                                  ),
-                                                ),
-                                              ),
-                                              FittedBox(
-                                                fit: BoxFit.contain,
-                                                child: Text(
-                                                  '${donuts[index].categories}',
-                                                  style: TextStyle(
-                                                    // fontSize: 12,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Container(
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                              left: getProportionateScreenWidth(
-                                                  15),
-                                              right:
-                                                  getProportionateScreenWidth(
-                                                      15),
-                                              top: getProportionateScreenWidth(
-                                                  15),
-                                            ),
-                                            child: Container(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    onTap: () {
-                                                      // tapFavourite();
-                                                    },
-                                                    // child: item.isFavorite
-                                                    //     ? Icon(Icons.favorite)
-                                                    //     : Icon(Icons.favorite_outline),
-                                                    child: Icon(
-                                                        Icons.favorite_outline),
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      // FirebaseFirestore.instance
-                                                      //     .runTransaction((transaction) async {
-                                                      //   DocumentSnapshot freshSnap =
-                                                      //       await transaction.get(docs.reference);
-                                                      //   await transaction.update(freshSnap.reference,
-                                                      //       {'rating': freshSnap['rating'] + 1});
-                                                      // });
-                                                    },
-                                                    child: Text(
-                                                      '${donuts[index].rating}',
-                                                      style: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  child: buildItemCard(index),
                                 ),
                               ),
                             ),
@@ -290,6 +139,137 @@ class _DonutsScreenState extends State<DonutsScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Column buildItemCard(int index) {
+    return Column(
+      children: [
+        Flexible(
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(241, 240, 246, 2.0),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(30),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(20),
+                      vertical: getProportionateScreenWidth(12),
+                    ),
+                    child: Text(
+                      '${donuts[index].price}₽',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Flexible(
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: getProportionateScreenWidth(10),
+              ),
+              child: SizedBox(
+                width: getProportionateScreenWidth(100),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  // child: Image.network(
+                  //     donuts[index].image),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Flexible(
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(
+                    '${donuts[index].title}',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(
+                    '${donuts[index].categories}',
+                    style: TextStyle(
+                      // fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Flexible(
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: getProportionateScreenWidth(15),
+                right: getProportionateScreenWidth(15),
+                top: getProportionateScreenWidth(15),
+              ),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        // tapFavourite();
+                      },
+                      // child: item.isFavorite
+                      //     ? Icon(Icons.favorite)
+                      //     : Icon(Icons.favorite_outline),
+                      child: Icon(Icons.favorite_outline),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // FirebaseFirestore.instance
+                        //     .runTransaction((transaction) async {
+                        //   DocumentSnapshot freshSnap =
+                        //       await transaction.get(docs.reference);
+                        //   await transaction.update(freshSnap.reference,
+                        //       {'rating': freshSnap['rating'] + 1});
+                        // });
+                      },
+                      child: Text(
+                        '${donuts[index].rating}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
