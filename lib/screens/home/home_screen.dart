@@ -9,6 +9,7 @@ import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -172,10 +173,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         onTap: () {
                           Navigator.pushNamed(context, ProfileScreen.routeName);
                         },
-                        child: CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/avatar_circle2.png'),
-                          // AssetImage(user.photoURL),
+                        // child: CircleAvatar(
+                        //   backgroundImage:
+                        //       AssetImage('assets/images/avatar_circle2.png'),
+                        //   // AssetImage(user.photoURL),
+                        // ),
+                        child: StreamBuilder(
+                          stream: FirebaseDatabase.instance
+                              .reference()
+                              .child('NewCart')
+                              .child('UNIQUE_USER_ID')
+                              .onValue, // use FirebaseAuth uid
+                              builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+
+                              },
                         ),
                       ),
                     ],

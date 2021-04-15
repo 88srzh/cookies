@@ -40,23 +40,23 @@ class BodyDescription extends StatelessWidget {
     //       return buildDescriptionCard(context, snapshot.data.docs);
     //     });
 
-    CollectionReference items = FirebaseFirestore.instance.collection('Items');
+    // CollectionReference items = FirebaseFirestore.instance.collection('Items');
 
-    return FutureBuilder<DocumentSnapshot>(
-      future: items.doc(id).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text('Something went wrong');
-        }
+    // return FutureBuilder<DocumentSnapshot>(
+    //   future: items.doc(id).get(),
+    //   builder:
+    //       (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    //     if (snapshot.hasError) {
+    //       return Text('Something went wrong');
+    //     }
 
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data();
-          return Text('description: ${data['description']}');
-        }
-        return Text('loading...');
-      },
-    );
+    //     if (snapshot.connectionState == ConnectionState.done) {
+    //       Map<String, dynamic> data = snapshot.data.data();
+    //       return Text('description: ${data['description']}');
+    //     }
+    //     return Text('loading...');
+    //   },
+    // );
   }
 
   Widget buildDescriptionCard(
