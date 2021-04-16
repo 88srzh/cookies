@@ -5,7 +5,6 @@ import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class DonutsScreen extends StatefulWidget {
@@ -273,6 +272,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
     );
   }
 
+  // ----------------------------Firebase------------------------------------
   // Widget buildItemCard(BuildContext context, DocumentSnapshot docs) {
   //   return Container(
   //     // height: 100,

@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:badges/badges.dart';
 import 'package:cookie/components/custom_list_tile.dart';
+import 'package:cookie/models/newCart.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
@@ -26,6 +30,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
+  List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
 
   // double currentPage = 0;
   // int currentTab = 0;
@@ -184,9 +189,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               .child('NewCart')
                               .child('UNIQUE_USER_ID')
                               .onValue, // use FirebaseAuth uid
-                              builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
-
-                              },
+                          builder: (BuildContext context,
+                              AsyncSnapshot<Event> snapshot) {
+                            if (snapshot.hasData) {
+                              Map<dynamic, dynamic> map =
+                                  snapshot.data.snapshot.value;
+                              newCarts.clear();
+                              map.forEach((key, value) {
+                                var newCart = NewCart.fromJson(
+                                    json.decode(json.encode(value)));
+                                newCart.key = key;
+                                newCarts.add(newCart);
+                              });
+                              return GestureDetector(
+                                onTap: () {},
+                                child: Center(
+                                  child: Badge(
+                                    showBadge: true,
+                                    badgeContent: Text(
+                                      '0',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    child: Icon(Icons.shopping_cart,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              );
+                            } else
+                              return Center(
+                                child: Badge(
+                                  showBadge: true,
+                                  badgeContent: Text(
+                                    '0',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  child: Icon(Icons.shopping_cart,
+                                      color: Colors.white),
+                                ),
+                              );
+                          },
                         ),
                       ),
                     ],
