@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cookie/models/donut.dart';
+import 'package:cookie/models/newCart.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -16,6 +17,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   List<Donut> donuts = new List<Donut>.empty(growable: true);
+  List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,9 @@ class _DonutsScreenState extends State<DonutsScreen> {
                         itemBuilder: (BuildContext context, int index) {
                           return InkWell(
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                addToCart(_scaffoldKey, donuts[index]);
+                              },
                               child: Container(
                                 // height: 100,
                                 decoration: BoxDecoration(
@@ -81,9 +85,9 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     // Navigator.pushNamed(context, DescriptionScreen.routeName);
-                                    Navigator.of(context).pushNamed(
-                                        DescriptionScreen.routeName,
-                                        arguments: donuts[index].key);
+                                    // Navigator.of(context).pushNamed(
+                                    //     DescriptionScreen.routeName,
+                                    //     arguments: donuts[index].key);
                                     // Navigator.pushNamed(
                                     //     context, DescriptionScreen.routeName);
                                   },
@@ -141,7 +145,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
     );
   }
 
-  Column buildItemCard(int index) {
+  Widget buildItemCard(int index) {
     return Column(
       children: [
         Flexible(
@@ -270,6 +274,45 @@ class _DonutsScreenState extends State<DonutsScreen> {
         ),
       ],
     );
+  }
+
+  void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Donut donut) {
+    var cart = FirebaseDatabase.instance
+        .reference()
+        .child('NewCart')
+        .child('UNIQUE_USER_ID');
+    cart.child(donut.key).once().then((DataSnapshot snapshot) {
+      //  If user already have item in cart
+      if (snapshot.value != null) {
+        var newCart =
+            NewCart.fromJson(json.decode(json.encode(snapshot.value)));
+        newCart.quantity += 1;
+        newCart.totalPrice = double.parse(donut.price) * newCart.quantity;
+        cart
+            .child(donut.key)
+            .set(newCart.toJson())
+            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('Update successfully'))))
+            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('$e'))));
+      } else {
+        // If user don't have item in cart
+        NewCart newCart = new NewCart(
+            title: donut.title,
+            key: donut.key,
+            price: donut.price,
+            quantity: 1,
+            totalPrice: double.parse(donut.price));
+        cart
+            .child(donut.key)
+            .set(newCart.toJson())
+            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+                .showSnackBar(
+                    SnackBar(content: Text('Add to cart successfully'))))
+            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('$e'))));
+      }
+    });
   }
 
   // ----------------------------Firebase------------------------------------

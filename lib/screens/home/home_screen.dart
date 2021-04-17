@@ -31,10 +31,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
-
   // double currentPage = 0;
   // int currentTab = 0;
-
   @override
   void initState() {
     super.initState();
@@ -195,23 +193,28 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               Map<dynamic, dynamic> map =
                                   snapshot.data.snapshot.value;
                               newCarts.clear();
-                              map.forEach((key, value) {
-                                var newCart = NewCart.fromJson(
-                                    json.decode(json.encode(value)));
-                                newCart.key = key;
-                                newCarts.add(newCart);
-                              });
+                              if (map != null) {
+                                map.forEach((key, value) {
+                                  var newCart = NewCart.fromJson(
+                                      json.decode(json.encode(value)));
+                                  newCart.key = key;
+                                  newCarts.add(newCart);
+                                });
+                              }
+                              var numberItemInCart = newCarts
+                                  .map<int>((m) => m.quantity)
+                                  .reduce((s1, s2) => s1 + s2);
                               return GestureDetector(
                                 onTap: () {},
                                 child: Center(
                                   child: Badge(
                                     showBadge: true,
                                     badgeContent: Text(
-                                      '0',
+                                      '${numberItemInCart > 9 ? 9.toString() + "+" : numberItemInCart.toString()}',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     child: Icon(Icons.shopping_cart,
-                                        color: Colors.white),
+                                        color: Colors.black),
                                   ),
                                 ),
                               );
