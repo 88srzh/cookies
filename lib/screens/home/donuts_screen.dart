@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/donut.dart';
 import 'package:cookie/models/newCart.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
@@ -68,7 +69,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                 addToCart(_scaffoldKey, donuts[index]);
                               },
                               child: Container(
-                                // height: 100,
                                 decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30)),
@@ -83,14 +83,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                   ),
                                 ),
                                 child: GestureDetector(
-                                  onTap: () {
-                                    // Navigator.pushNamed(context, DescriptionScreen.routeName);
-                                    // Navigator.of(context).pushNamed(
-                                    //     DescriptionScreen.routeName,
-                                    //     arguments: donuts[index].key);
-                                    // Navigator.pushNamed(
-                                    //     context, DescriptionScreen.routeName);
-                                  },
+                                  onTap: () {},
                                   child: buildItemCard(index),
                                 ),
                               ),
@@ -274,45 +267,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
         ),
       ],
     );
-  }
-
-  void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Donut donut) {
-    var cart = FirebaseDatabase.instance
-        .reference()
-        .child('NewCart')
-        .child('UNIQUE_USER_ID');
-    cart.child(donut.key).once().then((DataSnapshot snapshot) {
-      //  If user already have item in cart
-      if (snapshot.value != null) {
-        var newCart =
-            NewCart.fromJson(json.decode(json.encode(snapshot.value)));
-        newCart.quantity += 1;
-        newCart.totalPrice = double.parse(donut.price) * newCart.quantity;
-        cart
-            .child(donut.key)
-            .set(newCart.toJson())
-            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('Update successfully'))))
-            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('$e'))));
-      } else {
-        // If user don't have item in cart
-        NewCart newCart = new NewCart(
-            title: donut.title,
-            key: donut.key,
-            price: donut.price,
-            quantity: 1,
-            totalPrice: double.parse(donut.price));
-        cart
-            .child(donut.key)
-            .set(newCart.toJson())
-            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-                .showSnackBar(
-                    SnackBar(content: Text('Add to cart successfully'))))
-            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('$e'))));
-      }
-    });
   }
 
   // ----------------------------Firebase------------------------------------

@@ -172,66 +172,59 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     clipBehavior: Clip.none,
                     fit: StackFit.expand,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, ProfileScreen.routeName);
-                        },
-                        // child: CircleAvatar(
-                        //   backgroundImage:
-                        //       AssetImage('assets/images/avatar_circle2.png'),
-                        //   // AssetImage(user.photoURL),
-                        // ),
-                        child: StreamBuilder(
-                          stream: FirebaseDatabase.instance
-                              .reference()
-                              .child('NewCart')
-                              .child('UNIQUE_USER_ID')
-                              .onValue, // use FirebaseAuth uid
-                          builder: (BuildContext context,
-                              AsyncSnapshot<Event> snapshot) {
-                            if (snapshot.hasData) {
-                              Map<dynamic, dynamic> map =
-                                  snapshot.data.snapshot.value;
-                              newCarts.clear();
-                              if (map != null) {
-                                map.forEach((key, value) {
-                                  var newCart = NewCart.fromJson(
-                                      json.decode(json.encode(value)));
-                                  newCart.key = key;
-                                  newCarts.add(newCart);
-                                });
-                              }
-                              var numberItemInCart = newCarts
-                                  .map<int>((m) => m.quantity)
-                                  .reduce((s1, s2) => s1 + s2);
-                              return GestureDetector(
-                                onTap: () {},
-                                child: Center(
-                                  child: Badge(
-                                    showBadge: true,
-                                    badgeContent: Text(
-                                      '${numberItemInCart > 9 ? 9.toString() + "+" : numberItemInCart.toString()}',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    child: Icon(Icons.shopping_cart,
-                                        color: Colors.black),
-                                  ),
-                                ),
-                              );
-                            } else
-                              return Center(
+                      StreamBuilder(
+                        stream: FirebaseDatabase.instance
+                            .reference()
+                            .child('NewCart')
+                            .child('UNIQUE_USER_ID')
+                            .onValue, // use FirebaseAuth uid
+                        builder: (BuildContext context,
+                            AsyncSnapshot<Event> snapshot) {
+                          if (snapshot.hasData) {
+                            Map<dynamic, dynamic> map =
+                                snapshot.data.snapshot.value;
+                            newCarts.clear();
+                            if (map != null) {
+                              map.forEach((key, value) {
+                                var newCart = NewCart.fromJson(
+                                    json.decode(json.encode(value)));
+                                newCart.key = key;
+                                newCarts.add(newCart);
+                              });
+                            }
+                            var numberItemInCart = newCarts
+                                .map<int>((m) => m.quantity)
+                                .reduce((s1, s2) => s1 + s2);
+                            return GestureDetector(
+                              onTap: () {
+                                // When user click on App Bar Action
+                                Navigator.of(context).pushNamed('/cartPage');
+                              },
+                              child: Center(
                                 child: Badge(
                                   showBadge: true,
                                   badgeContent: Text(
-                                    '0',
+                                    '${numberItemInCart > 9 ? 9.toString() + "+" : numberItemInCart.toString()}',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   child: Icon(Icons.shopping_cart,
-                                      color: Colors.white),
+                                      color: Colors.black),
                                 ),
-                              );
-                          },
-                        ),
+                              ),
+                            );
+                          } else
+                            return Center(
+                              child: Badge(
+                                showBadge: true,
+                                badgeContent: Text(
+                                  '0',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                child: Icon(Icons.shopping_cart,
+                                    color: Colors.white),
+                              ),
+                            );
+                        },
                       ),
                     ],
                   ),

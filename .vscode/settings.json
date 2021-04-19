@@ -15,5 +15,9 @@
 "editor.fontSize": 14,
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
-"editor.fontWeight": "400"
+"editor.fontWeight": "400",
+"editor.minimap.enabled": false,
+"diffEditor.wordWrap": "off",
+"editor.wordWrapColumn": 400,
+"editor.wordWrap": "bounded"
 }

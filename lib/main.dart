@@ -7,6 +7,7 @@ import 'package:cookie/models/items.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/auth/google_sign_in.dart';
+import 'package:cookie/screens/cart/new_cart_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
@@ -14,6 +15,7 @@ import 'package:cookie/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -59,10 +61,21 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: SettingsItem()),
         ChangeNotifierProvider.value(value: Favorite()),
         ChangeNotifierProvider.value(value: ItemsInfo()),
-        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/cartPage':
+              return PageTransition(
+                  settings: settings,
+                  child: CartDetail(),
+                  type: PageTransitionType.fade);
+              break;
+            default:
+              return null;
+          }
+        },
         theme: theme(),
         initialRoute: SplashScreen.routeName,
         routes: routes,
