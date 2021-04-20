@@ -18,6 +18,5 @@
 "editor.fontWeight": "400",
 "editor.minimap.enabled": false,
 "diffEditor.wordWrap": "off",
-"editor.wordWrapColumn": 400,
-"editor.wordWrap": "bounded"
+"editor.wordWrapColumn": 400
 }

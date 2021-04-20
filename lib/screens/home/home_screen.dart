@@ -177,9 +177,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             .reference()
                             .child('NewCart')
                             .child('UNIQUE_USER_ID')
+                            // .child('0HfSVkI6rKewFjSQvnDtndE1OOq1')
                             .onValue, // use FirebaseAuth uid
                         builder: (BuildContext context,
                             AsyncSnapshot<Event> snapshot) {
+                          var numberItemInCart = 0;
                           if (snapshot.hasData) {
                             Map<dynamic, dynamic> map =
                                 snapshot.data.snapshot.value;
@@ -191,10 +193,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 newCart.key = key;
                                 newCarts.add(newCart);
                               });
+                              // Calculate number
+                              numberItemInCart = newCarts
+                                  .map<int>((m) => m.quantity)
+                                  .reduce((s1, s2) => s1 + s2);
                             }
-                            var numberItemInCart = newCarts
-                                .map<int>((m) => m.quantity)
-                                .reduce((s1, s2) => s1 + s2);
                             return GestureDetector(
                               onTap: () {
                                 // When user click on App Bar Action

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/size_config.dart';
 import 'package:cookie/models/donut.dart';
@@ -152,10 +153,13 @@ class _CartDetailState extends State<CartDetail> {
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .spaceBetween,
+                                                              .start,
                                                       children: [
                                                         Text(
-                                                            '\$${newCarts[index].price}'),
+                                                          'Всего: \ ${newCarts[index].totalPrice}p',
+                                                          style: TextStyle(
+                                                              fontSize: 20),
+                                                        ),
                                                         ElegantNumberButton(
                                                             initialValue:
                                                                 newCarts[index]
@@ -172,7 +176,21 @@ class _CartDetailState extends State<CartDetail> {
                                                             maxValue: 99,
                                                             onChanged:
                                                                 (value) async {
-                                                              // update quantity
+                                                              newCarts[index]
+                                                                      .quantity =
+                                                                  value;
+                                                              newCarts[index]
+                                                                  .totalPrice = double
+                                                                      .parse(newCarts[
+                                                                              index]
+                                                                          .price) *
+                                                                  newCarts[
+                                                                          index]
+                                                                      .quantity;
+                                                              updateToCart(
+                                                                  scaffoldKey,
+                                                                  newCarts[
+                                                                      index]);
                                                             },
                                                             decimalPlaces: 0),
                                                       ],
@@ -193,7 +211,20 @@ class _CartDetailState extends State<CartDetail> {
                                           getProportionateScreenWidth(8)),
                                       child: IconButton(
                                         icon: Icon(Icons.clear),
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          if (await confirm(context,
+                                              title: Text('Delete item'),
+                                              content: Text(
+                                                  'Точно хотите удалить из списка?'),
+                                              textOK: Text(
+                                                'Удалить',
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                              textCancel: Text('Отмена'))) {
+                                            return deleteCart(
+                                                scaffoldKey, newCarts[index]);
+                                          }
                                           deleteCart(
                                               scaffoldKey, newCarts[index]);
                                         },

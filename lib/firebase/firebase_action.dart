@@ -50,7 +50,7 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, NewCart newCart) {
       .child('UNIQUE_USER_ID');
   cart
       .child(newCart.key)
-      .set(newCart)
+      .set(newCart.toJson())
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('Add to cart successfully'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
