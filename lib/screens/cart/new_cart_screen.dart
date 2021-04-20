@@ -7,7 +7,6 @@ import 'package:cookie/models/newCart.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CartDetail extends StatefulWidget {
   CartDetail({Key key}) : super(key: key);

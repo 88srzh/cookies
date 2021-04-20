@@ -63,7 +63,7 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, NewCart newCart) {
       .child('NewCart')
       .child('UNIQUE_USER_ID');
   cart
-      .child(donut.key)
+      .child(newCart.key)
       .remove()
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(
