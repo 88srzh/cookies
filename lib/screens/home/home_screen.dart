@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             //         return PopupMenuItem<String>(
             //           value: choice,
             //           child: Text(choice),
-            //         );s
+            //         );
             //       }).toList();
             //     },
             //   ),
@@ -177,7 +177,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             .reference()
                             .child('NewCart')
                             .child('UNIQUE_USER_ID')
-                            // .child('0HfSVkI6rKewFjSQvnDtndE1OOq1')
                             .onValue, // use FirebaseAuth uid
                         builder: (BuildContext context,
                             AsyncSnapshot<Event> snapshot) {
