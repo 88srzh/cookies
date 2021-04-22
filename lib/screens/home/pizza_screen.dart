@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cookie/models/donut.dart';
+import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -42,7 +43,10 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            // Navigator.pushNamed(
+                            //     context, DescriptionScreen.routeName);
+                          },
                           child: Text('${donuts[index].title}'),
                         ),
                       );

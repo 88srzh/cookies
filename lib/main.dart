@@ -8,6 +8,7 @@ import 'package:cookie/routs.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/cart/new_cart_screen.dart';
+import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
@@ -47,7 +48,6 @@ class MyApp extends StatelessWidget {
                 return buildLoading();
               } else if (snapshot.hasData) {
                 return HomeScreen();
-                // return CookiePage();
               } else {
                 return SignInScreenNew();
               }

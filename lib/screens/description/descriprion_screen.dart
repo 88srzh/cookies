@@ -14,9 +14,10 @@ class DescriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-        appBar: AppBarDescription(),
-        body: BodyDescription(),
-        bottomNavigationBar: BottomDescription());
+      backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
+      appBar: AppBarDescription(),
+      body: BodyDescription(),
+      // bottomNavigationBar: BottomDescription());
+    );
   }
 }

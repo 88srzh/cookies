@@ -13,7 +13,7 @@ class AppBarDescription extends StatelessWidget implements PreferredSizeWidget {
           SizedBox(
             height: getProportionateScreenWidth(0),
           ),
-          FavoriteWidget(),
+          // FavoriteWidget(),
         ],
       ),
     );

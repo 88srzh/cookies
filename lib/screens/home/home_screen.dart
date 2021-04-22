@@ -6,6 +6,7 @@ import 'package:cookie/models/newCart.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
+import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
 import 'package:cookie/screens/home/pizza_screen.dart';
@@ -77,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   icon: Icon(Icons.person_add),
                   title: 'Профиль',
                   onPressed: () =>
-                      Navigator.pushNamed(context, ProfileScreen.routeName),
+                      // Navigator.pushNamed(context, ProfileScreen.routeName),
+                      Navigator.pushNamed(context, DescriptionScreen.routeName),
                 ),
                 CustomListTile(
                   icon: Icon(FontAwesomeIcons.solidHeart),

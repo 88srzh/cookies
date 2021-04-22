@@ -9,10 +9,16 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 class BodyDescription extends StatelessWidget {
-  final String id;
-  BodyDescription({this.id});
+  // final String id;
+  BodyDescription();
   @override
   Widget build(BuildContext context) {
+    return Container(
+      child: Flexible(
+        child: Text(
+            '1111111111111111111111111111111111111111111111111111111111111111'),
+      ),
+    );
     // final itemId = ModalRoute.of(context).settings.arguments as String;
     // final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
     // final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
@@ -160,7 +166,7 @@ class BodyDescription extends StatelessWidget {
                           right: getProportionateScreenWidth(20),
                         ),
                         child: Text(
-                          '123',
+                          '123111111111111111111111111111111111111111111111111111111111111111111111',
                           // docs['description'],
                           // loadedSweet.description,
                           // '123',
