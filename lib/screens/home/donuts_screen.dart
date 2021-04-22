@@ -147,8 +147,13 @@ class _DonutsScreenState extends State<DonutsScreen> {
         ),
         Expanded(
           // ! - repair text if not image
-          child: Image.network(
-              donuts[index].image == "" ? 'NO IMAGE' : donuts[index].image),
+          flex: 2,
+          child: ClipRRect(
+            child: Image(
+              image: NetworkImage(
+                  donuts[index].image == "" ? 'NO IMAGE' : donuts[index].image),
+            ),
+          ),
         ),
         Flexible(
           child: Container(

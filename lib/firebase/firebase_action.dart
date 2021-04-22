@@ -27,6 +27,7 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Donut donut) {
       // If user don't have item in cart
       NewCart newCart = new NewCart(
           title: donut.title,
+          image: donut.image,
           key: donut.key,
           price: donut.price,
           quantity: 1,

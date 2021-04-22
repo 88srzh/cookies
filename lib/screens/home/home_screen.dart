@@ -78,8 +78,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   icon: Icon(Icons.person_add),
                   title: 'Профиль',
                   onPressed: () =>
-                      // Navigator.pushNamed(context, ProfileScreen.routeName),
-                      Navigator.pushNamed(context, DescriptionScreen.routeName),
+                      Navigator.pushNamed(context, ProfileScreen.routeName),
                 ),
                 CustomListTile(
                   icon: Icon(FontAwesomeIcons.solidHeart),
