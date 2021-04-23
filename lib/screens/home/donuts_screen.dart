@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cookie/firebase/firebase_action.dart';
-import 'package:cookie/models/donut.dart';
+import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
@@ -17,7 +17,7 @@ class DonutsScreen extends StatefulWidget {
 class _DonutsScreenState extends State<DonutsScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
-  List<Donut> donuts = new List<Donut>.empty(growable: true);
+  List<Item> donuts = new List<Item>.empty(growable: true);
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
 
   @override
@@ -52,7 +52,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                     donuts.clear();
                     map.forEach((key, value) {
                       var donut =
-                          new Donut.fromJson(json.decode(json.encode(value)));
+                          new Item.fromJson(json.decode(json.encode(value)));
                       donut.key = key;
                       donuts.add(donut);
                     });
@@ -97,15 +97,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
                 },
               ),
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   // crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     DefaultButtonGrey(
-            //       text: 'Показать еще',
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
-class Donut {
+class Item {
   String key, title, rating, categories, price, image;
 
-  Donut(
+  Item(
       {this.key,
       this.title,
       this.rating,
@@ -9,7 +9,7 @@ class Donut {
       this.price,
       this.image});
 
-  Donut.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     title = json['title'];
     rating = json['rating'];

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:cookie/models/donut.dart';
+import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Donut donut) {
+void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item donut) {
   var cart = FirebaseDatabase.instance
       .reference()
       .child('NewCart')

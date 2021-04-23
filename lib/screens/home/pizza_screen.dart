@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cookie/models/donut.dart';
+import 'package:cookie/models/item.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +15,7 @@ class PizzaScreen extends StatefulWidget {
 
 class _PizzaScreenState extends State<PizzaScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
-  List<Donut> donuts = new List<Donut>.empty(growable: true);
+  List<Item> donuts = new List<Item>.empty(growable: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 donuts.clear();
                 map.forEach((key, value) {
                   var donut =
-                      new Donut.fromJson(json.decode(json.encode(value)));
+                      new Item.fromJson(json.decode(json.encode(value)));
                   donut.key = key;
                   donuts.add(donut);
                 });
