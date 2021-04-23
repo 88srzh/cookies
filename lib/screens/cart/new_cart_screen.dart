@@ -83,8 +83,8 @@ class _CartDetailState extends State<CartDetail> {
                                     padding: EdgeInsets.all(
                                         getProportionateScreenWidth(8)),
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(30)),
+                                      // borderRadius:
+                                      //     BorderRadius.all(Radius.circular(30)),
                                       gradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,

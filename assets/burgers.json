@@ -1,0 +1,39 @@
+{
+  "Burgers" : {
+    "01" : {
+      "categories" : "Бургеры"
+      "image" : "https://imageup.ru/img186/3733349/chiken_burger.png",
+      "price" : "120"
+      "rating" : "0.0",
+      "title" : "Чикен"
+    },
+    "02" : {
+      "categories" : "Бургеры",
+      "image" : "https://imageup.ru/img156/3733359/big_burger.png",
+      "price" : "165"
+      "rating" : "0.0",
+      "title" : "Большой"
+    },
+    "03" : {
+      "categories" : "Бургеры",
+      "image" : "https://imageup.ru/img251/3733362/freeburger.png",
+      "price" : "145"
+      "rating" : "0.0",
+      "title" : "Фри"
+    },
+    "04" : {
+      "categories" : "Бургеры",
+      "image" : "https://imageup.ru/img128/3733364/onion_burger.png",
+      "price" : "115",
+      "rating" : "0.0",
+      "title" : "Луковый"
+    },
+    "05" : {
+      "categories" : "Бургеры",
+      "image" : "https://imageup.ru/img279/3733366/black_burger.png",
+      "price" : "180",
+      "rating" : "0.0",
+      "title" : "Черный"
+    }
+  }
+}
