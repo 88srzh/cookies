@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cookie/screens/description/components/appbar_description.dart';
 import 'package:cookie/screens/description/components/bottom_add_to_cart.dart';
 import 'package:cookie/screens/description/components/body_description.dart';
@@ -8,9 +7,7 @@ import 'package:flutter/material.dart';
 
 class DescriptionScreen extends StatelessWidget {
   static const routeName = '/description';
-  final String id;
-
-  DescriptionScreen({this.id});
+  DescriptionScreen();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

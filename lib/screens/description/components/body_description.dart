@@ -14,55 +14,7 @@ class BodyDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Flexible(
-        child: Text(
-            '1111111111111111111111111111111111111111111111111111111111111111'),
-      ),
     );
-    // final itemId = ModalRoute.of(context).settings.arguments as String;
-    // final loadedSweet = Provider.of<Sweets>(context).findById(itemId);
-    // final loadedBurger = Provider.of<Sweets>(context).findByIdBurgers(itemId);
-    // ---------------------------------------------------------------------
-    // return StreamBuilder(
-    //     stream: FirebaseFirestore.instance.collection('Items').snapshots(),
-    //     builder: (context, snapshot) {
-    //       if (!snapshot.hasData) return Text('Loading...');
-    //       return ListView.builder(
-    //           itemCount: snapshot.data.docs.length,
-    //           itemBuilder: (context, index) {
-    //             return buildDescriptionCard(context, snapshot.data.docs[index]);
-    //           });
-    // });
-    // QuerySnapshot ref =
-    // FirebaseFirestore.instance.collection('Items').snapshots();
-    // DocumentSnapshot nextSnap = await transaction.get(docs.reference);
-    // return buildDescriptionCard(context, nextSnap);
-    // CollectionReference ref = FirebaseFirestore.instance.collection('Items');
-    // final donutItem = ModalRoute.of(context).settings.arguments as String;
-    // return StreamBuilder(
-    //     stream: FirebaseFirestore.instance.collection('Items').snapshots(),
-    //     builder: (context, snapshot) {
-    //       if (!snapshot.hasData) return Text('Loading...');
-    //       return buildDescriptionCard(context, snapshot.data.docs);
-    //     });
-
-    // CollectionReference items = FirebaseFirestore.instance.collection('Items');
-
-    // return FutureBuilder<DocumentSnapshot>(
-    //   future: items.doc(id).get(),
-    //   builder:
-    //       (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-    //     if (snapshot.hasError) {
-    //       return Text('Something went wrong');
-    //     }
-
-    //     if (snapshot.connectionState == ConnectionState.done) {
-    //       Map<String, dynamic> data = snapshot.data.data();
-    //       return Text('description: ${data['description']}');
-    //     }
-    //     return Text('loading...');
-    //   },
-    // );
   }
 
   Widget buildDescriptionCard(
