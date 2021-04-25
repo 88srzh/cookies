@@ -72,6 +72,12 @@ class MyApp extends StatelessWidget {
                   child: CartDetail(),
                   type: PageTransitionType.fade);
               break;
+            case '/descriptionPage':
+              return PageTransition(
+                  settings: settings,
+                  child: DescriptionScreen(),
+                  type: PageTransitionType.fade);
+              break;
             default:
               return null;
           }

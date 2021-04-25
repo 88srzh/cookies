@@ -1,23 +1,24 @@
 import 'dart:convert';
 
+import 'package:cookie/models/description.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item donut) {
+void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   var cart = FirebaseDatabase.instance
       .reference()
       .child('NewCart')
       .child('UNIQUE_USER_ID');
-  cart.child(donut.key).once().then((DataSnapshot snapshot) {
+  cart.child(item.key).once().then((DataSnapshot snapshot) {
     //  If user already have item in cart
     if (snapshot.value != null) {
       var newCart = NewCart.fromJson(json.decode(json.encode(snapshot.value)));
       newCart.quantity += 1;
-      newCart.totalPrice = double.parse(donut.price) * newCart.quantity;
+      newCart.totalPrice = double.parse(item.price) * newCart.quantity;
       cart
-          .child(donut.key)
+          .child(item.key)
           .set(newCart.toJson())
           .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('Update successfully'))))
@@ -26,14 +27,14 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item donut) {
     } else {
       // If user don't have item in cart
       NewCart newCart = new NewCart(
-          title: donut.title,
-          image: donut.image,
-          key: donut.key,
-          price: donut.price,
+          title: item.title,
+          image: item.image,
+          key: item.key,
+          price: item.price,
           quantity: 1,
-          totalPrice: double.parse(donut.price));
+          totalPrice: double.parse(item.price));
       cart
-          .child(donut.key)
+          .child(item.key)
           .set(newCart.toJson())
           .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(
@@ -71,4 +72,47 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, NewCart newCart) {
               SnackBar(content: Text('Remove from cart successfully'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('$e'))));
+}
+
+void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+  var descScreen = FirebaseDatabase.instance
+      .reference()
+      .child('DescriptionItem')
+      .child('Items');
+  descScreen.child(item.key).once().then((DataSnapshot snapshot) {
+    // If user already have item in description
+    if (snapshot.value != null) {
+      var newDescription =
+          Item.fromJson(json.decode(json.encode(snapshot.value)));
+      descScreen
+          .child(item.key)
+          .set(newDescription.toJson())
+          .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+              .showSnackBar(SnackBar(content: Text('Update successfully'))))
+          .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+              .showSnackBar(SnackBar(content: Text('$e'))));
+    } else {
+      DescriptionsItem description = new DescriptionsItem(
+          key: item.key,
+          title: item.title,
+          price: item.price,
+          image: item.image,
+          description: item.description,
+          sugar: item.sugar,
+          fat: item.fat,
+          energy: item.energy,
+          salt: item.salt,
+          energyGramm: item.energyGramm,
+          sugarGramm: item.sugarGramm,
+          saltGramm: item.saltGramm,
+          fatGramm: item.fatGramm);
+      descScreen
+          .child(item.key)
+          .set(description.toJson())
+          .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+              .showSnackBar(SnackBar(content: Text('fucking work'))))
+          .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+              .showSnackBar(SnackBar(content: Text('$e'))));
+    }
+  });
 }

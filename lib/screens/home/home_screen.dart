@@ -79,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   title: 'Профиль',
                   onPressed: () =>
                       Navigator.pushNamed(context, ProfileScreen.routeName),
+                  // Navigator.pushNamed(context, DescriptionScreen.routeName)
                 ),
                 CustomListTile(
                   icon: Icon(FontAwesomeIcons.solidHeart),
@@ -112,6 +113,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   title: 'Выйти из Google',
                   onPressed: () =>
                       Navigator.pushNamed(context, GoogleLogoutPage.routeName),
+                ),
+                CustomListTile(
+                  icon: Icon(Icons.agriculture_outlined),
+                  title: 'DescriptionPage',
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed('/descriptionPage'),
                 ),
               ],
             ),
