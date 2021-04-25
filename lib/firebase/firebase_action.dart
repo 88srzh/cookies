@@ -116,3 +116,44 @@ void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
     }
   });
 }
+
+void redirectToDescriptionSecond(
+    GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+  var descScreen = FirebaseDatabase.instance.reference().child('Burgers');
+  descScreen.child(item.key).once().then((DataSnapshot snapshot) {
+    // If user already have item in description
+    if (snapshot.value != null) {
+      var newDescription =
+          Item.fromJson(json.decode(json.encode(snapshot.value)));
+      descScreen.child(item.key);
+      // .set(newDescription.toJson())
+      // .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+      //     .showSnackBar(SnackBar(content: Text('Update successfully'))))
+      // .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+      //     .showSnackBar(SnackBar(content: Text('$e'))));
+    }
+    // } else {
+    //   DescriptionsItem description = new DescriptionsItem(
+    //       key: item.key,
+    //       title: item.title,
+    //       price: item.price,
+    //       image: item.image,
+    //       description: item.description,
+    //       sugar: item.sugar,
+    //       fat: item.fat,
+    //       energy: item.energy,
+    //       salt: item.salt,
+    //       energyGramm: item.energyGramm,
+    //       sugarGramm: item.sugarGramm,
+    //       saltGramm: item.saltGramm,
+    //       fatGramm: item.fatGramm);
+    //   descScreen
+    //       .child(item.key)
+    //       .set(description.toJson())
+    //       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('fucking work'))))
+    //       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('$e'))));
+    // }
+  });
+}

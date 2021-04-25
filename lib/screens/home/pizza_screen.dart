@@ -73,8 +73,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
                                 // addToCart(_scaffoldKey, burgers[index]);
                                 redirectToDescription(
                                     _scaffoldKey, burgers[index]);
-                                // Navigator.pushNamed(
-                                //     context, DescriptionScreen.routeName);
+                                // Navigator.of(context)
+                                //     .pushNamed('/descriprionPage');
                               },
                               child: Container(
                                 decoration: BoxDecoration(

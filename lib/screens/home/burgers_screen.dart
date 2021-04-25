@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
@@ -40,7 +39,6 @@ class _BurgersScreenState extends State<BurgersScreen> {
         child: Column(
           children: [
             Expanded(
-              // ---------------------------------------------
               child: StreamBuilder(
                 stream: FirebaseDatabase.instance
                     .reference()
@@ -83,7 +81,8 @@ class _BurgersScreenState extends State<BurgersScreen> {
                                     ],
                                   ),
                                 ),
-                                child: buildItemCard(index),
+                                child: buildItemCard(index,
+                                    price: burgers[index].price),
                               ),
                             ),
                           );
@@ -104,7 +103,7 @@ class _BurgersScreenState extends State<BurgersScreen> {
     );
   }
 
-  Widget buildItemCard(int index) {
+  Widget buildItemCard(int index, {String price}) {
     return Column(
       children: [
         Flexible(
@@ -126,7 +125,8 @@ class _BurgersScreenState extends State<BurgersScreen> {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '${burgers[index].price}₽',
+                      // '${burgers[index].price}₽',
+                      '$price',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
