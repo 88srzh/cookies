@@ -130,7 +130,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: getProportionateScreenWidth(20),
-                      vertical: getProportionateScreenWidth(12),
+                      vertical: getProportionateScreenWidth(10),
                     ),
                     child: Text(
                       '${pizza[index].price}₽',
