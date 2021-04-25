@@ -82,7 +82,9 @@ class _BurgersScreenState extends State<BurgersScreen> {
                                   ),
                                 ),
                                 child: buildItemCard(index,
-                                    price: burgers[index].price),
+                                    price: burgers[index].price,
+                                    title: burgers[index].title,
+                                    categories: burgers[index].categories),
                               ),
                             ),
                           );
@@ -103,7 +105,7 @@ class _BurgersScreenState extends State<BurgersScreen> {
     );
   }
 
-  Widget buildItemCard(int index, {String price}) {
+  Widget buildItemCard(int index, {String price, title, categories}) {
     return Column(
       children: [
         Flexible(
@@ -156,7 +158,8 @@ class _BurgersScreenState extends State<BurgersScreen> {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${burgers[index].title}',
+                    // '${burgers[index].title}',
+                    '$title',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -168,7 +171,8 @@ class _BurgersScreenState extends State<BurgersScreen> {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${burgers[index].categories}',
+                    // '${burgers[index].categories}',
+                    '$categories',
                     style: TextStyle(
                       // fontSize: 12,
                       color: Colors.grey,

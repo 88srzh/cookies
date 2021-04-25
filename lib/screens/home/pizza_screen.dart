@@ -19,7 +19,7 @@ class PizzaScreen extends StatefulWidget {
 class _PizzaScreenState extends State<PizzaScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
-  List<Item> burgers = new List<Item>.empty(growable: true);
+  List<Item> pizza = new List<Item>.empty(growable: true);
   List<DescriptionsItem> description =
       new List<DescriptionsItem>.empty(growable: true);
 
@@ -47,22 +47,22 @@ class _PizzaScreenState extends State<PizzaScreen> {
               child: StreamBuilder(
                 stream: FirebaseDatabase.instance
                     .reference()
-                    .child('Burgers')
+                    .child('Pizza')
                     .onValue,
                 builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                   if (snapshot.hasData) {
                     var map =
                         snapshot.data.snapshot.value as Map<dynamic, dynamic>;
-                    burgers.clear();
+                    pizza.clear();
                     map.forEach((key, value) {
-                      var burger =
+                      var pizzas =
                           new Item.fromJson(json.decode(json.encode(value)));
-                      burger.key = key;
-                      burgers.add(burger);
+                      pizzas.key = key;
+                      pizza.add(pizzas);
                     });
                     return StaggeredGridView.countBuilder(
                         crossAxisCount: 2,
-                        itemCount: burgers.length,
+                        itemCount: pizza.length,
                         padding: EdgeInsets.all(getProportionateScreenWidth(2)),
                         mainAxisSpacing: getProportionateScreenWidth(10),
                         crossAxisSpacing: getProportionateScreenWidth(6),
@@ -72,7 +72,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                               onTap: () {
                                 // addToCart(_scaffoldKey, burgers[index]);
                                 redirectToDescription(
-                                    _scaffoldKey, burgers[index]);
+                                    _scaffoldKey, pizza[index]);
                                 // Navigator.of(context)
                                 //     .pushNamed('/descriprionPage');
                               },
@@ -133,7 +133,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       vertical: getProportionateScreenWidth(12),
                     ),
                     child: Text(
-                      '${burgers[index].price}₽',
+                      '${pizza[index].price}₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -149,9 +149,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
           flex: 2,
           child: ClipRRect(
             child: Image(
-              image: NetworkImage(burgers[index].image == ""
-                  ? 'NO IMAGE'
-                  : burgers[index].image),
+              image: NetworkImage(
+                  pizza[index].image == "" ? 'NO IMAGE' : pizza[index].image),
             ),
           ),
         ),
@@ -163,7 +162,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${burgers[index].title}',
+                    '${pizza[index].title}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -175,7 +174,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${burgers[index].categories}',
+                    '${pizza[index].categories}',
                     style: TextStyle(
                       // fontSize: 12,
                       color: Colors.grey,
@@ -211,7 +210,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        '${burgers[index].rating}',
+                        '${pizza[index].rating}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
