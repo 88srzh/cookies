@@ -22,6 +22,7 @@ import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
+import 'package:cookie/screens/home/pancakes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -288,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             children: [
               DonutsScreen(),
               BurgersScreen(),
-              Icon(Icons.directions_bike),
+              PancakesScreen(),
               PizzaScreen(),
             ],
           ),

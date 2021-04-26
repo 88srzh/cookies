@@ -21,7 +21,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
 
   @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
