@@ -128,7 +128,7 @@ class _BurgersScreenState extends State<BurgersScreen> {
                     ),
                     child: Text(
                       // '${burgers[index].price}₽',
-                      '${price}₽',
+                      '$price₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),

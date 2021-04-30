@@ -1,4 +1,4 @@
-import 'package:cookie/screens/home/components/favorite_widget.dart';
+// import 'package:cookie/screens/home/components/favorite_widget.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 

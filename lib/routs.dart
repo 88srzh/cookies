@@ -2,7 +2,7 @@ import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-import 'package:cookie/screens/description/descriprion_screen.dart';
+// import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
 import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';

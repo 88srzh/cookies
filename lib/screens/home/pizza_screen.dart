@@ -1,11 +1,8 @@
 import 'dart:convert';
 
-import 'package:cookie/components/default_button_grey.dart';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/description.dart';
 import 'package:cookie/models/item.dart';
-import 'package:cookie/models/newCart.dart';
-import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +40,6 @@ class _PizzaScreenState extends State<PizzaScreen> {
         child: Column(
           children: [
             Expanded(
-              // ---------------------------------------------
               child: StreamBuilder(
                 stream: FirebaseDatabase.instance
                     .reference()

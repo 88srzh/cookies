@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:cookie/components/custom_box_shadow.dart';
 import 'package:cookie/models/description.dart';
-import 'package:cookie/screens/description/components/ingredient_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

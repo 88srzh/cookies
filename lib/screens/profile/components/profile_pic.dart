@@ -14,7 +14,8 @@ class ProfilePic extends StatefulWidget {
 }
 
 class _ProfilePicState extends State<ProfilePic> {
-  File _image, _galleryImage;
+  File _image;
+  // File _galleryImage;
   final picker = ImagePicker();
 
   Future getImage() async {

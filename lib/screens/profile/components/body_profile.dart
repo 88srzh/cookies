@@ -1,7 +1,6 @@
-// import 'package:cookie/screens/profile/components/profile_menu.dart';
 import 'package:cookie/screens/profile/components/profile_pic.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
@@ -9,7 +8,7 @@ import 'package:cookie/screens/settings/settings_screen.dart';
 class BodyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
+    // final user = FirebaseAuth.instance.currentUser;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

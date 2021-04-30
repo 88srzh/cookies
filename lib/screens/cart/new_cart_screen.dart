@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/size_config.dart';
-import 'package:cookie/models/item.dart';
+// import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

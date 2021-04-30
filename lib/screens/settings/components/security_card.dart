@@ -1,8 +1,5 @@
-import 'package:cookie/models/settings.dart';
 import 'package:flutter/material.dart';
-
 import 'package:cookie/components/custom_settings_divider.dart';
-import 'package:provider/provider.dart';
 
 class SecurityCard extends StatefulWidget {
   // const ToggleOnCard({this.text, this.icon, this.press});
