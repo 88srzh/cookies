@@ -25,7 +25,10 @@ class _CartDetailState extends State<CartDetail> {
       key: scaffoldKey,
       appBar: AppBar(
         title: Center(
-          child: Text('Cart'),
+          child: Text(
+            'Корзина',
+            style: TextStyle(color: Colors.black87),
+          ),
         ),
       ),
       body: Container(
@@ -38,11 +41,9 @@ class _CartDetailState extends State<CartDetail> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.only(
-            top: getProportionateScreenWidth(10),
-            left: getProportionateScreenWidth(15),
-            right: getProportionateScreenWidth(15),
-          ),
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(3),
+              vertical: getProportionateScreenWidth(4)),
           child: StreamBuilder(
               stream: FirebaseDatabase.instance
                   .reference()
@@ -148,7 +149,7 @@ class _CartDetailState extends State<CartDetail> {
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal:
                                                           getProportionateScreenWidth(
-                                                              8)),
+                                                              2)),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
