@@ -9,14 +9,20 @@
     }    
 },
 "editor.fontFamily": "JetBrains Mono, monospace",
-"workbench.colorTheme": "eppz!",
-"workbench.preferredDarkColorTheme": "One Dark Pro",
+"workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨ TSA/ASD 🧩",
 "workbench.preferredHighContrastColorTheme": "One Dark Pro",
-"editor.fontSize": 14,
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
 "editor.fontWeight": "400",
 "editor.minimap.enabled": false,
+"editor.wordWrapColumn": 800000,
+"html.format.wrapLineLength": 0,
+"prettier.proseWrap": "never",
+"html.format.enable": false,
+"javascript.format.enable": false,
+"typescript.format.enable": false,
+"editor.formatOnPaste": true,
+"editor.formatOnType": true,
 "diffEditor.wordWrap": "off",
-"editor.wordWrapColumn": 400
+"editor.wrappingIndent": "none"
 }

@@ -23,6 +23,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: _scaffoldKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,

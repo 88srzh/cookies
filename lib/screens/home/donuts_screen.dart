@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// import 'package:cookie/firebase/firebase_action.dart';
+import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
@@ -220,45 +220,5 @@ class _DonutsScreenState extends State<DonutsScreen> {
         ),
       ],
     );
-  }
-
-  void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
-    var cart = FirebaseDatabase.instance
-        .reference()
-        .child('NewCart')
-        .child('UNIQUE_USER_ID');
-    cart.child(item.key).once().then((DataSnapshot snapshot) {
-      //  If user already have item in cart
-      if (snapshot.value != null) {
-        var newCart =
-            NewCart.fromJson(json.decode(json.encode(snapshot.value)));
-        newCart.quantity += 1;
-        newCart.totalPrice = double.parse(item.price) * newCart.quantity;
-        cart
-            .child(item.key)
-            .set(newCart.toJson())
-            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('Update successfully'))))
-            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('$e'))));
-      } else {
-        // If user don't have item in cart
-        NewCart newCart = new NewCart(
-            title: item.title,
-            image: item.image,
-            key: item.key,
-            price: item.price,
-            quantity: 1,
-            totalPrice: double.parse(item.price));
-        cart
-            .child(item.key)
-            .set(newCart.toJson())
-            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-                .showSnackBar(
-                    SnackBar(content: Text('Add to cart successfully'))))
-            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
-                .showSnackBar(SnackBar(content: Text('$e'))));
-      }
-    });
   }
 }

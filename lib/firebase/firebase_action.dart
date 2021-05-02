@@ -54,7 +54,7 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, NewCart newCart) {
       .child(newCart.key)
       .set(newCart.toJson())
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-          .showSnackBar(SnackBar(content: Text('Add to cart successfully'))))
+          .showSnackBar(SnackBar(content: Text('Update to cart successfully'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
