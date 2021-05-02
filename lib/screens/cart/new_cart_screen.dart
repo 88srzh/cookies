@@ -103,7 +103,7 @@ class _CartDetailState extends State<CartDetail> {
                                                     children: [
                                                       Text('Всего: \ ${newCarts[index].totalPrice}₽', style: TextStyle(fontSize: 18)),
                                                       ElegantNumberButton(
-                                                        initialValue:newCarts[index].quantity,
+                                                        initialValue: newCarts[index].quantity,
                                                         buttonSizeHeight: getProportionateScreenWidth(20),
                                                         buttonSizeWidth: getProportionateScreenWidth(25),
                                                         color:Colors.transparent,
@@ -140,7 +140,6 @@ class _CartDetailState extends State<CartDetail> {
                                             textCancel: Text('Отмена'))) {
                                           return deleteCart(_scaffoldKey, newCarts[index]);
                                         }
-                                        deleteCart(_scaffoldKey, newCarts[index]);
                                       },
                                     ),
                                   ),
