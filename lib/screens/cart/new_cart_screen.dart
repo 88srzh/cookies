@@ -18,11 +18,11 @@ class CartDetail extends StatefulWidget {
 
 class _CartDetailState extends State<CartDetail> {
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
-  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Center(
           child: Text(
@@ -78,7 +78,7 @@ class _CartDetailState extends State<CartDetail> {
                                     vertical: getProportionateScreenWidth(6),
                                   ),
                                   // onTap: () {
-                                  //   addToCart(_scaffoldKey, donuts[index]);
+                                  //   addToCart(_scaffoldKey, item[index]);
                                   // },
                                   child: Container(
                                     padding: EdgeInsets.all(
@@ -139,7 +139,7 @@ class _CartDetailState extends State<CartDetail> {
                                                   child: Text(
                                                     newCarts[index].title,
                                                     style: TextStyle(
-                                                      fontSize: 16,
+                                                      fontSize: 20,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -152,10 +152,11 @@ class _CartDetailState extends State<CartDetail> {
                                                               2)),
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
                                                       Text(
-                                                        'Всего: \ ${newCarts[index].totalPrice}p',
+                                                        'Всего: \ ${newCarts[index].totalPrice}₽',
                                                         style: TextStyle(
                                                             fontSize: 18),
                                                       ),
@@ -186,7 +187,7 @@ class _CartDetailState extends State<CartDetail> {
                                                                 newCarts[index]
                                                                     .quantity;
                                                             updateToCart(
-                                                                scaffoldKey,
+                                                                _scaffoldKey,
                                                                 newCarts[
                                                                     index]);
                                                           },
@@ -211,7 +212,7 @@ class _CartDetailState extends State<CartDetail> {
                                       icon: Icon(Icons.clear),
                                       onPressed: () async {
                                         if (await confirm(context,
-                                            title: Text('Delete item'),
+                                            title: Text('Удалить товар'),
                                             content: Text(
                                                 'Точно хотите удалить из списка?'),
                                             textOK: Text(
@@ -221,10 +222,10 @@ class _CartDetailState extends State<CartDetail> {
                                             ),
                                             textCancel: Text('Отмена'))) {
                                           return deleteCart(
-                                              scaffoldKey, newCarts[index]);
+                                              _scaffoldKey, newCarts[index]);
                                         }
                                         deleteCart(
-                                            scaffoldKey, newCarts[index]);
+                                            _scaffoldKey, newCarts[index]);
                                       },
                                     ),
                                   ),
@@ -234,7 +235,10 @@ class _CartDetailState extends State<CartDetail> {
                           },
                         )
                       : Center(
-                          child: Text('Пустая корзина'),
+                          child: Text(
+                            'Пустая корзина',
+                            style: TextStyle(fontSize: 30),
+                          ),
                         );
                 } else
                   return Center(

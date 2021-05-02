@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cookie/firebase/firebase_action.dart';
+// import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/newCart.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
@@ -17,12 +17,13 @@ class DonutsScreen extends StatefulWidget {
 class _DonutsScreenState extends State<DonutsScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
-  List<Item> donuts = new List<Item>.empty(growable: true);
+  List<Item> item = new List<Item>.empty(growable: true);
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
 
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
+      key: _scaffoldKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -49,16 +50,18 @@ Widget build(BuildContext context) {
                   if (snapshot.hasData) {
                     var map =
                         snapshot.data.snapshot.value as Map<dynamic, dynamic>;
-                    donuts.clear();
-                    map.forEach((key, value) {
-                      var donut =
-                          new Item.fromJson(json.decode(json.encode(value)));
-                      donut.key = key;
-                      donuts.add(donut);
-                    });
+                    item.clear();
+                    if (map != null) {
+                      map.forEach((key, value) {
+                        var donut =
+                            new Item.fromJson(json.decode(json.encode(value)));
+                        donut.key = key;
+                        item.add(donut);
+                      });
+                    }
                     return StaggeredGridView.countBuilder(
                         crossAxisCount: 2,
-                        itemCount: donuts.length,
+                        itemCount: item.length,
                         padding: EdgeInsets.all(getProportionateScreenWidth(2)),
                         mainAxisSpacing: getProportionateScreenWidth(10),
                         crossAxisSpacing: getProportionateScreenWidth(6),
@@ -66,7 +69,7 @@ Widget build(BuildContext context) {
                           return InkWell(
                             child: GestureDetector(
                               onTap: () {
-                                addToCart(_scaffoldKey, donuts[index]);
+                                addToCart(_scaffoldKey, item[index]);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -125,7 +128,7 @@ Widget build(BuildContext context) {
                       vertical: getProportionateScreenWidth(10),
                     ),
                     child: Text(
-                      '${donuts[index].price}₽',
+                      '${item[index].price}₽',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -142,7 +145,7 @@ Widget build(BuildContext context) {
           child: ClipRRect(
             child: Image(
               image: NetworkImage(
-                  donuts[index].image == "" ? 'NO IMAGE' : donuts[index].image),
+                  item[index].image == "" ? 'NO IMAGE' : item[index].image),
             ),
           ),
         ),
@@ -154,7 +157,7 @@ Widget build(BuildContext context) {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${donuts[index].title}',
+                    '${item[index].title}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -166,7 +169,7 @@ Widget build(BuildContext context) {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Text(
-                    '${donuts[index].categories}',
+                    '${item[index].categories}',
                     style: TextStyle(
                       // fontSize: 12,
                       color: Colors.grey,
@@ -202,7 +205,7 @@ Widget build(BuildContext context) {
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        '${donuts[index].rating}',
+                        '${item[index].rating}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -217,5 +220,45 @@ Widget build(BuildContext context) {
         ),
       ],
     );
+  }
+
+  void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+    var cart = FirebaseDatabase.instance
+        .reference()
+        .child('NewCart')
+        .child('UNIQUE_USER_ID');
+    cart.child(item.key).once().then((DataSnapshot snapshot) {
+      //  If user already have item in cart
+      if (snapshot.value != null) {
+        var newCart =
+            NewCart.fromJson(json.decode(json.encode(snapshot.value)));
+        newCart.quantity += 1;
+        newCart.totalPrice = double.parse(item.price) * newCart.quantity;
+        cart
+            .child(item.key)
+            .set(newCart.toJson())
+            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('Update successfully'))))
+            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('$e'))));
+      } else {
+        // If user don't have item in cart
+        NewCart newCart = new NewCart(
+            title: item.title,
+            image: item.image,
+            key: item.key,
+            price: item.price,
+            quantity: 1,
+            totalPrice: double.parse(item.price));
+        cart
+            .child(item.key)
+            .set(newCart.toJson())
+            .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+                .showSnackBar(
+                    SnackBar(content: Text('Add to cart successfully'))))
+            .catchError((e) => ScaffoldMessenger.of(_scaffoldKey.currentContext)
+                .showSnackBar(SnackBar(content: Text('$e'))));
+      }
+    });
   }
 }
