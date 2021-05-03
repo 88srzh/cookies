@@ -19,12 +19,13 @@ class CartDetail extends StatefulWidget {
 class _CartDetailState extends State<CartDetail> {
   List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  var totalQuantity;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Center(child: Text('Корзина', style: TextStyle(color: Colors.black87))),
+        title: Center(child: Text('Корзина\n$totalQuantity', style: TextStyle(color: Colors.black87))),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -61,10 +62,7 @@ class _CartDetailState extends State<CartDetail> {
                                   child: Container(
                                     padding: EdgeInsets.all(getProportionateScreenWidth(8)),
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [Color.fromRGBO(248, 219, 221, 1.0),Colors.orange[100]]),
+                                      gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
                                     ),
                                     // ! - buildItemCard was here
                                     child: Row(
@@ -84,7 +82,7 @@ class _CartDetailState extends State<CartDetail> {
                                         Expanded(
                                           flex: 4,
                                           child: Container(
-                                            padding: EdgeInsets.only(bottom:getProportionateScreenWidth(8)),
+                                            padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
                                             child: Column(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,11 +91,11 @@ class _CartDetailState extends State<CartDetail> {
                                                   padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(8)),
                                                   child: Text(
                                                     newCarts[index].title,
-                                                    style: TextStyle(fontSize: 20, fontWeight:FontWeight.bold),
+                                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.symmetric(horizontal:getProportionateScreenWidth(2)),
+                                                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
                                                   child: Row(
                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
@@ -106,12 +104,13 @@ class _CartDetailState extends State<CartDetail> {
                                                         initialValue: newCarts[index].quantity,
                                                         buttonSizeHeight: getProportionateScreenWidth(20),
                                                         buttonSizeWidth: getProportionateScreenWidth(25),
-                                                        color:Colors.transparent,
+                                                        color: Colors.transparent,
                                                         minValue: 1,
                                                         maxValue: 99,
-                                                        onChanged:(value) async {
+                                                        onChanged: (value) async {
                                                           newCarts[index].quantity = value;
                                                           newCarts[index].totalPrice = double.parse(newCarts[index].price) * newCarts[index].quantity;
+                                                          totalQuantity = newCarts[index].quantity + newCarts[index].quantity;
                                                           updateToCart(_scaffoldKey, newCarts[index]);
                                                         },
                                                         decimalPlaces: 0,
@@ -134,10 +133,7 @@ class _CartDetailState extends State<CartDetail> {
                                     child: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: () async {
-                                        if (await confirm(context, title: Text('Удалить товар'),
-                                            content: Text('Точно хотите удалить товар из списка?'),
-                                            textOK: Text('Удалить',style: TextStyle(color: Colors.red)),
-                                            textCancel: Text('Отмена'))) {
+                                        if (await confirm(context, title: Text('Удалить товар'), content: Text('Точно хотите удалить товар из списка?'), textOK: Text('Удалить', style: TextStyle(color: Colors.red)), textCancel: Text('Отмена'))) {
                                           return deleteCart(_scaffoldKey, newCarts[index]);
                                         }
                                       },

@@ -90,9 +90,7 @@ class _PancakesScreenState extends State<PancakesScreen> {
                         staggeredTileBuilder: (int index) =>
                             StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),

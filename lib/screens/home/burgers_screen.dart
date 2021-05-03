@@ -27,16 +27,13 @@ class _BurgersScreenState extends State<BurgersScreen> {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          // stops: [0.3, 1.8],
           colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(10),
-          left: getProportionateScreenWidth(15),
-          right: getProportionateScreenWidth(15),
-        ),
+        padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(10),
+            vertical: getProportionateScreenWidth(15)),
         child: Column(
           children: [
             Expanded(
@@ -69,33 +66,29 @@ class _BurgersScreenState extends State<BurgersScreen> {
                                 addToCart(_scaffoldKey, burgers[index]);
                               },
                               child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    // stops: [0.3, 1.8],
-                                    colors: [
-                                      Color.fromRGBO(248, 219, 221, 1.0),
-                                      Colors.orange[100]
-                                    ],
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color.fromRGBO(248, 219, 221, 1.0),
+                                        Colors.orange[100]
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                child: buildItemCard(index,
-                                    price: burgers[index].price,
-                                    title: burgers[index].title,
-                                    categories: burgers[index].categories),
-                              ),
+                                  child: buildItemCard(index,
+                                      price: burgers[index].price,
+                                      title: burgers[index].title,
+                                      categories: burgers[index].categories)),
                             ),
                           );
                         },
                         staggeredTileBuilder: (int index) =>
                             StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),
@@ -118,22 +111,16 @@ class _BurgersScreenState extends State<BurgersScreen> {
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(241, 240, 246, 2.0),
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(30),
-                    ),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(30)),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: getProportionateScreenWidth(20),
                       vertical: getProportionateScreenWidth(10),
                     ),
-                    child: Text(
-                      // '${burgers[index].price}₽',
-                      '$price₽',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: Text('$price₽',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
                   ),
                 ),
               ],
@@ -145,10 +132,9 @@ class _BurgersScreenState extends State<BurgersScreen> {
           flex: 2,
           child: ClipRRect(
             child: Image(
-              image: NetworkImage(burgers[index].image == ""
-                  ? 'NO IMAGE'
-                  : burgers[index].image),
-            ),
+                image: NetworkImage(burgers[index].image == ""
+                    ? 'NO IMAGE'
+                    : burgers[index].image)),
           ),
         ),
         Flexible(
@@ -158,27 +144,17 @@ class _BurgersScreenState extends State<BurgersScreen> {
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text(
-                    // '${burgers[index].title}',
-                    '$title',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
+                  child: Text('$title',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black)),
                 ),
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text(
-                    // '${burgers[index].categories}',
-                    '$categories',
-                    style: TextStyle(
-                      // fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
+                  child:
+                      Text('$categories', style: TextStyle(color: Colors.grey)),
                 ),
               ],
             ),

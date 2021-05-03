@@ -6,14 +6,14 @@
     "statusBar.background" : "#1A1A1A",
     "statusBar.noFolderBackground" : "#212121",
     "statusBar.debuggingBackground": "#263238"
-    }    
+    }
 },
-"editor.fontFamily": "JetBrains Mono, monospace",
-"workbench.colorTheme": "Horizon",
-"workbench.preferredHighContrastColorTheme": "One Dark Pro",
+"workbench.colorTheme": "Deepdark Material Theme | Full Black Version",
+"workbench.preferredHighContrastColorTheme": "Hackpot Garden",
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
 "editor.fontWeight": "400",
+"editor.rulers": [],
 "editor.minimap.enabled": false,
 "editor.wordWrapColumn": 800000,
 "html.format.wrapLineLength": 0,
@@ -24,5 +24,11 @@
 "editor.formatOnPaste": true,
 "editor.formatOnType": true,
 "diffEditor.wordWrap": "off",
-"editor.wrappingIndent": "none"
+"editor.wrappingIndent": "none",
+"workbench.iconTheme": "eq-material-theme-icons",
+"workbench.preferredDarkColorTheme": "Hackpot Garden",
+"workbench.preferredLightColorTheme": "Hackpot Garden",
+"editor.fontFamily": "Fira Code",
+"editor.defaultFormatter": "Dart-Code.flutter",
+"dart.lineLength": 800
 }

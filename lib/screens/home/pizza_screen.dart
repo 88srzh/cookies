@@ -95,9 +95,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                         staggeredTileBuilder: (int index) =>
                             StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),
@@ -131,9 +129,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     ),
                     child: Text(
                       '${pizza[index].price}₽',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),

@@ -42,14 +42,19 @@ class _DonutsScreenState extends State<DonutsScreen> {
           children: [
             Expanded(
               child: StreamBuilder(
-                stream: FirebaseDatabase.instance.reference().child('Donuts').onValue,
+                stream: FirebaseDatabase.instance
+                    .reference()
+                    .child('Donuts')
+                    .onValue,
                 builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                   if (snapshot.hasData) {
-                    var map = snapshot.data.snapshot.value as Map<dynamic, dynamic>;
+                    var map =
+                        snapshot.data.snapshot.value as Map<dynamic, dynamic>;
                     item.clear();
                     if (map != null) {
                       map.forEach((key, value) {
-                        var donut = new Item.fromJson(json.decode(json.encode(value)));
+                        var donut =
+                            new Item.fromJson(json.decode(json.encode(value)));
                         donut.key = key;
                         item.add(donut);
                       });
@@ -67,15 +72,24 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                 addToCart(_scaffoldKey, item[index]);
                               },
                               child: Container(
-                                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(30)),
-                                  gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color.fromRGBO(248, 219, 221, 1.0),
+                                        Colors.orange[100]
+                                      ]),
                                 ),
                                 child: buildItemCard(index),
                               ),
                             ),
                           );
                         },
-                        staggeredTileBuilder: (int index) => StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
+                        staggeredTileBuilder: (int index) =>
+                            StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
                   } else {
                     return Center(child: CircularProgressIndicator());
                   }
@@ -97,10 +111,17 @@ class _DonutsScreenState extends State<DonutsScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  decoration: BoxDecoration(color: Color.fromRGBO(241, 240, 246, 2.0), borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(30))),
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(241, 240, 246, 2.0),
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(30))),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20), vertical: getProportionateScreenWidth(10)),
-                    child: Text('${item[index].price}₽', style: TextStyle(fontWeight: FontWeight.w600)),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: getProportionateScreenWidth(20),
+                        vertical: getProportionateScreenWidth(10)),
+                    child: Text('${item[index].price}₽',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
                   ),
                 ),
               ],
@@ -124,11 +145,17 @@ class _DonutsScreenState extends State<DonutsScreen> {
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text('${item[index].title}', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black)),
+                  child: Text('${item[index].title}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black)),
                 ),
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text('${item[index].categories}', style: TextStyle(color: Colors.grey)),
+                  child: Text('${item[index].categories}',
+                      style: TextStyle(color: Colors.grey)),
                 ),
               ],
             ),
@@ -137,7 +164,10 @@ class _DonutsScreenState extends State<DonutsScreen> {
         Flexible(
           child: Container(
             child: Padding(
-              padding: EdgeInsets.only(left: getProportionateScreenWidth(15), right: getProportionateScreenWidth(15), top: getProportionateScreenWidth(15)),
+              padding: EdgeInsets.only(
+                  left: getProportionateScreenWidth(15),
+                  right: getProportionateScreenWidth(15),
+                  top: getProportionateScreenWidth(15)),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,7 +184,10 @@ class _DonutsScreenState extends State<DonutsScreen> {
                     ),
                     InkWell(
                       onTap: () {},
-                      child: Text('${item[index].rating}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      child: Text(
+                        '${item[index].rating}',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                     ),
                   ],

@@ -37,8 +37,7 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
           .child(item.key)
           .set(newCart.toJson())
           .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(
-                  SnackBar(content: Text('Добавлено в корзину'))))
+              .showSnackBar(SnackBar(content: Text('Добавлено в корзину'))))
           .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('$e'))));
     }

@@ -1,10 +1,10 @@
 import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
-import 'package:cookie/screens/cart/cart_screen.dart';
+// import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
-import 'package:cookie/screens/favorite/favorite_screen.dart';
+// import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
@@ -26,7 +26,7 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (context) => SignUpScreen(),
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
-  CartScreen.routeName: (context) => CartScreen(),
+  // CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   // DescriptionScreen.routeName: (context) => DescriptionScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
@@ -38,7 +38,7 @@ final Map<String, WidgetBuilder> routes = {
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),
-  FavoriteScreen.routeName: (context) => FavoriteScreen(),
+  // FavoriteScreen.routeName: (context) => FavoriteScreen(),
   TermsOfUseScreen.routeName: (context) => TermsOfUseScreen(),
   LicenseScreen.routeName: (context) => LicenseScreen(),
 };
