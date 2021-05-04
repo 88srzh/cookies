@@ -1,10 +1,13 @@
 // import 'package:cookie/screens/auth/authentification_service.dart';
 // import 'package:cookie/screens/auth/google_sign_in.dart';
+import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/sign_in/components/sign_in_form.dart';
 import 'package:cookie/size_config.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BodySignIn extends StatelessWidget {
   @override
@@ -64,21 +67,17 @@ class BodySignIn extends StatelessWidget {
                         icon: Icon(FontAwesomeIcons.userSecret,
                             color: Colors.grey),
                         onPressed: () {
-                          // context
-                          //     .read<AuthentificationService>()
-                          //     .signInAnonymously();
+                          // context.read<AuthentificationService>().signInAnonymously();
                         },
                       ),
                       IconButton(
                         icon: Icon(
                           FontAwesomeIcons.google,
-                          color: Colors.grey,
+                          color: Colors.black87,
                         ),
                         onPressed: () {
-                          // final googleProvider =
-                          //     Provider.of<GoogleSignInProvider>(context,
-                          //         listen: false);
-                          // googleProvider.login();
+                          final googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                          googleProvider.login();
                         },
                       ),
                     ],
