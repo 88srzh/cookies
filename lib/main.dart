@@ -51,11 +51,8 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        // ChangeNotifierProvider.value(value: Sweets()),
-        // ChangeNotifierProvider.value(value: Items()),
         ChangeNotifierProvider.value(value: SettingsItem()),
         ChangeNotifierProvider.value(value: Favorite()),
-        // ChangeNotifierProvider.value(value: ItemsInfo()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -5,6 +5,7 @@ import 'package:cookie/components/custom_list_tile.dart';
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth_test_screen.dart';
 // import 'package:cookie/screens/cart/cart_screen.dart';
 // import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
@@ -87,6 +88,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   icon: Icon(Icons.settings),
                   title: 'Настройки',
                   onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
+                ),
+                CustomListTile(
+                  icon: Icon(Icons.supervised_user_circle_outlined),
+                  title: 'ТестПользователей',
+                  onPressed: () => Navigator.pushNamed(context, TestAuthScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(Icons.add_shopping_cart),

@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthentificationService {
-  final FirebaseAuth _firebaseAuth;
-
   AuthentificationService(this._firebaseAuth);
+
+  final FirebaseAuth _firebaseAuth;
 
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
@@ -13,8 +14,9 @@ class AuthentificationService {
 
   Future<String> signIn({String email, String password}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      final currentUser = _firebaseAuth.currentUser;
+      final credential = EmailAuthProvider.credential(email: email, password: password);
+      await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
       return 'Вошли';
     } on FirebaseAuthException catch (e) {
       return e.message;
@@ -23,8 +25,7 @@ class AuthentificationService {
 
   Future<String> signUp({String email, String password}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       return 'Зарегистрировались';
     } on FirebaseAuthException catch (e) {
       return e.message;

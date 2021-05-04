@@ -43,6 +43,7 @@ dependencies:
   page_transition: ^1.1.7+6
   confirm_dialog: ^1.0.0
   flutter_elegant_number_button: ^0.0.3
+  fluttertoast: ^8.0.6
 
 dev_dependencies:
   flutter_test:

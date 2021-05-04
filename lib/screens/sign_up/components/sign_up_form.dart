@@ -109,7 +109,6 @@ class _SignUpFormState extends State<SignUpForm> {
             //     _passwordController.text = '';
             //     _repasswordController.text = '';
             //     _emailController.text = '';
-            //     // TODO: alertdialog with error
             //   }
 
             //   // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
