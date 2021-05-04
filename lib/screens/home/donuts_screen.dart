@@ -28,7 +28,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          // stops: [0.3, 1.8],
           colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
         ),
       ),
@@ -44,7 +43,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
               child: StreamBuilder(
                 stream: FirebaseDatabase.instance
                     .reference()
-                    .child('Donuts')
+                    .child('Пончики')
                     .onValue,
                 builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                   if (snapshot.hasData) {
@@ -101,6 +100,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
       ),
     );
   }
+  
 
   Widget buildItemCard(int index) {
     return Column(
