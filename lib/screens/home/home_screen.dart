@@ -211,10 +211,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             return Center(
                               child: Badge(
                                 showBadge: true,
-                                badgeContent: Text(
-                                  '0',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                badgeContent: Text('0', style: TextStyle(color: Colors.white)),
                                 child: Icon(Icons.shopping_cart, color: Colors.white),
                               ),
                             );
