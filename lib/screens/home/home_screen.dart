@@ -15,7 +15,6 @@ import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:cookie/screens/auth/google_logout_page.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
@@ -107,16 +106,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   title: 'Выйти из Google',
                   onPressed: () => Navigator.pushNamed(context, GoogleLogoutPage.routeName),
                 ),
-                CustomListTile(
-                  icon: Icon(Icons.agriculture_outlined),
-                  title: 'DescriptionPage',
-                  onPressed: () => Navigator.of(context).pushNamed('/descriptionPage'),
-                ),
+                // CustomListTile(
+                //   icon: Icon(Icons.agriculture_outlined),
+                //   title: 'DescriptionPage',
+                //   onPressed: () => Navigator.of(context).pushNamed('/descriptionPage'),
+                // ),
               ],
             ),
           ),
           appBar: AppBar(
-            // title: Text('Домашняя страница'),
+            title: Text('Главная страница'),
 
             // ! - third option
             // leading: Icon(
