@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:badges/badges.dart';
 import 'package:cookie/components/custom_list_tile.dart';
-import 'package:cookie/models/newCart.dart';
+import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
+import 'package:cookie/screens/auth_test_screen.dart';
 // import 'package:cookie/screens/cart/cart_screen.dart';
 // import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
-  List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
+  List<Cart> newCarts = new List<Cart>.empty(growable: true);
   // double currentPage = 0;
   // int currentTab = 0;
   @override
@@ -86,6 +87,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   icon: Icon(Icons.settings),
                   title: 'Настройки',
                   onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
+                ),
+                CustomListTile(
+                  icon: Icon(Icons.supervised_user_circle_outlined),
+                  title: 'ТестПользователей',
+                  onPressed: () => Navigator.pushNamed(context, TestAuthScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(Icons.add_shopping_cart),
@@ -183,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             newCarts.clear();
                             if (map != null) {
                               map.forEach((key, value) {
-                                var newCart = NewCart.fromJson(json.decode(json.encode(value)));
+                                var newCart = Cart.fromJson(json.decode(json.encode(value)));
                                 newCart.key = key;
                                 newCarts.add(newCart);
                               });
@@ -210,10 +216,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             return Center(
                               child: Badge(
                                 showBadge: true,
-                                badgeContent: Text(
-                                  '0',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                badgeContent: Text('0', style: TextStyle(color: Colors.white)),
                                 child: Icon(Icons.shopping_cart, color: Colors.white),
                               ),
                             );

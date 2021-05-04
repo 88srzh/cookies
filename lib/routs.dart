@@ -1,5 +1,6 @@
 import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
+import 'package:cookie/screens/auth_test_screen.dart';
 // import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
@@ -41,4 +42,5 @@ final Map<String, WidgetBuilder> routes = {
   // FavoriteScreen.routeName: (context) => FavoriteScreen(),
   TermsOfUseScreen.routeName: (context) => TermsOfUseScreen(),
   LicenseScreen.routeName: (context) => LicenseScreen(),
+  TestAuthScreen.routeName: (context) => TestAuthScreen(),
 };

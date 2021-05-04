@@ -8,11 +8,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: customAppBar(title: 'Профиль'),
       appBar: AppBar(
         title: Text(
           'Профиль',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         ),
       ),
       body: BodyProfile(),

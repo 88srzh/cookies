@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
-import 'package:cookie/models/newCart.dart';
+import 'package:cookie/models/cart.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -18,7 +18,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   List<Item> item = new List<Item>.empty(growable: true);
-  List<NewCart> newCarts = new List<NewCart>.empty(growable: true);
+  List<Cart> newCarts = new List<Cart>.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
