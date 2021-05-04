@@ -88,10 +88,11 @@ class _SignFormState extends State<SignForm> {
           ContinueButton(
             text: 'Войти',
             press: () {
-              context.read<AuthentificationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
+              // ! Fix authorization signInWithEmailAndPassword
+              // context.read<AuthentificationService>().signIn(
+              //       email: emailController.text.trim(),
+              //       password: passwordController.text.trim(),
+              //     );
             },
           ),
         ],
