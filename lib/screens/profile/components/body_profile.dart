@@ -4,17 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class BodyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final user = FirebaseAuth.instance.currentUser;
+    var currentUser = FirebaseAuth.instance.currentUser;
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
       ),
       child: Column(
         children: [
@@ -36,12 +34,11 @@ class BodyProfile extends StatelessWidget {
           ListTile(
             onTap: () {},
             leading: Icon(Icons.mail),
-            // title: Text(user.email),
-            title: Text('Почтовый адрес'),
+            title: Text(currentUser.email, style: TextStyle(color: Colors.black87),),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
-              color: Colors.grey[300],
+              color: Colors.black54,
             ),
           ),
           CustomSettingsDivider(),
