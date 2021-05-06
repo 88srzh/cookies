@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cookie/firebase/storage.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
@@ -5,6 +8,7 @@ import 'package:cookie/screens/auth/authentification_service.dart';
 class UserController {
   UserModel _currentUser;
   AuthentificationService _authService = locator.get<AuthentificationService>();
+  Storage _storage = locator.get<Storage>();
   Future init;
 
   UserController() {
@@ -17,4 +21,17 @@ class UserController {
   }
 
   UserModel get currentUser => _currentUser;
+
+  Future<void> uploadProfilePic(File image) async {
+    _currentUser.avatarUrl = await _storage.uploadFile(image);
+  }
+
+  Future<String> getDownloadURL() async {
+    return await _storage.getUserProfileImageDownloadUrl(currentUser.uid);
+  }
+
+  Future<void> signInWithEmailAndPassword({String email, String password}) async {
+    _currentUser = await _authService.signInWithEmailAndPassword(email: email, password: password);
+    _currentUser.avatarUrl = await getDownloadURL();
+  }
 }

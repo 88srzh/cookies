@@ -1,6 +1,8 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
+import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/locator.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,8 +72,7 @@ class _SignFormState extends State<SignForm> {
               Text('Запомнить'),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
+                onTap: () => Navigator.pushNamed(context, ForgotPasswordScreen.routeName),
                 child: Text(
                   'Забыли пароль?',
                   style: TextStyle(
@@ -87,12 +88,16 @@ class _SignFormState extends State<SignForm> {
           ),
           ContinueButton(
             text: 'Войти',
-            press: () {
+            press: () async {
               // ! Fix authorization signInWithEmailAndPassword
               // context.read<AuthentificationService>().signIn(
               //       email: emailController.text.trim(),
               //       password: passwordController.text.trim(),
               //     );
+              await locator.get<AuthentificationService>().signInWithEmailAndPassword(
+                email: emailController.text,
+                password: passwordController.text,
+              );
             },
           ),
         ],

@@ -1,4 +1,7 @@
+// import 'package:cookie/models/cart.dart';
+import 'package:cookie/locator.dart';
 import 'package:cookie/models/favorite.dart';
+// import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/settings.dart';
 // import 'package:cookie/models/items.dart';
 import 'package:cookie/routs.dart';
@@ -19,6 +22,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  setupServices();
   runApp(
     MyApp(),
   );
@@ -33,8 +37,9 @@ class MyApp extends StatelessWidget {
         // Provider<AuthentificationService>(
         //     create: (_) => AuthentificationService(FirebaseAuth.instance)),
         StreamProvider(
-            create: (context) =>
-                context.read<AuthentificationService>().authStateChanges, initialData: null,),
+          create: (context) => context.read<AuthentificationService>().authStateChanges,
+          initialData: null,
+        ),
         // ChangeNotifierProvider(
         //   create: (context) => GoogleSignInProvider(),
         //   child: StreamBuilder(
@@ -59,16 +64,10 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/cartPage':
-              return PageTransition(
-                  settings: settings,
-                  child: CartScreen(),
-                  type: PageTransitionType.fade);
+              return PageTransition(settings: settings, child: CartScreen(), type: PageTransitionType.fade);
               break;
             case '/descriptionPage':
-              return PageTransition(
-                  settings: settings,
-                  child: DescriptionScreen(),
-                  type: PageTransitionType.fade);
+              return PageTransition(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
               break;
             default:
               return null;

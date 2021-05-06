@@ -1,6 +1,7 @@
 import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
+import 'package:cookie/screens/profile/profile_screen.dart';
 // import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/size_config.dart';
 
@@ -15,18 +16,9 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    {
-      'text': 'Добро пожаловать во Вкусняшечную!',
-      'image': 'assets/images/cup_of_sweets.png'
-    },
-    {
-      'text': 'У нас самые вкусные вкусняшки!',
-      'image': 'assets/images/cup_of_sweets3.png'
-    },
-    {
-      'text': 'Попробуйте и убедитесь в этом сами!',
-      'image': 'assets/images/cup_of_sweets7.png'
-    },
+    {'text': 'Добро пожаловать во Вкусняшечную!', 'image': 'assets/images/cup_of_sweets.png'},
+    {'text': 'У нас самые вкусные вкусняшки!', 'image': 'assets/images/cup_of_sweets3.png'},
+    {'text': 'Попробуйте и убедитесь в этом сами!', 'image': 'assets/images/cup_of_sweets7.png'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -65,8 +57,7 @@ class _BodyState extends State<Body> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(20)),
+                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                   child: Column(
                     children: <Widget>[
                       Spacer(),
@@ -81,8 +72,9 @@ class _BodyState extends State<Body> {
                       ContinueButton(
                         text: 'Продолжить',
                         press: () {
-                          Navigator.pushNamed(
-                              context, AuthentificationPage.routename);
+                          // Navigator.pushNamed(
+                          //     context, AuthentificationPage.routename);
+                          Navigator.pushNamed(context, ProfileScreen.routeName);
                         },
                       ),
                       Spacer(),

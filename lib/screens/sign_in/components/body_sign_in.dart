@@ -63,8 +63,8 @@ class BodySignIn extends StatelessWidget {
                       IconButton(
                         icon: Icon(FontAwesomeIcons.google, color: Colors.black87),
                         onPressed: () {
-                          final googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                          googleProvider.login();
+                          // final googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                          // googleProvider.login();
                         },
                       ),
                     ],

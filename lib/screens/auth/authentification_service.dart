@@ -28,8 +28,9 @@ class AuthentificationService {
     print('Вошли ' + user.displayName);
   }
 
-  Future<void> signInWithEmailAndPassword({String email, String password}) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future<UserModel> signInWithEmailAndPassword({String email, String password}) async {
+    var authResults = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    return UserModel(authResults.user.uid, displayName: authResults.user.displayName);
   }
 
   Future<UserModel> getUser() async {
