@@ -39,4 +39,12 @@ class UserController {
     _currentUser.displayName = displayName;
     _authService.updateDisplayName(displayName);
   }
+
+  Future<bool> validateCurrentPassword(String password) async {
+    return await _authService.validatePassword(password);
+  }
+
+  void updateUserPassword(String password) {
+    _authService.updatePassword(password);
+  }
 }

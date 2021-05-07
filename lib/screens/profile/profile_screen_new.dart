@@ -44,7 +44,7 @@ class _ProfileViewState extends State<ProfileView> {
                       setState(() {});
                     },
                   ),
-                  Text('Hi ${_currentUser.displayName}'),
+                  Text('Привет ${_currentUser.displayName},\n забыли пароль?', style: TextStyle(), textAlign: TextAlign.center),
                 ],
               ),
             ),

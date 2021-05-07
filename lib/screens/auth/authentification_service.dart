@@ -40,10 +40,9 @@ class AuthentificationService {
 
   Future<void> updateDisplayName(String displayName) async {
     var user = _auth.currentUser;
-    // UserUpdateInfo();
     user.updateProfile(displayName: displayName
-      // UserUpdateInfo()..displayName = displayName;
-    );
+        // UserUpdateInfo()..displayName = displayName;
+        );
   }
 
   // Future<String> signIn({String email, String password}) async {
@@ -75,5 +74,22 @@ class AuthentificationService {
       print(e.toString());
       return null;
     }
+  }
+
+  Future<bool> validatePassword(String password) async {
+    var firebaseUser = _auth.currentUser;
+    var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
+    try {
+      var authResult = await firebaseUser.reauthenticateWithCredential(authCredential);
+      return authResult.user != null;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  void updatePassword(String password) async {
+    var firebaseUser = _auth.currentUser;
+    firebaseUser.updatePassword(password);
   }
 }

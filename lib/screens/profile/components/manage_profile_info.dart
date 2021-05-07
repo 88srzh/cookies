@@ -18,13 +18,17 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
   var _newPasswordController = TextEditingController();
   var _repeatPasswordController = TextEditingController();
 
+  var _formKey = GlobalKey<FormState>();
+
+  bool checkCurrentPasswordValid = true;
+
   @override
   void initState() {
     _displayNameController.text = widget.currentUser.displayName;
     super.initState();
   }
 
-    @override
+  @override
   void dispose() {
     _displayNameController.dispose();
     _passwordController.dispose();
@@ -47,38 +51,56 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
             ),
             SizedBox(height: 20.0),
             Flexible(
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Manage Password",
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(hintText: "Password"),
-                    controller: _passwordController,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(hintText: "New Password"),
-                    controller: _newPasswordController,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(hintText: "Repeat Password"),
-                    controller: _repeatPasswordController,
-                  )
-                ],
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "Manage Password",
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Пароль',
+                        errorText: checkCurrentPasswordValid ? null : 'Пожалуйста проверьте свой текущий пароль',
+                      ),
+                      controller: _passwordController,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: 'Новый пароль'),
+                      obscureText: true,
+                      controller: _newPasswordController,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: 'Повторите пароль'),
+                      obscureText: true,
+                      controller: _repeatPasswordController,
+                      validator: (value) {
+                        return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
-            ElevatedButton(onPressed: () {
-                if (widget.currentUser.displayName !=
-                    _displayNameController.text) {
+            ElevatedButton(
+              onPressed: () async {
+                var userController = locator.get<UserController>();
+                if (widget.currentUser.displayName != _displayNameController.text) {
                   var displayName = _displayNameController.text;
-                  locator.get<UserController>().updateDisplayName(displayName);
-            }
+                  userController.updateDisplayName(displayName);
+                }
 
+                checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                setState(() {});
+                // check password
+                if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
+                  userController.updateUserPassword(_newPasswordController.text);
                   Navigator.pop(context);
-                  },
-                  child: Text("Save Profile"),
-                )
+                }
+              },
+              child: Text("Сохранить"),
+            )
           ],
         ),
       ),
