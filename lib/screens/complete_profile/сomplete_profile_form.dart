@@ -54,8 +54,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               text: 'Продолжить',
               press: () {
                 if (_formKey.currentState.validate()) {
+                  
+                  // ! fix otp screen
                   // Go to OTP screen
-                  Navigator.pushNamed(context, OtpScreen.routeName);
+                  // Navigator.pushNamed(context, OtpScreen.routeName);
                 }
               }),
         ],

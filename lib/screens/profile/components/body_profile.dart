@@ -1,29 +1,54 @@
-import 'package:cookie/screens/profile/components/profile_pic.dart';
+import 'dart:io';
+
+import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/locator.dart';
+import 'package:cookie/models/user.dart';
+import 'package:cookie/screens/profile/components/avatar.dart';
+// import 'package:cookie/screens/profile/components/profile_pic.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
 
-class BodyProfile extends StatelessWidget {
+class BodyProfile extends StatefulWidget {
+  @override
+  _BodyProfileState createState() => _BodyProfileState();
+}
+
+class _BodyProfileState extends State<BodyProfile> {
+  UserModel currentUser = locator.get<UserController>().currentUser;
+
   @override
   Widget build(BuildContext context) {
-    var currentUser = FirebaseAuth.instance.currentUser;
+    // var currentUser = FirebaseAuth.instance.currentUser;
+    var image;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
       ),
       child: Column(
         children: [
-          ProfilePic(),
+          // ProfilePic(),
+          // Avatar(
+          //   avatarUrl: currentUser?.avatarUrl,
+          //   onTap: () async {
+          //     PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
+          //     image = File(pickedImage.path);
+          //     await locator.get<UserController>().uploadProfilePicture(image);
+          //     // ! TODO: Upload the image to firebase store
+          //     // ! Set state to update the current user
+          //   },
+          // ),
           SizedBox(height: 20),
           CustomSettingsDivider(),
           ListTile(
             onTap: () {},
             leading: Icon(FontAwesomeIcons.solidUser),
             // title: Text(user.displayName),
-            title: Text('Мой профиль'),
+            title: Text('hi ${currentUser?.displayName}'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
@@ -34,7 +59,8 @@ class BodyProfile extends StatelessWidget {
           ListTile(
             onTap: () {},
             leading: Icon(Icons.mail),
-            title: Text(currentUser.email, style: TextStyle(color: Colors.black87),),
+            // title: Text(currentUser.email, style: TextStyle(color: Colors.black87),),
+            title: Text('email'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,

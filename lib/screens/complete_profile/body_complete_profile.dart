@@ -17,7 +17,7 @@ class BodyCompleteProfile extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.screenHeight * 0.02),
               Text(
-                'Завершите профиль',
+                'Завершите регистрацию',
                 style: headingStyle,
               ),
               Text(
