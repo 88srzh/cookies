@@ -1,4 +1,4 @@
-import 'package:cookie/screens/otp/otp_screen.dart';
+// import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/custom_surfix_icon.dart';

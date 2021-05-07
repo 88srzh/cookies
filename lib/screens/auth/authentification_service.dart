@@ -35,7 +35,7 @@ class AuthentificationService {
   }
 
   Future<UserModel> getUser() async {
-    var firebaseUser = await _auth.currentUser;
+    var firebaseUser = _auth.currentUser;
     return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName);
   }
 
@@ -93,4 +93,19 @@ class AuthentificationService {
       return null;
     }
   }
+
+
+  // email verify
+  // Future<void> sendEmailVerification() async {
+  //   var user = _auth.currentUser;
+  //   await user.sendEmailVerification();
+  // }
+
+  // Future<void> checkEmailVerified() async {
+  //   var user = _auth.currentUser;
+  //   await user.reload();
+  //   // if (user.emailVerified) {
+  //   //   Navigator.push(context, HomeScreen.routeName);
+  //   // }
+  // }
 }

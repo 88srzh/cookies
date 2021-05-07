@@ -1,11 +1,12 @@
 // import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
-import 'package:cookie/screens/auth/authentification_service.dart';
+// import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
+// import 'package:cookie/screens/sign_up/verify_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_surfix_icon.dart';
-import '../../../components/default_button.dart';
+// import '../../../components/default_button.dart';
 import '../../../components/form_error.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -76,68 +77,15 @@ class _SignUpFormState extends State<SignUpForm> {
             child: Text('Продолжить'),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
-                // userController.signUpWithEmailAndPassword();
                 await locator.get<UserController>().signUpWithEmailAndPassword(
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                  );
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
                 // Go to complete profile page
                 Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                // }
-                // },
-                // press: () async {
-                //   // validateSubmitRegister();
-                // try {
-                //   User user = (await FirebaseAuth.instance
-                //           .createUserWithEmailAndPassword(
-                //               email: _emailController.text,
-                //               password: _passwordController.text))
-                //       .user;
-                //     // final user = await _auth.signInWithEmailAndPassword(
-                //     //     email: email, password: password);
-                //     // context.read<AuthenticationService>().signIn(
-                //     //       email: emailController.text.trim(),
-                //     //       password: passwordController.text.trim(),
-                //     //     );
-                //     if (user != null) {
-                //       user
-                //           .updateProfile(displayName: _usernameController.text)
-                //           .then((value) => Text('Update successful'));
-                //       Navigator.pushNamed(context, DindonMainScreen.routeName);
-                //       // showDialog(
-                //       //     context: context,
-                //       //     child: Column(
-                //       //       children: [
-                //       //         Material(
-                //       //           child: Text('You enter'),
-                //       //         )
-                //       //       ],
-                //       //     ));
-                //       // Navigator.pushNamed(context, DindonMainScreen.routeName);
-                //       // } else if (user == null) {
-                //       //   Fluttertoast.showToast(
-                //       //       msg: "This is Center Short Toast",
-                //       //       toastLength: Toast.LENGTH_SHORT,
-                //       //       gravity: ToastGravity.CENTER,
-                //       //       timeInSecForIosWeb: 1,
-                //       //       backgroundColor: Colors.red,
-                //       //       textColor: Colors.white,
-                //       //       fontSize: 16.0);
-                //       // }
-                // }
-                // } catch (e) {
-                //     // print(Text('Вы не зарегистрированы'));
-                //     // Navigator.pushNamed(context, Error2Screen.routeName);
-                // print(e);
-                // _usernameController.text = '';
-                // _passwordController.text = '';
-                // _repasswordController.text = '';
-                // _emailController.text = '';
+                // ! fix verify screen
+                // Navigator.pushNamed(context, VerifyScreen.routeName);
               }
-
-              //   // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              //   // }
-              //   // Navigator.pushNamed(context, SignUpScreen.routeName);
             },
           ),
         ],

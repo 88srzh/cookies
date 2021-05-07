@@ -55,4 +55,15 @@ class UserController {
   Future<void> signUpWithEmailAndPassword({String email, String password}) async {
     _authService.signUpWithEmailAndPassword(email, password);
   }
+
+  // email verify
+  // Future<void> sendEmailVerification() async {
+  //   await _authService.sendEmailVerification();
+  // }
+
+  // Future<void> checkEmailVerified() async {
+  //   // return _authService.checkEmailVerified();
+  //   var user = _authService.getUser();
+    
+  // }
 }

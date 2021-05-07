@@ -1,13 +1,7 @@
-import 'package:cookie/components/continue_button.dart';
+// import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/constants.dart';
-import 'package:cookie/screens/auth/authentification_page.dart';
-import 'package:cookie/screens/profile/profile_screen.dart';
-import 'package:cookie/screens/profile/profile_screen_new.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
-import 'package:cookie/screens/sign_up/sign_up_screen.dart';
-// import 'package:cookie/screens/sign_in/sign_in_example.dart';
 import 'package:cookie/size_config.dart';
-
 import '../components/splash_content.dart';
 import 'package:flutter/material.dart';
 

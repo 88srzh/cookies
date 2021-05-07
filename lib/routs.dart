@@ -15,6 +15,7 @@ import 'package:cookie/screens/profile/profile_screen_new.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
+// import 'package:cookie/screens/sign_up/verify_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
@@ -45,4 +46,5 @@ final Map<String, WidgetBuilder> routes = {
   LicenseScreen.routeName: (context) => LicenseScreen(),
   TestAuthScreen.routeName: (context) => TestAuthScreen(),
   ProfileView.routeName: (context) => ProfileView(),
+  // VerifyScreen.routeName: (context) => VerifyScreen(),
 };
