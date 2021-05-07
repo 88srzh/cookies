@@ -14,6 +14,7 @@ import 'package:cookie/screens/home/donuts_screen.dart';
 import 'package:cookie/screens/home/pizza_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -109,8 +110,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       var userController = locator.get<UserController>();
                       userController.signOut();
                       // context.read<AuthentificationService>().signOut();
-                      // context.read<AuthentificationService>().signOut();
-                      Navigator.pushNamed(context, AuthentificationPage.routename);
+                      Navigator.pushNamed(context, SignInScreenNew.routeName);
                     }),
                 // ! - Add screen logout google
                 CustomListTile(
