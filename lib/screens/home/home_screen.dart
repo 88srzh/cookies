@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:badges/badges.dart';
 import 'package:cookie/components/custom_list_tile.dart';
+import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/locator.dart';
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
@@ -103,8 +105,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 CustomListTile(
                     icon: Icon(Icons.exit_to_app),
                     title: 'Выйти',
-                    onPressed: () {
-                      context.read<AuthentificationService>().signOut();
+                    onPressed: () async {
+                      var userController = locator.get<UserController>();
+                      userController.signOut();
+                      // context.read<AuthentificationService>().signOut();
+                      // context.read<AuthentificationService>().signOut();
                       Navigator.pushNamed(context, AuthentificationPage.routename);
                     }),
                 // ! - Add screen logout google
@@ -179,11 +184,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fit: StackFit.expand,
                     children: [
                       StreamBuilder(
-                        stream: FirebaseDatabase.instance
-                        .reference()
-                        .child('NewCart')
-                        .child('UNIQUE_USER_ID')
-                        .onValue, // use FirebaseAuth uid
+                        stream: FirebaseDatabase.instance.reference().child('NewCart').child('UNIQUE_USER_ID').onValue, // use FirebaseAuth uid
                         builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                           var numberItemInCart = 0;
                           if (snapshot.hasData) {

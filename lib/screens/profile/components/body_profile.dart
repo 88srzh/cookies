@@ -32,23 +32,23 @@ class _BodyProfileState extends State<BodyProfile> {
       child: Column(
         children: [
           // ProfilePic(),
-          Avatar(
-            avatarUrl: currentUser?.avatarUrl,
-            onTap: () async {
-              PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
-              image = File(pickedImage.path);
-              await locator.get<UserController>().uploadProfilePicture(image);
-              // ! TODO: Upload the image to firebase store
-              // ! Set state to update the current user
-            },
-          ),
+          // Avatar(
+          //   avatarUrl: currentUser?.avatarUrl,
+          //   onTap: () async {
+          //     PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
+          //     image = File(pickedImage.path);
+          //     await locator.get<UserController>().uploadProfilePicture(image);
+          //     // ! TODO: Upload the image to firebase store
+          //     // ! Set state to update the current user
+          //   },
+          // ),
           SizedBox(height: 20),
           CustomSettingsDivider(),
           ListTile(
             onTap: () {},
             leading: Icon(FontAwesomeIcons.solidUser),
             // title: Text(user.displayName),
-            title: Text('hi ${currentUser?.displayName}' ?? 'where your name?'),
+            title: Text('hi ${currentUser?.displayName}'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,

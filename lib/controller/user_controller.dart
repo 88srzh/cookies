@@ -47,4 +47,8 @@ class UserController {
   void updateUserPassword(String password) {
     _authService.updatePassword(password);
   }
+
+  void signOut() {
+    _authService.signOut();
+  }
 }

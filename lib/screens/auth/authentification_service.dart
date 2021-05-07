@@ -25,7 +25,8 @@ class AuthentificationService {
     final AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
     final User user = (await _auth.signInWithCredential(credential)).user;
-    print('Вошли ' + user.displayName);
+    print('Успешно вошли ' + user.displayName);
+    return user;
   }
 
   Future<UserModel> signInWithEmailAndPassword({String email, String password}) async {
@@ -45,6 +46,23 @@ class AuthentificationService {
         );
   }
 
+  Future<bool> validatePassword(String password) async {
+    var firebaseUser = _auth.currentUser;
+    var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
+    try {
+      var authResult = await firebaseUser.reauthenticateWithCredential(authCredential);
+      return authResult.user != null;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  void updatePassword(String password) async {
+    var firebaseUser = _auth.currentUser;
+    firebaseUser.updatePassword(password);
+  }
+
   // Future<String> signIn({String email, String password}) async {
   //   try {
   //     final currentUser = _auth.currentUser;
@@ -55,7 +73,7 @@ class AuthentificationService {
   //     return e.message;
   //   }
   // }
-  // ! - Refactor signUp
+  // ! - Fix signUp
   Future<String> signUp({String email, String password}) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -74,22 +92,5 @@ class AuthentificationService {
       print(e.toString());
       return null;
     }
-  }
-
-  Future<bool> validatePassword(String password) async {
-    var firebaseUser = _auth.currentUser;
-    var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
-    try {
-      var authResult = await firebaseUser.reauthenticateWithCredential(authCredential);
-      return authResult.user != null;
-    } catch (e) {
-      print(e);
-      return false;
-    }
-  }
-
-  void updatePassword(String password) async {
-    var firebaseUser = _auth.currentUser;
-    firebaseUser.updatePassword(password);
   }
 }
