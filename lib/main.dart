@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 // import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/favorite.dart';
-import 'package:cookie/models/items_info.dart';
+// import 'package:cookie/models/items_info.dart';
 // import 'package:cookie/models/orders.dart';
-=======
 import 'package:cookie/models/favorite.dart';
->>>>>>> desc
-=======
 // import 'package:cookie/models/cart.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/favorite.dart';
 // import 'package:cookie/models/orders.dart';
->>>>>>> desc
 import 'package:cookie/models/settings.dart';
 // import 'package:cookie/models/items.dart';
 import 'package:cookie/routs.dart';
