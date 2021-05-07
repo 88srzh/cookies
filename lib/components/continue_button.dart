@@ -16,7 +16,7 @@ class ContinueButton extends StatelessWidget {
     return InkWell(
       onTap: press,
       child: Container(
-        width: getProportionateScreenWidth(200),
+        width: getProportionateScreenWidth(100),
         height: getProportionateScreenWidth(50),
         child: Center(
             child: Text(

@@ -72,14 +72,15 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Spacer(flex: 3),
-                      ContinueButton(
-                        text: 'Продолжить',
-                        press: () {
-                          // Navigator.pushNamed(context, AuthentificationPage.routename);
-                          Navigator.pushNamed(context, SignInScreenNew.routeName);
-                          // Navigator.pushNamed(context, ProfileView.routeName);
-                        },
-                      ),
+                      ElevatedButton(
+                        onPressed: () => Navigator.pushNamed(context, SignInScreen.routeName),
+                        child: Text('Продолжить', style: TextStyle(color: Colors.black87, fontSize: 16)),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.transparent,
+                          side: BorderSide(width: getProportionateScreenWidth(2), color: Colors.orange[200]),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(getProportionateScreenWidth(20))),
+                        ),
+                        ),
                       Spacer(),
                     ],
                   ),

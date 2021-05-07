@@ -74,10 +74,10 @@ class AuthentificationService {
   //   }
   // }
   // ! - Fix signUp
-  Future<String> signUp({String email, String password}) async {
+  Future<String> signUpWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      return 'Зарегистрировались';
+      return ('Зарегистрировались');
     } on FirebaseAuthException catch (e) {
       return e.message;
     }

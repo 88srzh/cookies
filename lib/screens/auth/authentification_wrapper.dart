@@ -14,6 +14,6 @@ class AuthentificationWrapper extends StatelessWidget {
     if (firebaseUser != null) {
       return HomeScreen();
     }
-    return SignInScreenNew();
+    return SignInScreen();
   }
 }

@@ -51,4 +51,8 @@ class UserController {
   void signOut() {
     _authService.signOut();
   }
+
+  Future<void> signUpWithEmailAndPassword({String email, String password}) async {
+    _authService.signUpWithEmailAndPassword(email, password);
+  }
 }

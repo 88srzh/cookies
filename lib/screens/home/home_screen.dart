@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       var userController = locator.get<UserController>();
                       userController.signOut();
                       // context.read<AuthentificationService>().signOut();
-                      Navigator.pushNamed(context, SignInScreenNew.routeName);
+                      Navigator.pushNamed(context, SignInScreen.routeName);
                     }),
                 // ! - Add screen logout google
                 CustomListTile(
