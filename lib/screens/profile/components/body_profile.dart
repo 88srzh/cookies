@@ -37,7 +37,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onTap: () async {
               PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
               image = File(pickedImage.path);
-              await locator.get<UserController>().uploadProfilePic(image);
+              await locator.get<UserController>().uploadProfilePicture(image);
               // ! TODO: Upload the image to firebase store
               // ! Set state to update the current user
             },

@@ -22,7 +22,7 @@ class UserController {
 
   UserModel get currentUser => _currentUser;
 
-  Future<void> uploadProfilePic(File image) async {
+  Future<void> uploadProfilePicture(File image) async {
     _currentUser.avatarUrl = await _storage.uploadFile(image);
   }
 
@@ -33,5 +33,10 @@ class UserController {
   Future<void> signInWithEmailAndPassword({String email, String password}) async {
     _currentUser = await _authService.signInWithEmailAndPassword(email: email, password: password);
     _currentUser.avatarUrl = await getDownloadURL();
+  }
+
+  void updateDisplayName(String displayName) {
+    _currentUser.displayName = displayName;
+    _authService.updateDisplayName(displayName);
   }
 }

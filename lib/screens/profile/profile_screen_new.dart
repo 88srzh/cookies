@@ -40,12 +40,11 @@ class _ProfileViewState extends State<ProfileView> {
             onTap: () async {
               PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
               var image = File(pickedImage.path);
-              await locator.get<UserController>().uploadProfilePic(image);
+              await locator.get<UserController>().uploadProfilePicture(image);
                       setState(() {});
                     },
                   ),
-                  Text(
-                      "Hi ${_currentUser.displayName ?? 'nice to see you here.'}"),
+                  Text('Hi ${_currentUser.displayName}'),
                 ],
               ),
             ),
@@ -53,7 +52,7 @@ class _ProfileViewState extends State<ProfileView> {
           Expanded(
             flex: 2,
             child: ManageProfileInformationWidget(
-              // currentUser: _currentUser,
+              currentUser: _currentUser,
             ),
           )
         ],

@@ -4,13 +4,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthentificationService {
   // AuthentificationService(this._firebaseAuth);
-  AuthentificationService();
 
   // final FirebaseAuth _firebaseAuth;
 
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  AuthentificationService();
   // Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
   Stream<User> get authStateChanges => _auth.authStateChanges();
 
@@ -34,8 +34,16 @@ class AuthentificationService {
   }
 
   Future<UserModel> getUser() async {
-    var firebaseUser = _auth.currentUser;
+    var firebaseUser = await _auth.currentUser;
     return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName);
+  }
+
+  Future<void> updateDisplayName(String displayName) async {
+    var user = _auth.currentUser;
+    // UserUpdateInfo();
+    user.updateProfile(displayName: displayName
+      // UserUpdateInfo()..displayName = displayName;
+    );
   }
 
   // Future<String> signIn({String email, String password}) async {
