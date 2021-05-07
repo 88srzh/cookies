@@ -3,6 +3,7 @@ import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
+import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -94,7 +95,7 @@ class _SignFormState extends State<SignForm> {
               //       email: emailController.text.trim(),
               //       password: passwordController.text.trim(),
               //     );
-              await locator.get<AuthentificationService>().signInWithEmailAndPassword(
+              await locator.get<UserController>().signInWithEmailAndPassword(
                 email: emailController.text,
                 password: passwordController.text,
               );

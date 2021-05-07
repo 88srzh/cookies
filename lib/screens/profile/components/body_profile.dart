@@ -4,7 +4,7 @@ import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
-import 'package:cookie/screens/profile/components/profile_pic.dart';
+// import 'package:cookie/screens/profile/components/profile_pic.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
