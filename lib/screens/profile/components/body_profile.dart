@@ -22,12 +22,9 @@ class BodyProfile extends StatefulWidget {
 }
 
 class _BodyProfileState extends State<BodyProfile> {
-  // UserModel currentUser = locator.get<UserController>().currentUser;
-
   @override
   Widget build(BuildContext context) {
     UserModel _currentUser = locator.get<UserController>().currentUser;
-    var userEmail = locator.get<UserController>().currentUser.email;
 
     return Container(
       decoration: BoxDecoration(
@@ -62,7 +59,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onTap: () {},
             leading: Icon(Icons.mail),
             // ! fix user email
-            title: Text('$userEmail'),
+            title: Text('${_currentUser?.email}'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,

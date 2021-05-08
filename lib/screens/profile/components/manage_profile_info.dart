@@ -46,7 +46,7 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             TextFormField(
-              decoration: InputDecoration(hintText: "Username"),
+              decoration: InputDecoration(hintText: "Сменить имя пользователя"),
               controller: _displayNameController,
             ),
             SizedBox(height: 20.0),
@@ -96,6 +96,7 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
                 // check password
                 if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
                   userController.updateUserPassword(_newPasswordController.text);
+                  setState(() {});
                   Navigator.pop(context);
                 }
               },

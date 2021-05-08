@@ -44,7 +44,7 @@ class AuthentificationService {
     user.updateProfile(displayName: displayName);
   }
 
-  Future<bool> validatePassword(String password) async {
+   Future<bool> validatePassword(String password) async {
     var firebaseUser = _auth.currentUser;
     var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
     try {
@@ -61,17 +61,6 @@ class AuthentificationService {
     firebaseUser.updatePassword(password);
   }
 
-  // Future<String> signIn({String email, String password}) async {
-  //   try {
-  //     final currentUser = _auth.currentUser;
-  //     final credential = EmailAuthProvider.credential(email: email, password: password);
-  //     await _auth.signInWithEmailAndPassword(email: email, password: password);
-  //     return 'Вошли';
-  //   } on FirebaseAuthException catch (e) {
-  //     return e.message;
-  //   }
-  // }
-  // ! - Fix signUp
   Future<String> signUpWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -91,18 +80,4 @@ class AuthentificationService {
       return null;
     }
   }
-
-  // email verify
-  // Future<void> sendEmailVerification() async {
-  //   var user = _auth.currentUser;
-  //   await user.sendEmailVerification();
-  // }
-
-  // Future<void> checkEmailVerified() async {
-  //   var user = _auth.currentUser;
-  //   await user.reload();
-  //   // if (user.emailVerified) {
-  //   //   Navigator.push(context, HomeScreen.routeName);
-  //   // }
-  // }
 }

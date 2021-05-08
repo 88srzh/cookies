@@ -1,7 +1,13 @@
+import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/locator.dart';
+import 'package:cookie/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 
 class SecurityCard extends StatefulWidget {
+  final UserModel currentUser;
+
+  const SecurityCard({this.currentUser});
   // const ToggleOnCard({this.text, this.icon, this.press});
   // final String text;
   // final Icon iconFirst, iconSecond;
@@ -11,9 +17,25 @@ class SecurityCard extends StatefulWidget {
 }
 
 class _SecurityCardState extends State<SecurityCard> {
+  var _passwordController = TextEditingController();
+  var _newPasswordController = TextEditingController();
+  var _repeatPasswordController = TextEditingController();
+
+  bool checkCurrentPasswordValid = true;
+
   bool _tapFingerprin = false;
   bool _tapNotification = false;
   bool _tapPassword = false;
+
+  static var _formKey;
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _newPasswordController.dispose();
+    _repeatPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +79,69 @@ class _SecurityCardState extends State<SecurityCard> {
               setState(() => _tapPassword = tapPassword);
             },
             // leading: Icon(Icons.http),
-            title: Text('Сменить пароль'),
+            title: InkWell(
+              child: Text('Сменить пароль'),
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                        elevation: 16,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            // borderRadius: BorderRadius.all(Radius.circular(40)),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                          ),
+                          height: 400.0,
+                          width: 360.0,
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                                  controller: _passwordController,
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(hintText: 'Новый пароль'),
+                                  obscureText: true,
+                                  controller: _newPasswordController,
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(hintText: 'Повторите новый пароль'),
+                                  obscureText: true,
+                                  controller: _repeatPasswordController,
+                                  validator: (value) {
+                                    return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                                  },
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    var userController = locator.get<UserController>();
+                                    checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                                    // check password
+                                    if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
+                                      userController.updateUserPassword(_newPasswordController.text);
+                                      // ! не закрывается диалог
+                                      // ! не обновляется состояние при неверном пароле
+                                      Navigator.pop(context, true);
+                                    }
+                                  },
+                                  child: Text("Сохранить"),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+                // Navigator.pop(dialogContext);
+              },
+            ),
             secondary: Icon(Icons.https),
             activeColor: Colors.red[300],
           ),
