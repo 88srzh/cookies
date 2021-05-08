@@ -36,14 +36,12 @@ class AuthentificationService {
 
   Future<UserModel> getUser() async {
     var firebaseUser = _auth.currentUser;
-    return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName);
+    return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName, email: firebaseUser.email);
   }
 
   Future<void> updateDisplayName(String displayName) async {
     var user = _auth.currentUser;
-    user.updateProfile(displayName: displayName
-        // UserUpdateInfo()..displayName = displayName;
-        );
+    user.updateProfile(displayName: displayName);
   }
 
   Future<bool> validatePassword(String password) async {
@@ -93,7 +91,6 @@ class AuthentificationService {
       return null;
     }
   }
-
 
   // email verify
   // Future<void> sendEmailVerification() async {

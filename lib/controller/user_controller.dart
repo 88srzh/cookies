@@ -40,6 +40,10 @@ class UserController {
     _authService.updateDisplayName(displayName);
   }
 
+  Future<String> getUserEmail() async {
+     return _authService.userEmail();
+  }
+
   Future<bool> validateCurrentPassword(String password) async {
     return await _authService.validatePassword(password);
   }
@@ -64,6 +68,6 @@ class UserController {
   // Future<void> checkEmailVerified() async {
   //   // return _authService.checkEmailVerified();
   //   var user = _authService.getUser();
-    
+
   // }
 }

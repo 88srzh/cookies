@@ -5,7 +5,8 @@ import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 // import 'package:cookie/models/user.dart';
 // import 'package:cookie/screens/auth/authentification_service.dart';
-import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
+// import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
+import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -75,7 +76,7 @@ class _SignFormState extends State<SignForm> {
               Text('Запомнить'),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, ForgotPasswordScreen.routeName),
+                onTap: () => Navigator.pushNamed(context, ForgottenPasswordScreen.routeName),
                 child: Text(
                   // ! Add route to screen
                   'Забыли пароль?',

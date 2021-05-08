@@ -1,8 +1,11 @@
 // import 'dart:io';
 
+import 'dart:io';
+
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
+import 'package:cookie/screens/profile/components/avatar.dart';
 // import 'package:cookie/screens/profile/components/avatar.dart';
 // import 'package:cookie/screens/profile/components/profile_pic.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
+import 'package:image_picker/image_picker.dart';
 // import 'package:image_picker/image_picker.dart';
 
 class BodyProfile extends StatefulWidget {
@@ -18,35 +22,37 @@ class BodyProfile extends StatefulWidget {
 }
 
 class _BodyProfileState extends State<BodyProfile> {
-  UserModel currentUser = locator.get<UserController>().currentUser;
+  // UserModel currentUser = locator.get<UserController>().currentUser;
 
   @override
   Widget build(BuildContext context) {
-    // var currentUser = FirebaseAuth.instance.currentUser;
-    // var image;
+    UserModel _currentUser = locator.get<UserController>().currentUser;
+    var userEmail = locator.get<UserController>().currentUser.email;
+    // var userController = locator.get<UserController>();
+    // var userEmail = userController.getUserEmail();
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
       ),
       child: Column(
         children: [
-          // ! fix profile avatar
-          // ProfilePic(),
-          // Avatar(
-          //   avatarUrl: currentUser?.avatarUrl,
-          //   onTap: () async {
-          //     PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
-          //     image = File(pickedImage.path);
-          //     await locator.get<UserController>().uploadProfilePicture(image);
-          //   },
-          // ),
+          Avatar(
+            avatarUrl: _currentUser?.avatarUrl,
+            onTap: () async {
+              PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
+              var image = File(pickedImage.path);
+              await locator.get<UserController>().uploadProfilePicture(image);
+              setState(() {});
+            },
+          ),
+          Text('\nПривет ${_currentUser.displayName}', style: TextStyle(fontSize: 20), textAlign: TextAlign.center),
           SizedBox(height: 20),
           CustomSettingsDivider(),
           ListTile(
             onTap: () {},
             leading: Icon(FontAwesomeIcons.solidUser),
-            // title: Text(user.displayName),
-            title: Text('hi ${currentUser?.displayName}'),
+            title: Text('hi ${_currentUser?.displayName}'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
@@ -57,8 +63,8 @@ class _BodyProfileState extends State<BodyProfile> {
           ListTile(
             onTap: () {},
             leading: Icon(Icons.mail),
-            // title: Text(currentUser.email, style: TextStyle(color: Colors.black87),),
-            title: Text('email'),
+            // ! fix user email
+            title: Text('$userEmail'),
             enabled: false,
             trailing: Icon(
               Icons.keyboard_arrow_right,
