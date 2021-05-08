@@ -34,7 +34,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget buildLoading() => Center(child: CircularProgressIndicator());
+    // Widget buildLoading() => Center(child: CircularProgressIndicator());
     return MultiProvider(
       providers: [
         // Provider<AuthentificationService>(
