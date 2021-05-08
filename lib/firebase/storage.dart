@@ -9,17 +9,17 @@ class Storage {
 
   AuthentificationService _authService = locator.get<AuthentificationService>();
 
-  Future<String> uploadFile(File file) async {
+  Future<String> uploadFile(File image) async {
     var user = await _authService.getUser();
     var storageRef = storage.ref().child('user/profile/${user.uid}');
-    var uploadTask = storageRef.putFile(file);
+    var uploadTask = storageRef.putFile(image);
     var completedTask = await uploadTask;
     String downloadUrl = await completedTask.ref.getDownloadURL();
     return downloadUrl;
   }
 
-  Future<String> getUserProfileImageDownloadUrl(String uid) {
+  Future<String> getUserProfileImageDownloadUrl(String uid) async {
     var storageRef = storage.ref().child('user/profile/$uid');
-    return storageRef.getDownloadURL();
+    return await storageRef.getDownloadURL();
   }
 }

@@ -28,8 +28,6 @@ class _BodyProfileState extends State<BodyProfile> {
   Widget build(BuildContext context) {
     UserModel _currentUser = locator.get<UserController>().currentUser;
     var userEmail = locator.get<UserController>().currentUser.email;
-    // var userController = locator.get<UserController>();
-    // var userEmail = userController.getUserEmail();
 
     return Container(
       decoration: BoxDecoration(
@@ -41,7 +39,7 @@ class _BodyProfileState extends State<BodyProfile> {
             avatarUrl: _currentUser?.avatarUrl,
             onTap: () async {
               PickedFile pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
-              var image = File(pickedImage.path);
+              File image = File(pickedImage.path);
               await locator.get<UserController>().uploadProfilePicture(image);
               setState(() {});
             },
@@ -95,7 +93,9 @@ class _BodyProfileState extends State<BodyProfile> {
           ),
           CustomSettingsDivider(),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              // ! fix logout
+            },
             leading: Icon(Icons.exit_to_app),
             title: Text('Выйти'),
             trailing: Icon(

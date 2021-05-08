@@ -40,10 +40,6 @@ class UserController {
     _authService.updateDisplayName(displayName);
   }
 
-  Future<String> getUserEmail() async {
-     return _authService.userEmail();
-  }
-
   Future<bool> validateCurrentPassword(String password) async {
     return await _authService.validatePassword(password);
   }
