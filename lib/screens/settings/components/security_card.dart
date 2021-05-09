@@ -1,3 +1,4 @@
+import 'package:cookie/components/custom_form_field.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
@@ -9,7 +10,7 @@ class SecurityCard extends StatefulWidget {
   final UserModel currentUser;
   // var userController = locator.get<UserController>();
 
-  const SecurityCard({this.currentUser});
+  SecurityCard({this.currentUser});
   // const ToggleOnCard({this.text, this.icon, this.press});
   // final String text;
   // final Icon iconFirst, iconSecond;
@@ -22,6 +23,7 @@ class _SecurityCardState extends State<SecurityCard> {
   var _passwordController = TextEditingController();
   var _newPasswordController = TextEditingController();
   var _repeatPasswordController = TextEditingController();
+
   var userController = locator.get<UserController>();
 
   bool checkCurrentPasswordValid = true;
@@ -79,7 +81,11 @@ class _SecurityCardState extends State<SecurityCard> {
             title: Text('Сменить пароль'),
             leading: Icon(Icons.https),
             onTap: () {
-              Scaffold.of(context).showBottomSheet<void>((BuildContext context) {
+              // ! implement apiToken
+              // if (currentUser.value.apiToken == null)
+              showModalBottomSheet(
+                context: context,
+                builder: (context) { 
                 return Container(
                   padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
                   // margin: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5), horizontal: getProportionateScreenWidth(5)),
@@ -97,7 +103,8 @@ class _SecurityCardState extends State<SecurityCard> {
                           decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
                           controller: _passwordController,
                         ),
-                        TextFormField(
+                        // TextFormField(
+                          TextFormField(
                           decoration: InputDecoration(hintText: 'Новый пароль'),
                           // obscureText: true,
                           controller: _newPasswordController,
@@ -121,9 +128,7 @@ class _SecurityCardState extends State<SecurityCard> {
                               setState(() {});
                               // ! не закрывается диалог
                               // ! не обновляется состояние при неверном пароле
-                              // Navigator.pop(context, true);
                             }
-                            Navigator.pop(context);
                           },
                           child: Text("Сохранить"),
                         )
@@ -131,7 +136,9 @@ class _SecurityCardState extends State<SecurityCard> {
                     ),
                   ),
                 );
-              });
+              },
+              );
+              // bottomSheetController.close.then(Navigator.pop(context));
               // Navigator.pop(context);
             },
 
@@ -141,30 +148,31 @@ class _SecurityCardState extends State<SecurityCard> {
       ),
     );
   }
-
-  // void showFloatingActionButton(bool value) {
-  //   setState(() {
-  //     showFab = false;
-  //   });
-  // }
-
-  // SwitchListTile buildSwetchListTile({
-  //   String title,
-  //   bool value,
-  //   void Function(bool) onChanged,
-  // }) {
-  //   return SwitchListTile(
-  //       title: Text(title), value: value, onChanged: onChanged);
-  // }
-
-  // void tapNotifications() {
-  //   final settings = Provider.of<SettingsItem>(context, listen: false);
-  //   setState(() {
-  //     if (settings.notifications) {
-  //       settings.notifications = false;
-  //     } else {
-  //       settings.notifications = true;
-  //     }
-  //   });
-  // }
 }
+
+// void showFloatingActionButton(bool value) {
+//   setState(() {
+//     showFab = false;
+//   });
+// }
+
+// SwitchListTile buildSwetchListTile({
+//   String title,
+//   bool value,
+//   void Function(bool) onChanged,
+// }) {
+//   return SwitchListTile(
+//       title: Text(title), value: value, onChanged: onChanged);
+// }
+
+// void tapNotifications() {
+//   final settings = Provider.of<SettingsItem>(context, listen: false);
+//   setState(() {
+//     if (settings.notifications) {
+//       settings.notifications = false;
+//     } else {
+//       settings.notifications = true;
+//     }
+//   });
+// }
+// }
