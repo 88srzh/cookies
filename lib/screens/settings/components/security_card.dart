@@ -1,11 +1,13 @@
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
+import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 
 class SecurityCard extends StatefulWidget {
   final UserModel currentUser;
+  // var userController = locator.get<UserController>();
 
   const SecurityCard({this.currentUser});
   // const ToggleOnCard({this.text, this.icon, this.press});
@@ -20,14 +22,15 @@ class _SecurityCardState extends State<SecurityCard> {
   var _passwordController = TextEditingController();
   var _newPasswordController = TextEditingController();
   var _repeatPasswordController = TextEditingController();
+  var userController = locator.get<UserController>();
 
   bool checkCurrentPasswordValid = true;
 
   bool _tapFingerprin = false;
   bool _tapNotification = false;
-  bool _tapPassword = false;
+  // bool _tapPassword = false;
 
-  static var _formKey;
+  var _formKeyNewPassword;
 
   @override
   void dispose() {
@@ -40,12 +43,6 @@ class _SecurityCardState extends State<SecurityCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //       begin: Alignment.topLeft,
-      //       end: Alignment.bottomRight,
-      //       colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-      // ),
       child: Column(
         children: [
           SwitchListTile(
@@ -73,82 +70,83 @@ class _SecurityCardState extends State<SecurityCard> {
             secondary: Icon(Icons.notifications_active),
           ),
           CustomSettingsDivider(),
-          SwitchListTile(
-            value: _tapPassword,
-            onChanged: (tapPassword) {
-              setState(() => _tapPassword = tapPassword);
-            },
+          ListTile(
+            // value: _tapPassword,
+            // onChanged: (tapPassword) {
+            //   setState(() => _tapPassword = tapPassword);
+            // },
             // leading: Icon(Icons.http),
-            title: InkWell(
-              child: Text('Сменить пароль'),
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-                        elevation: 16,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.all(Radius.circular(40)),
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-                          ),
-                          height: 400.0,
-                          width: 360.0,
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
-                                  controller: _passwordController,
-                                ),
-                                TextFormField(
-                                  decoration: InputDecoration(hintText: 'Новый пароль'),
-                                  obscureText: true,
-                                  controller: _newPasswordController,
-                                ),
-                                TextFormField(
-                                  decoration: InputDecoration(hintText: 'Повторите новый пароль'),
-                                  obscureText: true,
-                                  controller: _repeatPasswordController,
-                                  validator: (value) {
-                                    return _newPasswordController.text == value ? null : 'Пароли не совпадают';
-                                  },
-                                ),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    var userController = locator.get<UserController>();
-                                    checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
-                                    // check password
-                                    if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
-                                      userController.updateUserPassword(_newPasswordController.text);
-                                      // ! не закрывается диалог
-                                      // ! не обновляется состояние при неверном пароле
-                                      Navigator.pop(context, true);
-                                    }
-                                  },
-                                  child: Text("Сохранить"),
-                                )
-                              ],
-                            ),
-                          ),
+            title: Text('Сменить пароль'),
+            leading: Icon(Icons.https),
+            onTap: () {
+              Scaffold.of(context).showBottomSheet<void>((BuildContext context) {
+                return Container(
+                  padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
+                  // margin: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5), horizontal: getProportionateScreenWidth(5)),
+                  decoration: BoxDecoration(
+                    // borderRadius: BorderRadius.all(Radius.circular(40)),
+                    gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                  ),
+                  height: 350.0,
+                  // width: 360.0,
+                  child: Form(
+                    key: _formKeyNewPassword,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                          controller: _passwordController,
                         ),
-                      );
-                    });
-                // Navigator.pop(dialogContext);
-              },
-            ),
-            secondary: Icon(Icons.https),
-            activeColor: Colors.red[300],
+                        TextFormField(
+                          decoration: InputDecoration(hintText: 'Новый пароль'),
+                          // obscureText: true,
+                          controller: _newPasswordController,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(hintText: 'Повторите новый пароль'),
+                          // obscureText: true,
+                          controller: _repeatPasswordController,
+                          validator: (value) {
+                            return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                          },
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            // var userController = locator.get<UserController>();
+                            checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                            // check password
+                            // ! не видит currentstate
+                            if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
+                              userController.updateUserPassword(_newPasswordController.text);
+                              setState(() {});
+                              // ! не закрывается диалог
+                              // ! не обновляется состояние при неверном пароле
+                              // Navigator.pop(context, true);
+                            }
+                            Navigator.pop(context);
+                          },
+                          child: Text("Сохранить"),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              });
+              // Navigator.pop(context);
+            },
+
+            // activeColor: Colors.red[300],
           ),
         ],
       ),
     );
   }
+
+  // void showFloatingActionButton(bool value) {
+  //   setState(() {
+  //     showFab = false;
+  //   });
+  // }
 
   // SwitchListTile buildSwetchListTile({
   //   String title,
