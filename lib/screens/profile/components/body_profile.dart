@@ -6,15 +6,13 @@ import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
-// import 'package:cookie/screens/profile/components/avatar.dart';
-// import 'package:cookie/screens/profile/components/profile_pic.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:image_picker/image_picker.dart';
+
+import '../../sign_in/sign_in_screen.dart';
 
 class BodyProfile extends StatefulWidget {
   @override
@@ -46,25 +44,18 @@ class _BodyProfileState extends State<BodyProfile> {
           CustomSettingsDivider(),
           ListTile(
             onTap: () {},
-            leading: Icon(FontAwesomeIcons.solidUser),
-            title: Text('hi ${_currentUser?.displayName}'),
-            enabled: false,
-            trailing: Icon(
-              Icons.keyboard_arrow_right,
-              color: Colors.grey[300],
-            ),
+            leading: Icon(FontAwesomeIcons.solidUser, color: Colors.black54),
+            title: Text('Имя пользователя', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+            subtitle: Text('${_currentUser?.displayName}', style: TextStyle(color: Colors.black87, fontSize: 16)),
+            // enabled: false,
           ),
           CustomSettingsDivider(),
           ListTile(
             onTap: () {},
-            leading: Icon(Icons.mail),
-            // ! fix user email
-            title: Text('${_currentUser?.email}'),
+            leading: Icon(Icons.mail, color: Colors.black54),
+            title: Text('Почта', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+            subtitle: Text('${_currentUser?.email}', style: TextStyle(color: Colors.black87, fontSize: 16)),
             enabled: false,
-            trailing: Icon(
-              Icons.keyboard_arrow_right,
-              color: Colors.black54,
-            ),
           ),
           CustomSettingsDivider(),
           ListTile(
@@ -75,7 +66,6 @@ class _BodyProfileState extends State<BodyProfile> {
             title: Text('Настройки'),
             trailing: Icon(
               Icons.keyboard_arrow_right,
-              color: Colors.grey[300],
             ),
           ),
           CustomSettingsDivider(),
@@ -90,7 +80,10 @@ class _BodyProfileState extends State<BodyProfile> {
           ),
           CustomSettingsDivider(),
           ListTile(
-            onTap: () {
+            onTap: () async {
+              var userController = locator.get<UserController>();
+              userController.signOut();
+              Navigator.pushNamed(context, SignInScreen.routeName);
               // ! fix logout
             },
             leading: Icon(Icons.exit_to_app),

@@ -23,11 +23,11 @@ class AuthentificationService {
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-
-    final User user = (await _auth.signInWithCredential(credential)).user;
-    print('Успешно вошли ' + user.displayName);
-    return user;
   }
+
+  //  void userEmail() async {
+  //    await EmailAuthCredential.credential(email: email, password: password);
+  //  }
 
   Future<UserModel> signInWithEmailAndPassword({String email, String password}) async {
     var authResults = await _auth.signInWithEmailAndPassword(email: email, password: password);

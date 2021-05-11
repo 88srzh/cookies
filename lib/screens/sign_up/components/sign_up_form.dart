@@ -49,6 +49,7 @@ class _SignUpFormState extends State<SignUpForm> {
     _passwordController.dispose();
     _repasswordController.dispose();
     _usernameController.dispose();
+    super.dispose();
   }
 
   @override

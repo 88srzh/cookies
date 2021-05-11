@@ -1,4 +1,3 @@
-import 'package:cookie/components/custom_form_field.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
@@ -8,7 +7,6 @@ import 'package:cookie/components/custom_settings_divider.dart';
 
 class SecurityCard extends StatefulWidget {
   final UserModel currentUser;
-  // var userController = locator.get<UserController>();
 
   SecurityCard({this.currentUser});
   // const ToggleOnCard({this.text, this.icon, this.press});
@@ -73,11 +71,6 @@ class _SecurityCardState extends State<SecurityCard> {
           ),
           CustomSettingsDivider(),
           ListTile(
-            // value: _tapPassword,
-            // onChanged: (tapPassword) {
-            //   setState(() => _tapPassword = tapPassword);
-            // },
-            // leading: Icon(Icons.http),
             title: Text('Сменить пароль'),
             leading: Icon(Icons.https),
             onTap: () {
@@ -99,10 +92,9 @@ class _SecurityCardState extends State<SecurityCard> {
                         key: _formKeyNewPassword,
                         child: Column(
                           children: [
+                            // ! fix password correct
                             TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Пароль',
-                                errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                              decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
                               controller: _passwordController,
                             ),
                             // TextFormField(
@@ -121,16 +113,13 @@ class _SecurityCardState extends State<SecurityCard> {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                // var userController = locator.get<UserController>();
                                 checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
-                                // check password
-                                // ! не видит currentstate
+                                // check and set newpassword
                                 if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
                                   userController.updateUserPassword(_newPasswordController.text);
+                                  print('Новый пароль сохранен');
                                   setState(() {});
                                   Navigator.pop(context);
-                                  // ! не закрывается диалог
-                                  // ! не обновляется состояние при неверном пароле
                                 }
                               },
                               child: Text("Сохранить"),
