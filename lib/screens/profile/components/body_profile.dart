@@ -54,6 +54,7 @@ class _BodyProfileState extends State<BodyProfile> {
             title: 'Почта',
             subtitle: '${_currentUser?.email}',
           ),
+          CustomSettingsDivider(),
           CustomProfileListTile(
             icon: Icon(
               Icons.email_outlined,
@@ -64,14 +65,10 @@ class _BodyProfileState extends State<BodyProfile> {
           ),
           CustomSettingsDivider(),
           ListTile(
-            onTap: () {
-              Navigator.pushNamed(context, SettingsScreen.routeName);
-            },
+            onTap: () {Navigator.pushNamed(context, SettingsScreen.routeName);},
             leading: Icon(FontAwesomeIcons.cog),
             title: Text('Настройки'),
-            trailing: Icon(
-              Icons.keyboard_arrow_right,
-            ),
+            trailing: Icon(Icons.keyboard_arrow_right),
           ),
           CustomSettingsDivider(),
           ListTile(

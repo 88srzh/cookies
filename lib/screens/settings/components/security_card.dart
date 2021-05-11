@@ -84,47 +84,54 @@ class _SecurityCardState extends State<SecurityCard> {
                       padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
                       decoration: BoxDecoration(
                         // borderRadius: BorderRadius.all(Radius.circular(40)),
-                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight,
+                        colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
                       ),
-                      height: 350.0,
+                      height: 270.0,
                       // width: 360.0,
                       child: Form(
                         key: _formKeyNewPassword,
-                        child: Column(
-                          children: [
-                            // ! fix password correct
-                            TextFormField(
-                              decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
-                              controller: _passwordController,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(12),
+                            vertical: getProportionateScreenWidth(15),
                             ),
-                            // TextFormField(
-                            TextFormField(
-                              decoration: InputDecoration(hintText: 'Новый пароль'),
-                              // obscureText: true,
-                              controller: _newPasswordController,
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(hintText: 'Повторите новый пароль'),
-                              // obscureText: true,
-                              controller: _repeatPasswordController,
-                              validator: (value) {
-                                return _newPasswordController.text == value ? null : 'Пароли не совпадают';
-                              },
-                            ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
-                                // check and set newpassword
-                                if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
-                                  userController.updateUserPassword(_newPasswordController.text);
-                                  print('Новый пароль сохранен');
-                                  setState(() {});
-                                  Navigator.pop(context);
-                                }
-                              },
-                              child: Text("Сохранить"),
-                            )
-                          ],
+                          child: Column(
+                            children: [
+                              // ! fix password correct
+                              TextFormField(
+                                decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                                controller: _passwordController,
+                              ),
+                              // TextFormField(
+                              TextFormField(
+                                decoration: InputDecoration(hintText: 'Новый пароль'),
+                                // obscureText: true,
+                                controller: _newPasswordController,
+                              ),
+                              TextFormField(
+                                decoration: InputDecoration(hintText: 'Повторите новый пароль'),
+                                // obscureText: true,
+                                controller: _repeatPasswordController,
+                                validator: (value) {
+                                  return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                                },
+                              ),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                                  // check and set newpassword
+                                  if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
+                                    userController.updateUserPassword(_newPasswordController.text);
+                                    print('Новый пароль сохранен');
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  }
+                                },
+                                child: Text("Сохранить"),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
