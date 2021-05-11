@@ -40,6 +40,11 @@ class UserController {
     _authService.updateDisplayName(displayName);
   }
 
+  void updatePhoneNumber(String phoneNumber) {
+    _currentUser.phoneNumber = phoneNumber;
+    _authService.updatePhoneNumber(phoneNumber);
+  }
+
   Future<bool> validateCurrentPassword(String password) async {
     return await _authService.validatePassword(password);
   }

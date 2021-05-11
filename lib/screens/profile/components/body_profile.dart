@@ -54,6 +54,14 @@ class _BodyProfileState extends State<BodyProfile> {
             title: 'Почта',
             subtitle: '${_currentUser?.email}',
           ),
+          CustomProfileListTile(
+            icon: Icon(
+              Icons.email_outlined,
+              color: Colors.black54,
+            ),
+            title: 'Телефон',
+            subtitle: '${_currentUser.phoneNumber}',
+          ),
           CustomSettingsDivider(),
           ListTile(
             onTap: () {

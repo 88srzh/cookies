@@ -3,6 +3,7 @@ class UserModel {
   String displayName;
   String avatarUrl;
   String email;
+  String phoneNumber;
 
-  UserModel(this.uid, {this.displayName, this.avatarUrl, this.email});
+  UserModel(this.uid, {this.displayName, this.avatarUrl, this.email, this.phoneNumber});
 }

@@ -44,7 +44,13 @@ class AuthentificationService {
     user.updateProfile(displayName: displayName);
   }
 
-   Future<bool> validatePassword(String password) async {
+  void updatePhoneNumber(String phoneNumber) async {
+    var user = _auth.currentUser;
+    // ! fix
+    // user.updatePhoneNumber();
+  }
+
+  Future<bool> validatePassword(String password) async {
     var firebaseUser = _auth.currentUser;
     var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
     try {
