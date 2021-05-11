@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
-
 class CustomProfileListTile extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
+  final Icon icon;
+  final Function onTap;
 
-  const CustomProfileListTile({this.title, this.subtitle, this.icon});
+  const CustomProfileListTile({this.title, this.subtitle, this.icon, this.onTap});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:EdgeInsets.all(getProportionateScreenWidth(5)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-
-        ],
-      ),
+    return ListTile(
+      onTap: onTap,
+      leading: icon,
+      title: Text(title, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+      subtitle: Text(subtitle, style: TextStyle(color: Colors.black87, fontSize: 16)),
     );
   }
 }

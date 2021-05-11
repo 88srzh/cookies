@@ -6,6 +6,7 @@ import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
+import 'package:cookie/screens/profile/components/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
@@ -42,20 +43,16 @@ class _BodyProfileState extends State<BodyProfile> {
           Text('\nПривет ${_currentUser.displayName}', style: TextStyle(fontSize: 20), textAlign: TextAlign.center),
           SizedBox(height: 20),
           CustomSettingsDivider(),
-          ListTile(
-            onTap: () {},
-            leading: Icon(FontAwesomeIcons.solidUser, color: Colors.black54),
-            title: Text('Имя пользователя', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
-            subtitle: Text('${_currentUser?.displayName}', style: TextStyle(color: Colors.black87, fontSize: 16)),
-            // enabled: false,
+          CustomProfileListTile(
+            icon: Icon(FontAwesomeIcons.solidUser, color: Colors.black54),
+            title: 'Имя пользователя',
+            subtitle: '${_currentUser?.displayName}',
           ),
           CustomSettingsDivider(),
-          ListTile(
-            onTap: () {},
-            leading: Icon(Icons.mail, color: Colors.black54),
-            title: Text('Почта', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
-            subtitle: Text('${_currentUser?.email}', style: TextStyle(color: Colors.black87, fontSize: 16)),
-            enabled: false,
+          CustomProfileListTile(
+            icon: Icon(Icons.mail, color: Colors.black54),
+            title: 'Почта',
+            subtitle: '${_currentUser?.email}',
           ),
           CustomSettingsDivider(),
           ListTile(
