@@ -32,7 +32,7 @@ class _SecurityCardState extends State<SecurityCard> {
   bool _tapNotification = false;
   // bool _tapPassword = false;
 
-  var _formKeyNewPassword;
+  final GlobalKey<FormState> _formKeyNewPassword = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -85,58 +85,62 @@ class _SecurityCardState extends State<SecurityCard> {
               // if (currentUser.value.apiToken == null)
               showModalBottomSheet(
                 context: context,
-                builder: (context) { 
-                return Container(
-                  padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
-                  // margin: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5), horizontal: getProportionateScreenWidth(5)),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.all(Radius.circular(40)),
-                    gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-                  ),
-                  height: 350.0,
-                  // width: 360.0,
-                  child: Form(
-                    key: _formKeyNewPassword,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
-                          controller: _passwordController,
+                builder: (context) {
+                  return SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
+                      decoration: BoxDecoration(
+                        // borderRadius: BorderRadius.all(Radius.circular(40)),
+                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                      ),
+                      height: 350.0,
+                      // width: 360.0,
+                      child: Form(
+                        key: _formKeyNewPassword,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                hintText: 'Пароль',
+                                errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                              controller: _passwordController,
+                            ),
+                            // TextFormField(
+                            TextFormField(
+                              decoration: InputDecoration(hintText: 'Новый пароль'),
+                              // obscureText: true,
+                              controller: _newPasswordController,
+                            ),
+                            TextFormField(
+                              decoration: InputDecoration(hintText: 'Повторите новый пароль'),
+                              // obscureText: true,
+                              controller: _repeatPasswordController,
+                              validator: (value) {
+                                return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                              },
+                            ),
+                            ElevatedButton(
+                              onPressed: () async {
+                                // var userController = locator.get<UserController>();
+                                checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                                // check password
+                                // ! не видит currentstate
+                                if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
+                                  userController.updateUserPassword(_newPasswordController.text);
+                                  setState(() {});
+                                  Navigator.pop(context);
+                                  // ! не закрывается диалог
+                                  // ! не обновляется состояние при неверном пароле
+                                }
+                              },
+                              child: Text("Сохранить"),
+                            )
+                          ],
                         ),
-                        // TextFormField(
-                          TextFormField(
-                          decoration: InputDecoration(hintText: 'Новый пароль'),
-                          // obscureText: true,
-                          controller: _newPasswordController,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(hintText: 'Повторите новый пароль'),
-                          // obscureText: true,
-                          controller: _repeatPasswordController,
-                          validator: (value) {
-                            return _newPasswordController.text == value ? null : 'Пароли не совпадают';
-                          },
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            // var userController = locator.get<UserController>();
-                            checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
-                            // check password
-                            // ! не видит currentstate
-                            if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
-                              userController.updateUserPassword(_newPasswordController.text);
-                              setState(() {});
-                              // ! не закрывается диалог
-                              // ! не обновляется состояние при неверном пароле
-                            }
-                          },
-                          child: Text("Сохранить"),
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
               );
               // bottomSheetController.close.then(Navigator.pop(context));
               // Navigator.pop(context);
