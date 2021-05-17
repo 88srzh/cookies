@@ -3,10 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthentificationService {
-  // AuthentificationService(this._firebaseAuth);
-
-  // final FirebaseAuth _firebaseAuth;
-
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -25,10 +21,6 @@ class AuthentificationService {
     final AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
   }
 
-  //  void userEmail() async {
-  //    await EmailAuthCredential.credential(email: email, password: password);
-  //  }
-
   Future<UserModel> signInWithEmailAndPassword({String email, String password}) async {
     var authResults = await _auth.signInWithEmailAndPassword(email: email, password: password);
     return UserModel(authResults.user.uid, displayName: authResults.user.displayName);
@@ -46,7 +38,7 @@ class AuthentificationService {
 
   void updatePhoneNumber(String phoneNumber) async {
     var user = _auth.currentUser;
-    // ! fix
+    // ! fix, when user type phone in profile
     // user.updatePhoneNumber();
   }
 
