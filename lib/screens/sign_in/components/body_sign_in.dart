@@ -50,27 +50,24 @@ class BodySignIn extends StatelessWidget {
                   SizedBox(height: SizeConfig.screenHeight * 0.07),
                   SignForm(),
                   SizedBox(height: SizeConfig.screenHeight * 0.035),
-                  Flexible(
-                    flex: 3,
-                         child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.userSecret,
-                              color: Colors.grey),
-                          onPressed: () {
-                            // context.read<AuthentificationService>().signInAnonymously();
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.google, color: Colors.black87),
-                          onPressed: () {
-                            // final googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                            // googleProvider.login();
-                          },
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.userSecret,
+                            color: Colors.grey),
+                        onPressed: () {
+                          // context.read<AuthentificationService>().signInAnonymously();
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.google, color: Colors.black87),
+                        onPressed: () {
+                          // final googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                          // googleProvider.login();
+                        },
+                      ),
+                    ],
                   ),
                   SizedBox(height: SizeConfig.screenHeight * 0.05),
                 ],
