@@ -8,10 +8,15 @@
     "statusBar.debuggingBackground": "#263238"
     }
 },
+
 "workbench.colorTheme": "Thanatos Light",
 // "workbench.preferredHighContrastColorTheme": "Hackpot Garden",
 // "errorLens.fontWeight": "bold",
 // "terminal.integrated.fontWeightBold": "bold",
+"workbench.preferredHighContrastColorTheme": "Hackpot Garden",
+"errorLens.fontWeight": "900",
+"terminal.integrated.fontWeightBold": null,
+"editor.fontWeight": "400",
 "editor.rulers": [],
 "editor.minimap.enabled": false,
 "editor.wordWrapColumn": 800000,
