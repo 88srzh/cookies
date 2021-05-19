@@ -8,11 +8,11 @@
     "statusBar.debuggingBackground": "#263238"
     }
 },
-"workbench.colorTheme": "Ayu Mirage",
+"workbench.colorTheme": "Thanatos Light",
 "workbench.preferredHighContrastColorTheme": "Hackpot Garden",
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
-"editor.fontWeight": "400",
+"editor.fontWeight": bold,
 "editor.rulers": [],
 "editor.minimap.enabled": false,
 "editor.wordWrapColumn": 800000,
@@ -28,7 +28,7 @@
 "workbench.iconTheme": "material-icon-theme",
 "workbench.preferredDarkColorTheme": "Hackpot Garden",
 "workbench.preferredLightColorTheme": "Hackpot Garden",
-"editor.fontFamily": "Fira Code",
+"editor.fontFamily": "Victor mono",
 "editor.defaultFormatter": "Dart-Code.flutter",
 "dart.lineLength": 800
 }
