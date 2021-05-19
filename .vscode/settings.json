@@ -16,7 +16,7 @@
 "workbench.preferredHighContrastColorTheme": "Hackpot Garden",
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
-"editor.fontWeight": "400",
+"editor.fontWeight": bold,
 "editor.rulers": [],
 "editor.minimap.enabled": false,
 "editor.wordWrapColumn": 800000,
@@ -30,6 +30,7 @@
 "diffEditor.wordWrap": "on",
 "editor.wrappingIndent": "none",
 "workbench.iconTheme": "material-icon-theme",
+<<<<<<< HEAD
 // "workbench.preferredDarkColorTheme": "Thanatos dark",
 "workbench.preferredLightColorTheme": "Thanatos Light",
 "editor.fontFamily": "Victor mono",
@@ -37,4 +38,11 @@
 // "editor.fontSize": 15,
 "editor.defaultFormatter": "remimarsal.prettier-now",
 "editor.formatOnSave": true
+=======
+"workbench.preferredDarkColorTheme": "Hackpot Garden",
+"workbench.preferredLightColorTheme": "Hackpot Garden",
+"editor.fontFamily": "Victor mono",
+"editor.defaultFormatter": "Dart-Code.flutter",
+"dart.lineLength": 800
+>>>>>>> master
 }
