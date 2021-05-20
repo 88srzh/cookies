@@ -66,12 +66,12 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Spacer(flex: 3),
-                      ElevatedButton(
+                      OutlinedButton(
                         onPressed: () => Navigator.pushNamed(context, SignInScreen.routeName),
                         child: Text('Продолжить', style: TextStyle(color: Colors.black87, fontSize: 16)),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.transparent,
-                          side: BorderSide(width: getProportionateScreenWidth(2), color: Colors.orange[200]),
+                          side: BorderSide(width: getProportionateScreenWidth(2)),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(getProportionateScreenWidth(20))),
                         ),
                         ),
