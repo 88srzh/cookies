@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+// import 'package:lint/analysis_options.yaml';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
