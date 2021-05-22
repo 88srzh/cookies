@@ -8,11 +8,11 @@
     "statusBar.debuggingBackground": "#263238"
     }
 },
-"workbench.colorTheme": "Thanatos Light",
+"workbench.colorTheme": "Ayu Light",
 "workbench.preferredHighContrastColorTheme": "Hackpot Garden",
 "errorLens.fontWeight": "900",
 "terminal.integrated.fontWeightBold": null,
-"editor.fontWeight": bold,
+// "editor.fontWeight": bold,
 "editor.rulers": [],
 "editor.minimap.enabled": false,
 "editor.wordWrapColumn": 800000,
@@ -25,7 +25,7 @@
 "editor.formatOnType": true,
 "diffEditor.wordWrap": "off",
 "editor.wrappingIndent": "none",
-"workbench.iconTheme": "material-icon-theme",
+"workbench.iconTheme": "ayu",
 "workbench.preferredDarkColorTheme": "Hackpot Garden",
 "workbench.preferredLightColorTheme": "Hackpot Garden",
 "editor.fontFamily": "Victor mono",
