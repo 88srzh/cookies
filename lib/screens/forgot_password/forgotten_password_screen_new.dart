@@ -56,7 +56,7 @@ class _ForgottenPasswordScreenState extends State<ForgottenPasswordScreen> {
                           // ! fix text style
                           // style: DefaultTextStyle.of(context).style,
                           children: [
-                            TextSpan(text: 'Привет ${_currentUser.displayName}\n', style: TextStyle(fontSize: 20, color: Colors.black87)),
+                            // TextSpan(text: 'Привет ${_currentUser.displayName}\n', style: TextStyle(fontSize: 20, color: Colors.black87)),
                             TextSpan(text: 'забыли пароль?', style: TextStyle(fontSize: 18, color: Colors.black87)),
                           ],),),
                     ],
