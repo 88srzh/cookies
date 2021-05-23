@@ -1,18 +1,11 @@
-import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
-// import 'package:cookie/models/user.dart';
-// import 'package:cookie/screens/auth/authentification_service.dart';
-// import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -26,7 +19,6 @@ class _SignFormState extends State<SignForm> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  // FirebaseAuth auth = FirebaseAuth.instance;
   String email;
   String password;
   bool remember = false;
@@ -88,15 +80,13 @@ class _SignFormState extends State<SignForm> {
             ],
           ),
           FormError(errors: errors),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(10)),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ContinueButton(
-                text: 'Войти',
-                press: () async {
+              OutlinedButton(
+                child: Text('Войти', style: TextStyle(fontSize: 24, color: Colors.black87),),
+                onPressed: () async {
                   try {
                     await locator.get<UserController>().signInWithEmailAndPassword(
                           email: emailController.text,
@@ -108,12 +98,8 @@ class _SignFormState extends State<SignForm> {
                   }
                 },
               ),
-              ElevatedButton(
-                child: Text('Зарегистрироваться'),
-                onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
-              ),
             ],
-          ),
+          )
         ],
       ),
     );

@@ -1,26 +1,16 @@
-// import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/favorite.dart';
-// import 'package:cookie/models/items_info.dart';
-// import 'package:cookie/models/orders.dart';
-// import 'package:cookie/models/cart.dart';
 import 'package:cookie/locator.dart';
-// import 'package:cookie/models/orders.dart';
 import 'package:cookie/models/settings.dart';
-// import 'package:cookie/models/items.dart';
 import 'package:cookie/routs.dart';
-// import 'package:cookie/screens/auth/authentification_service.dart';
-// import 'package:cookie/screens/auth/google_sign_in.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
-// import 'package:cookie/screens/home/home_screen.dart';
-// import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/theme.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+// import 'package:lint/analysis_options.yaml';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
