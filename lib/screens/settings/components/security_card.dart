@@ -81,11 +81,17 @@ class _SecurityCardState extends State<SecurityCard> {
                 builder: (context) {
                   return SingleChildScrollView(
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(5)),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getProportionateScreenWidth(5)),
                       decoration: BoxDecoration(
                         // borderRadius: BorderRadius.all(Radius.circular(40)),
-                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight,
-                        colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Color.fromRGBO(248, 219, 221, 1.0),
+                              Colors.orange[100]
+                            ]),
                       ),
                       height: 270.0,
                       // width: 360.0,
@@ -95,40 +101,63 @@ class _SecurityCardState extends State<SecurityCard> {
                           padding: EdgeInsets.symmetric(
                             horizontal: getProportionateScreenWidth(12),
                             vertical: getProportionateScreenWidth(15),
-                            ),
+                          ),
                           child: Column(
                             children: [
                               // ! fix password correct
                               TextFormField(
-                                decoration: InputDecoration(hintText: 'Пароль', errorText: checkCurrentPasswordValid ? null : 'Неверный пароль'),
+                                decoration: InputDecoration(
+                                    hintText: 'Пароль',
+                                    errorText: checkCurrentPasswordValid
+                                        ? null
+                                        : 'Неверный пароль'),
                                 controller: _passwordController,
                               ),
                               // TextFormField(
                               TextFormField(
-                                decoration: InputDecoration(hintText: 'Новый пароль'),
+                                decoration:
+                                    InputDecoration(hintText: 'Новый пароль'),
                                 // obscureText: true,
                                 controller: _newPasswordController,
                               ),
                               TextFormField(
-                                decoration: InputDecoration(hintText: 'Повторите новый пароль'),
+                                decoration: InputDecoration(
+                                  hintText: 'Повторите новый пароль',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black45,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
                                 // obscureText: true,
                                 controller: _repeatPasswordController,
                                 validator: (value) {
-                                  return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                                  return _newPasswordController.text == value
+                                      ? null
+                                      : 'Пароли не совпадают';
                                 },
                               ),
-                              ElevatedButton(
+                              OutlinedButton(
                                 onPressed: () async {
-                                  checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                                  checkCurrentPasswordValid =
+                                      await userController
+                                          .validateCurrentPassword(
+                                              _passwordController.text);
                                   // check and set newpassword
-                                  if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
-                                    userController.updateUserPassword(_newPasswordController.text);
+                                  if (_formKeyNewPassword.currentState
+                                          .validate() &&
+                                      checkCurrentPasswordValid) {
+                                    userController.updateUserPassword(
+                                        _newPasswordController.text);
                                     print('Новый пароль сохранен');
                                     setState(() {});
                                     Navigator.pop(context);
                                   }
                                 },
-                                child: Text("Сохранить"),
+                                child: Text(
+                                  "Сохранить",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 18),
+                                ),
                               )
                             ],
                           ),

@@ -91,7 +91,8 @@ class BodySignIn extends StatelessWidget {
                                 context, SignUpScreen.routeName),
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: SizeConfig.screenHeight * 0.035),
                     ],
                   ),
                 ),
