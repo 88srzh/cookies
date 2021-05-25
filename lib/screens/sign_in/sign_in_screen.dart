@@ -31,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
     if (user == null) {
       return Scaffold(
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(child: BodySignIn()),
+        body: BodySignIn(),
       );
     }
     return HomeScreen();

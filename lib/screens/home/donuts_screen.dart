@@ -100,7 +100,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
       ),
     );
   }
-  
 
   Widget buildItemCard(int index) {
     return Column(

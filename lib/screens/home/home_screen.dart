@@ -72,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 CustomListTile(
                   icon: Icon(Icons.person_add),
                   title: 'Профиль',
-                  onPressed: () => Navigator.pushNamed(context, ProfileScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, ProfileScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(FontAwesomeIcons.solidHeart),
@@ -83,12 +84,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 CustomListTile(
                   icon: Icon(Icons.settings),
                   title: 'Настройки',
-                  onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SettingsScreen.routeName),
                 ),
                 CustomListTile(
                   icon: Icon(Icons.supervised_user_circle_outlined),
                   title: 'ТестПользователей',
-                  onPressed: () => Navigator.pushNamed(context, TestAuthScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, TestAuthScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(Icons.add_shopping_cart),
@@ -159,7 +162,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
                 );
               },
             ),
@@ -177,20 +181,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fit: StackFit.expand,
                     children: [
                       StreamBuilder(
-                        stream: FirebaseDatabase.instance.reference().child('NewCart').child('UNIQUE_USER_ID').onValue, // use FirebaseAuth uid
-                        builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+                        stream: FirebaseDatabase.instance
+                            .reference()
+                            .child('NewCart')
+                            .child('UNIQUE_USER_ID')
+                            .onValue, // use FirebaseAuth uid
+                        builder: (BuildContext context,
+                            AsyncSnapshot<Event> snapshot) {
                           var numberItemInCart = 0;
                           if (snapshot.hasData) {
-                            Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+                            Map<dynamic, dynamic> map =
+                                snapshot.data.snapshot.value;
                             newCarts.clear();
                             if (map != null) {
                               map.forEach((key, value) {
-                                var newCart = Cart.fromJson(json.decode(json.encode(value)));
+                                var newCart = Cart.fromJson(
+                                    json.decode(json.encode(value)));
                                 newCart.key = key;
                                 newCarts.add(newCart);
                               });
                               // Calculate number
-                              numberItemInCart = newCarts.map<int>((m) => m.quantity).reduce((s1, s2) => s1 + s2);
+                              numberItemInCart = newCarts
+                                  .map<int>((m) => m.quantity)
+                                  .reduce((s1, s2) => s1 + s2);
                             }
                             return GestureDetector(
                               onTap: () {
@@ -204,7 +217,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     '${numberItemInCart > 9 ? 9.toString() + "+" : numberItemInCart.toString()}',
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  child: Icon(Icons.shopping_cart, color: Colors.black),
+                                  child: Icon(Icons.shopping_cart,
+                                      color: Colors.black),
                                 ),
                               ),
                             );
@@ -212,8 +226,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             return Center(
                               child: Badge(
                                 showBadge: true,
-                                badgeContent: Text('0', style: TextStyle(color: Colors.white)),
-                                child: Icon(Icons.shopping_cart, color: Colors.white),
+                                badgeContent: Text('0',
+                                    style: TextStyle(color: Colors.white)),
+                                child: Icon(Icons.shopping_cart,
+                                    color: Colors.white),
                               ),
                             );
                         },
@@ -232,28 +248,32 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   text: 'Пончики',
                   icon: SvgPicture.asset(
                     'assets/icons/donut32-min.svg',
-                    color: _tabController.index == 0 ? Colors.black : Colors.grey,
+                    color:
+                        _tabController.index == 0 ? Colors.black : Colors.grey,
                   ),
                 ),
                 Tab(
                   text: 'Бургеры',
                   icon: SvgPicture.asset(
                     'assets/icons/burger_32-min.svg',
-                    color: _tabController.index == 1 ? Colors.black : Colors.grey,
+                    color:
+                        _tabController.index == 1 ? Colors.black : Colors.grey,
                   ),
                 ),
                 Tab(
                   text: 'Блинчики',
                   icon: SvgPicture.asset(
                     'assets/icons/puncake2_32.svg',
-                    color: _tabController.index == 2 ? Colors.black : Colors.grey,
+                    color:
+                        _tabController.index == 2 ? Colors.black : Colors.grey,
                   ),
                 ),
                 Tab(
                   text: 'Пицца',
                   icon: SvgPicture.asset(
                     'assets/icons/pizza_32.svg',
-                    color: _tabController.index == 3 ? Colors.black : Colors.grey,
+                    color:
+                        _tabController.index == 3 ? Colors.black : Colors.grey,
                   ),
                 ),
               ],

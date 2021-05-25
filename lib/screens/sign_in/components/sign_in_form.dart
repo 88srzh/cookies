@@ -1,4 +1,3 @@
-import 'package:cookie/components/continue_button.dart';
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
@@ -81,15 +80,13 @@ class _SignFormState extends State<SignForm> {
             ],
           ),
           FormError(errors: errors),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(10)),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ContinueButton(
-                text: 'Войти',
-                press: () async {
+              OutlinedButton(
+                child: Text('Войти', style: TextStyle(fontSize: 24, color: Colors.black87),),
+                onPressed: () async {
                   try {
                     await locator.get<UserController>().signInWithEmailAndPassword(
                           email: emailController.text,
@@ -101,12 +98,8 @@ class _SignFormState extends State<SignForm> {
                   }
                 },
               ),
-              ElevatedButton(
-                child: Text('Зарегистрироваться'),
-                onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
-              ),
             ],
-          ),
+          )
         ],
       ),
     );
