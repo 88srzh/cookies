@@ -37,8 +37,6 @@ class BodySignUp extends StatelessWidget {
               SizedBox(height: SizeConfig.screenHeight * 0.07),
               SignUpForm(),
               SizedBox(height: SizeConfig.screenHeight * 0.07),
-           
-              SizedBox(height: getProportionateScreenHeight(20)),
               Text(
                 'Для продолжения примите наше \nПользовательское соглашение',
                 textAlign: TextAlign.center,
