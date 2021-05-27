@@ -12,11 +12,13 @@ import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/pancakes_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -27,6 +29,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
+  int _page = 0;
+  GlobalKey _bottomNavigationKey = GlobalKey();
   // double currentPage = 0;
   // int currentTab = 0;
   @override
@@ -239,45 +243,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ],
-            bottom: TabBar(
-              controller: _tabController,
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              tabs: [
-                Tab(
-                  text: 'Пончики',
-                  icon: SvgPicture.asset(
-                    'assets/icons/donut32-min.svg',
-                    color:
-                        _tabController.index == 0 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Бургеры',
-                  icon: SvgPicture.asset(
-                    'assets/icons/burger_32-min.svg',
-                    color:
-                        _tabController.index == 1 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Блинчики',
-                  icon: SvgPicture.asset(
-                    'assets/icons/puncake2_32.svg',
-                    color:
-                        _tabController.index == 2 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Пицца',
-                  icon: SvgPicture.asset(
-                    'assets/icons/pizza_32.svg',
-                    color:
-                        _tabController.index == 3 ? Colors.black : Colors.grey,
-                  ),
-                ),
-              ],
-            ),
+            // bottom: TabBar(
+            //   controller: _tabController,
+            //   labelColor: Colors.black,
+            //   unselectedLabelColor: Colors.grey,
+            //   tabs: [
+            //     Tab(
+            //       text: 'Пончики',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/donut32-min.svg',
+            //         color:
+            //             _tabController.index == 0 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Бургеры',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/burger_32-min.svg',
+            //         color:
+            //             _tabController.index == 1 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Блинчики',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/puncake2_32.svg',
+            //         color:
+            //             _tabController.index == 2 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Пицца',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/pizza_32.svg',
+            //         color:
+            //             _tabController.index == 3 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ),
           backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
           body: TabBarView(
@@ -289,6 +293,41 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               PancakesScreen(),
               PizzaScreen(),
             ],
+          ),
+          bottomNavigationBar: CurvedNavigationBar(
+            // backgroundColor: Colors.redAccent,
+            // color: Colors.transparent,
+            key: _bottomNavigationKey,
+            index: 0,
+            items: [
+              SvgPicture.asset(
+                    'assets/icons/burger_32-min.svg',
+                    color: _page == 0 ? Colors.black : Colors.grey,
+                  ),
+               SvgPicture.asset(
+                      'assets/icons/donut32-min.svg',
+                      color: _page == 1 ? Colors.black : Colors.grey,
+                    ),
+                  SvgPicture.asset(
+                    'assets/icons/puncake2_32.svg',
+                    color: _page == 2 ? Colors.black : Colors.grey,
+                  ),
+                  SvgPicture.asset(
+                    'assets/icons/pizza_32.svg',
+                    color: _page == 3 ? Colors.black : Colors.grey,
+                  ),
+                   ],
+                   color: Colors.red[100],
+                   buttonBackgroundColor: Colors.white54,
+                   backgroundColor: Colors.redAccent[50],
+                   animationCurve: Curves.ease,
+                   animationDuration: Duration(milliseconds: 600),
+                   onTap: (index) {
+                     setState(() {
+                       _page = index;
+                     });
+                   },
+                   letIndexChange: (index) => true,
           ),
         ),
       ),
