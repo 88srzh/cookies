@@ -12,11 +12,13 @@ import 'package:cookie/screens/profile/profile_screen.dart';
 import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/pancakes_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -25,25 +27,57 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  TabController _tabController;
+  // TabController _tabController;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
+  int _page = 0;
+  GlobalKey _bottomNavigationKey = GlobalKey();
+  // GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
+  List<Widget> _pages;
+  Widget _page1;
+  Widget _page2;
+  Widget _page3;
+  Widget _page4;
+  // int _currentIndex;
+  Widget _currentPage;
   // double currentPage = 0;
   // int currentTab = 0;
   @override
+  // ! прошлый таб контроллер сверху
+  // void initState() {
+  //   super.initState();
+  //   _tabController = TabController(length: 4, vsync: this);
+  //   _tabController.addListener(_handleTabSelecion);
+  // }
+
+  // void _handleTabSelecion() {
+  //   setState(() {});
+  // }
+
+  // @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
+  // -----------------------------------------------------------------------------
+
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(_handleTabSelecion);
+    _page1 = DonutsScreen();
+    _page2 = BurgersScreen();
+    _page3 = PancakesScreen();
+    _page4 = PizzaScreen();
+
+    _pages = [_page1, _page2, _page3, _page4];
+
+    // _currentIndex = 0;
+    _currentPage = _page1;
   }
 
-  void _handleTabSelecion() {
-    setState(() {});
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+  void changeTab(int index) {
+    setState(() {
+      // _currentIndex = index;
+      _currentPage = _pages[index];
+    });
   }
 
   @override
@@ -72,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 CustomListTile(
                   icon: Icon(Icons.person_add),
                   title: 'Профиль',
-                  onPressed: () => Navigator.pushNamed(context, ProfileScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, ProfileScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(FontAwesomeIcons.solidHeart),
@@ -83,12 +118,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 CustomListTile(
                   icon: Icon(Icons.settings),
                   title: 'Настройки',
-                  onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SettingsScreen.routeName),
                 ),
                 CustomListTile(
                   icon: Icon(Icons.supervised_user_circle_outlined),
                   title: 'ТестПользователей',
-                  onPressed: () => Navigator.pushNamed(context, TestAuthScreen.routeName),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, TestAuthScreen.routeName),
                 ),
                 // CustomListTile(
                 //   icon: Icon(Icons.add_shopping_cart),
@@ -159,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  tooltip:
+                      MaterialLocalizations.of(context).openAppDrawerTooltip,
                 );
               },
             ),
@@ -177,20 +215,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fit: StackFit.expand,
                     children: [
                       StreamBuilder(
-                        stream: FirebaseDatabase.instance.reference().child('NewCart').child('UNIQUE_USER_ID').onValue, // use FirebaseAuth uid
-                        builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+                        stream: FirebaseDatabase.instance
+                            .reference()
+                            .child('NewCart')
+                            .child('UNIQUE_USER_ID')
+                            .onValue, // use FirebaseAuth uid
+                        builder: (BuildContext context,
+                            AsyncSnapshot<Event> snapshot) {
                           var numberItemInCart = 0;
                           if (snapshot.hasData) {
-                            Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+                            Map<dynamic, dynamic> map =
+                                snapshot.data.snapshot.value;
                             newCarts.clear();
                             if (map != null) {
                               map.forEach((key, value) {
-                                var newCart = Cart.fromJson(json.decode(json.encode(value)));
+                                var newCart = Cart.fromJson(
+                                    json.decode(json.encode(value)));
                                 newCart.key = key;
                                 newCarts.add(newCart);
                               });
                               // Calculate number
-                              numberItemInCart = newCarts.map<int>((m) => m.quantity).reduce((s1, s2) => s1 + s2);
+                              numberItemInCart = newCarts
+                                  .map<int>((m) => m.quantity)
+                                  .reduce((s1, s2) => s1 + s2);
                             }
                             return GestureDetector(
                               onTap: () {
@@ -204,7 +251,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     '${numberItemInCart > 9 ? 9.toString() + "+" : numberItemInCart.toString()}',
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  child: Icon(Icons.shopping_cart, color: Colors.black),
+                                  child: Icon(Icons.shopping_cart,
+                                      color: Colors.black),
                                 ),
                               ),
                             );
@@ -212,8 +260,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             return Center(
                               child: Badge(
                                 showBadge: true,
-                                badgeContent: Text('0', style: TextStyle(color: Colors.white)),
-                                child: Icon(Icons.shopping_cart, color: Colors.white),
+                                badgeContent: Text('0',
+                                    style: TextStyle(color: Colors.white)),
+                                child: Icon(Icons.shopping_cart,
+                                    color: Colors.white),
                               ),
                             );
                         },
@@ -223,52 +273,90 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ],
-            bottom: TabBar(
-              controller: _tabController,
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              tabs: [
-                Tab(
-                  text: 'Пончики',
-                  icon: SvgPicture.asset(
-                    'assets/icons/donut32-min.svg',
-                    color: _tabController.index == 0 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Бургеры',
-                  icon: SvgPicture.asset(
-                    'assets/icons/burger_32-min.svg',
-                    color: _tabController.index == 1 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Блинчики',
-                  icon: SvgPicture.asset(
-                    'assets/icons/puncake2_32.svg',
-                    color: _tabController.index == 2 ? Colors.black : Colors.grey,
-                  ),
-                ),
-                Tab(
-                  text: 'Пицца',
-                  icon: SvgPicture.asset(
-                    'assets/icons/pizza_32.svg',
-                    color: _tabController.index == 3 ? Colors.black : Colors.grey,
-                  ),
-                ),
-              ],
-            ),
+            // ! - tabbar
+            // bottom: TabBar(
+            //   controller: _tabController,
+            //   labelColor: Colors.black,
+            //   unselectedLabelColor: Colors.grey,
+            //   tabs: [
+            //     Tab(
+            //       text: 'Пончики',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/donut32-min.svg',
+            //         color:
+            //             _tabController.index == 0 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Бургеры',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/burger_32-min.svg',
+            //         color:
+            //             _tabController.index == 1 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Блинчики',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/puncake2_32.svg',
+            //         color:
+            //             _tabController.index == 2 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //     Tab(
+            //       text: 'Пицца',
+            //       icon: SvgPicture.asset(
+            //         'assets/icons/pizza_32.svg',
+            //         color:
+            //             _tabController.index == 3 ? Colors.black : Colors.grey,
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ),
           backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-          body: TabBarView(
-            // controller: _pageController,
-            controller: _tabController,
-            children: [
-              DonutsScreen(),
-              BurgersScreen(),
-              PancakesScreen(),
-              PizzaScreen(),
+          // body: TabBarView(
+          //   // controller: _pageController,
+          //   controller: _tabController,
+          //   children: [
+          //     DonutsScreen(),
+          //     BurgersScreen(),
+          //     PancakesScreen(),
+          //     PizzaScreen(),
+          //   ],
+          // ),
+          body: _currentPage,
+          bottomNavigationBar: CurvedNavigationBar(
+            // backgroundColor: Colors.redAccent,
+            // color: Colors.transparent,
+            key: _bottomNavigationKey,
+            index: 0,
+            items: [
+              SvgPicture.asset(
+                'assets/icons/donut32-min.svg',
+                color: _page == 0 ? Colors.black : Colors.grey,
+              ),
+              SvgPicture.asset(
+                'assets/icons/burger_32-min.svg',
+                color: _page == 1 ? Colors.black : Colors.grey,
+              ),
+              SvgPicture.asset(
+                'assets/icons/puncake2_32.svg',
+                color: _page == 2 ? Colors.black : Colors.grey,
+              ),
+              SvgPicture.asset(
+                'assets/icons/pizza_32.svg',
+                color: _page == 3 ? Colors.black : Colors.grey,
+              ),
             ],
+            color: Colors.red[100],
+            buttonBackgroundColor: Colors.white54,
+            backgroundColor: Colors.redAccent[50],
+            animationCurve: Curves.ease,
+            animationDuration: Duration(milliseconds: 600),
+            onTap: (index) => changeTab(index),
+            // currentIndex: _currentIndex,
+            letIndexChange: (index) => true,
           ),
         ),
       ),

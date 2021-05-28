@@ -6,7 +6,6 @@ import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 // import 'package:cookie/screens/sign_up/verify_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_surfix_icon.dart';
-// import '../../../components/default_button.dart';
 import '../../../components/form_error.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -74,8 +73,8 @@ class _SignUpFormState extends State<SignUpForm> {
           buildConfirmPasswordFormField(),
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
-          ElevatedButton(
-            child: Text('Продолжить'),
+          OutlinedButton(
+            child: Text('Продолжить', style: TextStyle(color: Colors.black87, fontSize: 22)),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
                 await locator.get<UserController>().signUpWithEmailAndPassword(

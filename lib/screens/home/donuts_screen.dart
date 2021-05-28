@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class DonutsScreen extends StatefulWidget {
+  static String routeName = '/donutsscreen';
   @override
   _DonutsScreenState createState() => _DonutsScreenState();
 }

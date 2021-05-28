@@ -8,7 +8,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Зарегистрироваться',
+          'Регистрация',
         ),
       ),
       body: BodySignUp(),
