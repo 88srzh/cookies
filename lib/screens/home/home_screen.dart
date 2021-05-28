@@ -31,24 +31,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
   int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
+  List<Widget> _pages;
+  Widget _page1;
+  Widget _page2;
+  Widget _page3;
+  Widget _page4;
+  int _currentIndex;
+  Widget _currenrPage;
   // double currentPage = 0;
   // int currentTab = 0;
   @override
+  // ! прошлый таб контроллер сверху
+  // void initState() {
+  //   super.initState();
+  //   _tabController = TabController(length: 4, vsync: this);
+  //   _tabController.addListener(_handleTabSelecion);
+  // }
+
+  // void _handleTabSelecion() {
+  //   setState(() {});
+  // }
+
+  // @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
+  // -----------------------------------------------------------------------------
+
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(_handleTabSelecion);
-  }
+    _page1 = DonutsScreen();
+    _page2 = BurgersScreen();
+    _page3 = PancakesScreen();
+    _page4 = PizzaScreen();
 
-  void _handleTabSelecion() {
-    setState(() {});
-  }
+    _pages = [_page1, _page2, _page3, _page4];
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -301,13 +322,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             index: 0,
             items: [
               SvgPicture.asset(
-                    'assets/icons/burger_32-min.svg',
-                    color: _page == 0 ? Colors.black : Colors.grey,
-                  ),
-               SvgPicture.asset(
                       'assets/icons/donut32-min.svg',
-                      color: _page == 1 ? Colors.black : Colors.grey,
+                      color: _page == 0 ? Colors.black : Colors.grey,
                     ),
+              SvgPicture.asset(
+                'assets/icons/burger_32-min.svg', 
+                    color: _page == 1 ? Colors.black : Colors.grey,
+                  ),              
                   SvgPicture.asset(
                     'assets/icons/puncake2_32.svg',
                     color: _page == 2 ? Colors.black : Colors.grey,
@@ -325,6 +346,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                    onTap: (index) {
                      setState(() {
                        _page = index;
+                       if (_page == 0) {Navigator.pushNamed(context, DonutsScreen.routeName);}
+                       else if (_page == 1) {Navigator.pushNamed(context, BurgersScreen.routeName);}
                      });
                    },
                    letIndexChange: (index) => true,
