@@ -6,6 +6,7 @@ import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dar
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -16,6 +17,7 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  bool _obskureText = true;
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -38,6 +40,12 @@ class _SignFormState extends State<SignForm> {
         errors.remove(error);
       });
     }
+  }
+
+  void _toggle() {
+    setState(() {
+      _obskureText = !_obskureText;
+    });
   }
 
   @override
@@ -68,7 +76,8 @@ class _SignFormState extends State<SignForm> {
               Text('Запомнить'),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, ForgottenPasswordScreen.routeName),
+                onTap: () => Navigator.pushNamed(
+                    context, ForgottenPasswordScreen.routeName),
                 child: Text(
                   // ! Add route to screen
                   'Забыли пароль?',
@@ -85,10 +94,15 @@ class _SignFormState extends State<SignForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OutlinedButton(
-                child: Text('Войти', style: TextStyle(fontSize: 24, color: Colors.black87),),
+                child: Text(
+                  'Войти',
+                  style: TextStyle(fontSize: 24, color: Colors.black87),
+                ),
                 onPressed: () async {
                   try {
-                    await locator.get<UserController>().signInWithEmailAndPassword(
+                    await locator
+                        .get<UserController>()
+                        .signInWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text,
                         );
@@ -108,7 +122,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       controller: passwordController,
-      obscureText: true,
+      obscureText: _obskureText,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -134,8 +148,20 @@ class _SignFormState extends State<SignForm> {
         hintText: 'Введите пароль',
         fillColor: Colors.white24,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Lock.svg',
+        // suffixIcon: CustomSurffixIcon(
+        // svgIcon: 'assets/icons/Lock.svg',
+        // ),
+        // ! refactor padding to separate
+        suffixIcon: InkWell(
+          onTap: _toggle,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                0,
+                getProportionateScreenWidth(20),
+                getProportionateScreenWidth(20),
+                getProportionateScreenWidth(20)),
+            child: Icon(FontAwesomeIcons.eyeSlash, color: Colors.black45),
+          ),
         ),
       ),
     );

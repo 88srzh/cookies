@@ -22,7 +22,7 @@ class CustomSurffixIcon extends StatelessWidget {
       ),
       child: SvgPicture.asset(
         svgIcon,
-        height: getProportionateScreenWidth(18),
+        // height: getProportionateScreenWidth(18),
       ),
     );
   }
