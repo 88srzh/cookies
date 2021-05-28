@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-=======
 {
     "editor.fontLigatures": true,
+
     "editor.fontFamily": "'Victor Mono', 'bold'",
     "editor.minimap.enabled": false,
     "sync.gist": "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",
     "workbench.colorTheme": "Shades of Purple",
     "editor.fontSize": 15
 }
->>>>>>> 1b0482fbacba82dbaf00fb3e3b3cb74d16d6aae5
