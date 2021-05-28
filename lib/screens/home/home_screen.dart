@@ -27,17 +27,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  TabController _tabController;
+  // TabController _tabController;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
   int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
+  // GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
   List<Widget> _pages;
   Widget _page1;
   Widget _page2;
   Widget _page3;
   Widget _page4;
-  int _currentIndex;
-  Widget _currenrPage;
+  // int _currentIndex;
+  Widget _currentPage;
   // double currentPage = 0;
   // int currentTab = 0;
   @override
@@ -68,8 +69,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     _pages = [_page1, _page2, _page3, _page4];
 
+    // _currentIndex = 0;
+    _currentPage = _page1;
   }
-  
+
+  void changeTab(int index) {
+    setState(() {
+      // _currentIndex = index;
+      _currentPage = _pages[index];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -264,6 +273,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ],
+            // ! - tabbar
             // bottom: TabBar(
             //   controller: _tabController,
             //   labelColor: Colors.black,
@@ -305,16 +315,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             // ),
           ),
           backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-          body: TabBarView(
-            // controller: _pageController,
-            controller: _tabController,
-            children: [
-              DonutsScreen(),
-              BurgersScreen(),
-              PancakesScreen(),
-              PizzaScreen(),
-            ],
-          ),
+          // body: TabBarView(
+          //   // controller: _pageController,
+          //   controller: _tabController,
+          //   children: [
+          //     DonutsScreen(),
+          //     BurgersScreen(),
+          //     PancakesScreen(),
+          //     PizzaScreen(),
+          //   ],
+          // ),
+          body: _currentPage,
           bottomNavigationBar: CurvedNavigationBar(
             // backgroundColor: Colors.redAccent,
             // color: Colors.transparent,
@@ -322,35 +333,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             index: 0,
             items: [
               SvgPicture.asset(
-                      'assets/icons/donut32-min.svg',
-                      color: _page == 0 ? Colors.black : Colors.grey,
-                    ),
+                'assets/icons/donut32-min.svg',
+                color: _page == 0 ? Colors.black : Colors.grey,
+              ),
               SvgPicture.asset(
-                'assets/icons/burger_32-min.svg', 
-                    color: _page == 1 ? Colors.black : Colors.grey,
-                  ),              
-                  SvgPicture.asset(
-                    'assets/icons/puncake2_32.svg',
-                    color: _page == 2 ? Colors.black : Colors.grey,
-                  ),
-                  SvgPicture.asset(
-                    'assets/icons/pizza_32.svg',
-                    color: _page == 3 ? Colors.black : Colors.grey,
-                  ),
-                   ],
-                   color: Colors.red[100],
-                   buttonBackgroundColor: Colors.white54,
-                   backgroundColor: Colors.redAccent[50],
-                   animationCurve: Curves.ease,
-                   animationDuration: Duration(milliseconds: 600),
-                   onTap: (index) {
-                     setState(() {
-                       _page = index;
-                       if (_page == 0) {Navigator.pushNamed(context, DonutsScreen.routeName);}
-                       else if (_page == 1) {Navigator.pushNamed(context, BurgersScreen.routeName);}
-                     });
-                   },
-                   letIndexChange: (index) => true,
+                'assets/icons/burger_32-min.svg',
+                color: _page == 1 ? Colors.black : Colors.grey,
+              ),
+              SvgPicture.asset(
+                'assets/icons/puncake2_32.svg',
+                color: _page == 2 ? Colors.black : Colors.grey,
+              ),
+              SvgPicture.asset(
+                'assets/icons/pizza_32.svg',
+                color: _page == 3 ? Colors.black : Colors.grey,
+              ),
+            ],
+            color: Colors.red[100],
+            buttonBackgroundColor: Colors.white54,
+            backgroundColor: Colors.redAccent[50],
+            animationCurve: Curves.ease,
+            animationDuration: Duration(milliseconds: 600),
+            onTap: (index) => changeTab(index),
+            // currentIndex: _currentIndex,
+            letIndexChange: (index) => true,
           ),
         ),
       ),
