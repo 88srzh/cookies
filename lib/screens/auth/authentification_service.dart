@@ -16,19 +16,25 @@ class AuthentificationService {
 
   Future<void> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
   }
 
-  Future<UserModel> signInWithEmailAndPassword({String email, String password}) async {
-    var authResults = await _auth.signInWithEmailAndPassword(email: email, password: password);
-    return UserModel(authResults.user.uid, displayName: authResults.user.displayName);
+  Future<UserModel> signInWithEmailAndPassword(
+      {String email, String password}) async {
+    var authResults = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return UserModel(authResults.user.uid,
+        displayName: authResults.user.displayName);
   }
 
   Future<UserModel> getUser() async {
     var firebaseUser = _auth.currentUser;
-    return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName, email: firebaseUser.email);
+    return UserModel(firebaseUser.uid,
+        displayName: firebaseUser.displayName, email: firebaseUser.email);
   }
 
   Future<void> updateDisplayName(String displayName) async {
@@ -36,17 +42,19 @@ class AuthentificationService {
     user.updateProfile(displayName: displayName);
   }
 
+  // ! fix
   void updatePhoneNumber(String phoneNumber) async {
     var user = _auth.currentUser;
-    // ! fix, when user type phone in profile
     // user.updatePhoneNumber();
   }
 
   Future<bool> validatePassword(String password) async {
     var firebaseUser = _auth.currentUser;
-    var authCredential = EmailAuthProvider.credential(email: firebaseUser.email, password: password);
+    var authCredential = EmailAuthProvider.credential(
+        email: firebaseUser.email, password: password);
     try {
-      var authResult = await firebaseUser.reauthenticateWithCredential(authCredential);
+      var authResult =
+          await firebaseUser.reauthenticateWithCredential(authCredential);
       return authResult.user != null;
     } catch (e) {
       print(e);
@@ -59,9 +67,11 @@ class AuthentificationService {
     firebaseUser.updatePassword(password);
   }
 
-  Future<String> signUpWithEmailAndPassword(String email, String password) async {
+  Future<String> signUpWithEmailAndPassword(
+      String email, String password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       return ('Зарегистрировались');
     } on FirebaseAuthException catch (e) {
       return e.message;
@@ -77,5 +87,10 @@ class AuthentificationService {
       print(e.toString());
       return null;
     }
+  }
+
+  Future<void> passwordReset(email) async {
+    var user = _auth.sendPasswordResetEmail(email: email);
+    return user;
   }
 }

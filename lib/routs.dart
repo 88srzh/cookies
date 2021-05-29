@@ -5,6 +5,7 @@ import 'package:cookie/screens/auth_test_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
+import 'package:cookie/screens/forgot_password/forgot_password2.dart';
 import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
@@ -53,4 +54,5 @@ final Map<String, WidgetBuilder> routes = {
   // VerifyScreen.routeName: (context) => VerifyScreen(),
   DonutsScreen.routeName: (context) => DonutsScreen(),
   BurgersScreen.routeName: (context) => BurgersScreen(),
+  ForgotPassword2.routeName: (context) => ForgotPassword2(),
 };

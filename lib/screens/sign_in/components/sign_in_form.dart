@@ -2,6 +2,7 @@ import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
+import 'package:cookie/screens/forgot_password/forgot_password2.dart';
 import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
@@ -76,8 +77,8 @@ class _SignFormState extends State<SignForm> {
               Text('Запомнить'),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgottenPasswordScreen.routeName),
+                onTap: () =>
+                    Navigator.pushNamed(context, ForgotPassword2.routeName),
                 child: Text(
                   // ! Add route to screen
                   'Забыли пароль?',
