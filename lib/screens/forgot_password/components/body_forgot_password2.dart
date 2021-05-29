@@ -12,8 +12,9 @@ class BodyForgotPassword2 extends StatefulWidget {
 class _BodyForgotPassword2State extends State<BodyForgotPassword2> {
   var _emailController = TextEditingController();
   final _formKeyEmail = GlobalKey<FormState>();
-  UserModel _currentUser = locator.get<UserController>().currentUser;
-  String _email;
+  var userController = locator.get<UserController>();
+  // UserModel _currentUser = locator.get<UserController>().currentUser;
+  String email;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,10 +47,9 @@ class _BodyForgotPassword2State extends State<BodyForgotPassword2> {
             OutlinedButton(
               child: Text('Отправить'),
               onPressed: () async {
-                var userController = locator.get<UserController>();
-                // _formKeyEmail.currentState.save();
-                userController.resetPassword(_email);
-                Navigator.pop(context);
+                _formKeyEmail.currentState.save();
+                final user = userController.resetPassword(email);
+                return Navigator.pop(context);
                 // print(_email);
                 // Dialog(
                 //   child: Text('Новый пароль отправлен Вам на почту'),

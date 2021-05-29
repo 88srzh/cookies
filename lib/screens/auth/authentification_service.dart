@@ -89,8 +89,7 @@ class AuthentificationService {
     }
   }
 
-  Future<void> passwordReset(email) async {
-    var user = _auth.sendPasswordResetEmail(email: email);
-    return user;
+  void passwordReset(email) async {
+    _auth.sendPasswordResetEmail(email: email);
   }
 }
