@@ -1,4 +1,3 @@
-import 'package:cookie/screens/forgot_password/components/body_forgot_password.dart';
 import 'package:cookie/screens/forgot_password/components/body_forgot_password2.dart';
 import 'package:flutter/material.dart';
 

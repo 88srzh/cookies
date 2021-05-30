@@ -14,13 +14,17 @@ class AuthentificationService {
     await _auth.signOut();
   }
 
-  Future<void> signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
+    // final AuthCredential credential = GoogleAuthProvider.credential(
+    //     accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+
+    return await _auth.signInWithCredential(credential);
   }
 
   Future<UserModel> signInWithEmailAndPassword(
@@ -41,6 +45,11 @@ class AuthentificationService {
     var user = _auth.currentUser;
     user.updateProfile(displayName: displayName);
   }
+
+  // Future<void> updateDisplaySurName(String displaySurName) async {
+  //   var user = _auth.currentUser;
+  //   user.updateProfile(displaySurName: displaySurName);
+  // }
 
   // ! fix
   void updatePhoneNumber(String phoneNumber) async {

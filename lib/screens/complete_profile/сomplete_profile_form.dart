@@ -1,24 +1,35 @@
 // import 'package:cookie/screens/otp/otp_screen.dart';
+import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/locator.dart';
+import 'package:cookie/models/user.dart';
+import 'package:cookie/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/custom_surfix_icon.dart';
-import '../../components/default_button.dart';
 import '../../components/form_error.dart';
 import '../../constants.dart';
 import '../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  final UserModel currentUser;
+
+  const CompleteProfileForm({this.currentUser});
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
+  var _displayNameController = TextEditingController();
+  // var _displaySurNameController = TextEditingController();
+  var _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
-  String firstName;
-  String lastName;
+
+  String displayName;
+  // String displaySurName;
   String phoneNumber;
-  String address;
+  // ! till not complete
+  // String address;
 
   void addError({String error}) {
     if (!errors.contains(error))
@@ -41,56 +52,68 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       key: _formKey,
       child: Column(
         children: [
-          buildFirstNameFormField(),
+          buildDisplayNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildLastNameFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          // buildDisplaySurNameFormField(),
+          // SizedBox(height: getProportionateScreenHeight(30)),
           buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildAddressFormField(),
+          // buildAddressFormField(),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          DefaultButton(
-              text: 'Продолжить',
-              press: () {
-                if (_formKey.currentState.validate()) {
-                  
-                  // ! fix otp screen
-                  // Go to OTP screen
-                  // Navigator.pushNamed(context, OtpScreen.routeName);
-                }
-              }),
+          SizedBox(height: getProportionateScreenHeight(140)),
+          OutlinedButton(
+              child: Text(
+                'Продолжить',
+                style: TextStyle(color: Colors.black87, fontSize: 22),
+              ),
+              onPressed: () async {
+                var userController = locator.get<UserController>();
+                var displayName = _displayNameController.text;
+                userController.updateDisplayName(displayName);
+                // var displaySurName = _displaySurNameController.text;
+                // userController.updateDisplaySurName(displaySurName);
+                Navigator.pushNamed(context, HomeScreen.routeName);
+
+                // ! validate
+                // if (_formKey.currentState.validate()) {
+                // ! fix otp screen
+                // Go to OTP screen
+                // Navigator.pushNamed(context, OtpScreen.routeName);
+              }
+              // },
+              ),
         ],
       ),
     );
   }
 
-  TextFormField buildAddressFormField() {
-    return TextFormField(
-      onSaved: (newValue) => address = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kAddressNullError);
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(error: kAddressNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: 'Адрес',
-        hintText: 'Введите адрес',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Location point.svg',
-        ),
-      ),
-    );
-  }
+  // ! address
+  // TextFormField buildAddressFormField() {
+  //   return TextFormField(
+  //     onSaved: (newValue) => address = newValue,
+  //     onChanged: (value) {
+  //       if (value.isNotEmpty) {
+  //         removeError(error: kAddressNullError);
+  //       }
+  //       return null;
+  //     },
+  //     validator: (value) {
+  //       if (value.isEmpty) {
+  //         addError(error: kAddressNullError);
+  //         return "";
+  //       }
+  //       return null;
+  //     },
+  //     decoration: InputDecoration(
+  //       labelText: 'Адрес',
+  //       hintText: 'Введите адрес',
+  //       floatingLabelBehavior: FloatingLabelBehavior.always,
+  //       suffixIcon: CustomSurffixIcon(
+  //         svgIcon: 'assets/icons/Location point.svg',
+  //       ),
+  //     ),
+  //   );
+  // }
 
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
@@ -109,6 +132,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
+      controller: _phoneNumberController,
       decoration: InputDecoration(
         labelText: 'Телефон',
         hintText: 'Введите телефон',
@@ -120,23 +144,24 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     );
   }
 
-  TextFormField buildLastNameFormField() {
-    return TextFormField(
-      onSaved: (newValue) => lastName = newValue,
-      decoration: InputDecoration(
-        labelText: 'Фамилия',
-        hintText: 'Введите фамилию',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/User.svg',
-        ),
-      ),
-    );
-  }
+  // TextFormField buildDisplaySurNameFormField() {
+  //   return TextFormField(
+  //     onSaved: (newValue) => displaySurName = newValue,
+  //     controller: _displaySurNameController,
+  //     decoration: InputDecoration(
+  //       labelText: 'Фамилия',
+  //       hintText: 'Введите фамилию',
+  //       floatingLabelBehavior: FloatingLabelBehavior.always,
+  //       suffixIcon: CustomSurffixIcon(
+  //         svgIcon: 'assets/icons/User.svg',
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  TextFormField buildFirstNameFormField() {
+  TextFormField buildDisplayNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
+      onSaved: (newValue) => displayName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNameNullError);
@@ -150,6 +175,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
+      controller: _displayNameController,
       decoration: InputDecoration(
         labelText: 'Имя',
         hintText: 'Введите имя',

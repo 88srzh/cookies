@@ -9,10 +9,12 @@ class ManageProfileInformationWidget extends StatefulWidget {
 
   const ManageProfileInformationWidget({this.currentUser});
   @override
-  _ManageProfileInformationWidgetState createState() => _ManageProfileInformationWidgetState();
+  _ManageProfileInformationWidgetState createState() =>
+      _ManageProfileInformationWidgetState();
 }
 
-class _ManageProfileInformationWidgetState extends State<ManageProfileInformationWidget> {
+class _ManageProfileInformationWidgetState
+    extends State<ManageProfileInformationWidget> {
   var _displayNameController = TextEditingController();
   var _passwordController = TextEditingController();
   var _newPasswordController = TextEditingController();
@@ -62,7 +64,9 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Пароль',
-                        errorText: checkCurrentPasswordValid ? null : 'Пожалуйста проверьте свой текущий пароль',
+                        errorText: checkCurrentPasswordValid
+                            ? null
+                            : 'Пожалуйста проверьте свой текущий пароль',
                       ),
                       controller: _passwordController,
                     ),
@@ -76,7 +80,9 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
                       obscureText: true,
                       controller: _repeatPasswordController,
                       validator: (value) {
-                        return _newPasswordController.text == value ? null : 'Пароли не совпадают';
+                        return _newPasswordController.text == value
+                            ? null
+                            : 'Пароли не совпадают';
                       },
                     )
                   ],
@@ -86,16 +92,20 @@ class _ManageProfileInformationWidgetState extends State<ManageProfileInformatio
             ElevatedButton(
               onPressed: () async {
                 var userController = locator.get<UserController>();
-                if (widget.currentUser.displayName != _displayNameController.text) {
+                if (widget.currentUser.displayName !=
+                    _displayNameController.text) {
                   var displayName = _displayNameController.text;
                   userController.updateDisplayName(displayName);
                 }
 
-                checkCurrentPasswordValid = await userController.validateCurrentPassword(_passwordController.text);
+                checkCurrentPasswordValid = await userController
+                    .validateCurrentPassword(_passwordController.text);
                 setState(() {});
                 // check password
-                if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
-                  userController.updateUserPassword(_newPasswordController.text);
+                if (_formKey.currentState.validate() &&
+                    checkCurrentPasswordValid) {
+                  userController
+                      .updateUserPassword(_newPasswordController.text);
                   setState(() {});
                   Navigator.pop(context);
                 }

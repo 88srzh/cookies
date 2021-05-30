@@ -42,6 +42,11 @@ class UserController {
     _authService.updateDisplayName(displayName);
   }
 
+  // void updateDisplaySurName(String displaySurName) {
+  //   _currentUser.displaySurName = displaySurName;
+  //   _authService.updateDisplaySurName(displaySurName);
+  // }
+
   void updatePhoneNumber(String phoneNumber) {
     _currentUser.phoneNumber = phoneNumber;
     _authService.updatePhoneNumber(phoneNumber);
