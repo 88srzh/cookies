@@ -10,14 +10,15 @@ class BodySignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: SizeConfig.screenHeight,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            // stops: [0.3, 1.8],
-            colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
-          ),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          // stops: [0.3, 1.8],
+          colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
         ),
+      ),
       width: double.infinity,
       child: Padding(
         padding:

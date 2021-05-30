@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/pancakes_screen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/dindon_main';
@@ -160,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           appBar: AppBar(
             title: Text('Главная страница'),
 
-            // ! - third option
+            // ! - third option appbar
             // leading: Icon(
             //   Icons.menu,
             // ),
@@ -174,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             // ],
             // backgroundColor: Colors.purple,
 
-            // ! - second option
+            // ! - second option appbar
             // actions: [
             //   PopupMenuButton<String>(
             //     onSelected: handleClick,
@@ -334,24 +333,26 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             items: [
               SvgPicture.asset(
                 'assets/icons/donut32-min.svg',
-                color: _page == 0 ? Colors.black : Colors.grey,
+                color: _currentPage == _page1 ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/burger_32-min.svg',
-                color: _page == 1 ? Colors.black : Colors.grey,
+                color: _currentPage == _page2 ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/puncake2_32.svg',
-                color: _page == 2 ? Colors.black : Colors.grey,
+                color: _currentPage == _page3 ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/pizza_32.svg',
-                color: _page == 3 ? Colors.black : Colors.grey,
+                color: _currentPage == _page4 ? Colors.black : Colors.grey,
               ),
             ],
             color: Colors.red[100],
             buttonBackgroundColor: Colors.white54,
+            // buttonBackgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
             backgroundColor: Colors.redAccent[50],
+            // backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
             animationCurve: Curves.ease,
             animationDuration: Duration(milliseconds: 600),
             onTap: (index) => changeTab(index),

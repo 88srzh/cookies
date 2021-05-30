@@ -72,9 +72,10 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildConfirmPasswordFormField(),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(40)),
+          SizedBox(height: getProportionateScreenHeight(100)),
           OutlinedButton(
-            child: Text('Продолжить', style: TextStyle(color: Colors.black87, fontSize: 22)),
+            child: Text('Продолжить',
+                style: TextStyle(color: Colors.black87, fontSize: 22)),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
                 await locator.get<UserController>().signUpWithEmailAndPassword(

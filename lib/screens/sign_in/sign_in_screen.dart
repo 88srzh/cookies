@@ -1,4 +1,3 @@
-// import 'package:cookie/database/firestore_crud_page.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 import 'package:cookie/screens/sign_in/components/body_sign_in.dart';
 import 'package:cookie/size_config.dart';

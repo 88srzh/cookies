@@ -30,8 +30,10 @@ class UserController {
     return await _storage.getUserProfileImageDownloadUrl(currentUser.uid);
   }
 
-  Future<void> signInWithEmailAndPassword({String email, String password}) async {
-    _currentUser = await _authService.signInWithEmailAndPassword(email: email, password: password);
+  Future<void> signInWithEmailAndPassword(
+      {String email, String password}) async {
+    _currentUser = await _authService.signInWithEmailAndPassword(
+        email: email, password: password);
     _currentUser.avatarUrl = await getDownloadURL();
   }
 
@@ -39,6 +41,11 @@ class UserController {
     _currentUser.displayName = displayName;
     _authService.updateDisplayName(displayName);
   }
+
+  // void updateDisplaySurName(String displaySurName) {
+  //   _currentUser.displaySurName = displaySurName;
+  //   _authService.updateDisplaySurName(displaySurName);
+  // }
 
   void updatePhoneNumber(String phoneNumber) {
     _currentUser.phoneNumber = phoneNumber;
@@ -53,11 +60,16 @@ class UserController {
     _authService.updatePassword(password);
   }
 
+  void resetPassword(String email) {
+    _authService.passwordReset(email);
+  }
+
   void signOut() {
     _authService.signOut();
   }
 
-  Future<void> signUpWithEmailAndPassword({String email, String password}) async {
+  Future<void> signUpWithEmailAndPassword(
+      {String email, String password}) async {
     _authService.signUpWithEmailAndPassword(email, password);
   }
 }
