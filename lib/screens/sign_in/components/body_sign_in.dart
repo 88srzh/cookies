@@ -13,6 +13,7 @@ class BodySignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: SizeConfig.screenHeight,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -23,82 +24,80 @@ class BodySignIn extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: SafeArea(
-          child: Flexible(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.2),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(20)),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'Войти.',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 58,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white60,
-                          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(height: SizeConfig.screenHeight * 0.2),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20)),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'Войти.',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 58,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white60,
                         ),
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'Мы скучали!',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'Мы скучали!',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    SizedBox(height: SizeConfig.screenHeight * 0.07),
+                    SignForm(),
+                    SizedBox(height: SizeConfig.screenHeight * 0.035),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: Icon(FontAwesomeIcons.userSecret,
+                              color: Colors.grey),
+                          onPressed: () {
+                            // context.read<AuthentificationService>().signInAnonymously();
+                          },
                         ),
-                      ),
-                      SizedBox(height: SizeConfig.screenHeight * 0.07),
-                      SignForm(),
-                      SizedBox(height: SizeConfig.screenHeight * 0.035),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            icon: Icon(FontAwesomeIcons.userSecret,
-                                color: Colors.grey),
-                            onPressed: () {
-                              // context.read<AuthentificationService>().signInAnonymously();
-                            },
+                        IconButton(
+                          icon: Icon(FontAwesomeIcons.google,
+                              color: Colors.black87),
+                          onPressed: () {
+                            locator
+                                .get<AuthentificationService>()
+                                .signInWithGoogle();
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          child: Text(
+                            'Зарегистрироваться',
+                            style: TextStyle(
+                                fontSize: 16,
+                                decoration: TextDecoration.underline),
                           ),
-                          IconButton(
-                            icon: Icon(FontAwesomeIcons.google,
-                                color: Colors.black87),
-                            onPressed: () {
-                              locator
-                                  .get<AuthentificationService>()
-                                  .signInWithGoogle();
-                            },
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            child: Text(
-                              'Зарегистрироваться',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  decoration: TextDecoration.underline),
-                            ),
-                            onTap: () => Navigator.pushNamed(
-                                context, SignUpScreen.routeName),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: SizeConfig.screenHeight * 0.035),
-                    ],
-                  ),
+                          onTap: () => Navigator.pushNamed(
+                              context, SignUpScreen.routeName),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: SizeConfig.screenHeight * 0.035),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
