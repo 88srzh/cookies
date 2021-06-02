@@ -2,8 +2,6 @@ import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_up/components/sign_up_form.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-
-import '../../../components/social_card.dart';
 import '../../../size_config.dart';
 
 class BodySignUp extends StatelessWidget {

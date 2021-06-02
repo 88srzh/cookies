@@ -21,7 +21,8 @@ class CompleteProfileForm extends StatefulWidget {
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   var _displayNameController = TextEditingController();
   // var _displaySurNameController = TextEditingController();
-  var _phoneNumberController = TextEditingController();
+  // ! fif phoneNumber
+  // var _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
 
@@ -56,7 +57,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           // buildDisplaySurNameFormField(),
           // SizedBox(height: getProportionateScreenHeight(30)),
-          buildPhoneNumberFormField(),
+          // buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           // buildAddressFormField(),
           FormError(errors: errors),
@@ -115,34 +116,34 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   //   );
   // }
 
-  TextFormField buildPhoneNumberFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      onSaved: (newValue) => phoneNumber = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kPhoneNumberNullError);
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(error: kPhoneNumberNullError);
-          return "";
-        }
-        return null;
-      },
-      controller: _phoneNumberController,
-      decoration: InputDecoration(
-        labelText: 'Телефон',
-        hintText: 'Введите телефон',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Phone.svg',
-        ),
-      ),
-    );
-  }
+  // TextFormField buildPhoneNumberFormField() {
+  //   return TextFormField(
+  //     keyboardType: TextInputType.number,
+  //     onSaved: (newValue) => phoneNumber = newValue,
+  //     onChanged: (value) {
+  //       if (value.isNotEmpty) {
+  //         removeError(error: kPhoneNumberNullError);
+  //       }
+  //       return null;
+  //     },
+  //     validator: (value) {
+  //       if (value.isEmpty) {
+  //         addError(error: kPhoneNumberNullError);
+  //         return "";
+  //       }
+  //       return null;
+  //     },
+  //     controller: _phoneNumberController,
+  //     decoration: InputDecoration(
+  //       labelText: 'Телефон',
+  //       hintText: 'Введите телефон',
+  //       floatingLabelBehavior: FloatingLabelBehavior.always,
+  //       suffixIcon: CustomSurffixIcon(
+  //         svgIcon: 'assets/icons/Phone.svg',
+  //       ),
+  //     ),
+  //   );
+  // }
 
   // TextFormField buildDisplaySurNameFormField() {
   //   return TextFormField(
