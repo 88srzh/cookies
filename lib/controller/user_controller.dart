@@ -34,6 +34,9 @@ class UserController {
       {String email, String password}) async {
     _currentUser = await _authService.signInWithEmailAndPassword(
         email: email, password: password);
+    if (_currentUser.avatarUrl == null) {
+      print('Надо добавить аватар');
+    } else
     _currentUser.avatarUrl = await getDownloadURL();
   }
 
