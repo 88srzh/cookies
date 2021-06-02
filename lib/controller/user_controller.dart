@@ -41,8 +41,9 @@ class UserController {
   }
 
   void updateDisplayName(String displayName) {
-    _authService.updateDisplayName(displayName);
     _currentUser.displayName = displayName;
+    _authService.updateDisplayName(displayName);
+    
   }
 
   // void updateDisplaySurName(String displaySurName) {

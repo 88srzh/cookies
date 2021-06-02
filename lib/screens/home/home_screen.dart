@@ -5,6 +5,7 @@ import 'package:cookie/components/custom_list_tile.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/auth_test_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
 import 'package:cookie/screens/home/pizza_screen.dart';
@@ -20,7 +21,11 @@ import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/pancakes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  final UserModel currentUser;
+
   static String routeName = '/dindon_main';
+
+  const HomeScreen({this.currentUser});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -28,7 +33,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   // TabController _tabController;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
-  int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
   // GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
   List<Widget> _pages;
@@ -81,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var uid = widget.currentUser.uid;
     // final user = FirebaseAuth.instance.currentUser;
     // _pageController.addListener(() {
     //   setState(() {
@@ -157,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
           ),
           appBar: AppBar(
-            title: Text('Главная страница'),
+            // title: Text('Главная страница'),
 
             // ! - third option appbar
             // leading: Icon(
@@ -217,7 +222,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         stream: FirebaseDatabase.instance
                             .reference()
                             .child('NewCart')
-                            .child('UNIQUE_USER_ID')
+                            // .child('UNIQUE_USER_ID')
+                            .child('$uid')
                             .onValue, // use FirebaseAuth uid
                         builder: (BuildContext context,
                             AsyncSnapshot<Event> snapshot) {

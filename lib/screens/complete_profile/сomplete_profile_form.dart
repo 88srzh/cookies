@@ -47,6 +47,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     }
   }
 
+  void dispose() {
+    _displayNameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -61,7 +66,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           // buildAddressFormField(),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(140)),
+          SizedBox(height: SizeConfig.screenHeight * 0.35),
           OutlinedButton(
               child: Text(
                 'Продолжить',
@@ -71,8 +76,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 var userController = locator.get<UserController>();
                 var displayName = _displayNameController.text;
                 userController.updateDisplayName(displayName);
-                // var displaySurName = _displaySurNameController.text;
-                // userController.updateDisplaySurName(displaySurName);
                 Navigator.pushNamed(context, HomeScreen.routeName);
 
                 // ! validate

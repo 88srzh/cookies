@@ -92,8 +92,7 @@ class _ManageProfileInformationWidgetState
             ElevatedButton(
               onPressed: () async {
                 var userController = locator.get<UserController>();
-                if (widget.currentUser.displayName !=
-                    _displayNameController.text) {
+                if (widget.currentUser.displayName != _displayNameController.text) {
                   var displayName = _displayNameController.text;
                   userController.updateDisplayName(displayName);
                 }
@@ -102,10 +101,8 @@ class _ManageProfileInformationWidgetState
                     .validateCurrentPassword(_passwordController.text);
                 setState(() {});
                 // check password
-                if (_formKey.currentState.validate() &&
-                    checkCurrentPasswordValid) {
-                  userController
-                      .updateUserPassword(_newPasswordController.text);
+                if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
+                  userController.updateUserPassword(_newPasswordController.text);
                   setState(() {});
                   Navigator.pop(context);
                 }

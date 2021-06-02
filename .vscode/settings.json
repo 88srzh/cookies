@@ -3,12 +3,9 @@
 
     "editor.fontFamily": "'Victor Mono', 'bold'",
     "editor.minimap.enabled": false,
-<<<<<<< HEAD
+
     "sync.gist": "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",
     "workbench.colorTheme": "Monokai++",
-=======
-    "sync.gist": "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",
-    "workbench.colorTheme": "Horizon Bold",
->>>>>>> master
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "editor.defaultFormatter": "svipas.prettier-plus"
 }

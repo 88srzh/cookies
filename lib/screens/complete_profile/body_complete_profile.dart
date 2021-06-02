@@ -36,7 +36,7 @@ class BodyCompleteProfile extends StatelessWidget {
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.05),
               CompleteProfileForm(),
-              SizedBox(height: getProportionateScreenHeight(30)),
+              SizedBox(height: SizeConfig.screenHeight * 0.05),
               InkWell(
                 child: Text(
                   'Для продолжения примите \nПользовательское соглашение',
