@@ -13,6 +13,7 @@ class Avatar extends StatelessWidget {
       child: Center(
         child: avatarUrl == null
             ? CircleAvatar(
+              backgroundColor: Colors.pinkAccent,
                 radius: getProportionateScreenWidth(50),
                 child: Icon(Icons.photo_camera),
               )
