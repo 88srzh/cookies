@@ -22,7 +22,6 @@ import 'package:cookie/screens/home/pancakes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final UserModel currentUser;
-
   static String routeName = '/dindon_main';
 
   const HomeScreen({this.currentUser});
@@ -36,10 +35,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   GlobalKey _bottomNavigationKey = GlobalKey();
   // GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
   List<Widget> _pages;
-  Widget _page1;
-  Widget _page2;
-  Widget _page3;
-  Widget _page4;
+  Widget _donutsPage;
+  Widget _burgersPage;
+  Widget _pancakesPage;
+  Widget _pizzaPage;
   // int _currentIndex;
   Widget _currentPage;
   // double currentPage = 0;
@@ -65,15 +64,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   void initState() {
     super.initState();
-    _page1 = DonutsScreen();
-    _page2 = BurgersScreen();
-    _page3 = PancakesScreen();
-    _page4 = PizzaScreen();
+    _donutsPage = DonutsScreen();
+    _burgersPage = BurgersScreen();
+    _pancakesPage = PancakesScreen();
+    _pizzaPage = PizzaScreen();
 
-    _pages = [_page1, _page2, _page3, _page4];
+    _pages = [_donutsPage, _burgersPage, _pancakesPage, _pizzaPage];
 
     // _currentIndex = 0;
-    _currentPage = _page1;
+    _currentPage = _donutsPage;
   }
 
   void changeTab(int index) {
@@ -85,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var uid = widget.currentUser.uid;
+    // var uid = widget.currentUser.uid;
     // final user = FirebaseAuth.instance.currentUser;
     // _pageController.addListener(() {
     //   setState(() {
@@ -223,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             .reference()
                             .child('NewCart')
                             // .child('UNIQUE_USER_ID')
-                            .child('$uid')
+                            .child('UNIQUE_USER_ID')
                             .onValue, // use FirebaseAuth uid
                         builder: (BuildContext context,
                             AsyncSnapshot<Event> snapshot) {
@@ -339,19 +338,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             items: [
               SvgPicture.asset(
                 'assets/icons/donut32-min.svg',
-                color: _currentPage == _page1 ? Colors.black : Colors.grey,
+                color: _currentPage == _donutsPage ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/burger_32-min.svg',
-                color: _currentPage == _page2 ? Colors.black : Colors.grey,
+                color: _currentPage == _burgersPage ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/puncake2_32.svg',
-                color: _currentPage == _page3 ? Colors.black : Colors.grey,
+                color: _currentPage == _pancakesPage ? Colors.black : Colors.grey,
               ),
               SvgPicture.asset(
                 'assets/icons/pizza_32.svg',
-                color: _currentPage == _page4 ? Colors.black : Colors.grey,
+                color: _currentPage == _pizzaPage ? Colors.black : Colors.grey,
               ),
             ],
             color: Colors.red[100],

@@ -3,6 +3,8 @@ import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/size_config.dart';
 import '../components/splash_content.dart';
 import 'package:flutter/material.dart';
+// import 'package:im_stepper/main.dart';
+// import 'package:im_stepper/stepper.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -10,7 +12,9 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  int currentPage = 0;
+  // int activeStep = 0;
+  // int upperBoud = 3;
+  int _currentPage = 0;
   List<Map<String, String>> splashData = [
     {
       'text': 'Добро пожаловать во Вкусняшечную!',
@@ -25,6 +29,7 @@ class _BodyState extends State<Body> {
       'image': 'assets/images/cup_of_sweets7.png'
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,12 +49,31 @@ class _BodyState extends State<Body> {
           width: double.infinity,
           child: Column(
             children: <Widget>[
+              // ImageStepper(
+              // images: [
+              //     AssetImage('assets/images/cup_of_sweets.png'),
+              //     AssetImage('assets/images/cup_of_sweets3.png'),
+              //     AssetImage('assets/images/cup_of_sweets7.png'),
+              //   ],
+              //   activeStep: activeStep,
+              //   onStepReached: (index) {
+              //     setState(() {
+              //       activeStep = index;
+              //     });
+              // },
+              // ),
+              // OutlinedButton(
+              //   onPressed: () {},
+              //   child: Text('Далее'),
+              //   ),
+
+              // ! first version
               Expanded(
                 flex: 3,
                 child: PageView.builder(
                   onPageChanged: (value) {
                     setState(() {
-                      currentPage = value;
+                      _currentPage = value;
                     });
                   },
                   itemCount: splashData.length,
@@ -76,6 +100,11 @@ class _BodyState extends State<Body> {
                       ),
                       Spacer(flex: 3),
                       OutlinedButton(
+                        // onPressed: () {
+                        //   setState(() {
+                            // _currentPage = value;
+                          // });
+                        // },
                         onPressed: () => Navigator.pushNamed(
                             context, SignInScreen.routeName),
                         child: Text('Продолжить',
@@ -107,9 +136,9 @@ class _BodyState extends State<Body> {
       duration: kAnimationDuration,
       margin: EdgeInsets.only(right: 5.0),
       height: 6,
-      width: currentPage == index ? 20 : 6,
+      width: _currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+        color: _currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
     );
