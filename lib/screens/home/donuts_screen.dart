@@ -63,8 +63,8 @@ class _DonutsScreenState extends State<DonutsScreen> {
                         crossAxisCount: 2,
                         itemCount: item.length,
                         padding: EdgeInsets.all(getProportionateScreenWidth(2)),
-                        mainAxisSpacing: getProportionateScreenWidth(10),
-                        crossAxisSpacing: getProportionateScreenWidth(6),
+                        mainAxisSpacing: getProportionateScreenWidth(4),
+                        crossAxisSpacing: getProportionateScreenWidth(2),
                         itemBuilder: (BuildContext context, int index) {
                           return InkWell(
                             child: GestureDetector(
@@ -73,6 +73,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black12),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30)),
                                   gradient: LinearGradient(
@@ -83,7 +84,11 @@ class _DonutsScreenState extends State<DonutsScreen> {
                                         Colors.orange[100]
                                       ]),
                                 ),
-                                child: buildItemCard(index),
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: getProportionateScreenWidth(8)),
+                                  child: buildItemCard(index),
+                                ),
                               ),
                             ),
                           );
@@ -113,7 +118,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                   Container(
                     decoration: BoxDecoration(
                         color: Color.fromRGBO(241, 240, 246, 2.0),
-                        border: Border.all(color: Colors.black87),
+                        // border: Border.all(color: Colors.black87),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(20),
                             bottomLeft: Radius.circular(30))),
