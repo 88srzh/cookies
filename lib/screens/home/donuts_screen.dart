@@ -105,29 +105,30 @@ class _DonutsScreenState extends State<DonutsScreen> {
   Widget buildItemCard(int index) {
     return Column(
       children: [
-        Flexible(
-          child: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(241, 240, 246, 2.0),
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(30))),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: getProportionateScreenWidth(20),
-                        vertical: getProportionateScreenWidth(10)),
-                    child: Text('${item[index].price}₽',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
+        Expanded(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(241, 240, 246, 2.0),
+                        border: Border.all(color: Colors.black87),
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(30))),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(20),
+                          vertical: getProportionateScreenWidth(10)),
+                      child: Text('${item[index].price}₽',
+                          style: TextStyle(fontWeight: FontWeight.w600)),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
         Expanded(
           // ! - repair text if not image
           flex: 2,
