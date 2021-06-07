@@ -123,8 +123,11 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                         ),
                                       ],
+
                                     ),
+
                                   ),
+
                                 ),
                                 Align(
                                   alignment: Alignment.topRight,
@@ -141,6 +144,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                               ],
+
                             );
                           },
                         )
@@ -148,7 +152,9 @@ class _CartScreenState extends State<CartScreen> {
                 } else
                   return Center(child: CircularProgressIndicator());
               }),
+
         ),
+
       ),
     );
   }

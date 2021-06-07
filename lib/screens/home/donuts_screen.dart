@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
+
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class DonutsScreen extends StatefulWidget {
   static String routeName = '/donutsscreen';
+
   @override
   _DonutsScreenState createState() => _DonutsScreenState();
 }
@@ -111,29 +113,29 @@ class _DonutsScreenState extends State<DonutsScreen> {
     return Column(
       children: [
         Expanded(
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Color.fromRGBO(241, 240, 246, 2.0),
-                        // border: Border.all(color: Colors.black87),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getProportionateScreenWidth(20),
-                          vertical: getProportionateScreenWidth(10)),
-                      child: Text('${item[index].price}₽',
-                          style: TextStyle(fontWeight: FontWeight.w600)),
-                    ),
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(241, 240, 246, 2.0),
+                      // border: Border.all(color: Colors.black87),
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(30))),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: getProportionateScreenWidth(20),
+                        vertical: getProportionateScreenWidth(10)),
+                    child: Text('${item[index].price}₽',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
+        ),
         Expanded(
           // ! - repair text if not image
           flex: 2,
