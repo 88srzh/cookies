@@ -156,6 +156,16 @@ class _CartScreenState extends State<CartScreen> {
         ),
 
       ),
+      bottomNavigationBar:
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Text('Общее количество', style: TextStyle(fontSize: 16, ),),
+              Text('\$${newCarts.length > 0 ? newCarts.map<int>((m) => (int.parse(m.price) * m.quantity).reduce((value, element) => value + element).toStringAsFixed(2)) : 0}')
+            ],
+          ),
+        ),
     );
   }
 }
