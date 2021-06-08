@@ -136,7 +136,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
             ),
           ),
         ),
-        Expanded(
+        Flexible(
           // ! - repair text if not image
           flex: 2,
           child: ClipRRect(
@@ -149,6 +149,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
         Flexible(
           child: Container(
             child: Column(
+              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FittedBox(
@@ -160,11 +161,20 @@ class _DonutsScreenState extends State<DonutsScreen> {
                           fontWeight: FontWeight.w600,
                           color: Colors.black)),
                 ),
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Text('${item[index].categories}',
-                      style: TextStyle(color: Colors.grey)),
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text('${item[index].categories}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey)),
+                  ),
                 ),
+                // Container(
+                //   child: Text('${item[index].categories}',
+                //     textAlign: TextAlign.center,
+                //     style: TextStyle(color: Colors.grey)
+                //   ),
+                // ),
               ],
             ),
           ),
