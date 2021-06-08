@@ -12,20 +12,23 @@ import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart
 class CartScreen extends StatefulWidget {
   CartScreen({Key key}) : super(key: key);
 
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
+  var numberItemInCart = 0;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   var totalQuantity;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Center(child: Text('Корзина\n$totalQuantity', style: TextStyle(color: Colors.black87))),
+        title: Center(child: Text('Корзина', style: TextStyle(color: Colors.black87))),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -36,6 +39,7 @@ class _CartScreenState extends State<CartScreen> {
           child: StreamBuilder(
               stream: FirebaseDatabase.instance.reference().child('NewCart').child('UNIQUE_USER_ID').onValue,
               builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+
                 if (snapshot.hasData) {
                   var map = snapshot.data.snapshot.value as Map<dynamic, dynamic>;
                   newCarts.clear();
@@ -45,6 +49,9 @@ class _CartScreenState extends State<CartScreen> {
                       newCart.key = key;
                       newCarts.add(newCart);
                     });
+                    numberItemInCart = newCarts
+                        .map<int>((m) => m.quantity)
+                        .reduce((s1, s2) => s1 + s2);
                   }
                   return newCarts.length > 0
                       ? ListView.builder(
@@ -162,7 +169,9 @@ class _CartScreenState extends State<CartScreen> {
           child: Row(
             children: [
               Text('Общее количество', style: TextStyle(fontSize: 16, ),),
-              Text('\$${newCarts.length > 0 ? newCarts.map<int>((m) => (int.parse(m.price) * m.quantity).reduce((value, element) => value + element).toStringAsFixed(2)) : 0}')
+              // Text('\$${newCarts.length > 0 ? newCarts.map<int>((m) => (int.parse(m.price) * m.quantity).reduce((value, element) => value + element).toStringAsFixed(2)) : 0}'),
+              // ! - add total amount
+              // Text('${numberInCart.toString()}')
             ],
           ),
         ),
