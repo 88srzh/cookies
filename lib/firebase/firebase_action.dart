@@ -58,6 +58,18 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
+void updateItemCardRatingToPizza(
+    GlobalKey<ScaffoldState> scaffoldKey, Item items) {
+  var item = FirebaseDatabase.instance.reference().child('Pizza');
+  item
+      .child(items.key)
+      .set(items.toJson())
+      .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+          .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
+      .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+          .showSnackBar(SnackBar(content: Text('$e'))));
+}
+
 void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
   var cart = FirebaseDatabase.instance
       .reference()
@@ -67,8 +79,7 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
       .child(newCart.key)
       .remove()
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-          .showSnackBar(
-              SnackBar(content: Text('Удалено из корзины'))))
+          .showSnackBar(SnackBar(content: Text('Удалено из корзины'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('$e'))));
 }

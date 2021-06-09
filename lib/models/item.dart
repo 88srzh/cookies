@@ -13,13 +13,14 @@ class Item {
       sugarGram,
       saltGram,
       fatGram;
-  int favourite;
+  int favoriteCount;
+  bool isFavorite = false;
   double rating;
 
   Item (
       {this.key,
       this.title,
-      this.favourite,
+      this.favoriteCount,
       this.rating,
       this.categories,
       this.price,
@@ -37,8 +38,9 @@ class Item {
   Item.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     title = json['title'];
+    isFavorite = json['isFavorite'];
     rating = double.parse(json['rating'].toString());
-    favourite = json['favourite'] as int;
+    favoriteCount = json['favorite'] as int;
     categories = json['categories'];
     price = json['price'];
     image = json['image'];
@@ -57,8 +59,9 @@ class Item {
     final Map<String, dynamic> itemData = new Map<String, dynamic>();
     itemData['key'] = this.key;
     itemData['title'] = this.title;
+    itemData['isFavorite'] = this.isFavorite;
     itemData['rating'] = this.rating.toString();
-    itemData['favourite'] = this.favourite;
+    itemData['favorite'] = this.favoriteCount;
     itemData['categories'] = this.categories;
     itemData['price'] = this.price;
     itemData['image'] = this.image;

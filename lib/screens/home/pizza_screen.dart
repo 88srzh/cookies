@@ -193,12 +193,11 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     InkWell(
                       splashColor: Colors.transparent,
                       onTap: () {
-                        // tapFavourite();
+                        tapFavourite();
                       },
-                      // child: item.isFavorite
-                      //     ? Icon(Icons.favorite)
-                      //     : Icon(Icons.favorite_outline),
-                      child: Icon(Icons.favorite_outline),
+                      child: pizza[index].isFavorite
+                          ? Icon(Icons.favorite)
+                          : Icon(Icons.favorite_outline),
                     ),
                     InkWell(
                       onTap: () {},
@@ -218,5 +217,9 @@ class _PizzaScreenState extends State<PizzaScreen> {
         ),
       ],
     );
+  }
+
+  void tapFavourite() {
+    // if pizza[index].favourite
   }
 }
