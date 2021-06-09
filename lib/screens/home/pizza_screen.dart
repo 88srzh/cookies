@@ -19,11 +19,12 @@ class _PizzaScreenState extends State<PizzaScreen> {
   List<Item> pizza = new List<Item>.empty(growable: true);
   List<DescriptionsItem> description =
       new List<DescriptionsItem>.empty(growable: true);
+  GlobalKey<ScaffoldState> _scaffoldKeyPizza = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: _scaffoldKey,
+      key: _scaffoldKeyPizza,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -192,9 +193,17 @@ class _PizzaScreenState extends State<PizzaScreen> {
                   children: [
                     InkWell(
                       splashColor: Colors.transparent,
-                      onTap: () {
-                        tapFavourite();
-                      },
+                      onTap: () async {
+                          // if (pizza[index].isFavorite == false) {
+                            pizza[index].favoriteCount += 1;
+                            pizza[index].isFavorite == true;
+                          // } else {
+                          //   pizza[index].favoriteCount -= 1;
+                          //   pizza[index].isFavorite == false;
+                          // }
+                          print(pizza[index].favoriteCount);
+                          updateItemCardRatingToPizza(_scaffoldKeyPizza, pizza[index]);
+                        },
                       child: pizza[index].isFavorite
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_outline),
@@ -218,8 +227,4 @@ class _PizzaScreenState extends State<PizzaScreen> {
       ],
     );
   }
-
-  void tapFavourite() {
-    // if pizza[index].favourite
-  }
-}
+ }
