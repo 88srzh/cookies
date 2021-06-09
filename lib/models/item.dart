@@ -1,7 +1,6 @@
 class Item {
   String key,
       title,
-      rating,
       categories,
       price,
       image,
@@ -10,14 +9,17 @@ class Item {
       fat,
       energy,
       salt,
-      energyGramm,
-      sugarGramm,
-      saltGramm,
-      fatGramm;
+      energyGram,
+      sugarGram,
+      saltGram,
+      fatGram;
+  int favourite;
+  double rating;
 
-  Item(
+  Item (
       {this.key,
       this.title,
+      this.favourite,
       this.rating,
       this.categories,
       this.price,
@@ -27,15 +29,16 @@ class Item {
       this.fat,
       this.energy,
       this.salt,
-      this.energyGramm,
-      this.sugarGramm,
-      this.saltGramm,
-      this.fatGramm});
+      this.energyGram,
+      this.sugarGram,
+      this.saltGram,
+      this.fatGram});
 
   Item.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     title = json['title'];
-    rating = json['rating'];
+    rating = double.parse(json['rating'].toString());
+    favourite = json['favourite'] as int;
     categories = json['categories'];
     price = json['price'];
     image = json['image'];
@@ -44,28 +47,31 @@ class Item {
     fat = json['fat'];
     energy = json['energy'];
     salt = json['salt'];
-    energyGramm = json['energyGramm'];
-    sugarGramm = json['sugarGramm'];
-    saltGramm = json['saltGramm'];
-    fatGramm = json['fatGramm'];
+    energyGram = json['energyGram'];
+    sugarGram = json['sugarGram'];
+    saltGram = json['saltGram'];
+    fatGram = json['fatGram'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['key'] = this.key;
-    data['title'] = this.title;
-    data['rating'] = this.rating;
-    data['categories'] = this.categories;
-    data['price'] = this.price;
-    data['image'] = this.image;
-    data['description'] = this.description;
-    data['sugar'] = this.sugar;
-    data['fat'] = this.fat;
-    data['energy'] = this.energy;
-    data['salt'] = this.salt;
-    data['energyGramm'] = this.energyGramm;
-    data['sugarGramm'] = this.sugarGramm;
-    data['saltGramm'] = this.saltGramm;
-    data['fatGramm'] = this.fatGramm;
+    final Map<String, dynamic> itemData = new Map<String, dynamic>();
+    itemData['key'] = this.key;
+    itemData['title'] = this.title;
+    itemData['rating'] = this.rating.toString();
+    itemData['favourite'] = this.favourite;
+    itemData['categories'] = this.categories;
+    itemData['price'] = this.price;
+    itemData['image'] = this.image;
+    itemData['description'] = this.description;
+    itemData['sugar'] = this.sugar;
+    itemData['fat'] = this.fat;
+    itemData['energy'] = this.energy;
+    itemData['salt'] = this.salt;
+    itemData['energyGram'] = this.energyGram;
+    itemData['sugarGram'] = this.sugarGram;
+    itemData['saltGram'] = this.saltGram;
+    itemData['fatGram'] = this.fatGram;
+
+    return itemData;
   }
 }

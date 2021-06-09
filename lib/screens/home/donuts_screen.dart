@@ -203,7 +203,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        '${item[index].rating}',
+                        '${item[index].rating.toString()}',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),

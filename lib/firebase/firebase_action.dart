@@ -68,7 +68,7 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
       .remove()
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(
-              SnackBar(content: Text('Remove from cart successfully'))))
+              SnackBar(content: Text('Удалено из корзины'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
@@ -101,10 +101,10 @@ void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
           fat: item.fat,
           energy: item.energy,
           salt: item.salt,
-          energyGramm: item.energyGramm,
-          sugarGramm: item.sugarGramm,
-          saltGramm: item.saltGramm,
-          fatGramm: item.fatGramm);
+          energyGramm: item.energyGram,
+          sugarGramm: item.sugarGram,
+          saltGramm: item.saltGram,
+          fatGramm: item.fatGram);
       descScreen
           .child(item.key)
           .set(description.toJson())
@@ -142,10 +142,10 @@ void redirectToDescriptionSecond(
           fat: item.fat,
           energy: item.energy,
           salt: item.salt,
-          energyGramm: item.energyGramm,
-          sugarGramm: item.sugarGramm,
-          saltGramm: item.saltGramm,
-          fatGramm: item.fatGramm);
+          energyGramm: item.energyGram,
+          sugarGramm: item.sugarGram,
+          saltGramm: item.saltGram,
+          fatGramm: item.fatGram);
       descScreen
           .child(item.key)
           .set(description.toJson())
