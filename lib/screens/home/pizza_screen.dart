@@ -7,6 +7,7 @@ import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:intl/intl.dart';
 
 class PizzaScreen extends StatefulWidget {
   @override
@@ -194,14 +195,22 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       onTap: () async {
                           // if (pizza[index].isFavorite == false) {
                             pizza[index].favoriteCount += 1;
-                            var numberFavorite = pizza[index].favoriteCount;
+                            // var numberFavorite = pizza[index].favoriteCount;
                             pizza[index].isFavorite == true;
                           // } else {
                           //   pizza[index].favoriteCount -= 1;
                           //   pizza[index].isFavorite == false;
                           // }
-                          print(pizza[index].favoriteCount);
-                          print(numberFavorite);
+                            pizza[index].rating = pizza[index].favoriteCount.toDouble() / 1.1;
+
+                            // ! first option
+                            // var formatRating = NumberFormat('###.#', 'en_US');
+                            // pizza[index].rating = double.parse(formatRating.format(pizza[index].rating));
+
+                            // ! second option
+                            pizza[index].rating = double.parse(pizza[index].rating.toStringAsFixed(1));
+                          // print(pizza[index].favoriteCount);
+                          // print(numberFavorite);
                           updateItemCardRatingToPizza(_scaffoldKeyPizza, pizza[index]);
                         },
                       child: pizza[index].isFavorite
