@@ -40,7 +40,7 @@ class Item {
     title = json['title'];
     isFavorite = json['isFavorite'];
     rating = double.parse(json['rating'].toString());
-    favoriteCount = json['favorite'] as int;
+    favoriteCount = json['favoriteCount'] as int;
     categories = json['categories'];
     price = json['price'];
     image = json['image'];
@@ -61,7 +61,7 @@ class Item {
     itemData['title'] = this.title;
     itemData['isFavorite'] = this.isFavorite;
     itemData['rating'] = this.rating.toString();
-    itemData['favorite'] = this.favoriteCount;
+    itemData['favoriteCount'] = this.favoriteCount;
     itemData['categories'] = this.categories;
     itemData['price'] = this.price;
     itemData['image'] = this.image;

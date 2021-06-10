@@ -49,12 +49,10 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     .onValue,
                 builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                   if (snapshot.hasData) {
-                    var map =
-                        snapshot.data.snapshot.value as Map<dynamic, dynamic>;
+                    var map =  snapshot.data.snapshot.value;
                     pizza.clear();
                     map.forEach((key, value) {
-                      var pizzas =
-                          new Item.fromJson(json.decode(json.encode(value)));
+                      var pizzas = new Item.fromJson(json.decode(json.encode(value)));
                       pizzas.key = key;
                       pizza.add(pizzas);
                     });
@@ -196,12 +194,14 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       onTap: () async {
                           // if (pizza[index].isFavorite == false) {
                             pizza[index].favoriteCount += 1;
+                            var numberFavorite = pizza[index].favoriteCount;
                             pizza[index].isFavorite == true;
                           // } else {
                           //   pizza[index].favoriteCount -= 1;
                           //   pizza[index].isFavorite == false;
                           // }
                           print(pizza[index].favoriteCount);
+                          print(numberFavorite);
                           updateItemCardRatingToPizza(_scaffoldKeyPizza, pizza[index]);
                         },
                       child: pizza[index].isFavorite

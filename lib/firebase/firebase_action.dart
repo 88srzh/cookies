@@ -58,8 +58,7 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
-void updateItemCardRatingToPizza(
-    GlobalKey<ScaffoldState> scaffoldKey, Item items) {
+void updateItemCardRatingToPizza(GlobalKey<ScaffoldState> scaffoldKey, Item items) {
   var item = FirebaseDatabase.instance.reference().child('Pizza');
   item
       .child(items.key)
