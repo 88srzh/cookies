@@ -7,7 +7,6 @@ import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:intl/intl.dart';
 
 class PizzaScreen extends StatefulWidget {
   @override
@@ -19,7 +18,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
 
   List<Item> pizza = new List<Item>.empty(growable: true);
   List<DescriptionsItem> description =
-      new List<DescriptionsItem>.empty(growable: true);
+  new List<DescriptionsItem>.empty(growable: true);
   GlobalKey<ScaffoldState> _scaffoldKeyPizza = new GlobalKey();
 
   @override
@@ -50,10 +49,11 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     .onValue,
                 builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
                   if (snapshot.hasData) {
-                    var map =  snapshot.data.snapshot.value;
+                    var map = snapshot.data.snapshot.value;
                     pizza.clear();
                     map.forEach((key, value) {
-                      var pizzas = new Item.fromJson(json.decode(json.encode(value)));
+                      var pizzas = new Item.fromJson(json.decode(
+                          json.encode(value)));
                       pizzas.key = key;
                       pizza.add(pizzas);
                     });
@@ -71,12 +71,12 @@ class _PizzaScreenState extends State<PizzaScreen> {
                                 redirectToDescription(
                                     _scaffoldKey, pizza[index]);
                                 // Navigator.of(context)
-                                //     .pushNamed('/descriprionPage');
+                                //     .pushNamed('/descriptionPage');
                               },
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
+                                  BorderRadius.all(Radius.circular(30)),
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -193,26 +193,32 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     InkWell(
                       splashColor: Colors.transparent,
                       onTap: () async {
-                          // if (pizza[index].isFavorite == false) {
-                            pizza[index].favoriteCount += 1;
-                            // var numberFavorite = pizza[index].favoriteCount;
-                            pizza[index].isFavorite == true;
-                          // } else {
-                          //   pizza[index].favoriteCount -= 1;
-                          //   pizza[index].isFavorite == false;
-                          // }
-                            pizza[index].rating = pizza[index].favoriteCount.toDouble() / 1.1;
+                        // if (pizza[index].isFavorite == false) {
+                        pizza[index].favoriteCount += 1;
+                        // pizza[index].isFavorite == true;
+                        // }
+                        // } else {
+                        //   pizza[index].favoriteCount -= 1;
+                        //   pizza[index].isFavorite == false;
+                        // }
+                        // }
 
-                            // ! first option
-                            // var formatRating = NumberFormat('###.#', 'en_US');
-                            // pizza[index].rating = double.parse(formatRating.format(pizza[index].rating));
+                        // ! fix calculations at rating
+                        pizza[index].rating =
+                            pizza[index].favoriteCount.toDouble() / 1.1;
 
-                            // ! second option
-                            pizza[index].rating = double.parse(pizza[index].rating.toStringAsFixed(1));
-                          // print(pizza[index].favoriteCount);
-                          // print(numberFavorite);
-                          updateItemCardRatingToPizza(_scaffoldKeyPizza, pizza[index]);
-                        },
+                        // ! first option
+                        // var formatRating = NumberFormat('###.#', 'en_US');
+                        // pizza[index].rating = double.parse(formatRating.format(pizza[index].rating));
+
+                        // ! second option
+                        pizza[index].rating = double.parse(pizza[index].rating
+                            .toStringAsFixed(1));
+                        // print(pizza[index].favoriteCount);
+                        // print(numberFavorite);
+                        updateItemCardRatingToPizza(
+                            _scaffoldKeyPizza, pizza[index]);
+                      },
                       child: pizza[index].isFavorite
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_outline),
@@ -236,4 +242,4 @@ class _PizzaScreenState extends State<PizzaScreen> {
       ],
     );
   }
- }
+}
