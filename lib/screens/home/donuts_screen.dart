@@ -120,7 +120,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
                 Container(
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(241, 240, 246, 2.0),
-                      // border: Border.all(color: Colors.black87),
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(20),
                           bottomLeft: Radius.circular(30))),
@@ -149,7 +148,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
         Flexible(
           child: Container(
             child: Column(
-              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FittedBox(
@@ -169,12 +167,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
                         style: TextStyle(color: Colors.grey)),
                   ),
                 ),
-                // Container(
-                //   child: Text('${item[index].categories}',
-                //     textAlign: TextAlign.center,
-                //     style: TextStyle(color: Colors.grey)
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -185,7 +177,8 @@ class _DonutsScreenState extends State<DonutsScreen> {
               padding: EdgeInsets.only(
                   left: getProportionateScreenWidth(15),
                   right: getProportionateScreenWidth(15),
-                  top: getProportionateScreenWidth(15)),
+                  top: getProportionateScreenWidth(15)
+              ),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

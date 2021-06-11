@@ -75,6 +75,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black12),
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(30)),
                                   gradient: LinearGradient(
@@ -87,7 +88,10 @@ class _PizzaScreenState extends State<PizzaScreen> {
                                     ],
                                   ),
                                 ),
-                                child: buildItemCard(index),
+                                child: Padding(
+                                  padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
+                                  child: buildItemCard(index),
+                                ),
                               ),
                             ),
                           );
@@ -137,7 +141,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
             ),
           ),
         ),
-        Expanded(
+        Flexible(
           // ! - repair text if not image
           flex: 2,
           child: ClipRRect(
@@ -154,8 +158,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text(
-                    '${pizza[index].title}',
+                  child: Text('${pizza[index].title}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -164,13 +167,13 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     ),
                   ),
                 ),
-                FittedBox(
-                  fit: BoxFit.contain,
-                  child: Text(
-                    '${pizza[index].categories}',
-                    style: TextStyle(
-                      // fontSize: 12,
-                      color: Colors.grey,
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text('${pizza[index].categories}',
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                 ),
