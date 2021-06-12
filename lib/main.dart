@@ -5,6 +5,7 @@ import 'package:cookie/routs.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/splash/splash_screen.dart';
+import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
           }
         },
         theme: theme(),
-        initialRoute: SplashScreen.routeName,
+        initialRoute: SplashScreenNew.routeName,
         routes: routes,
       ),
     );

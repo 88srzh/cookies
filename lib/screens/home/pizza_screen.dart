@@ -113,7 +113,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
   Widget buildItemCard(int index) {
     return Column(
       children: [
-        Flexible(
+        Expanded(
           child: Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
