@@ -1,13 +1,13 @@
-import 'package:cookie/components/custom_surfix_icon.dart';
+// import 'package:cookie/components/custom_suffix_icon.dart';
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/screens/forgot_password/forgot_password2.dart';
-import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
+// import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/home_screen.dart';
-import 'package:cookie/screens/sign_up/sign_up_screen.dart';
+// import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -43,11 +43,11 @@ class _SignFormState extends State<SignForm> {
     }
   }
 
-  void _toggle() {
-    setState(() {
-      _obskureText = !_obskureText;
-    });
-  }
+  // void _toggle() {
+  //   setState(() {
+  //     _obskureText = !_obskureText;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +90,24 @@ class _SignFormState extends State<SignForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(10)),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OutlinedButton(
-                child: Text(
-                  'Войти',
-                  style: TextStyle(fontSize: 24, color: Colors.black87),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    // TODO change color when textfields not empty
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                        side: BorderSide(color: Colors.redAccent),
+                      ),
+                    ),
+                  ),
+                // TODO fix not display error when wrong data
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
+                  child: Text('Войти', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
                 onPressed: () async {
                   try {
@@ -111,8 +123,10 @@ class _SignFormState extends State<SignForm> {
                   }
                 },
               ),
-            ],
-          )
+            ),
+          ],
+          ),
+          // SizedBox(height: getProportionateScreenWidth(10)),
         ],
       ),
     );
@@ -142,26 +156,12 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       // keyboardType: TextInputType.emailAddress,
+      // TODO optimize inputderoration
       decoration: InputDecoration(
         labelText: 'Пароль',
         hintText: 'Пароль',
-        fillColor: Colors.white24,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        // suffixIcon: CustomSurffixIcon(
-        // svgIcon: 'assets/icons/Lock.svg',
-        // ),
-        // ! refactor padding to separate
-        suffixIcon: InkWell(
-          onTap: _toggle,
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                0,
-                getProportionateScreenWidth(20),
-                getProportionateScreenWidth(20),
-                getProportionateScreenWidth(20)),
-            child: Icon(FontAwesomeIcons.eyeSlash, color: Colors.black45),
-          ),
-        ),
+        fillColor: Colors.white60,
+        filled: true,
       ),
     );
   }

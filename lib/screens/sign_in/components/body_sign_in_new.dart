@@ -23,20 +23,35 @@ class BodySignInScreenNew extends StatelessWidget {
               padding: EdgeInsets.all(getProportionateScreenWidth(10)),
               child: Row(
                 children: [
-                  FaIcon(FontAwesomeIcons.arrowLeft, size: 20, color: Colors.white),
+                  InkWell(
+                      child: FaIcon(FontAwesomeIcons.arrowLeft, size: 20, color: Colors.white),
+                    onTap: () => Navigator.pop(context),
+                  ),
                 ],
               ),
             ),
             Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SizedBox(height: getProportionateScreenWidth(40)),
                     Expanded(
-                        child: Text('Войдите в аккаунт', style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold)),
+                      flex: 2,
+                        child: RichText(
+                            text: TextSpan(
+                                children: <TextSpan>[
+                                  // TODO fix text to center alignment
+                                  TextSpan(text: 'Войдите в аккаунт\n\n', style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold)),
+                                  TextSpan(text: '     И продолжите покупки', style: TextStyle(color: Colors.white, fontSize: 18)),
+                                                    ],
+                                          ),
+                                        ),
                             ),
-                    SizedBox(height: getProportionateScreenWidth(15)),
-                    Expanded(child: Text('Продолжите покупки', style: TextStyle(color: Colors.white, fontSize: 18))),
-                    SignForm(),
+                    // SizedBox(height: getProportionateScreenWidth(15)),
+                    // Expanded(child: Text('И продолжите покупки', style: TextStyle(color: Colors.white, fontSize: 18))),
+                    Expanded(
+                      flex:1,
+                        child: SingleChildScrollView(child: SignForm())),
                   ],
 
                 ),
