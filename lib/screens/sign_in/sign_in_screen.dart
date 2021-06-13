@@ -1,11 +1,12 @@
 import 'package:cookie/screens/home/home_screen.dart';
-import 'package:cookie/screens/sign_in/components/body_sign_in.dart';
+// import 'package:cookie/screens/sign_in/components/body_sign_in.dart';
+import 'package:cookie/screens/sign_in/components/body_sign_in_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
-  static String routeName = '/signinnew';
+  static String routeName = '/signInNew';
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -29,8 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
     SizeConfig().init(context);
     if (user == null) {
       return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: BodySignIn(),
+        body: BodySignInScreenNew(),
       );
     }
     return HomeScreen();

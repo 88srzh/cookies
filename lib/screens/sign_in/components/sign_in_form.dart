@@ -51,30 +51,28 @@ class _SignFormState extends State<SignForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(12)),
       child: Column(
         children: [
           buildEmailFormField(),
           SizedBox(
-            height: getProportionateScreenHeight(30),
+            height: getProportionateScreenHeight(10),
           ),
           buildPasswordFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
+          SizedBox(height: getProportionateScreenHeight(10)),
           Row(
             children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text('Запомнить'),
+              // Checkbox(
+              //   value: remember,
+              //   activeColor: kPrimaryColor,
+              //   onChanged: (value) {
+              //     setState(() {
+              //       remember = value;
+              //     });
+              //   },
+              // ),
+              // Text('Запомнить'),
               Spacer(),
               GestureDetector(
                 onTap: () =>
@@ -146,7 +144,7 @@ class _SignFormState extends State<SignForm> {
       // keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Пароль',
-        hintText: 'Введите пароль',
+        hintText: 'Пароль',
         fillColor: Colors.white24,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         // suffixIcon: CustomSurffixIcon(
@@ -192,13 +190,10 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       decoration: InputDecoration(
+        filled: true,
         labelText: 'Почта',
-        hintText: 'Введите Вашу почту',
-        fillColor: Colors.white,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Mail.svg',
-        ),
+        hintText: 'Почта',
+        fillColor: Colors.white60,
       ),
     );
   }

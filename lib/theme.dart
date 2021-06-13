@@ -1,5 +1,5 @@
 import 'package:cookie/constants.dart';
-// import 'package:cookie/size_config.dart';
+import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {
@@ -17,16 +17,11 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(28),
-    borderSide: BorderSide(color: kTextColor),
-    gapPadding: 10,
+    borderSide: BorderSide(color: Colors.white60),
+    borderRadius: BorderRadius.circular(8),
   );
   return InputDecorationTheme(
-    // floatingLabelBehavior: FloatingLabelBehavior.always,
-    contentPadding: EdgeInsets.symmetric(
-      horizontal: 42,
-      vertical: 20,
-    ),
+    floatingLabelBehavior: FloatingLabelBehavior.never,
     enabledBorder: outlineInputBorder,
     focusedBorder: outlineInputBorder,
     border: outlineInputBorder,
