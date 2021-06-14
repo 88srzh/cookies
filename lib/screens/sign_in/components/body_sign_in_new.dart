@@ -25,7 +25,7 @@ class BodySignInScreenNew extends StatelessWidget {
                 children: [
                   InkWell(
                       child: FaIcon(FontAwesomeIcons.arrowLeft, size: 20, color: Colors.white),
-                    onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pop(context),
                   ),
                 ],
               ),

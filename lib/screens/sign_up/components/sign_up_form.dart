@@ -19,7 +19,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
-  var _repasswordController = TextEditingController();
+  var _repeatPasswordController = TextEditingController();
   var _usernameController = TextEditingController();
   String email;
   String password;
@@ -46,7 +46,7 @@ class _SignUpFormState extends State<SignUpForm> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _repasswordController.dispose();
+    _repeatPasswordController.dispose();
     _usernameController.dispose();
     super.dispose();
   }
@@ -96,7 +96,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildConfirmPasswordFormField() {
     return TextFormField(
-      controller: _repasswordController,
+      controller: _repeatPasswordController,
       obscureText: true,
       onSaved: (newValue) => confirmPassword = newValue,
       onChanged: (value) {

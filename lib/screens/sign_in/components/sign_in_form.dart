@@ -63,16 +63,6 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(10)),
           Row(
             children: [
-              // Checkbox(
-              //   value: remember,
-              //   activeColor: kPrimaryColor,
-              //   onChanged: (value) {
-              //     setState(() {
-              //       remember = value;
-              //     });
-              //   },
-              // ),
-              // Text('Запомнить'),
               Spacer(),
               GestureDetector(
                 onTap: () =>
