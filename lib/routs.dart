@@ -6,12 +6,10 @@ import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
 import 'package:cookie/screens/forgot_password/forgot_password2.dart';
-import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/burgers_screen.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
 // import 'package:cookie/screens/favorite/favorite_screen.dart';
 import 'package:cookie/screens/home/home_screen.dart';
-// import 'package:cookie/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cookie/screens/login_success/login_success_screen.dart';
 import 'package:cookie/screens/otp/otp_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
@@ -52,7 +50,6 @@ final Map<String, WidgetBuilder> routes = {
   LicenseScreen.routeName: (context) => LicenseScreen(),
   TestAuthScreen.routeName: (context) => TestAuthScreen(),
   ProfileView.routeName: (context) => ProfileView(),
-  ForgottenPasswordScreen.routeName: (context) => ForgottenPasswordScreen(),
   // VerifyScreen.routeName: (context) => VerifyScreen(),
   DonutsScreen.routeName: (context) => DonutsScreen(),
   BurgersScreen.routeName: (context) => BurgersScreen(),

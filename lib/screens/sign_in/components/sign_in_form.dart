@@ -2,7 +2,7 @@
 import 'package:cookie/components/form_error.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
-import 'package:cookie/screens/forgot_password/forgot_password2.dart';
+// import 'package:cookie/screens/forgot_password/forgot_password2.dart';
 // import 'package:cookie/screens/forgot_password/forgotten_password_screen_new.dart';
 import 'package:cookie/screens/home/home_screen.dart';
 // import 'package:cookie/screens/sign_up/sign_up_screen.dart';
@@ -65,8 +65,82 @@ class _SignFormState extends State<SignForm> {
             children: [
               Spacer(),
               GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, ForgotPassword2.routeName),
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: Builder(
+                      builder: (context) => AlertDialog(
+                        title: Text('Восстановить пароль'),
+                        contentPadding: EdgeInsets.all(0.0),
+                        content: Container(
+                          height: 150.5,
+                          child: Column(
+                            children: [
+                              Text('Мы отправим ссылку для восстановления пароля Вам на почту'),
+                              Form(
+                                // may be need another name to key
+                                key: _formKey,
+                                  child: TextFormField(
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                      labelText: 'Почта',
+                                      // isDense: true,
+                                      // TODO border cannot add because theme border
+                                      hintText: 'Почта',
+                                      fillColor: Colors.white60,
+                                    ),
+                                  ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
+                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                                            side: BorderSide(color: Colors.grey[300]),
+                                          ),
+                                        ),
+                                      ),
+                                        onPressed: () {},
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
+                                          child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
+                                        )),
+                                  ),
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                                            side: BorderSide(color: Colors.redAccent),
+                                          ),
+                                        ),
+                                      ),
+                                        onPressed: () {},
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
+                                          child: Text('Восстановить'.toUpperCase(), style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  );
+                },
+                    // Navigator.pushNamed(context, ForgotPassword2.routeName),
                 child: Text(
                   // ! Add route to screen
                   'Забыли пароль?',
