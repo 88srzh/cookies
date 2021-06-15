@@ -72,26 +72,43 @@ class _SignFormState extends State<SignForm> {
                     backgroundColor: Colors.transparent,
                     body: Builder(
                       builder: (context) => AlertDialog(
-                        title: Text('Восстановить пароль'),
+                        // title: Text('Восстановить пароль'),
                         contentPadding: EdgeInsets.all(0.0),
+                        backgroundColor: Colors.transparent,
                         content: Container(
-                          height: 150.5,
+                          height: 239,
+                          decoration: BoxDecoration(
+                            color: Colors.redAccent,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20), topRight: Radius.circular(20), bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                          ),
                           child: Column(
                             children: [
-                              Text('Мы отправим ссылку для восстановления пароля Вам на почту'),
-                              Form(
-                                // may be need another name to key
-                                key: _formKey,
-                                  child: TextFormField(
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                      labelText: 'Почта',
-                                      // isDense: true,
-                                      // TODO border cannot add because theme border
-                                      hintText: 'Почта',
-                                      fillColor: Colors.white60,
+                              Padding(
+                                padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                                child: Text('Восстановить пароль', style: TextStyle(fontWeight: FontWeight.bold)),
+                              ),
+                              Divider(),
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(8), horizontal: getProportionateScreenWidth(15)),
+                                child: Center(child: Text('Мы отправим ссылку для восстановления пароля Вам на почту', textAlign: TextAlign.center)),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(10)),
+                                child: Form(
+                                  // may be need another name to key
+                                  key: _formKey,
+                                    child: TextFormField(
+                                      controller: emailController,
+                                      decoration: InputDecoration(
+                                        labelText: 'Почта',
+                                        // isDense: true,
+                                        // TODO border cannot add because theme border
+                                        hintText: 'Почта',
+                                        fillColor: Colors.white60,
+                                      ),
                                     ),
-                                  ),
+                                ),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,7 +119,7 @@ class _SignFormState extends State<SignForm> {
                                         backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
                                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
                                             side: BorderSide(color: Colors.grey[300]),
                                           ),
                                         ),
@@ -119,7 +136,7 @@ class _SignFormState extends State<SignForm> {
                                         backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
                                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
                                             side: BorderSide(color: Colors.redAccent),
                                           ),
                                         ),
