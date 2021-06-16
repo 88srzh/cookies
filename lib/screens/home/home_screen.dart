@@ -338,25 +338,26 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             items: [
               SvgPicture.asset(
                 'assets/icons/donut32-min.svg',
-                color: _currentPage == _donutsPage ? Colors.black : Colors.grey,
+                color: _currentPage == _donutsPage ? Colors.black : Colors.grey[700],
               ),
               SvgPicture.asset(
                 'assets/icons/burger_32-min.svg',
-                color: _currentPage == _burgersPage ? Colors.black : Colors.grey,
+                color: _currentPage == _burgersPage ? Colors.black : Colors.grey[700],
               ),
               SvgPicture.asset(
                 'assets/icons/puncake2_32.svg',
-                color: _currentPage == _pancakesPage ? Colors.black : Colors.grey,
+                color: _currentPage == _pancakesPage ? Colors.black : Colors.grey[700],
               ),
               SvgPicture.asset(
                 'assets/icons/pizza_32.svg',
-                color: _currentPage == _pizzaPage ? Colors.black : Colors.grey,
+                color: _currentPage == _pizzaPage ? Colors.black : Colors.grey[700],
               ),
             ],
-            color: Colors.red[100],
+            height: 55,
+            color: Color.fromRGBO(255,223,185,150),
             buttonBackgroundColor: Colors.white54,
             // buttonBackgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-            backgroundColor: Colors.redAccent[50],
+            backgroundColor: Colors.white30,
             // backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
             animationCurve: Curves.ease,
             animationDuration: Duration(milliseconds: 600),
