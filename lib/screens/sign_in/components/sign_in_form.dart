@@ -78,7 +78,7 @@ class _SignFormState extends State<SignForm> {
                         contentPadding: EdgeInsets.all(0.0),
                         backgroundColor: Colors.transparent,
                         content: Container(
-                            height: 200,
+                            height: SizeConfig.itemHeight * 0.68,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(

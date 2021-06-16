@@ -14,7 +14,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.1"
+    version: "2.5.0"
   badges:
     dependency: "direct main"
     description:
@@ -288,7 +288,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.0.0-nullsafety"
+    version: "9.1.0"
   get_it:
     dependency: "direct main"
     description:
@@ -531,7 +531,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   stack_trace:
     dependency: transitive
     description:
@@ -566,7 +566,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.2.19"
   typed_data:
     dependency: transitive
     description:
