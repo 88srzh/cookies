@@ -14,7 +14,7 @@ class BodySignInScreenNew extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   // image: AssetImage('assets/images/background-splash-screen-second.jpg'),
-                  image: AssetImage('assets/images/background-signIn-screen.jpg'),
+                  image: AssetImage('assets/images/background-sign-in-screen.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),

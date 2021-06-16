@@ -17,11 +17,12 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white60),
+    borderSide: BorderSide(color: Colors.grey[300]),
     borderRadius: BorderRadius.circular(8),
   );
   return InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.never,
+    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
     enabledBorder: outlineInputBorder,
     focusedBorder: outlineInputBorder,
     border: outlineInputBorder,

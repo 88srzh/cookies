@@ -22,6 +22,8 @@ class _SignFormState extends State<SignForm> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _restorePasswordKey = GlobalKey<FormState>();
+  var userController = locator.get<UserController>();
   String email;
   String password;
   bool remember = false;
@@ -72,89 +74,98 @@ class _SignFormState extends State<SignForm> {
                     backgroundColor: Colors.transparent,
                     body: Builder(
                       builder: (context) => AlertDialog(
-                        // title: Text('Восстановить пароль'),
                         contentPadding: EdgeInsets.all(0.0),
                         backgroundColor: Colors.transparent,
                         content: Container(
-                          height: 239,
-                          decoration: BoxDecoration(
-                            color: Colors.redAccent,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20), topRight: Radius.circular(20), bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
-                                child: Text('Восстановить пароль', style: TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                              Divider(),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(8), horizontal: getProportionateScreenWidth(15)),
-                                child: Center(child: Text('Мы отправим ссылку для восстановления пароля Вам на почту', textAlign: TextAlign.center)),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(10)),
-                                child: Form(
-                                  // may be need another name to key
-                                  key: _formKey,
-                                    child: TextFormField(
-                                      controller: emailController,
-                                      decoration: InputDecoration(
-                                        labelText: 'Почта',
-                                        // isDense: true,
-                                        // TODO border cannot add because theme border
-                                        hintText: 'Почта',
-                                        fillColor: Colors.white60,
-                                      ),
-                                    ),
+                            height: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20), topRight: Radius.circular(20), bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                                  child: Text('Восстановить пароль', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
-                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
-                                            side: BorderSide(color: Colors.grey[300]),
-                                          ),
+                                Divider(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(8), horizontal: getProportionateScreenWidth(15)),
+                                  child: Center(child:
+                                    Text('Мы отправим ссылку для восстановления пароля Вам на почту', textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    left: getProportionateScreenWidth(10),
+                                    right: getProportionateScreenWidth(10),
+                                    top: getProportionateScreenWidth(6),
+                                    bottom: getProportionateScreenWidth(14),
+                                  ),
+                                  child: Form(
+                                    // may be need another name to key
+                                    key: _restorePasswordKey,
+                                      child: TextFormField(
+                                        controller: emailController,
+                                        decoration: InputDecoration(
+                                          labelText: 'Почта',
+                                          hintText: 'Почта',
+                                          fillColor: Colors.white60,
                                         ),
                                       ),
-                                        onPressed: () {},
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
-                                          child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
-                                        )),
                                   ),
-                                  Expanded(
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
-                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
-                                            side: BorderSide(color: Colors.redAccent),
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
+                                                side: BorderSide(color: Colors.grey[300]),
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                            onPressed: () => Navigator.pop(context),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                              child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+                                            )),
                                       ),
-                                        onPressed: () {},
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
-                                          child: Text('Восстановить'.toUpperCase(), style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
-                                        )),
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
+                                                side: BorderSide(color: Colors.redAccent),
+                                              ),
+                                            ),
+                                          ),
+                                            onPressed: () async {
+                                              _restorePasswordKey.currentState.save();
+                                              final currentUser = userController.resetPassword(email);
+                                              return Navigator.pop(context);
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                              child: Text('Отправить'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
+                                            )),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
                   );
                 },
                     // Navigator.pushNamed(context, ForgotPassword2.routeName),
