@@ -6,7 +6,7 @@ class AuthentificationService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  AuthentificationService();
+  // AuthentificationService();
   // Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
   Stream<User> get authStateChanges => _auth.authStateChanges();
 

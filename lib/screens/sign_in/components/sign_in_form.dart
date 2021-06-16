@@ -20,6 +20,7 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   bool _obskureText = true;
   var emailController = TextEditingController();
+  var forgotPasswordController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _restorePasswordKey = GlobalKey<FormState>();
@@ -106,7 +107,7 @@ class _SignFormState extends State<SignForm> {
                                     // may be need another name to key
                                     key: _restorePasswordKey,
                                       child: TextFormField(
-                                        controller: emailController,
+                                        controller: forgotPasswordController,
                                         decoration: InputDecoration(
                                           labelText: 'Почта',
                                           hintText: 'Почта',
@@ -149,7 +150,7 @@ class _SignFormState extends State<SignForm> {
                                           ),
                                             onPressed: () async {
                                               _restorePasswordKey.currentState.save();
-                                              final currentUser = userController.resetPassword(email);
+                                              userController.resetPassword(email);
                                               return Navigator.pop(context);
                                             },
                                             child: Padding(
