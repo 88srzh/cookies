@@ -8,7 +8,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class NewDescriptionScreen extends StatefulWidget {
-  // static const routeName = '/description';
+  static const routeName = '/description';
   NewDescriptionScreen({Key key}) : super(key: key);
 
   @override

@@ -3,6 +3,7 @@ import 'package:cookie/screens/auth/authentification_page.dart';
 import 'package:cookie/screens/auth_test_screen.dart';
 // import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
+import 'package:cookie/screens/description/new_description_card.dart';
 // import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/errors/something_went_wrong.dart';
 import 'package:cookie/screens/forgot_password/forgot_password2.dart';
@@ -18,8 +19,8 @@ import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 // import 'package:cookie/screens/sign_up/verify_screen.dart';
-import 'package:cookie/screens/splash/splash_screen.dart';
-import 'package:cookie/screens/auth/authentification_wrapper.dart';
+// import 'package:cookie/screens/splash/splash_screen.dart';
+// import 'package:cookie/screens/auth/authentification_wrapper.dart';
 import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:flutter/widgets.dart';
@@ -36,12 +37,13 @@ final Map<String, WidgetBuilder> routes = {
   // CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   // DescriptionScreen.routeName: (context) => DescriptionScreen(),
+  NewDescriptionScreen.routeName: (context) => NewDescriptionScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
   SignInScreen.routeName: (context) => SignInScreen(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
   // Error404Screen.routeName: (context) => Error404Screen(),
   // Error2Screen.routeName: (context) => Error2Screen(),
-  AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
+  // AuthentificationWrapper.routeName: (context) => AuthentificationWrapper(),
   AuthentificationPage.routename: (context) => AuthentificationPage(),
   // GoogleLogoutPage.routeName: (context) => GoogleLogoutPage(),
   SomethingWentWrongScreen.routeName: (context) => SomethingWentWrongScreen(),

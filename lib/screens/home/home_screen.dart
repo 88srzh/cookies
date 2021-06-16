@@ -7,6 +7,7 @@ import 'package:cookie/locator.dart';
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/auth_test_screen.dart';
+import 'package:cookie/screens/description/new_description_card.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
 import 'package:cookie/screens/home/pizza_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
@@ -106,6 +107,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           drawer: Drawer(
             child: ListView(
               children: [
+                CustomListTile(
+                  icon: Icon(Icons.icecream),
+                  title: 'DescriptionScreen',
+                  onPressed: () => Navigator.pushNamed(context, NewDescriptionScreen.routeName),
+                ),
                 CustomListTile(
                   icon: Icon(Icons.person_add),
                   title: 'Профиль',

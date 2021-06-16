@@ -44,6 +44,24 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   });
 }
 
+void redirectToDescriptionScreen(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+  var soloItem = FirebaseDatabase.instance
+      .reference()
+      .child('NewCart')
+      .child('UNIQUE_USER_ID');
+  soloItem.child(item.key).once().then((DataSnapshot snapshot) {
+    Cart newItem = new Cart(
+      title: item.title,
+      image: item.image,
+      key: item.key,
+      price: item.price,
+      totalPrice: double.parse(item.price));
+    soloItem.child(item.key).set(newItem.toJson()).then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    .showSnackBar(SnackBar(content: Text('Перешли на страницу с описанием')))).catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    .showSnackBar(SnackBar(content: Text('$e'))));
+  });
+}
+
 void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
   var cart = FirebaseDatabase.instance
       .reference()

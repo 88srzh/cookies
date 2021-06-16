@@ -44,7 +44,7 @@ dependencies:
   page_transition: ^1.1.7+6
   confirm_dialog: ^1.0.0
   flutter_elegant_number_button: ^0.0.3
-  fluttertoast: ^8.0.6
+  fluttertoast: ^7.1.0
   get_it: ^7.0.0
   lint: ^1.0.0
   flutter_native_splash: ^1.1.8+4

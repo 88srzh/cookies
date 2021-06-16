@@ -66,7 +66,8 @@ class _PancakesScreenState extends State<PancakesScreen> {
                           return InkWell(
                             child: GestureDetector(
                               onTap: () {
-                                addToCart(_scaffoldKey, pancakes[index]);
+                                // addToCart(_scaffoldKey, pancakes[index]);
+                                redirectToDescriptionSecond(_scaffoldKey, pancakes[index]);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
