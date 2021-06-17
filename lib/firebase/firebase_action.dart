@@ -101,7 +101,7 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
-void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+void redirectToDescriptionPancakes(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   var descScreen = FirebaseDatabase.instance
       .reference()
       .child('DescriptionItem')
@@ -129,10 +129,10 @@ void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
           fat: item.fat,
           energy: item.energy,
           salt: item.salt,
-          energyGramm: item.energyGram,
-          sugarGramm: item.sugarGram,
-          saltGramm: item.saltGram,
-          fatGramm: item.fatGram);
+          energyGram: item.energyGram,
+          sugarGram: item.sugarGram,
+          saltGram: item.saltGram,
+          fatGram: item.fatGram);
       descScreen
           .child(item.key)
           .set(description.toJson())
@@ -140,13 +140,15 @@ void redirectToDescription(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
               .showSnackBar(SnackBar(content: Text('fucking work'))))
           .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('$e'))));
+
     }
   });
 }
-
+// ! TODO fix to display only one item
 void redirectToDescriptionSecond(
     GlobalKey<ScaffoldState> scaffoldKey, Item item) {
-  var descScreen = FirebaseDatabase.instance.reference().child('Burgers');
+  var descScreen = FirebaseDatabase.instance.reference()
+      .child('DescriptionItem');
   descScreen.child(item.key).once().then((DataSnapshot snapshot) {
     // If user already have item in description
     if (snapshot.value != null) {
@@ -170,10 +172,10 @@ void redirectToDescriptionSecond(
           fat: item.fat,
           energy: item.energy,
           salt: item.salt,
-          energyGramm: item.energyGram,
-          sugarGramm: item.sugarGram,
-          saltGramm: item.saltGram,
-          fatGramm: item.fatGram);
+          energyGram: item.energyGram,
+          sugarGram: item.sugarGram,
+          saltGram: item.saltGram,
+          fatGram: item.fatGram);
       descScreen
           .child(item.key)
           .set(description.toJson())

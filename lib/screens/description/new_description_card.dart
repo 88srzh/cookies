@@ -18,11 +18,11 @@ class NewDescriptionScreen extends StatefulWidget {
 class _NewDescriptionScreenState extends State<NewDescriptionScreen> {
   List<DescriptionsItem> description =
       new List<DescriptionsItem>.empty(growable: true);
-  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Center(
           child: Text('Описание'),
@@ -98,25 +98,25 @@ class _NewDescriptionScreenState extends State<NewDescriptionScreen> {
                               buildIngredientCard(
                                 index,
                                 titleCard: 'Белки',
-                                gramm: description[index].sugarGramm,
+                                gramm: description[index].sugarGram,
                                 percent: description[index].sugar,
                               ),
                               buildIngredientCard(
                                 index,
                                 titleCard: 'Жиры',
-                                gramm: description[index].saltGramm,
+                                gramm: description[index].saltGram,
                                 percent: description[index].salt,
                               ),
                               buildIngredientCard(
                                 index,
                                 titleCard: 'Углеводы',
-                                gramm: description[index].fatGramm,
+                                gramm: description[index].fatGram,
                                 percent: description[index].fat,
                               ),
                               buildIngredientCard(
                                 index,
                                 titleCard: 'Энергия',
-                                gramm: description[index].energyGramm,
+                                gramm: description[index].energyGram,
                                 percent: description[index].energy,
                               ),
                             ],

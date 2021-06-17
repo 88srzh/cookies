@@ -63,28 +63,26 @@ class _PancakesScreenState extends State<PancakesScreen> {
                         mainAxisSpacing: getProportionateScreenWidth(10),
                         crossAxisSpacing: getProportionateScreenWidth(6),
                         itemBuilder: (BuildContext context, int index) {
-                          return InkWell(
-                            child: GestureDetector(
-                              onTap: () {
-                                // addToCart(_scaffoldKey, pancakes[index]);
-                                redirectToDescriptionSecond(_scaffoldKey, pancakes[index]);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    // stops: [0.3, 1.8],
-                                    colors: [
-                                      Color.fromRGBO(248, 219, 221, 1.0),
-                                      Colors.orange[100]
-                                    ],
-                                  ),
+                          return GestureDetector(
+                            onTap: () {
+                              // addToCart(scaffoldKey, pancakes[index]);
+                              redirectToDescriptionPancakes(_scaffoldKey, pancakes[index]);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  // stops: [0.3, 1.8],
+                                  colors: [
+                                    Color.fromRGBO(248, 219, 221, 1.0),
+                                    Colors.orange[100]
+                                  ],
                                 ),
-                                child: buildItemCard(index),
                               ),
+                              child: buildItemCard(index),
                             ),
                           );
                         },

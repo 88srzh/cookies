@@ -8,10 +8,10 @@ class DescriptionsItem {
       fat,
       energy,
       salt,
-      energyGramm,
-      sugarGramm,
-      saltGramm,
-      fatGramm;
+      energyGram,
+      sugarGram,
+      saltGram,
+      fatGram;
 
   DescriptionsItem(
       {this.key,
@@ -23,10 +23,10 @@ class DescriptionsItem {
       this.fat,
       this.energy,
       this.salt,
-      this.energyGramm,
-      this.sugarGramm,
-      this.saltGramm,
-      this.fatGramm});
+      this.energyGram,
+      this.sugarGram,
+      this.saltGram,
+      this.fatGram});
 
   DescriptionsItem.fromJson(Map<String, dynamic> json) {
     key = json['key'];
@@ -39,10 +39,10 @@ class DescriptionsItem {
     fat = json['fat'];
     energy = json['energy'];
     salt = json['salt'];
-    energyGramm = json['energyGramm'];
-    sugarGramm = json['sugarGramm'];
-    saltGramm = json['saltGramm'];
-    fatGramm = json['fatGramm'];
+    energyGram = json['energyGram'];
+    sugarGram = json['sugarGram'];
+    saltGram = json['saltGram'];
+    fatGram = json['fatGram'];
   }
 
   Map<String, dynamic> toJson() {
@@ -56,10 +56,10 @@ class DescriptionsItem {
     data['fat'] = this.fat;
     data['energy'] = this.energy;
     data['salt'] = this.salt;
-    data['energyGramm'] = this.energyGramm;
-    data['sugarGramm'] = this.sugarGramm;
-    data['saltGramm'] = this.saltGramm;
-    data['fatGramm'] = this.fatGramm;
+    data['energyGram'] = this.energyGram;
+    data['sugarGram'] = this.sugarGram;
+    data['saltGram'] = this.saltGram;
+    data['fatGram'] = this.fatGram;
 
     return data;
   }

@@ -68,7 +68,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                             child: GestureDetector(
                               onTap: () {
                                 // addToCart(_scaffoldKey, burgers[index]);
-                                redirectToDescription(
+                                redirectToDescriptionPancakes(
                                     _scaffoldKey, pizza[index]);
                                 // Navigator.of(context)
                                 //     .pushNamed('/descriptionPage');

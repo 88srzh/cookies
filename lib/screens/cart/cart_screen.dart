@@ -143,7 +143,11 @@ class _CartScreenState extends State<CartScreen> {
                                     child: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: () async {
-                                        if (await confirm(context, title: Text('Удалить товар'), content: Text('Точно хотите удалить товар из списка?'), textOK: Text('Удалить', style: TextStyle(color: Colors.red)), textCancel: Text('Отмена'))) {
+                                        if (
+                                        await confirm(context, title: Text('Удалить товар'),
+                                            content: Text('Точно хотите удалить товар из списка?'),
+                                            textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
+                                            textCancel: Text('Отмена'))) {
                                           return deleteCart(_scaffoldKey, newCarts[index]);
                                         }
                                       },
