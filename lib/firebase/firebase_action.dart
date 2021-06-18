@@ -21,7 +21,7 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
           .child(item.key)
           .set(newCart.toJson())
           .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(SnackBar(content: Text('Update successfully'))))
+              .showSnackBar(SnackBar(content: Text('+ 1 шт.'))))
           .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('$e'))));
     } else {

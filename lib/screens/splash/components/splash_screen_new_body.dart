@@ -1,5 +1,6 @@
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
+import 'package:cookie/screens/sign_up/sign_up_screen.dart';
 import 'package:cookie/screens/splash/components/splash_content_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,7 @@ class _SplashScreenNewBodyState extends State<SplashScreenNewBody> {
                                             )
                                         )
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
                                       child: Text('Присоединиться', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
@@ -121,9 +122,7 @@ class _SplashScreenNewBodyState extends State<SplashScreenNewBody> {
                                       )
                                     )
                                   ),
-                                    onPressed: () {
-                                    Navigator.pushNamed(context, SignInScreen.routeName);
-                                    },
+                                    onPressed: () => Navigator.pushNamed(context, SignInScreen.routeName),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
                                       child: Text('Войти', style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
