@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/size_config.dart';
 // import 'package:cookie/models/item.dart';
@@ -143,14 +142,100 @@ class _CartScreenState extends State<CartScreen> {
                                     child: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: () async {
-                                        if (
-                                        await confirm(context, title: Text('Удалить товар'),
-                                            content: Text('Точно хотите удалить товар из списка?'),
-                                            textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
-                                            textCancel: Text('Отмена'))) {
-                                          return deleteCart(_scaffoldKey, newCarts[index]);
-                                        }
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) => Scaffold(
+                                              backgroundColor: Colors.transparent,
+                                              body: Builder(
+                                                builder: (context) => AlertDialog(
+                                                  contentPadding: EdgeInsets.all(0.0),
+                                                  backgroundColor: Colors.transparent,
+                                                  content: Container(
+                                                    height: SizeConfig.screenHeight * 0.165,
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius: BorderRadius.circular(20)),
+                                                    child: Column(
+                                                      children: [
+                                                        Padding(
+                                                            padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                                                            child: Text('Удалить товар', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                                ),
+                                                          Divider(),
+                                                        Padding(
+                                                            padding: EdgeInsets.only(
+                                                                left: getProportionateScreenWidth(15),
+                                                                right: getProportionateScreenWidth(15),
+                                                                top: getProportionateScreenWidth(8),
+                                                                bottom: getProportionateScreenWidth(15),
+                                                            ),
+                                                          child: Text('Вы точно хотите удалить товар из списка?', style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                                                        ),
+                                                        Expanded(
+                                                          child: Row(
+                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: ElevatedButton(
+                                                                    style: ButtonStyle(
+                                                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
+                                                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                        RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
+                                                                          side: BorderSide(color: Colors.grey[300]),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed: () => Navigator.pop(context),
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                                                      child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+                                                                    )),
+                                                              ),
+                                                              Expanded(
+                                                                child: ElevatedButton(
+                                                                    style: ButtonStyle(
+                                                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                                                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                        RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
+                                                                          side: BorderSide(color: Colors.redAccent),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed: () async {
+                                                                      deleteCart(_scaffoldKey, newCarts[index]);
+                                                                      return Navigator.pop(context);
+                                                                    },
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                                                      child: Text('Удалить'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
+                                                                    )),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+
+
+
+                                                    ),
+
+                                                  ),
+                                                ),
+                                              ),
+                                            );
                                       },
+                                      // onPressed: () async {
+                                      //   if (
+                                      //   await confirm(context, title: Text('Удалить товар'),
+                                      //       content: Text('Точно хотите удалить товар из списка?'),
+                                      //       textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
+                                      //       textCancel: Text('Отмена'))) {
+                                      //     return deleteCart(_scaffoldKey, newCarts[index]);
+                                      //   }
+                                      // },
                                     ),
                                   ),
                                 ),
