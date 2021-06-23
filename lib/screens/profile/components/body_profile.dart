@@ -4,16 +4,13 @@ import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
-// import 'package:cookie/screens/profile/components/custom_list_tile.dart';
+import 'package:cookie/screens/profile/components/custom_list_tile.dart';
 import 'package:cookie/screens/settings/components/heading_grey_card.dart';
+import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cookie/components/custom_settings_divider.dart';
-// import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../sign_in/sign_in_screen.dart';
 
 class BodyProfile extends StatefulWidget {
   final UserModel currentUser;
@@ -78,7 +75,7 @@ class _BodyProfileState extends State<BodyProfile> {
             CustomSettingsDivider(),
             ListTile(
               title: Text('Телефон'),
-              trailing: Text('${_currentUser.phoneNumber}'),
+              trailing: Text('${_currentUser.phoneNumber}', style: TextStyle(fontSize: 14),),
             ),
             // CustomSettingsDivider(),
             // ListTile(
@@ -87,8 +84,8 @@ class _BodyProfileState extends State<BodyProfile> {
             //   title: Text('Настройки'),
             //   trailing: Icon(Icons.keyboard_arrow_right),
             // ),
-            GreyCard(heading: 'Настройки приложения'),
             CustomSettingsDivider(),
+            GreyCard(heading: 'Настройки приложения'),
             SwitchListTile(
                 value: _tapSounds,
                 onChanged: (tapSounds) {
@@ -97,6 +94,7 @@ class _BodyProfileState extends State<BodyProfile> {
                 activeColor: Colors.red[300],
               title: Text('Включить звук'),
                 ),
+            CustomSettingsDivider(),
             GreyCard(heading: 'Аккаунт'),
             ListTile(
               title: Text('Сменить пароль'),
@@ -191,8 +189,6 @@ class _BodyProfileState extends State<BodyProfile> {
                                               ),
                                             ),
                                             onPressed: () async {
-                                              // _restorePasswordKey.currentState.save();
-                                              // userController.resetPassword(email);
                                               checkCurrentPasswordValid =
                                               await userController.validateCurrentPassword(_passwordController.text);
                                               if (_formKeyNewPassword.currentState.validate() && checkCurrentPasswordValid) {
@@ -220,31 +216,37 @@ class _BodyProfileState extends State<BodyProfile> {
               },
             ),
             CustomSettingsDivider(),
+            GreyCard(heading: 'Приложение'),
+            CustomProfileListTile(
+              onTap: () {},
+              title: 'Оценить приложение',
+
+            ),
+            CustomSettingsDivider(),
+            CustomProfileListTile(
+              onTap: () => Navigator.pushNamed(context, TermsOfUseScreen.routeName),
+              title: 'Пользовательское соглашение',
+            ),
+            CustomSettingsDivider(),
+            CustomProfileListTile(
+              onTap: () {},
+              title: 'Лицензия',
+            ),
+            CustomSettingsDivider(),
+            CustomProfileListTile(
+              onTap: () {},
+              title: 'Напишите нам',
+            ),
+            CustomSettingsDivider(),
+            CustomProfileListTile(
+              onTap: () {},
+              title: 'Выйти',
+            ),
+            CustomSettingsDivider(),
             ListTile(
               onTap: () {},
-              leading: Icon(FontAwesomeIcons.question),
-              title: Text('Помощь'),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey[300],
-              ),
+              title: Text('Версия приложения 0.0.1'),
             ),
-            CustomSettingsDivider(),
-            ListTile(
-              onTap: () async {
-                var userController = locator.get<UserController>();
-                userController.signOut();
-                Navigator.pushNamed(context, SignInScreen.routeName);
-                // ! fix logout
-              },
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Выйти'),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey[300],
-              ),
-            ),
-            CustomSettingsDivider(),
           ],
         ),
       ),
