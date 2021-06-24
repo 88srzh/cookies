@@ -10,9 +10,10 @@ class CustomProfileListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      // contentPadding: EdgeInsets.all(0),
       onTap: onTap,
       trailing: Icon(Icons.keyboard_arrow_right),
-      title: Text(title, style: TextStyle(color: Colors.black)),
+      title: Text(title, style: TextStyle(color: Colors.black, fontSize: 14)),
       // subtitle: Text(subtitle, style: TextStyle(color: Colors.black87, fontSize: 14)),
     );
   }

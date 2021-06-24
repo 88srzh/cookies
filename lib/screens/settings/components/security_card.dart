@@ -139,15 +139,10 @@ class _SecurityCardState extends State<SecurityCard> {
                               OutlinedButton(
                                 onPressed: () async {
                                   checkCurrentPasswordValid =
-                                      await userController
-                                          .validateCurrentPassword(
-                                              _passwordController.text);
-                                  // check and set newpassword
-                                  if (_formKeyNewPassword.currentState
-                                          .validate() &&
+                                      await userController.validateCurrentPassword(_passwordController.text);
+                                  if (_formKeyNewPassword.currentState.validate() &&
                                       checkCurrentPasswordValid) {
-                                    userController.updateUserPassword(
-                                        _newPasswordController.text);
+                                    userController.updateUserPassword(_newPasswordController.text);
                                     print('Новый пароль сохранен');
                                     setState(() {});
                                     Navigator.pop(context);

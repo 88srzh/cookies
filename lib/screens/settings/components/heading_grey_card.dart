@@ -9,7 +9,7 @@ class GreyCard extends StatelessWidget {
     return Container(
       height: 40,
       child: Container(
-        color: Colors.redAccent[600],
+        color: Colors.grey[50],
         // decoration: BoxDecoration(
         //   gradient: LinearGradient(
         //       begin: Alignment.topLeft,
@@ -19,7 +19,7 @@ class GreyCard extends StatelessWidget {
         child: ListTile(
           title: Padding(
             padding: EdgeInsets.only(bottom: getProportionateScreenWidth(6)),
-            child: Text(heading, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            child: Text(heading, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cookie/controller/user_controller.dart';
+import 'package:cookie/license/license_screen.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
@@ -62,6 +63,7 @@ class _BodyProfileState extends State<BodyProfile> {
             ),
             Text('\nПривет ${_currentUser.displayName}', style: TextStyle(fontSize: 20), textAlign: TextAlign.center),
             SizedBox(height: 20),
+            GreyCard(heading: 'Твой профиль'),
             CustomSettingsDivider(),
             ListTile(
               title: Text('Имя пользователя'),
@@ -77,13 +79,6 @@ class _BodyProfileState extends State<BodyProfile> {
               title: Text('Телефон'),
               trailing: Text('${_currentUser.phoneNumber}', style: TextStyle(fontSize: 14),),
             ),
-            // CustomSettingsDivider(),
-            // ListTile(
-            //   onTap: () {Navigator.pushNamed(context, SettingsScreen.routeName);},
-            //   leading: Icon(FontAwesomeIcons.cog),
-            //   title: Text('Настройки'),
-            //   trailing: Icon(Icons.keyboard_arrow_right),
-            // ),
             CustomSettingsDivider(),
             GreyCard(heading: 'Настройки приложения'),
             SwitchListTile(
@@ -96,9 +91,8 @@ class _BodyProfileState extends State<BodyProfile> {
                 ),
             CustomSettingsDivider(),
             GreyCard(heading: 'Аккаунт'),
-            ListTile(
-              title: Text('Сменить пароль'),
-              trailing: Icon(Icons.keyboard_arrow_right),
+            CustomProfileListTile(
+              title: 'Сменить пароль',
               onTap: () {
                 showDialog(
                     context: context,
@@ -229,7 +223,7 @@ class _BodyProfileState extends State<BodyProfile> {
             ),
             CustomSettingsDivider(),
             CustomProfileListTile(
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(context, LicenseScreen.routeName),
               title: 'Лицензия',
             ),
             CustomSettingsDivider(),
