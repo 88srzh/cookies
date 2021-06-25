@@ -124,12 +124,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 //   onPressed: () =>
                 // Navigator.pushNamed(context, FavoriteScreen.routeName),
                 // ),
-                CustomListTile(
-                  icon: Icon(Icons.settings),
-                  title: 'Настройки',
-                  onPressed: () =>
-                      Navigator.pushNamed(context, SettingsScreen.routeName),
-                ),
+                // CustomListTile(
+                //   icon: Icon(Icons.settings),
+                //   title: 'Настройки',
+                //   onPressed: () =>
+                //       Navigator.pushNamed(context, SettingsScreen.routeName),
+                // ),
                 CustomListTile(
                   icon: Icon(Icons.supervised_user_circle_outlined),
                   title: 'ТестПользователей',
@@ -148,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     onPressed: () async {
                       var userController = locator.get<UserController>();
                       userController.signOut();
-                      // context.read<AuthentificationService>().signOut();
                       Navigator.pushNamed(context, SignInScreen.routeName);
                     }),
                 // ! - Add screen logout google

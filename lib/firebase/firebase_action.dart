@@ -78,9 +78,7 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
 
 void updateItemCardRatingToPizza(GlobalKey<ScaffoldState> scaffoldKey, Item items) {
   var item = FirebaseDatabase.instance.reference().child('Pizza');
-  item
-      .child(items.key)
-      .set(items.toJson())
+  item.child(items.key).set(items.toJson())
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)

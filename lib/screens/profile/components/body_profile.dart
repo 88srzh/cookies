@@ -7,6 +7,7 @@ import 'package:cookie/models/user.dart';
 import 'package:cookie/screens/profile/components/avatar.dart';
 import 'package:cookie/screens/profile/components/custom_list_tile.dart';
 import 'package:cookie/screens/settings/components/heading_grey_card.dart';
+import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
@@ -113,7 +114,7 @@ class _BodyProfileState extends State<BodyProfile> {
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
-                                  child: Text('Сменить пароль', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                                  child: Text('Сменить пароль', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                                 ),
                                 Divider(),
                                 Padding(
@@ -233,7 +234,11 @@ class _BodyProfileState extends State<BodyProfile> {
             ),
             CustomSettingsDivider(),
             CustomProfileListTile(
-              onTap: () {},
+              onTap: () {
+                var userController = locator.get<UserController>();
+                userController.signOut();
+                Navigator.pushNamed(context, SignInScreen.routeName);
+              },
               title: 'Выйти',
             ),
             CustomSettingsDivider(),
