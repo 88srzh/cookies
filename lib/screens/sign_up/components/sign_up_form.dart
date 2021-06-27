@@ -59,23 +59,23 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(12)),
+      // key: _formKey,
       child: Column(
         children: [
           // ! fix username form
           // buildUsernameFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
           buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(10)),
           buildPasswordFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(10)),
           buildConfirmPasswordFormField(),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(100)),
+          // SizedBox(height: getProportionateScreenHeight(100)),
           OutlinedButton(
             child: Text('Продолжить',
-                style: TextStyle(color: Colors.black87, fontSize: 22)),
+                style: TextStyle(color: Colors.black87, fontSize: 18)),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
                 await locator.get<UserController>().signUpWithEmailAndPassword(
@@ -89,6 +89,7 @@ class _SignUpFormState extends State<SignUpForm> {
               }
             },
           ),
+          Text('Регистрируясь Вы принимаете Пользовательское соглашение'),
         ],
       ),
     );
@@ -116,12 +117,10 @@ class _SignUpFormState extends State<SignUpForm> {
       },
       // keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Подтвердите пароль',
+        filled: true,
+        labelText: 'Повторите пароль',
         hintText: 'Повторите пароль',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Lock.svg',
-        ),
+        fillColor: Colors.white60,
       ),
     );
   }
@@ -152,12 +151,14 @@ class _SignUpFormState extends State<SignUpForm> {
       },
       // keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
+        filled: true,
         labelText: 'Пароль',
-        hintText: 'Введите пароль',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Lock.svg',
-        ),
+        hintText: 'Пароль',
+        fillColor: Colors.white60,
+        // floatingLabelBehavior: FloatingLabelBehavior.always,
+        // suffixIcon: CustomSurffixIcon(
+        //   svgIcon: 'assets/icons/Lock.svg',
+        // ),
       ),
     );
   }
@@ -186,12 +187,10 @@ class _SignUpFormState extends State<SignUpForm> {
         return null;
       },
       decoration: InputDecoration(
+        filled: true,
         labelText: 'Почта',
-        hintText: 'Введите Вашу почту',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Mail.svg',
-        ),
+        hintText: 'Почта',
+        fillColor: Colors.white60,
       ),
     );
   }

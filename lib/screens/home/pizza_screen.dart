@@ -196,14 +196,20 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     InkWell(
                       splashColor: Colors.transparent,
                       onTap: () async {
+                      pizza[index].isFavorite = false;
                         pizza[index].favoriteCount += 1;
                         pizza[index].isFavorite = true;
-                        pizza[index].rating = pizza[index].favoriteCount.toDouble() / 1.1;
-                        pizza[index].rating = double.parse(pizza[index].rating.toStringAsFixed(1));
-                        // print(pizza[index].favoriteCount);
-                        // print(numberFavorite);
-                        updateItemCardRatingToPizza(_scaffoldKeyPizza, pizza[index]);
-                      },
+
+                        pizza[index].rating = pizza[index].favoriteCount
+                            .toDouble() / 1.1;
+                        pizza[index].rating = double.parse(pizza[index].rating
+                            .toStringAsFixed(1));
+                        updateItemCardRatingToPizza(
+                            _scaffoldKeyPizza, pizza[index]);
+
+
+
+    },
                       child: pizza[index].isFavorite
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_outline),

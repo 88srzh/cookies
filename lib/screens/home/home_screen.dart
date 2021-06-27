@@ -11,8 +11,8 @@ import 'package:cookie/screens/description/new_description_card.dart';
 import 'package:cookie/screens/home/donuts_screen.dart';
 import 'package:cookie/screens/home/pizza_screen.dart';
 import 'package:cookie/screens/profile/profile_screen.dart';
-import 'package:cookie/screens/settings/settings_screen.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
+import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     onPressed: () async {
                       var userController = locator.get<UserController>();
                       userController.signOut();
-                      Navigator.pushNamed(context, SignInScreen.routeName);
+                      Navigator.pushNamed(context, SplashScreenNew.routeName);
                     }),
                 // ! - Add screen logout google
                 CustomListTile(

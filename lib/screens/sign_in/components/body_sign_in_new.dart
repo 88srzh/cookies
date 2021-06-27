@@ -9,7 +9,6 @@ class BodySignInScreenNew extends StatelessWidget {
     return SafeArea(
         child: Stack(
           children: [
-
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -53,12 +52,10 @@ class BodySignInScreenNew extends StatelessWidget {
                       flex:1,
                         child: SingleChildScrollView(child: SignForm())),
                   ],
-
                 ),
             ),
-
           ],
-
-        ));
+        ),
+    );
   }
 }

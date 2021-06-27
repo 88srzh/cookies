@@ -1,6 +1,7 @@
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
+import 'package:cookie/screens/sign_up/sign_up_screen_new.dart';
 import 'package:cookie/screens/splash/components/splash_content_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
