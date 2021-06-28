@@ -1,11 +1,10 @@
 // import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
-// import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/screens/complete_profile/complete_profile_screen.dart';
-// import 'package:cookie/screens/sign_up/verify_screen.dart';
+import 'package:cookie/screens/home/home_screen.dart';
+import 'package:cookie/screens/terms_of_use/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
-import '../../../components/custom_surfix_icon.dart';
 import '../../../components/form_error.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -17,10 +16,12 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+  var _displayNameController = TextEditingController();
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
   var _repeatPasswordController = TextEditingController();
   var _usernameController = TextEditingController();
+  String displayName;
   String email;
   String password;
   String confirmPassword;
@@ -64,32 +65,73 @@ class _SignUpFormState extends State<SignUpForm> {
       // key: _formKey,
       child: Column(
         children: [
-          // ! fix username form
+          // TODO implement username form
           // buildUsernameFormField(),
-          buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(10)),
-          buildPasswordFormField(),
-          SizedBox(height: getProportionateScreenHeight(10)),
-          buildConfirmPasswordFormField(),
-          FormError(errors: errors),
-          // SizedBox(height: getProportionateScreenHeight(100)),
-          OutlinedButton(
-            child: Text('Продолжить',
-                style: TextStyle(color: Colors.black87, fontSize: 18)),
-            onPressed: () async {
-              if (_formKey.currentState.validate()) {
-                await locator.get<UserController>().signUpWithEmailAndPassword(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                    );
-                // Go to complete profile page
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                // ! fix verify screen
-                // Navigator.pushNamed(context, VerifyScreen.routeName);
-              }
-            },
+          Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                buildDisplayNameFormField(),
+                SizedBox(height: getProportionateScreenWidth(10)),
+                buildEmailFormField(),
+                SizedBox(height: getProportionateScreenHeight(10)),
+                buildPasswordFormField(),
+                SizedBox(height: getProportionateScreenHeight(10)),
+                buildConfirmPasswordFormField(),
+                FormError(errors: errors),
+                SizedBox(height: getProportionateScreenHeight(10)),
+      ],
           ),
-          Text('Регистрируясь Вы принимаете Пользовательское соглашение'),
+    ),
+          Row(
+            children: [
+            Expanded(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
+                    side: BorderSide(color: Colors.redAccent),
+                  ),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
+                child: Text('Продолжить',
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+              ),
+              onPressed: () async {
+                if (_formKey.currentState.validate()) {
+                  await locator.get<UserController>().signUpWithEmailAndPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      );
+                  var userController = locator.get<UserController>();
+                  var displayName = _displayNameController.text;
+                  userController.updateDisplayName(displayName);
+                  Navigator.pushNamed(context, HomeScreen.routeName);
+                  // Go to complete profile page
+                  // Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                  // TODO fix verify screen
+                  // Navigator.pushNamed(context, VerifyScreen.routeName);
+                }
+              },
+            ),
+          ),
+            ],
+          ),
+          SizedBox(height: getProportionateScreenWidth(5)),
+          Text('Регистрируясь Вы принимаете'),
+          InkWell
+            (child: Text('Пользовательское соглашение',
+            style: TextStyle(
+              fontSize: 15,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+          onTap: () => Navigator.pushNamed(context, TermsOfUseScreen.routeName),
+          ),
         ],
       ),
     );
@@ -155,10 +197,6 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: 'Пароль',
         hintText: 'Пароль',
         fillColor: Colors.white60,
-        // floatingLabelBehavior: FloatingLabelBehavior.always,
-        // suffixIcon: CustomSurffixIcon(
-        //   svgIcon: 'assets/icons/Lock.svg',
-        // ),
       ),
     );
   }
@@ -195,36 +233,62 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-  TextFormField buildUsernameFormField() {
+  TextFormField buildDisplayNameFormField() {
     return TextFormField(
-      controller: _usernameController,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => displayName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
-        } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          removeError(error: kNameNullError);
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kEmailNullError);
-          return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          addError(error: kNameNullError);
           return "";
         }
         return null;
       },
+      controller: _displayNameController,
       decoration: InputDecoration(
-        labelText: 'Имя пользователя',
-        hintText: 'Введите имя пользователя',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: 'assets/icons/Mail.svg',
-        ),
+        filled: true,
+        labelText: 'Имя',
+        hintText: 'Имя',
+        fillColor: Colors.white60,
       ),
     );
   }
+
+// TextFormField buildUsernameFormField() {
+//   return TextFormField(
+//     controller: _usernameController,
+//     onSaved: (newValue) => email = newValue,
+//     onChanged: (value) {
+//       if (value.isNotEmpty) {
+//         removeError(error: kEmailNullError);
+//       } else if (emailValidatorRegExp.hasMatch(value)) {
+//         removeError(error: kInvalidEmailError);
+//       }
+//       return null;
+//     },
+//     validator: (value) {
+//       if (value.isEmpty) {
+//         addError(error: kEmailNullError);
+//         return "";
+//       } else if (!emailValidatorRegExp.hasMatch(value)) {
+//         addError(error: kInvalidEmailError);
+//         return "";
+//       }
+//       return null;
+//     },
+//     decoration: InputDecoration(
+//       labelText: 'Имя пользователя',
+//       hintText: 'Введите имя пользователя',
+//       floatingLabelBehavior: FloatingLabelBehavior.always,
+//       suffixIcon: CustomSurffixIcon(
+//         svgIcon: 'assets/icons/Mail.svg',
+//       ),
+//     ),
+//   );
+// }
 }

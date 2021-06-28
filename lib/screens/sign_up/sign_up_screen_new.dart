@@ -33,13 +33,13 @@ class SignUpScreenNew extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: getProportionateScreenWidth(40)),
+                      SizedBox(height: getProportionateScreenWidth(80)),
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                           child: Text('123'),
                       ),
                       Expanded(
-                        child: SignUpForm(),
+                        child: SingleChildScrollView(child: SignUpForm()),
                       ),
                     ],
                   ),
