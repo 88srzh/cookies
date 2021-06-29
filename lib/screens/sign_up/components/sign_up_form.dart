@@ -107,6 +107,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         email: _emailController.text,
                         password: _passwordController.text,
                       );
+                  // TODO fix displayName update
                   var userController = locator.get<UserController>();
                   var displayName = _displayNameController.text;
                   userController.updateDisplayName(displayName);

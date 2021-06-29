@@ -26,13 +26,18 @@ class _BodyProfileState extends State<BodyProfile> {
   var _passwordController = TextEditingController();
   var _newPasswordController = TextEditingController();
   var _repeatPasswordController = TextEditingController();
+  var _displayNameController = TextEditingController();
 
   var userController = locator.get<UserController>();
 
   bool checkCurrentPasswordValid = true;
   bool _tapSounds = false;
 
+  String displayName;
+
+  // TODO refactoring?
   final GlobalKey<FormState> _formKeyNewPassword = GlobalKey<FormState>();
+  final _formKeyDisplayName = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -66,9 +71,115 @@ class _BodyProfileState extends State<BodyProfile> {
             SizedBox(height: 20),
             GreyCard(heading: 'Твой профиль'),
             CustomSettingsDivider(),
-            ListTile(
-              title: Text('Имя пользователя'),
-              trailing: Text('${_currentUser?.displayName}'),
+            GestureDetector(
+              onTap: () {
+                // TODO fix vertical size, do it flexible
+                showDialog(
+                  context: context,
+                  builder: (context) => Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: Builder(
+                      builder: (context) => AlertDialog(
+                        contentPadding: EdgeInsets.all(0.0),
+                        backgroundColor: Colors.transparent,
+                        content: Container(
+                          height: SizeConfig.itemHeight * getProportionateScreenWidth(0.45),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20), topRight: Radius.circular(20), bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                                child: Text('Сменить имя', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                              ),
+                              Divider(),
+                              // Padding(
+                              //   padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(8), horizontal: getProportionateScreenWidth(15)),
+                              //   child: Center(child:
+                              //   Text('Мы отправим ссылку для восстановления пароля Вам на почту', textAlign: TextAlign.center, style: TextStyle(fontSize: 14))),
+                              // ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: getProportionateScreenWidth(10),
+                                  right: getProportionateScreenWidth(10),
+                                  top: getProportionateScreenWidth(6),
+                                  bottom: getProportionateScreenWidth(14),
+                                ),
+                                child: Form(
+                                  // may be need another name to key
+                                  key: _formKeyDisplayName,
+                                  child: TextFormField(
+                                    controller: _displayNameController,
+                                    decoration: InputDecoration(
+                                      labelText: 'Имя',
+                                      hintText: 'Имя',
+                                      fillColor: Colors.white60,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
+                                                side: BorderSide(color: Colors.grey[300]),
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () => Navigator.pop(context),
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                            child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+                                          )),
+                                    ),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
+                                                side: BorderSide(color: Colors.redAccent),
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            var userController = locator.get<UserController>();
+                                            var displayName = _displayNameController.text;
+                                            userController.updateDisplayName(displayName);
+                                            setState(() {});
+                                            return Navigator.pop(context);
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                            child: Text('Отправить'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+              child: ListTile(
+                title: Text('Имя пользователя'),
+                trailing: Text('${_currentUser?.displayName}'),
+              ),
             ),
             CustomSettingsDivider(),
             ListTile(
