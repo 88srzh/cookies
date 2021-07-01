@@ -20,6 +20,8 @@ class _PancakesScreenState extends State<PancakesScreen> {
   List<Item> pancakes = new List<Item>.empty(growable: true);
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
 
+  GlobalKey<ScaffoldState> _scaffoldKeyPancakes = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -223,16 +225,24 @@ class _PancakesScreenState extends State<PancakesScreen> {
                   child: RatingBar.builder(
                     wrapAlignment: WrapAlignment.spaceBetween,
                     itemSize: 20,
-                    initialRating: 3,
-                    minRating: 1,
+                    initialRating: pancakes[index].rating,
+                    // minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
                     itemCount: 5,
                     itemPadding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
                     itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
-                    onRatingUpdate: (rating) {
+                    onRatingUpdate: (rating) async {
                       print(rating);
+                      pancakes[index].rating = rating;
+                      print(pancakes[index].rating);
+                      pancakes[index].rating = double.parse(pancakes[index].rating
+                          .toStringAsFixed(1));
+                      updateItemCardRatingToPancakes(
+                          _scaffoldKeyPancakes, pancakes[index]);
+                      setState(() {});
                     }),
+
                 ),
               ],
             ),

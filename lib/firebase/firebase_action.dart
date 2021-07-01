@@ -85,6 +85,15 @@ void updateItemCardRatingToPizza(GlobalKey<ScaffoldState> scaffoldKey, Item item
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
+void updateItemCardRatingToPancakes(GlobalKey<ScaffoldState> scaffoldKey, Item pancakes) {
+  var item = FirebaseDatabase.instance.reference().child('Pancakes');
+  item.child(pancakes.key).set(pancakes.toJson());
+      // .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+      // .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
+      // .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+      // .showSnackBar(SnackBar(content: Text('$e'))));
+}
+
 void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
   var cart = FirebaseDatabase.instance
       .reference()
