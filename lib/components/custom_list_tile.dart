@@ -5,7 +5,7 @@ class CustomListTile extends StatelessWidget {
   final String title;
   final Function onPressed;
 
-  const CustomListTile({Key key, this.icon, this.title, this.onPressed});
+  const CustomListTile({Key key, this.icon, this.title, this.onPressed, Icon trailing});
 
   @override
   Widget build(BuildContext context) {

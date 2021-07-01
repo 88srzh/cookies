@@ -7,6 +7,7 @@ import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class PancakesScreen extends StatefulWidget {
   @override
@@ -18,6 +19,8 @@ class _PancakesScreenState extends State<PancakesScreen> {
 
   List<Item> pancakes = new List<Item>.empty(growable: true);
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
+
+  GlobalKey<ScaffoldState> _scaffoldKeyPancakes = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -176,40 +179,72 @@ class _PancakesScreenState extends State<PancakesScreen> {
           ),
         ),
         Flexible(
+          // old container with numbers rating
+          // child: Container(
+          //   child: Padding(
+          //     padding: EdgeInsets.only(
+          //       left: getProportionateScreenWidth(15),
+          //       right: getProportionateScreenWidth(15),
+          //       top: getProportionateScreenWidth(15),
+          //     ),
+          //     child: Container(
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: [
+          //           InkWell(
+          //             splashColor: Colors.transparent,
+          //             onTap: () {
+          //               // tapFavourite();
+          //             },
+          //             // child: item.isFavorite
+          //             //     ? Icon(Icons.favorite)
+          //             //     : Icon(Icons.favorite_outline),
+          //             child: Icon(Icons.favorite_outline),
+          //           ),
+          //           InkWell(
+          //             onTap: () {},
+          //             child: Text(
+          //               '${pancakes[index].rating}',
+          //               style: TextStyle(
+          //                 fontSize: 16,
+          //                 fontWeight: FontWeight.w600,
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
           child: Container(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: getProportionateScreenWidth(15),
-                right: getProportionateScreenWidth(15),
-                top: getProportionateScreenWidth(15),
-              ),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                        // tapFavourite();
-                      },
-                      // child: item.isFavorite
-                      //     ? Icon(Icons.favorite)
-                      //     : Icon(Icons.favorite_outline),
-                      child: Icon(Icons.favorite_outline),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        '${pancakes[index].rating}',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: RatingBar.builder(
+                    wrapAlignment: WrapAlignment.spaceBetween,
+                    itemSize: 20,
+                    initialRating: pancakes[index].rating,
+                    // minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
+                    itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
+                    onRatingUpdate: (rating) async {
+                      print(rating);
+                      pancakes[index].rating = rating;
+                      print(pancakes[index].rating);
+                      pancakes[index].rating = double.parse(pancakes[index].rating
+                          .toStringAsFixed(1));
+                      updateItemCardRatingToPancakes(
+                          _scaffoldKeyPancakes, pancakes[index]);
+                      setState(() {});
+                    }),
+
                 ),
-              ),
+              ],
             ),
           ),
         ),

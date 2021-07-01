@@ -69,6 +69,7 @@ class _SignFormState extends State<SignForm> {
               Spacer(),
               GestureDetector(
                 onTap: () {
+                  // TODO fix vertical size, do it flexible
                   showDialog(
                       context: context,
                       builder: (context) => Scaffold(

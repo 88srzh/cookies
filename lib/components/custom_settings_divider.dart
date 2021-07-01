@@ -6,7 +6,7 @@ class CustomSettingsDivider extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 0.5,
-      color: Colors.black87,
+      color: Colors.black45,
     );
   }
 }
