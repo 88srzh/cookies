@@ -16,7 +16,7 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.grey[300]!),
+    borderSide: BorderSide(color: Colors.grey[300]),
     borderRadius: BorderRadius.circular(8),
   );
   return InputDecorationTheme(
