@@ -1,5 +1,4 @@
 import 'package:cookie/constants.dart';
-import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {
@@ -17,7 +16,7 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.grey[300]),
+    borderSide: BorderSide(color: Colors.grey[300]!),
     borderRadius: BorderRadius.circular(8),
   );
   return InputDecorationTheme(

@@ -1,17 +1,19 @@
+import 'dart:async';
+import 'dart:core';
+
 import 'package:cookie/models/favorite.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/settings.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
-import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-// import 'package:lint/analysis_options.yaml';
+import 'package:lint/analysis_options.yaml';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
