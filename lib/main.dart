@@ -13,6 +13,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+// import 'package:lint/lint.dart';
+// import 'package:surf_lint_rules/surf_lint_rules.dart';
 // import 'package:lint/analysis_options.yaml';
 
 Future<void> main() async {
@@ -25,6 +27,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  // MyApp({key? key}) : super(key: key);
   Widget build(BuildContext context) {
     // Widget buildLoading() => Center(child: CircularProgressIndicator());e
     return MultiProvider(
@@ -59,10 +62,10 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/cartPage':
-              return PageTransition(settings: settings, child: CartScreen(), type: PageTransitionType.fade);
+              return PageTransition<dynamic>(settings: settings, child: CartScreen(), type: PageTransitionType.fade);
               break;
             case '/descriptionPage':
-              return PageTransition(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
+              return PageTransition<dynamic>(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
               break;
             default:
               return null;
