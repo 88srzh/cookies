@@ -120,7 +120,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 240, 246, 2.0),
+                    // color: Color.fromRGBO(241, 240, 246, 2.0),
+                    color: Color.fromRGBO(245, 163, 157, 255),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       bottomLeft: Radius.circular(30),
@@ -196,32 +197,16 @@ class _PizzaScreenState extends State<PizzaScreen> {
                     InkWell(
                       splashColor: Colors.transparent,
                       onTap: () async {
-                        // if (pizza[index].isFavorite == false) {
+                      pizza[index].isFavorite = false;
                         pizza[index].favoriteCount += 1;
-                        // pizza[index].isFavorite == true;
-                        // }
-                        // } else {
-                        //   pizza[index].favoriteCount -= 1;
-                        //   pizza[index].isFavorite == false;
-                        // }
-                        // }
-
-                        // ! fix calculations at rating
-                        pizza[index].rating =
-                            pizza[index].favoriteCount.toDouble() / 1.1;
-
-                        // ! first option
-                        // var formatRating = NumberFormat('###.#', 'en_US');
-                        // pizza[index].rating = double.parse(formatRating.format(pizza[index].rating));
-
-                        // ! second option
+                        pizza[index].isFavorite = true;
+                        pizza[index].rating = pizza[index].favoriteCount
+                            .toDouble() / 1.1;
                         pizza[index].rating = double.parse(pizza[index].rating
                             .toStringAsFixed(1));
-                        // print(pizza[index].favoriteCount);
-                        // print(numberFavorite);
                         updateItemCardRatingToPizza(
                             _scaffoldKeyPizza, pizza[index]);
-                      },
+                        },
                       child: pizza[index].isFavorite
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_outline),

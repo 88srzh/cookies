@@ -15,9 +15,6 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       body: BodyProfile(),
-      // bottomNavigationBar: CustomBottomNavBar(
-      //   selectedMenu: MenuState.profile,
-      // ),
     );
   }
 }

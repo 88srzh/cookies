@@ -1,10 +1,12 @@
+import 'dart:async';
+import 'dart:core';
+
 import 'package:cookie/models/favorite.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/models/settings.dart';
 import 'package:cookie/routs.dart';
 import 'package:cookie/screens/cart/cart_screen.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
-import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
