@@ -1,0 +1,2 @@
+#include: package:surf_lint_rules/analysis_options.yaml
+#include: package:lint/analysis_options.yaml

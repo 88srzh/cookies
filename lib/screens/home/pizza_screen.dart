@@ -120,7 +120,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 240, 246, 2.0),
+                    // color: Color.fromRGBO(241, 240, 246, 2.0),
+                    color: Color.fromRGBO(245, 163, 157, 255),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       bottomLeft: Radius.circular(30),
