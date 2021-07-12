@@ -5,7 +5,7 @@
     "editor.minimap.enabled": false,
 
     "sync.gist": "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",
-    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+    "workbench.colorTheme": "Gruvbox DrakenLords Grey",
     "editor.fontSize": 15,
     "editor.defaultFormatter": "svipas.prettier-plus"
 }
