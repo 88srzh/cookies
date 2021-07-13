@@ -36,9 +36,10 @@ class AuthentificationService {
   }
 
   Future<UserModel> getUser() async {
-    var firebaseUser = _auth.currentUser;
-    return UserModel(firebaseUser.uid,
-        displayName: firebaseUser.displayName, email: firebaseUser.email);
+    var firebaseUser = await _auth.currentUser;
+    return firebaseUser != null ? UserModel(firebaseUser.uid,
+        displayName: firebaseUser.displayName, email: firebaseUser.email)
+        : null;
   }
 
   Future<void> updateDisplayName(String displayName) async {
