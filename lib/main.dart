@@ -27,7 +27,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // MyApp({key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
   Widget build(BuildContext context) {
     // Widget buildLoading() => Center(child: CircularProgressIndicator());e
     return MultiProvider(
