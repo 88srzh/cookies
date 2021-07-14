@@ -6,9 +6,11 @@ import 'package:cookie/models/cart.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class DonutsScreen extends StatefulWidget {
+  const DonutsScreen({Key key}) : super(key: key);
   static String routeName = '/donutsscreen';
 
   @override
@@ -16,15 +18,15 @@ class DonutsScreen extends StatefulWidget {
 }
 
 class _DonutsScreenState extends State<DonutsScreen> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKeyDonuts = new GlobalKey();
 
-  List<Item> item = new List<Item>.empty(growable: true);
+  List<Item> donuts = new List<Item>.empty(growable: true);
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: _scaffoldKey,
+      key: _scaffoldKeyDonuts,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -50,18 +52,18 @@ class _DonutsScreenState extends State<DonutsScreen> {
                   if (snapshot.hasData) {
                     var map =
                         snapshot.data.snapshot.value as Map<dynamic, dynamic>;
-                    item.clear();
+                    donuts.clear();
                     if (map != null) {
                       map.forEach((key, value) {
                         var donut =
                             new Item.fromJson(json.decode(json.encode(value)));
                         donut.key = key;
-                        item.add(donut);
+                        donuts.add(donut);
                       });
                     }
                     return StaggeredGridView.countBuilder(
                         crossAxisCount: 2,
-                        itemCount: item.length,
+                        itemCount: donuts.length,
                         padding: EdgeInsets.all(getProportionateScreenWidth(2)),
                         mainAxisSpacing: getProportionateScreenWidth(4),
                         crossAxisSpacing: getProportionateScreenWidth(2),
@@ -69,7 +71,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                           return InkWell(
                             child: GestureDetector(
                               onTap: () {
-                                addToCart(_scaffoldKey, item[index]);
+                                addToCart(_scaffoldKeyDonuts, donuts[index]);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -125,7 +127,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                     padding: EdgeInsets.symmetric(
                         horizontal: getProportionateScreenWidth(20),
                         vertical: getProportionateScreenWidth(10)),
-                    child: Text('${item[index].price}₽',
+                    child: Text('${donuts[index].price}₽',
                         style: TextStyle(fontWeight: FontWeight.w600)),
                   ),
                 ),
@@ -139,7 +141,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
           child: ClipRRect(
             child: Image(
               image: NetworkImage(
-                  item[index].image == "" ? 'NO IMAGE' : item[index].image),
+                  donuts[index].image == "" ? 'NO IMAGE' : donuts[index].image),
             ),
           ),
         ),
@@ -150,7 +152,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: Text('${item[index].title}',
+                  child: Text('${donuts[index].title}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -160,7 +162,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                 Flexible(
                   child: FittedBox(
                     fit: BoxFit.contain,
-                    child: Text('${item[index].categories}',
+                    child: Text('${donuts[index].categories}',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.grey)),
                   ),
@@ -171,37 +173,33 @@ class _DonutsScreenState extends State<DonutsScreen> {
         ),
         Flexible(
           child: Container(
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: getProportionateScreenWidth(15),
-                  right: getProportionateScreenWidth(15),
-                  top: getProportionateScreenWidth(15)
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: RatingBar.builder(
+                  wrapAlignment: WrapAlignment.spaceBetween,
+                  itemSize: 20,
+                  initialRating: donuts[index].rating,
+                  // minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemPadding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
+                  itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
+                  onRatingUpdate: (rating) async {
+                    print(rating);
+                    donuts[index].rating = rating;
+                    print(donuts[index].rating);
+                    donuts[index].rating = double.parse(donuts[index].rating
+                        .toStringAsFixed(1));
+                    updateItemCardRatingToPancakes(
+                        _scaffoldKeyDonuts, donuts[index]);
+                    setState(() {});
+                  }),
               ),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                        // tapFavourite();
-                      },
-                      // child: item.isFavorite
-                      //     ? Icon(Icons.favorite)
-                      //     : Icon(Icons.favorite_outline),
-                      child: Icon(Icons.favorite_outline),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        '${item[index].rating.toString()}',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            ],
             ),
           ),
         ),

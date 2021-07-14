@@ -1,11 +1,11 @@
 {
     "editor.fontLigatures": true,
 
-    "editor.fontFamily": "'Victor Mono', 'bold'",
+    "editor.fontFamily": "'Hack Regular, 'bold'",
     "editor.minimap.enabled": false,
 
     "sync.gist": "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",
-    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
-    "editor.fontSize": 15,
+    "workbench.colorTheme": "Gruvbox Dark Soft",
+    "editor.fontSize": 18,
     "editor.defaultFormatter": "svipas.prettier-plus"
 }
