@@ -1,7 +1,7 @@
 {
     "editor.fontLigatures": true,
 
-    "editor.fontFamily": "'Hack Regular, 'bold'",
+    "editor.fontFamily": "'Hack Bold, 'bold'",
     "editor.minimap.enabled": false,
 
     "sync.gist": "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",
