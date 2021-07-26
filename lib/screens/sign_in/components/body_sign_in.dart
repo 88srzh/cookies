@@ -1,11 +1,9 @@
 // import 'package:cookie/screens/auth/authentification_service.dart';
 // import 'package:cookie/screens/auth/google_sign_in.dart';
-import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/screens/auth/authentification_service.dart';
 import 'package:cookie/locator.dart';
 import 'package:cookie/screens/sign_in/components/sign_in_form.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
-import 'package:cookie/screens/splash/splash_screen.dart';
 import 'package:cookie/screens/splash/splash_screen_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';

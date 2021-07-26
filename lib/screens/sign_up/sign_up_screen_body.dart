@@ -3,7 +3,7 @@ import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SignUpScreenNew extends StatelessWidget {
+class SignUpScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,7 +36,8 @@ class SignUpScreenNew extends StatelessWidget {
                       SizedBox(height: getProportionateScreenWidth(80)),
                       Expanded(
                         flex: 1,
-                          child: Text('123'),
+                        // ! TODO: fix it
+                          child: Text(''),
                       ),
                       Expanded(
                         child: SingleChildScrollView(child: SignUpForm()),
@@ -44,8 +45,8 @@ class SignUpScreenNew extends StatelessWidget {
                     ],
                   ),
             ),
-
           ],
-        ));
+        ),
+      );
   }
 }

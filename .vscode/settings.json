@@ -1,11 +1,12 @@
 {
-    "editor.fontLigatures": true,
+  "editor.fontLigatures": true,
 
-    "editor.fontFamily": "'Hack Bold, 'bold'",
-    "editor.minimap.enabled": false,
+  "editor.fontFamily": "'Hack Bold, 'bold'",
+  "editor.minimap.enabled": false,
 
-    "sync.gist": "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",
-    "workbench.colorTheme": "Gruvbox Dark Soft",
-    "editor.fontSize": 18,
-    "editor.defaultFormatter": "svipas.prettier-plus"
+  "sync.gist": "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",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
+  "editor.fontSize": 18,
+  "editor.defaultFormatter": "svipas.prettier-plus",
+  "editor.formatOnSave": true
 }
