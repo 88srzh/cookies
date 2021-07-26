@@ -37,14 +37,15 @@ class AuthentificationService {
 
   Future<UserModel> getUser() async {
     var firebaseUser = await _auth.currentUser;
-    return firebaseUser != null ? UserModel(firebaseUser.uid,
-        displayName: firebaseUser.displayName, email: firebaseUser.email)
+    return firebaseUser != null
+        ? UserModel(firebaseUser.uid,
+            displayName: firebaseUser.displayName, email: firebaseUser.email)
         : null;
   }
 
   Future<void> updateDisplayName(String displayName) async {
     var user = _auth.currentUser;
-    user.updateProfile(displayName: displayName);
+    user.updateDisplayName(displayName);
   }
 
   // Future<void> updateDisplaySurName(String displaySurName) async {
