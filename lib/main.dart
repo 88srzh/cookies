@@ -32,28 +32,6 @@ class MyApp extends StatelessWidget {
     // Widget buildLoading() => Center(child: CircularProgressIndicator());e
     return MultiProvider(
       providers: [
-        // Provider<AuthentificationService>(
-        //     create: (_) => AuthentificationService(FirebaseAuth.instance)),
-        // StreamProvider(
-        //   create: (context) => context.read<AuthentificationService>().authStateChanges,
-        //   initialData: null,
-        // ),
-        // ChangeNotifierProvider(
-        //   create: (context) => GoogleSignInProvider(),
-        //   child: StreamBuilder(
-        //     stream: FirebaseAuth.instance.authStateChanges(),
-        //     builder: (context, snapshot) {
-        //       final googleProvider = Provider.of<GoogleSignInProvider>(context);
-        //       if (googleProvider.isSigningIn) {
-        //         return buildLoading();
-        //       } else if (snapshot.hasData) {
-        //         return HomeScreen();
-        //       } else {
-        //         return SignInScreenNew();F
-        //       }
-        //     },
-        //   ),
-        // ),
         ChangeNotifierProvider.value(value: SettingsItem()),
         ChangeNotifierProvider.value(value: Favorite()),
       ],

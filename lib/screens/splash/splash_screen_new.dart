@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class SplashScreenNew extends StatelessWidget {
   final Firebase app;
   static String routeName = '/splashScreenNew';
-
   const SplashScreenNew({Key key, this.app});
+  
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

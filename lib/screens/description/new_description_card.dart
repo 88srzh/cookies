@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class NewDescriptionScreen extends StatefulWidget {
   static const routeName = '/description';
-  NewDescriptionScreen({Key key}) : super(key: key);
+  NewDescriptionScreen({Key key}) ;
 
   @override
   _NewDescriptionScreenState createState() => _NewDescriptionScreenState();
@@ -19,6 +19,7 @@ class _NewDescriptionScreenState extends State<NewDescriptionScreen> {
   List<DescriptionsItem> description =
       new List<DescriptionsItem>.empty(growable: true);
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

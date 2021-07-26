@@ -6,8 +6,6 @@ class AuthentificationService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // AuthentificationService();
-  // Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
   Stream<User> get authStateChanges => _auth.authStateChanges();
 
   Future<void> signOut() async {
@@ -37,26 +35,22 @@ class AuthentificationService {
 
   Future<UserModel> getUser() async {
     var firebaseUser = await _auth.currentUser;
-    return firebaseUser != null ? UserModel(firebaseUser.uid,
-        displayName: firebaseUser.displayName, email: firebaseUser.email)
+    return firebaseUser != null
+        ? UserModel(firebaseUser.uid,
+            displayName: firebaseUser.displayName, email: firebaseUser.email)
         : null;
   }
 
   Future<void> updateDisplayName(String displayName) async {
     var user = _auth.currentUser;
-    user.updateProfile(displayName: displayName);
+    user.updateDisplayName(displayName);
   }
 
-  // Future<void> updateDisplaySurName(String displaySurName) async {
+  // ! TODO: fix updatePhoneNumber
+  // void updatePhoneNumber(String phoneNumber) async {
   //   var user = _auth.currentUser;
-  //   user.updateProfile(displaySurName: displaySurName);
+  //   // user.updatePhoneNumber();
   // }
-
-  // ! fix
-  void updatePhoneNumber(String phoneNumber) async {
-    var user = _auth.currentUser;
-    // user.updatePhoneNumber();
-  }
 
   Future<bool> validatePassword(String password) async {
     var firebaseUser = _auth.currentUser;

@@ -44,21 +44,27 @@ void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   });
 }
 
-void redirectToDescriptionScreen(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+void redirectToDescriptionScreen(
+    GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   var soloItem = FirebaseDatabase.instance
       .reference()
       .child('NewCart')
       .child('UNIQUE_USER_ID');
   soloItem.child(item.key).once().then((DataSnapshot snapshot) {
     Cart newItem = new Cart(
-      title: item.title,
-      image: item.image,
-      key: item.key,
-      price: item.price,
-      totalPrice: double.parse(item.price));
-    soloItem.child(item.key).set(newItem.toJson()).then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-    .showSnackBar(SnackBar(content: Text('Перешли на страницу с описанием')))).catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-    .showSnackBar(SnackBar(content: Text('$e'))));
+        title: item.title,
+        image: item.image,
+        key: item.key,
+        price: item.price,
+        totalPrice: double.parse(item.price));
+    soloItem
+        .child(item.key)
+        .set(newItem.toJson())
+        .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+            .showSnackBar(
+                SnackBar(content: Text('Перешли на страницу с описанием'))))
+        .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+            .showSnackBar(SnackBar(content: Text('$e'))));
   });
 }
 
@@ -76,22 +82,26 @@ void updateToCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
-void updateItemCardRatingToPizza(GlobalKey<ScaffoldState> scaffoldKey, Item items) {
+void updateItemCardRatingToPizza(
+    GlobalKey<ScaffoldState> scaffoldKey, Item items) {
   var item = FirebaseDatabase.instance.reference().child('Pizza');
-  item.child(items.key).set(items.toJson())
+  item
+      .child(items.key)
+      .set(items.toJson())
       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
-void updateItemCardRatingToPancakes(GlobalKey<ScaffoldState> scaffoldKey, Item pancakes) {
+void updateItemCardRatingToPancakes(
+    GlobalKey<ScaffoldState> scaffoldKey, Item pancakes) {
   var item = FirebaseDatabase.instance.reference().child('Pancakes');
   item.child(pancakes.key).set(pancakes.toJson());
-      // .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-      // .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
-      // .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-      // .showSnackBar(SnackBar(content: Text('$e'))));
+  // .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+  // .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
+  // .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+  // .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
 void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
@@ -108,7 +118,8 @@ void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {
           .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
-void redirectToDescriptionPancakes(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+void redirectToDescriptionPancakes(
+    GlobalKey<ScaffoldState> scaffoldKey, Item item) {
   var descScreen = FirebaseDatabase.instance
       .reference()
       .child('DescriptionItem')
@@ -147,28 +158,31 @@ void redirectToDescriptionPancakes(GlobalKey<ScaffoldState> scaffoldKey, Item it
               .showSnackBar(SnackBar(content: Text('fucking work'))))
           .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('$e'))));
-
     }
   });
 }
+
 // ! TODO fix to display only one item
 void redirectToDescriptionSecond(
     GlobalKey<ScaffoldState> scaffoldKey, Item item) {
-  var descScreen = FirebaseDatabase.instance.reference()
-      .child('DescriptionItem');
+  var descScreen = FirebaseDatabase.instance
+      .reference()
+      .child('DescriptionItem')
+      .child('Items');
   descScreen.child(item.key).once().then((DataSnapshot snapshot) {
     // If user already have item in description
-    if (snapshot.value != null) {
-      var newDescription =
-          Item.fromJson(json.decode(json.encode(snapshot.value)));
-      descScreen
-          .child(item.key)
-          .set(newDescription.toJson())
-          .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(SnackBar(content: Text('Update successfully'))))
-          .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(SnackBar(content: Text('$e'))));
-    } else {
+    // if (snapshot.value != null) {
+    //   var newDescription =
+    //       Item.fromJson(json.decode(json.encode(snapshot.value)));
+    //   descScreen
+    //       .child(item.key)
+    //       .set(newDescription.toJson())
+    //       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('Update successfully'))))
+    //       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('$e'))));
+    // }
+    if (snapshot.value == null) {
       DescriptionsItem description = new DescriptionsItem(
           key: item.key,
           title: item.title,
@@ -190,6 +204,7 @@ void redirectToDescriptionSecond(
               .showSnackBar(SnackBar(content: Text('fucking work'))))
           .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
               .showSnackBar(SnackBar(content: Text('$e'))));
-    }
+    } else
+      return;
   });
 }

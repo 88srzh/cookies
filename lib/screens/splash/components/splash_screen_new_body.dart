@@ -1,12 +1,12 @@
 import 'package:cookie/constants.dart';
 import 'package:cookie/screens/sign_in/sign_in_screen.dart';
 import 'package:cookie/screens/sign_up/sign_up_screen.dart';
-import 'package:cookie/screens/sign_up/sign_up_screen_new.dart';
 import 'package:cookie/screens/splash/components/splash_content_new.dart';
 import 'package:cookie/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreenNewBody extends StatefulWidget {
+  const SplashScreenNewBody({Key key});
   @override
   _SplashScreenNewBodyState createState() => _SplashScreenNewBodyState();
 }
@@ -33,111 +33,130 @@ class _SplashScreenNewBodyState extends State<SplashScreenNewBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                image: AssetImage('assets/images/background-splash-screen-second.jpg'),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/images/background-splash-screen-second.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Expanded(
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
                     flex: 4,
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                          child: Image(
-                            image: AssetImage('assets/images/logo-new.png'),
-                          ),
-                          // child: Text('LOGO', style: TextStyle(color: Colors.white),)
-                    )),
-                  SizedBox(height: getProportionateScreenWidth(100)),
-                  Expanded(
-                      child: PageView.builder(
-                        onPageChanged: (value) {
-                          setState(() {
-                            _currentPage = value;
-                          });
-                        },
-                        itemCount: splashData.length,
-                        itemBuilder: (context, index) => SplashContentNew(
-                          headingText: splashData[index]['headingText'],
-                          middleText: splashData[index]['middleText'],
-                          bottomText: splashData[index]['bottomText'],
-                          ),
+                      child: Image(
+                        image: AssetImage('assets/images/logo-new.png'),
                       ),
+                    ),
+                    ),
+                SizedBox(height: getProportionateScreenWidth(100)),
+                Expanded(
+                  child: PageView.builder(
+                    onPageChanged: (value) {
+                      setState(() {
+                        _currentPage = value;
+                      });
+                    },
+                    itemCount: splashData.length,
+                    itemBuilder: (context, index) => SplashContentNew(
+                      headingText: splashData[index]['headingText'],
+                      middleText: splashData[index]['middleText'],
+                      bottomText: splashData[index]['bottomText'],
+                    ),
                   ),
-                  Expanded(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:
-                            List.generate(
-                                splashData.length,
-                                    (index) => buildDotNew(index: index),
-                            ),
-                        ),
-                      ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(12)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(4)),
-                                child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
-                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
-                                              side: BorderSide(color: Colors.redAccent),
-                                            )
-                                        )
-                                    ),
-                                    onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
-                                      child: Text('Присоединиться', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
-                                )),
-                          )),
-                          Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(4)),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(getProportionateScreenWidth(8)),
-                                        side: BorderSide(color: Colors.white),
-                                      )
-                                    )
-                                  ),
-                                    onPressed: () => Navigator.pushNamed(context, SignInScreen.routeName),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(14)),
-                                      child: Text('Войти', style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
-                                )),
-                          )),
-                        ],
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        splashData.length,
+                        (index) => buildDotNew(index: index),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: getProportionateScreenWidth(12)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                            child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getProportionateScreenWidth(4)),
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.redAccent),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        getProportionateScreenWidth(8)),
+                                    side: BorderSide(color: Colors.redAccent),
+                                  ))),
+                              onPressed: () => Navigator.pushNamed(
+                                  context, SignUpScreen.routeName),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: getProportionateScreenWidth(14)),
+                                child: Text('Присоединиться',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                              )),
+                        )),
+                        Expanded(
+                            child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getProportionateScreenWidth(4)),
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        getProportionateScreenWidth(8)),
+                                    side: BorderSide(color: Colors.white),
+                                  ))),
+                              onPressed: () => Navigator.pushNamed(
+                                  context, SignInScreen.routeName),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: getProportionateScreenWidth(14)),
+                                child: Text('Войти',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                              )),
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-    ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 

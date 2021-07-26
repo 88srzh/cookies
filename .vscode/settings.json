@@ -1,6 +1,7 @@
 {
-    "editor.fontLigatures": true,
+  "editor.fontLigatures": true,
 
+<<<<<<< HEAD
     "editor.fontFamily": "'DejaVu Sans'",
     "editor.minimap.enabled": false,
 
@@ -9,3 +10,14 @@
     "editor.fontSize": 15,
     "editor.defaultFormatter": "svipas.prettier-plus"
 }
+=======
+  "editor.fontFamily": "'DejaVu Sans'",
+  "editor.minimap.enabled": false,
+
+  "sync.gist": "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",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
+  "editor.fontSize": 18,
+  "editor.defaultFormatter": "svipas.prettier-plus",
+  "editor.formatOnSave": true
+}
+>>>>>>> desc

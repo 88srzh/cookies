@@ -36,7 +36,7 @@ class _BodyProfileState extends State<BodyProfile> {
   String displayName;
 
   // TODO refactoring?
-  final GlobalKey<FormState> _formKeyNewPassword = GlobalKey<FormState>();
+  final _formKeyNewPassword = GlobalKey<FormState>();
   final _formKeyDisplayName = GlobalKey<FormState>();
 
   @override

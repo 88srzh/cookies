@@ -1,5 +1,5 @@
-import 'package:cookie/screens/sign_up/components/body_sign_up.dart';
-import 'package:cookie/screens/sign_up/sign_up_screen_new.dart';
+
+import 'package:cookie/screens/sign_up/sign_up_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -7,7 +7,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SignUpScreenNew(),
+      body: SignUpScreenBody(),
     );
   }
 }
