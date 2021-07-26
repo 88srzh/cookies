@@ -1,11 +1,11 @@
 {
     "editor.fontLigatures": true,
 
-    "editor.fontFamily": "'Ubuntu Mono', 'bold'",
+    "editor.fontFamily": "'DejaVu Sans'",
     "editor.minimap.enabled": false,
 
     "sync.gist": "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",
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
-    "editor.fontSize": 18,
+    "workbench.colorTheme": "Monokai Pro",
+    "editor.fontSize": 15,
     "editor.defaultFormatter": "svipas.prettier-plus"
 }
