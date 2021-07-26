@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/screens/description/new_description_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,9 @@ class _DonutsScreenState extends State<DonutsScreen> {
                           return InkWell(
                             child: GestureDetector(
                               onTap: () {
-                                addToCart(_scaffoldKeyDonuts, donuts[index]);
+                                // addToCart(_scaffoldKeyDonuts, donuts[index]);
+                                redirectToDescriptionSecond(
+                                    _scaffoldKeyDonuts, donuts[index]);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -174,32 +177,34 @@ class _DonutsScreenState extends State<DonutsScreen> {
         Flexible(
           child: Container(
             child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: RatingBar.builder(
-                  wrapAlignment: WrapAlignment.spaceBetween,
-                  itemSize: 20,
-                  initialRating: donuts[index].rating,
-                  // minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
-                  itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
-                  onRatingUpdate: (rating) async {
-                    print(rating);
-                    donuts[index].rating = rating;
-                    print(donuts[index].rating);
-                    donuts[index].rating = double.parse(donuts[index].rating
-                        .toStringAsFixed(1));
-                    updateItemCardRatingToPancakes(
-                        _scaffoldKeyDonuts, donuts[index]);
-                    setState(() {});
-                  }),
-              ),
-            ],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: RatingBar.builder(
+                      wrapAlignment: WrapAlignment.spaceBetween,
+                      itemSize: 20,
+                      initialRating: donuts[index].rating,
+                      // minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(2)),
+                      itemBuilder: (context, _) =>
+                          Icon(Icons.star, color: Colors.amber),
+                      onRatingUpdate: (rating) async {
+                        print(rating);
+                        donuts[index].rating = rating;
+                        print(donuts[index].rating);
+                        donuts[index].rating = double.parse(
+                            donuts[index].rating.toStringAsFixed(1));
+                        updateItemCardRatingToPancakes(
+                            _scaffoldKeyDonuts, donuts[index]);
+                        setState(() {});
+                      }),
+                ),
+              ],
             ),
           ),
         ),
