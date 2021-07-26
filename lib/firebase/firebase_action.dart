@@ -158,17 +158,18 @@ void redirectToDescriptionSecond(
       .child('DescriptionItem');
   descScreen.child(item.key).once().then((DataSnapshot snapshot) {
     // If user already have item in description
-    if (snapshot.value != null) {
-      var newDescription =
-          Item.fromJson(json.decode(json.encode(snapshot.value)));
-      descScreen
-          .child(item.key)
-          .set(newDescription.toJson())
-          .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(SnackBar(content: Text('Update successfully'))))
-          .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-              .showSnackBar(SnackBar(content: Text('$e'))));
-    } else {
+    // if (snapshot.value != null) {
+    //   var newDescription =
+    //       Item.fromJson(json.decode(json.encode(snapshot.value)));
+    //   descScreen
+    //       .child(item.key)
+    //       .set(newDescription.toJson())
+    //       .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('Update successfully'))))
+    //       .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+    //           .showSnackBar(SnackBar(content: Text('$e'))));
+    // } 
+    if (snapshot.value == null) {
       DescriptionsItem description = new DescriptionsItem(
           key: item.key,
           title: item.title,

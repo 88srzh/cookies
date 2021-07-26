@@ -1,7 +1,6 @@
 import 'package:cookie/components/custom_surfix_icon.dart';
 import 'package:cookie/controller/user_controller.dart';
 import 'package:cookie/locator.dart';
-import 'package:cookie/models/user.dart';
 import 'package:flutter/material.dart';
 
 class BodyForgotPassword2 extends StatefulWidget {
@@ -13,8 +12,8 @@ class _BodyForgotPassword2State extends State<BodyForgotPassword2> {
   var _emailController = TextEditingController();
   final _formKeyEmail = GlobalKey<FormState>();
   var userController = locator.get<UserController>();
-  // UserModel _currentUser = locator.get<UserController>().currentUser;
   String email;
+
   @override
   Widget build(BuildContext context) {
     return Container(
