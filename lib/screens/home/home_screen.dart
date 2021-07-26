@@ -24,44 +24,22 @@ class HomeScreen extends StatefulWidget {
   final UserModel currentUser;
   static String routeName = '/dindon_main';
 
-  const HomeScreen({this.currentUser});
+  const HomeScreen({Key key, this.currentUser});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  // TabController _tabController;
   List<Cart> newCarts = new List<Cart>.empty(growable: true);
   GlobalKey _bottomNavigationKey = GlobalKey();
-  // GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
   List<Widget> _pages;
   Widget _donutsPage;
   Widget _burgersPage;
   Widget _pancakesPage;
   Widget _pizzaPage;
-  // int _currentIndex;
   Widget _currentPage;
-  // double currentPage = 0;
-  // int currentTab = 0;
+  
   @override
-  // ! прошлый таб контроллер сверху
-  // void initState() {
-  //   super.initState();
-  //   _tabController = TabController(length: 4, vsync: this);
-  //   _tabController.addListener(_handleTabSelecion);
-  // }
-
-  // void _handleTabSelecion() {
-  //   setState(() {});
-  // }
-
-  // @override
-  // void dispose() {
-  //   _tabController.dispose();
-  //   super.dispose();
-  // }
-  // -----------------------------------------------------------------------------
-
   void initState() {
     super.initState();
     _donutsPage = DonutsScreen();
@@ -71,33 +49,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     _pages = [_donutsPage, _burgersPage, _pancakesPage, _pizzaPage];
 
-    // _currentIndex = 0;
     _currentPage = _donutsPage;
   }
 
   void changeTab(int index) {
     setState(() {
-      // _currentIndex = index;
       _currentPage = _pages[index];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // var uid = widget.currentUser.uid;
-    // final user = FirebaseAuth.instance.currentUser;
-    // _pageController.addListener(() {
-    //   setState(() {
-    //     currentPage = _pageController.page;
-    //   });
-    // });
-
-    // _tabController.addListener(() {
-    //   setState(() {
-    //     currentTab = _tabController.index;
-    //   });
-    // });
-
     return DefaultTabController(
       length: 4,
       initialIndex: 3,
@@ -135,12 +97,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   onPressed: () =>
                       Navigator.pushNamed(context, TestAuthScreen.routeName),
                 ),
-                // CustomListTile(
-                //   icon: Icon(Icons.add_shopping_cart),
-                //   title: 'Корзина',
-                //   onPressed: () =>
-                //       Navigator.pushNamed(context, CartScreen.routeName),
-                // ),
                 CustomListTile(
                     icon: Icon(Icons.exit_to_app),
                     title: 'Выйти',
@@ -165,37 +121,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
           ),
           appBar: AppBar(
-            // title: Text('Главная страница'),
-
-            // ! - third option appbar
-            // leading: Icon(
-            //   Icons.menu,
-            // ),
-            // actions: [
-            //   Icon(Icons.favorite),
-            //   Padding(
-            //     padding: EdgeInsets.symmetric(horizontal: 16),
-            //     child: Icon(Icons.search),
-            //   ),
-            //   Icon(Icons.more_vert),
-            // ],
-            // backgroundColor: Colors.purple,
-
-            // ! - second option appbar
-            // actions: [
-            //   PopupMenuButton<String>(
-            //     onSelected: handleClick,
-            //     itemBuilder: (BuildContext context) {
-            //       return {'Профиль', 'Настройки', 'Выйти'}.map((String choice) {
-            //         return PopupMenuItem<String>(
-            //           value: choice,
-            //           child: Text(choice),
-            //         );
-            //       }).toList();
-            //     },
-            //   ),
-            // ],
-            // ! - first option
             leading: Builder(
               builder: (BuildContext context) {
                 return IconButton(
@@ -226,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             .reference()
                             .child('NewCart')
                             .child('UNIQUE_USER_ID')
-                            .onValue, // use FirebaseAuth uid
+                            .onValue, //  TODO: fix to use FirebaseAuth uid
                         builder: (BuildContext context,
                             AsyncSnapshot<Event> snapshot) {
                           var numberItemInCart = 0;
@@ -280,62 +205,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ],
-            // ! - tabbar
-            // bottom: TabBar(
-            //   controller: _tabController,
-            //   labelColor: Colors.black,
-            //   unselectedLabelColor: Colors.grey,
-            //   tabs: [
-            //     Tab(
-            //       text: 'Пончики',
-            //       icon: SvgPicture.asset(
-            //         'assets/icons/donut32-min.svg',
-            //         color:
-            //             _tabController.index == 0 ? Colors.black : Colors.grey,
-            //       ),
-            //     ),
-            //     Tab(
-            //       text: 'Бургеры',
-            //       icon: SvgPicture.asset(
-            //         'assets/icons/burger_32-min.svg',
-            //         color:
-            //             _tabController.index == 1 ? Colors.black : Colors.grey,
-            //       ),
-            //     ),
-            //     Tab(
-            //       text: 'Блинчики',
-            //       icon: SvgPicture.asset(
-            //         'assets/icons/puncake2_32.svg',
-            //         color:
-            //             _tabController.index == 2 ? Colors.black : Colors.grey,
-            //       ),
-            //     ),
-            //     Tab(
-            //       text: 'Пицца',
-            //       icon: SvgPicture.asset(
-            //         'assets/icons/pizza_32.svg',
-            //         color:
-            //             _tabController.index == 3 ? Colors.black : Colors.grey,
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ),
           backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
-          // body: TabBarView(
-          //   // controller: _pageController,
-          //   controller: _tabController,
-          //   children: [
-          //     DonutsScreen(),
-          //     BurgersScreen(),
-          //     PancakesScreen(),
-          //     PizzaScreen(),
-          //   ],
-          // ),
           body: _currentPage,
           bottomNavigationBar: CurvedNavigationBar(
-            // backgroundColor: Colors.redAccent,
-            // color: Colors.transparent,
             key: _bottomNavigationKey,
             index: 0,
             items: [
@@ -359,13 +232,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             height: 55,
             color: Color.fromRGBO(255,223,185,150),
             buttonBackgroundColor: Colors.white54,
-            // buttonBackgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
             backgroundColor: Colors.white30,
-            // backgroundColor: Color.fromRGBO(248, 219, 221, 1.0),
             animationCurve: Curves.ease,
             animationDuration: Duration(milliseconds: 600),
             onTap: (index) => changeTab(index),
-            // currentIndex: _currentIndex,
             letIndexChange: (index) => true,
           ),
         ),
