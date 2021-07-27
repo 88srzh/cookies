@@ -42,9 +42,9 @@ class MyApp extends StatelessWidget {
             case '/cartPage':
               return PageTransition<dynamic>(settings: settings, child: CartScreen(), type: PageTransitionType.fade);
               break;
-            case '/descriptionPage':
-              return PageTransition<dynamic>(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
-              break;
+            // case '/descriptionPage':
+            //   return PageTransition<dynamic>(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
+            //   break;
             default:
               return null;
           }

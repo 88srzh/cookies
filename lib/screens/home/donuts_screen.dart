@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/screens/description/descriprion_screen.dart';
 import 'package:cookie/screens/description/new_description_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -73,8 +74,9 @@ class _DonutsScreenState extends State<DonutsScreen> {
                             child: GestureDetector(
                               onTap: () {
                                 // addToCart(_scaffoldKeyDonuts, donuts[index]);
-                                redirectToDescriptionSecond(
-                                    _scaffoldKeyDonuts, donuts[index]);
+                                // redirectToDescriptionSecond(
+                                //     _scaffoldKeyDonuts, donuts[index]);
+                                DescriptionScreen(donut: donuts[index]);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -209,6 +211,17 @@ class _DonutsScreenState extends State<DonutsScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class DescriptionScreen extends StatelessWidget {
+  const DescriptionScreen({donut}) ;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: null,
     );
   }
 }
