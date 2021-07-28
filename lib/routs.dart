@@ -56,5 +56,4 @@ final Map<String, WidgetBuilder> routes = {
   DonutsScreen.routeName: (context) => DonutsScreen(),
   BurgersScreen.routeName: (context) => BurgersScreen(),
   ForgotPassword2.routeName: (context) => ForgotPassword2(),
-  DescriptionScreen.routeName: (context) => DescriptionScreen(),
 };

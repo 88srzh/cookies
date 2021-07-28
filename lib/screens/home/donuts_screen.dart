@@ -73,11 +73,10 @@ class _DonutsScreenState extends State<DonutsScreen> {
                           return InkWell(
                             child: GestureDetector(
                               onTap: () {
-                                // addToCart(_scaffoldKeyDonuts, donuts[index]);
+                                addToCart(_scaffoldKeyDonuts, donuts[index]);
                                 // redirectToDescriptionSecond(
                                 // //     _scaffoldKeyDonuts, donuts[index]);
                                 // DescriptionScreen(donut: donuts[index]);
-                                Navigator.pushNamed(context, DescriptionScreen.routeName);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -212,64 +211,6 @@ class _DonutsScreenState extends State<DonutsScreen> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class DescriptionScreen extends StatelessWidget {
-  final Item donut;
-  const DescriptionScreen({Key key, this.donut}) ;
-  static String routeName = '/descriptionScreen';
-
-  @override
-  Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> _scaffoldKeyDonuts = new GlobalKey();
-    List<Item> donuts;
-
-    return Container(
-      key: _scaffoldKeyDonuts,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]],
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: getProportionateScreenWidth(10),
-          left: getProportionateScreenWidth(15),
-          right: getProportionateScreenWidth(15),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-            child: StreamBuilder(
-              stream: FirebaseDatabase.instance
-              .reference()
-              .child('Donuts')
-              .onValue,
-              builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
-                if (snapshot.hasData) {
-                  var map = snapshot.data.snapshot.value as Map<dynamic, dynamic>;
-                  donuts.clear();
-                  if (map != null) {
-                    map.forEach((key, value) {
-                      var donut = new Item.fromJson(json.decode(json.encode(value)));
-                    donut.key = key;
-                    });
-                  }
-                  return  Text('123');
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
-            ),
-
-          ],
-          ),
-        ),
     );
   }
 }

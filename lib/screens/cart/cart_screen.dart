@@ -6,6 +6,7 @@ import 'package:cookie/models/cart.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CartScreen extends StatefulWidget {
   CartScreen({Key key}) : super(key: key);
@@ -37,7 +38,6 @@ class _CartScreenState extends State<CartScreen> {
           child: StreamBuilder(
               stream: FirebaseDatabase.instance.reference().child('NewCart').child('UNIQUE_USER_ID').onValue,
               builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
-
                 if (snapshot.hasData) {
                   var map = snapshot.data.snapshot.value as Map<dynamic, dynamic>;
                   newCarts.clear();
@@ -56,187 +56,217 @@ class _CartScreenState extends State<CartScreen> {
                           itemCount: newCarts.length,
                           padding: EdgeInsets.all(getProportionateScreenWidth(2)),
                           itemBuilder: (context, index) {
-                            return Stack(
-                              children: [
-                                Card(
-                                  elevation: 8,
-                                  margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(6)),
-                                  // onTap: () {
-                                  //   addToCart(_scaffoldKey, item[index]);
-                                  // },
-                                  child: Container(
-                                    padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-                                    ),
-                                    // ! - buildItemCard was here
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          flex: 2,
-                                          child: ClipRRect(
-                                            child: Image(
-                                              image: NetworkImage(newCarts[index].image),
-                                              fit: BoxFit.cover,
-                                            ),
-                                            borderRadius: BorderRadius.all(Radius.circular(getProportionateScreenWidth(4))),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 4,
-                                          child: Container(
-                                            padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(8)),
-                                                  child: Text(
-                                                    newCarts[index].title,
-                                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
-                                                  child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Text('Всего: \ ${newCarts[index].totalPrice}₽', style: TextStyle(fontSize: 18)),
-                                                      ElegantNumberButton(
-                                                        initialValue: newCarts[index].quantity,
-                                                        buttonSizeHeight: getProportionateScreenWidth(20),
-                                                        buttonSizeWidth: getProportionateScreenWidth(25),
-                                                        color: Colors.transparent,
-                                                        minValue: 1,
-                                                        maxValue: 99,
-                                                        onChanged: (value) async {
-                                                          newCarts[index].quantity = value;
-                                                          newCarts[index].totalPrice = double.parse(newCarts[index].price) * newCarts[index].quantity;
-                                                          totalQuantity = newCarts[index].quantity + newCarts[index].quantity;
-                                                          updateToCart(_scaffoldKey, newCarts[index]);
-                                                        },
-                                                        decimalPlaces: 0,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
+                            return Slidable(
+                              actionPane: const SlidableDrawerActionPane(),
+                                actions: <Widget>[
+    IconSlideAction(
+      caption: 'Archive',
+      color: Colors.blue,
+      icon: Icons.archive,
+      onTap: () => () {},
+    ),
+    IconSlideAction(
+      caption: 'Share',
+      color: Colors.indigo,
+      icon: Icons.share,
+      onTap: () => () {},
+    ),
+  ],
+  secondaryActions: <Widget>[
+    IconSlideAction(
+      caption: 'More',
+      color: Colors.black45,
+      icon: Icons.more_horiz,
+      onTap: () => () {},
+    ),
+    IconSlideAction(
+      caption: 'Delete',
+      color: Colors.red,
+      icon: Icons.delete,
+      onTap: () => () {},
+    ),
+  ],
+                              child: Stack(
+                                children: [
+                                  Card(
+                                    elevation: 8,
+                                    margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(6)),
+                                    // onTap: () {
+                                    //   addToCart(_scaffoldKey, item[index]);
+                                    // },
+                                    child: Container(
+                                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                                      ),
+                                      // ! - buildItemCard here
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: ClipRRect(
+                                              child: Image(
+                                                image: NetworkImage(newCarts[index].image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(getProportionateScreenWidth(4))),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                                    child: IconButton(
-                                      icon: Icon(Icons.clear),
-                                      onPressed: () async {
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) => Scaffold(
-                                              backgroundColor: Colors.transparent,
-                                              body: Builder(
-                                                builder: (context) => AlertDialog(
-                                                  contentPadding: EdgeInsets.all(0.0),
-                                                  backgroundColor: Colors.transparent,
-                                                  content: Container(
-                                                    height: SizeConfig.screenHeight * 0.165,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius: BorderRadius.circular(20)),
-                                                    child: Column(
+                                          Expanded(
+                                            flex: 4,
+                                            child: Container(
+                                              padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(8)),
+                                                    child: Text(
+                                                      newCarts[index].title,
+                                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                       children: [
-                                                        Padding(
-                                                            padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
-                                                            child: Text('Удалить товар', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                                                ),
-                                                          Divider(),
-                                                        Padding(
-                                                            padding: EdgeInsets.only(
-                                                                left: getProportionateScreenWidth(15),
-                                                                right: getProportionateScreenWidth(15),
-                                                                top: getProportionateScreenWidth(8),
-                                                                bottom: getProportionateScreenWidth(15),
-                                                            ),
-                                                          child: Text('Вы точно хотите удалить товар из списка?', style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                                                        ),
-                                                        Expanded(
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                            children: [
-                                                              Expanded(
-                                                                child: ElevatedButton(
-                                                                    style: ButtonStyle(
-                                                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
-                                                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                        RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
-                                                                          side: BorderSide(color: Colors.grey[300]),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    onPressed: () => Navigator.pop(context),
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
-                                                                      child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
-                                                                    )),
-                                                              ),
-                                                              Expanded(
-                                                                child: ElevatedButton(
-                                                                    style: ButtonStyle(
-                                                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
-                                                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                        RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
-                                                                          side: BorderSide(color: Colors.redAccent),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    onPressed: () async {
-                                                                      deleteCart(_scaffoldKey, newCarts[index]);
-                                                                      return Navigator.pop(context);
-                                                                    },
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
-                                                                      child: Text('Удалить'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
-                                                                    )),
-                                                              ),
-                                                            ],
-                                                          ),
+                                                        Text('Всего: \ ${newCarts[index].totalPrice}₽', style: TextStyle(fontSize: 18)),
+                                                        ElegantNumberButton(
+                                                          initialValue: newCarts[index].quantity,
+                                                          buttonSizeHeight: getProportionateScreenWidth(20),
+                                                          buttonSizeWidth: getProportionateScreenWidth(25),
+                                                          color: Colors.transparent,
+                                                          minValue: 1,
+                                                          maxValue: 99,
+                                                          onChanged: (value) async {
+                                                            newCarts[index].quantity = value;
+                                                            newCarts[index].totalPrice = double.parse(newCarts[index].price) * newCarts[index].quantity;
+                                                            totalQuantity = newCarts[index].quantity + newCarts[index].quantity;
+                                                            updateToCart(_scaffoldKey, newCarts[index]);
+                                                          },
+                                                          decimalPlaces: 0,
                                                         ),
                                                       ],
                                                     ),
-
-
-
-                                                    ),
-
                                                   ),
-                                                ),
+                                                ],
                                               ),
-                                            );
-                                      },
-                                      // onPressed: () async {
-                                      //   if (
-                                      //   await confirm(context, title: Text('Удалить товар'),
-                                      //       content: Text('Точно хотите удалить товар из списка?'),
-                                      //       textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
-                                      //       textCancel: Text('Отмена'))) {
-                                      //     return deleteCart(_scaffoldKey, newCarts[index]);
-                                      //   }
-                                      // },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                                      child: IconButton(
+                                        icon: Icon(Icons.clear),
+                                        onPressed: () async {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => Scaffold(
+                                                backgroundColor: Colors.transparent,
+                                                body: Builder(
+                                                  builder: (context) => AlertDialog(
+                                                    contentPadding: EdgeInsets.all(0.0),
+                                                    backgroundColor: Colors.transparent,
+                                                    content: Container(
+                                                      height: SizeConfig.screenHeight * 0.165,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius: BorderRadius.circular(20)),
+                                                      child: Column(
+                                                        children: [
+                                                          Padding(
+                                                              padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
+                                                              child: Text('Удалить товар', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                                  ),
+                                                            Divider(),
+                                                          Padding(
+                                                              padding: EdgeInsets.only(
+                                                                  left: getProportionateScreenWidth(15),
+                                                                  right: getProportionateScreenWidth(15),
+                                                                  top: getProportionateScreenWidth(8),
+                                                                  bottom: getProportionateScreenWidth(15),
+                                                              ),
+                                                            child: Text('Вы точно хотите удалить товар из списка?', style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                                                          ),
+                                                          Expanded(
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: ElevatedButton(
+                                                                      style: ButtonStyle(
+                                                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
+                                                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                          RoundedRectangleBorder(
+                                                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
+                                                                            side: BorderSide(color: Colors.grey[300]),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed: () => Navigator.pop(context),
+                                                                      child: Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                                                        child: Text('Отмена'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+                                                                      )),
+                                                                ),
+                                                                Expanded(
+                                                                  child: ElevatedButton(
+                                                                      style: ButtonStyle(
+                                                                        backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
+                                                                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                          RoundedRectangleBorder(
+                                                                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
+                                                                            side: BorderSide(color: Colors.redAccent),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed: () async {
+                                                                        deleteCart(_scaffoldKey, newCarts[index]);
+                                                                        return Navigator.pop(context);
+                                                                      },
+                                                                      child: Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(12)),
+                                                                        child: Text('Удалить'.toUpperCase(), style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
+                                                                      )),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                            
+                            
+                            
+                                                      ),
+                            
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                        },
+                                        // onPressed: () async {
+                                        //   if (
+                                        //   await confirm(context, title: Text('Удалить товар'),
+                                        //       content: Text('Точно хотите удалить товар из списка?'),
+                                        //       textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
+                                        //       textCancel: Text('Отмена'))) {
+                                        //     return deleteCart(_scaffoldKey, newCarts[index]);
+                                        //   }
+                                        // },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             );
                           },
                         )

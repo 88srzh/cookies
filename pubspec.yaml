@@ -54,6 +54,7 @@ dependencies:
   google_fonts: ^2.1.0
   intl: ^0.17.0
   flutter_rating_bar: ^4.0.0
+  flutter_slidable: ^0.6.0
   # flutter_launcher_icons: ^0.8.0
 
 dev_dependencies:
