@@ -58,116 +58,12 @@ class _CartScreenState extends State<CartScreen> {
                           itemBuilder: (context, index) {
                             return Slidable(
                               actionPane: const SlidableDrawerActionPane(),
-                                actions: <Widget>[
-    IconSlideAction(
-      caption: 'Archive',
-      color: Colors.blue,
-      icon: Icons.archive,
-      onTap: () => () {},
-    ),
-    IconSlideAction(
-      caption: 'Share',
-      color: Colors.indigo,
-      icon: Icons.share,
-      onTap: () => () {},
-    ),
-  ],
-  secondaryActions: <Widget>[
-    IconSlideAction(
-      caption: 'More',
-      color: Colors.black45,
-      icon: Icons.more_horiz,
-      onTap: () => () {},
-    ),
-    IconSlideAction(
-      caption: 'Delete',
-      color: Colors.red,
-      icon: Icons.delete,
-      onTap: () => () {},
-    ),
-  ],
-                              child: Stack(
-                                children: [
-                                  Card(
-                                    elevation: 8,
-                                    margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(6)),
-                                    // onTap: () {
-                                    //   addToCart(_scaffoldKey, item[index]);
-                                    // },
-                                    child: Container(
-                                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
-                                      ),
-                                      // ! - buildItemCard here
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            flex: 2,
-                                            child: ClipRRect(
-                                              child: Image(
-                                                image: NetworkImage(newCarts[index].image),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              borderRadius: BorderRadius.all(Radius.circular(getProportionateScreenWidth(4))),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            flex: 4,
-                                            child: Container(
-                                              padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(8)),
-                                                    child: Text(
-                                                      newCarts[index].title,
-                                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text('Всего: \ ${newCarts[index].totalPrice}₽', style: TextStyle(fontSize: 18)),
-                                                        ElegantNumberButton(
-                                                          initialValue: newCarts[index].quantity,
-                                                          buttonSizeHeight: getProportionateScreenWidth(20),
-                                                          buttonSizeWidth: getProportionateScreenWidth(25),
-                                                          color: Colors.transparent,
-                                                          minValue: 1,
-                                                          maxValue: 99,
-                                                          onChanged: (value) async {
-                                                            newCarts[index].quantity = value;
-                                                            newCarts[index].totalPrice = double.parse(newCarts[index].price) * newCarts[index].quantity;
-                                                            totalQuantity = newCarts[index].quantity + newCarts[index].quantity;
-                                                            updateToCart(_scaffoldKey, newCarts[index]);
-                                                          },
-                                                          decimalPlaces: 0,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.topRight,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                                      child: IconButton(
-                                        icon: Icon(Icons.clear),
-                                        onPressed: () async {
+                              secondaryActions: <Widget>[
+                                IconSlideAction(
+                                  caption: 'Удалить',
+                                  color: Colors.red,
+                                  icon: Icons.delete,
+                                  onTap: () async {
                                           showDialog(
                                               context: context,
                                               builder: (context) => Scaffold(
@@ -242,26 +138,87 @@ class _CartScreenState extends State<CartScreen> {
                                                             ),
                                                           ),
                                                         ],
+                                                       ),
                                                       ),
-                            
-                            
-                            
-                                                      ),
-                            
                                                     ),
                                                   ),
                                                 ),
                                               );
                                         },
-                                        // onPressed: () async {
-                                        //   if (
-                                        //   await confirm(context, title: Text('Удалить товар'),
-                                        //       content: Text('Точно хотите удалить товар из списка?'),
-                                        //       textOK: Text('Удалить', style: TextStyle(color: Colors.red)),
-                                        //       textCancel: Text('Отмена'))) {
-                                        //     return deleteCart(_scaffoldKey, newCarts[index]);
-                                        //   }
-                                        // },
+                                ),
+                              ],
+                              child: Stack(
+                                children: [
+                                  Card(
+                                    elevation: 8,
+                                    margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10), vertical: getProportionateScreenWidth(6)),
+                                    // onTap: () {
+                                    //   addToCart(_scaffoldKey, item[index]);
+                                    // },
+                                    child: Container(
+                                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromRGBO(248, 219, 221, 1.0), Colors.orange[100]]),
+                                      ),
+                                      // ! - buildItemCard here
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: ClipRRect(
+                                              child: Image(
+                                                image: NetworkImage(newCarts[index].image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(getProportionateScreenWidth(4))),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Container(
+                                              padding: EdgeInsets.only(bottom: getProportionateScreenWidth(8)),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(8)),
+                                                    child: Text(
+                                                      newCarts[index].title,
+                                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(2)),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Text('Всего: \ ${newCarts[index].totalPrice}₽', style: TextStyle(fontSize: 18)),
+                                                        ElegantNumberButton(
+                                                          initialValue: newCarts[index].quantity,
+                                                          buttonSizeHeight: getProportionateScreenWidth(20),
+                                                          buttonSizeWidth: getProportionateScreenWidth(25),
+                                                          color: Colors.transparent,
+                                                          minValue: 1,
+                                                          maxValue: 99,
+                                                          onChanged: (value) async {
+                                                            newCarts[index].quantity = value;
+                                                            newCarts[index].totalPrice = double.parse(newCarts[index].price) * newCarts[index].quantity;
+                                                            totalQuantity = newCarts[index].quantity + newCarts[index].quantity;
+                                                            updateToCart(_scaffoldKey, newCarts[index]);
+                                                          },
+                                                          decimalPlaces: 0,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
