@@ -68,6 +68,7 @@ class _SignUpFormState extends State<SignUpForm> {
           // TODO implement username form
           // buildUsernameFormField(),
           Form(
+            //  TODO: смещение при открытии клавиатуры
             key: _formKey,
             child: Column(
               children: [
@@ -235,6 +236,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildDisplayNameFormField() {
     return TextFormField(
+      autofocus: true,
       onSaved: (newValue) => displayName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {

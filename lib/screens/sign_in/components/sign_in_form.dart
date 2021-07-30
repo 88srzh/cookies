@@ -262,6 +262,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      autofocus: true,
       controller: emailController,
       // keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
