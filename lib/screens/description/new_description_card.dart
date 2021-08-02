@@ -18,12 +18,12 @@ class NewDescriptionScreen extends StatefulWidget {
 class _NewDescriptionScreenState extends State<NewDescriptionScreen> {
   List<DescriptionsItem> description =
       new List<DescriptionsItem>.empty(growable: true);
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKeyDonuts = new GlobalKey();
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: _scaffoldKeyDonuts,
       appBar: AppBar(
         title: Center(
           child: Text('Описание'),

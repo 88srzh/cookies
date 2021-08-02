@@ -4,7 +4,6 @@ import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
 import 'package:cookie/screens/description/descriprion_screen.dart';
-import 'package:cookie/screens/description/new_description_card.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +102,7 @@ class _DonutsScreenState extends State<DonutsScreen> {
                         staggeredTileBuilder: (int index) =>
                             StaggeredTile.count(1, index.isEven ? 1.1 : 1.0));
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               ),
