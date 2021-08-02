@@ -13,12 +13,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 // import 'package:lint/lint.dart';
 // import 'package:surf_lint_rules/surf_lint_rules.dart';
 // import 'package:lint/analysis_options.yaml';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive..initFlutter();
   await Firebase.initializeApp();
   setupServices();
   runApp(
@@ -40,7 +44,10 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/cartPage':
-              return PageTransition<dynamic>(settings: settings, child: CartScreen(), type: PageTransitionType.fade);
+              return PageTransition<dynamic>(
+                  settings: settings,
+                  child: CartScreen(),
+                  type: PageTransitionType.fade);
               break;
             // case '/descriptionPage':
             //   return PageTransition<dynamic>(settings: settings, child: DescriptionScreen(), type: PageTransitionType.fade);
