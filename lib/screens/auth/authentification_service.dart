@@ -29,15 +29,13 @@ class AuthentificationService {
       {String email, String password}) async {
     var authResults = await _auth.signInWithEmailAndPassword(
         email: email, password: password);
-    return UserModel(authResults.user.uid,
-        displayName: authResults.user.displayName);
+    return UserModel(displayName: authResults.user.displayName);
   }
 
   Future<UserModel> getUser() async {
     var firebaseUser = await _auth.currentUser;
     return firebaseUser != null
-        ? UserModel(firebaseUser.uid,
-            displayName: firebaseUser.displayName, email: firebaseUser.email)
+        ? UserModel(displayName: firebaseUser.displayName, email: firebaseUser.email)
         : null;
   }
 

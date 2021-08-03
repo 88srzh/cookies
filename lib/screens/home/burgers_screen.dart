@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cookie/firebase/firebase_action.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/user.dart';
 import 'package:cookie/size_config.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class BurgersScreen extends StatefulWidget {
   static String routeName = '/burgersscreen';
+  var unique_user_id = UserModel().uid;
   @override
   _BurgersScreenState createState() => _BurgersScreenState();
 }

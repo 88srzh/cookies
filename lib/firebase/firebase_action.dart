@@ -3,14 +3,17 @@ import 'dart:convert';
 import 'package:cookie/models/description.dart';
 import 'package:cookie/models/item.dart';
 import 'package:cookie/models/cart.dart';
+import 'package:cookie/models/user.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 void addToCart(GlobalKey<ScaffoldState> scaffoldKey, Item item) {
+  // var user_uid = UserModel().uid;
   var cart = FirebaseDatabase.instance
       .reference()
       .child('NewCart')
       .child('UNIQUE_USER_ID');
+      // .child(user_uid);
   cart.child(item.key).once().then((DataSnapshot snapshot) {
     //  If user already have item in cart
     if (snapshot.value != null) {
@@ -107,11 +110,13 @@ void updateItemCardRatingToPancakes(
 void updateItemCardRatingToDonuts(
     GlobalKey<ScaffoldState> scaffoldKey, Item pancakes) {
   var item = FirebaseDatabase.instance.reference().child('Donuts');
-  item.child(pancakes.key).set(pancakes.toJson())
-  .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-  .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
-  .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
-  .showSnackBar(SnackBar(content: Text('$e'))));
+  item
+      .child(pancakes.key)
+      .set(pancakes.toJson())
+      .then((value) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+          .showSnackBar(SnackBar(content: Text('Рейтинг обновлен'))))
+      .catchError((e) => ScaffoldMessenger.of(scaffoldKey.currentContext)
+          .showSnackBar(SnackBar(content: Text('$e'))));
 }
 
 void deleteCart(GlobalKey<ScaffoldState> scaffoldKey, Cart newCart) {

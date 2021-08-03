@@ -6,8 +6,8 @@ class UserModel {
   String displaySurName;
   String phoneNumber;
 
-  UserModel(this.uid,
-      {this.displayName,
+  UserModel({this.uid,
+      this.displayName,
       this.displaySurName,
       this.avatarUrl,
       this.email,
